@@ -45,10 +45,11 @@ dct3 = dct1.fromkeys(('x', 'y'), 10)
 print(dct2) # {'name': None, 'age': None}
 print(dct3) # {'x': 10, 'y': 10}
 
-# get(k)
+# get(k, [default])
 # Returns the value of the specified key
 dct = {'name': 'Vini', 'age': 26}
 print(dct.get('age')) # 26
+print(dct.get('abc', 999)) # 999
 
 # pop(k)
 # Removes the element with the specified key
