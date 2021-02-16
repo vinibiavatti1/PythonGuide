@@ -2,10 +2,11 @@
 Casting examples
 """
 # Variables
-x = str(3)    # '3'
-x = int(3)    # 3
-x = float(3)  # 3.0
-x = int('1')  # 1
+x = str(3)     # '3'
+x = int(3)     # 3
+x = float(3)   # 3.0
+x = int('1')   # 1
+# x = int('a') # ValueError
 
 # Lists
 tpl = (1, 2, 3)

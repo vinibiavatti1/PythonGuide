@@ -38,10 +38,10 @@ print("Python is " + x) # 1
 
 # Global keyword
 x = 1
-def func():
+def func2():
     global x
     x = 2
     print(x) # 2
-func()
+func2()
 print(x) # 2
 

@@ -15,9 +15,9 @@ def prt():
 prt() # Function!
 
 # Function with parameters
-def prt(txt):
+def prt2(txt):
     print(txt)
-prt('abc') # abc
+prt2('abc') # abc
 
 # Function with return
 def sum(x, y):
@@ -29,22 +29,22 @@ print(sum(5, 5)) # 10
 ##############################################
 
 # *args
-def prt(*vals):
-    print(vals)
-prt(1, 2, 3, 4, 5) # (1, 2, 3, 4, 5)
+def prt3(*args):
+    print(args)
+prt3(1, 2, 3, 4, 5) # (1, 2, 3, 4, 5)
 
 # args, *args
-def prt(txt, *vals):
-    print(txt, vals)
-prt(1, 2, 3, 4, 5) # 1 (2, 3, 4, 5)
+def prt4(txt, *args):
+    print(txt, args)
+prt4(1, 2, 3, 4, 5) # 1 (2, 3, 4, 5)
 
 # *args, args
-def prt(*vals, txt):
-    print(vals, txt)
-prt(1, 2, 3, 4, 5, txt='6') # (1, 2, 3, 4, 5) 6 NOTE: After *args, the arguments must be set as 'Keyword Arguments'
+def prt5(*args, txt):
+    print(args, txt)
+prt5(1, 2, 3, 4, 5, txt='6') # (1, 2, 3, 4, 5) 6 NOTE: After *args, the arguments must be set as 'Keyword Arguments'
 
 # *args, *args (You cant have more then once *args)
-# def prt(*vals, *txts): ERROR
+# def prt(*args, *txts): ERROR
 #     print(vals, txts)
 
 ##############################################
@@ -52,44 +52,44 @@ prt(1, 2, 3, 4, 5, txt='6') # (1, 2, 3, 4, 5) 6 NOTE: After *args, the arguments
 ##############################################
 
 # Normal parameter used as keyword argument
-def prt(txt):
+def prt6(txt):
     print(txt)
-prt(txt='abc') # abc
+prt6(txt='abc') # abc
 
 # *args, kargs
-def prt(*vals, txt, sep):
-    print(vals, sep, txt)
-prt(1, 2, 3, txt='four', sep=',') # (1, 2, 3) , four
+def prt7(*args, txt, sep):
+    print(args, sep, txt)
+prt7(1, 2, 3, txt='four', sep=',') # (1, 2, 3) , four
 
 # Using dict **
 args = {'x': 5, 'y': 5}
-def sum(x, y):
+def sum2(x, y):
     return x + y
-print(sum(**args)) # 10
+print(sum2(**args)) # 10
 
 ##############################################
 # Arbitrary Keyword Arguments                #
 ##############################################
 
 # **kargs
-def sum(**vals):
-    return vals['x'] + vals['y']
-print(sum(x=5, y=5)) # 10
+def sum3(**kwargs):
+    return kwargs['x'] + kwargs['y']
+print(sum3(x=5, y=5)) # 10
 
 # args, **kargs
-def sum(x, **vals):
-    return x + vals['y']
-print(sum(5, y=5, z=10))
+def sum4(x, **kwargs):
+    return x + kwargs['y']
+print(sum4(5, y=5, z=10))
 
 # *args, **kargs
-def show(*vals, **txts):
-    print(vals, end=' ')
-    print(txts)
+def show(*args, **kwargs):
+    print(args, end=' ')
+    print(kwargs)
 show(1, 2, 3, a='one', b='two', c='three') # (1, 2, 3) {'a': 'one', 'b': 'two', 'c': 'three'}
 
 # **kargs, args
 # If put args after **kargs, it will raise a syntax error
-# def sum(**vals, y): SyntaxError: invalid syntax
+# def sum(**args, y): SyntaxError: invalid syntax
 #     return vals['x'] + y
 # print(sum(x=2, 3))
 
@@ -98,19 +98,19 @@ show(1, 2, 3, a='one', b='two', c='three') # (1, 2, 3) {'a': 'one', 'b': 'two', 
 ##############################################
 
 # args
-def sum(x=3, y=7):
+def sum6(x=3, y=7):
     return x + y
-print(sum()) # 10
+print(sum6()) # 10
 
 # variable / constant value as default
 PI = 3.14
-def sum(x=PI, y=PI):
+def sum7(x=PI, y=PI):
     return x + y
-print(sum()) # 6.28
+print(sum7()) # 6.28
 
 # The arbitraty and arbitraty keyword arguments cannot have default values
-# def sum(*vals=(1,2,3))  Syntax Error
-# def sum(**vals={'a':1}) Syntax Error
+# def sum(*args=(1,2,3))  Syntax Error
+# def sum(**args={'a':1}) Syntax Error
 
 ##############################################
 # Recursive Function                         #
@@ -129,9 +129,9 @@ print(arithmetic_progression(1, 10)) # 45
 ##############################################
 
 # Define variable as function
-def prt(txt):
+def prt8(txt):
     print(txt)
-fn = prt
+fn = prt8
 fn('Hello World') # Hello World
 
 # Passing function as parameters
@@ -142,7 +142,24 @@ ages = filter(age_filter, ages)
 print(tuple(ages)) # (20, 18)
 
 # Function inside dictionary
-def sum(x, y):
+def sum8(x, y):
     return x + y
-dct = {'action': sum}
+dct = {'action': sum8}
 print(dct['action'](5, 5)) # 10
+
+##############################################
+# Functions with more return values          #
+##############################################
+# NOTE: To return more values some collection has to be used like tuples
+
+# Tuple (Implicit)
+def sum_and_sub(x, y):
+    return x - y, x + y # This is a implicit tuple creation
+sum, sub = sum_and_sub(5, 5)
+print(sum, sub, sep=', ') # 10, 0
+
+# Tuple
+def sum_and_sub2(x, y):
+    return (x - y, x + y)
+(sum, sub) = sum_and_sub2(5, 5)
+print(sum, sub, sep=', ') # 10, 0
