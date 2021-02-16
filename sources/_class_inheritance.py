@@ -7,6 +7,8 @@ Class inheritance examples
 * The base classes are defined in the () togueter the name of the class
 
 Syntax: class Name(base_classes...):
+
+* Caelum: https://www.caelum.com.br/apostila-python-orientacao-a-objetos/heranca-multipla-e-interfaces#problema-do-diamante
 """
 # Class with just object as the super class
 # Client1(object):

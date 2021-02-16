@@ -4,17 +4,22 @@ Class template example
 # Template
 class Template:
 
-    # Class variables (static)
+    # Class variables
     version: 1
-
-    # Class methods (static)
-    @classmethod
-    def add_version(cls):
-        Template.version += 1
 
     # Init (Constructor)
     def __init__(self, name): 
         self.name = name
+
+    # Class methods
+    @classmethod
+    def fromJSON(cls, json_object):
+        return cls(json_object)
+    
+    # Static methods
+    @staticmethod
+    def is_valid_version(version):
+        return True
 
     # Properties
     @property

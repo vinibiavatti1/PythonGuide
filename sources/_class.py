@@ -16,27 +16,45 @@ class Client2(): # Used for extensions
 client = Client1() # New object
 
 ##############################################
-# Class scope (static)                       #
+# Class scope                                #
 ##############################################
 
-# Class variables (static)
+# Class variables
+# * Variables that will be shared with the instances of the class
 class Client3:
-    name = 'Vini' # Class variable shared in all instances of the class (static)
+    name = 'Vini'
 
 # Access class variable
 print(Client3.name) # Vini
 
-# Class methods (static)
+# Class methods
+# * Usually used to define other constructors for the class, or create a factory methods
+# * Has the 'cls' as first parameters to reference the class itself
 class Client4:
-    @classmethod # Decorator to define this method as class method
-    def prt(cls):
-        print('Vini')
+    @classmethod
+    def create(cls):
+        return cls()
 
 # Access class methods
-print(Client4.prt()) # Vini
+print(Client4.create()) # <__main__.Client4 object at 0x000002D75B713F70>
 
 ##############################################
-# Instance scope (object)                    #
+# Static scope                               #
+##############################################
+
+# Static methods
+# * Usually used to create utility methods (like Math.sum())
+# * Dont has any parameters as first mandatory
+class Math:
+    @staticmethod
+    def sum(x, y):
+        return x + y
+
+# Access static methods
+print(Math.sum(5, 5)) # 10
+
+##############################################
+# Instance scope                             #
 ##############################################
 
 # Init (Constructor)

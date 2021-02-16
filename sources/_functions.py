@@ -163,3 +163,12 @@ def sum_and_sub2(x, y):
     return (x - y, x + y)
 (sum, sub) = sum_and_sub2(5, 5)
 print(sum, sub, sep=', ') # 10, 0
+
+##############################################
+# Functions with datatype                    #
+##############################################
+
+# Function parameters and return with type
+def sum_with_type(x: int, y:int) -> int:
+    return x + y
+print(sum_with_type(5, 5)) # 10
