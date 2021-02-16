@@ -3,5 +3,8 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pycodestyleEnabled": true,
     "python.linting.pycodestyleCategorySeverity.E": "Information",
-    "python.linting.pycodestyleCategorySeverity.W": "Information"
+    "python.linting.pycodestyleCategorySeverity.W": "Information",
+    "editor.rulers": [
+        79
+    ]
 }

@@ -1,6 +1,8 @@
 """
-Bool examples
+Bool
 """
+
+
 # Syntax
 # The bool values always have the first letter capitalized
 x = True

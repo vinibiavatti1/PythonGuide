@@ -1,13 +1,17 @@
 """
 Car example
 """
+
+
 # Exception for fuel values
 class InvalidFuelValueError(Exception):
     def __init__(self, message):
         self._message = message
+
     @property
     def message(self):
         return self._message
+
 
 # Car class
 class Car:
@@ -15,11 +19,12 @@ class Car:
         self._name = name
         self._brand = brand
         self._fuel = fuel if fuel <= 10 and fuel > 0 else 10
-    
+
     # Properties
     @property
     def name(self):
         return self._name
+
     @name.setter
     def name(self, name):
         self._name = name
@@ -27,6 +32,7 @@ class Car:
     @property
     def brand(self):
         return self._brand
+
     @brand.setter
     def brand(self, name):
         self._brand = name
@@ -41,15 +47,18 @@ class Car:
             self._fuel -= 1
             return True
         return False
+
     def supply(self, fuel_amount):
+        error_message = 'The fuel needs to be in range 0 to 10'
         if fuel_amount < 0:
-            raise InvalidFuelValueError(f'The fuel needs to be in range 0 to 10')
+            raise InvalidFuelValueError(error_message)
         elif fuel_amount > 10:
-            raise InvalidFuelValueError(f'The fuel needs to be in range 0 to 10')
+            raise InvalidFuelValueError(error_message)
         self._fuel += fuel_amount
         if self._fuel > 10:
             self._fuel = 10
         return True
+
 
 # Algorithm
 car = Car('Cruze', 'Chevrolet')
