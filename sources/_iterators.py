@@ -65,3 +65,11 @@ print(next(my_list_iter))   # 2
 print(next(my_list_iter))   # 3
 print(next(my_list_iter))   # 4
 # print(next(my_list_iter)) # StopIteration
+
+
+# Using enumerate with custom iterator
+my_list = MyList(1, 2, 3, 4)
+for index, value in enumerate(my_list):
+    print(f'{index}: {value}', end=', ')
+    # 0: 1, 1: 2, 2: 3, 3: 4,
+print()

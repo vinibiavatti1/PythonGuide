@@ -7,7 +7,7 @@ PEP (Python Enhancement Proposals)
 """
 
 # -----------------------------------------------------------------------------
-# Naming Convension
+# Naming
 
 
 # Variables
@@ -103,3 +103,85 @@ from abc import ABC
 # Strings
 # * Always use ' char to strings
 text = 'Hello'
+
+
+# -----------------------------------------------------------------------------
+# Importation
+
+
+# Import in multiple lines
+# * Do not use different imports at same line like import sys, abc
+# * Always put the imports at the top of the file of after the first comment
+import sys
+import abc
+
+
+# Import a big amount of resources
+# Use multi line to import the resources
+from abc import (
+    ABC,
+    ABCMeta
+)
+
+
+# -----------------------------------------------------------------------------
+# Comments
+
+
+# Inline comments
+# * Use two spaces after expression for inline comments
+x = 10  # My variable
+
+
+# Multiline comments
+# * Use """ the single quotes always
+"""
+Lorem ipsum
+"""
+
+
+# -----------------------------------------------------------------------------
+# Code recomendations
+
+
+# Spacement and line breaks
+# * Use two line breaks before and after functions, classes and multi line
+#   comments
+def action():
+    pass
+
+
+class Person():
+    pass
+
+
+x = 1
+
+
+"""
+Comment
+"""
+
+
+# Line length
+# * Respect the line length limit (79 chars)
+x = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nulla \
+nisl'
+
+
+# Identation
+# * Always use 4 spaces to indent your code
+if 1 == 1:
+    pass
+
+
+# Dont use unecessary spaces
+# * Do not put more spaces in lists, parameters, function names, etc
+# * Do not try to inline vertically some text with spaces
+lst = [1, 2, 3, 4, 5]
+x = 1
+long_variable = 5
+
+
+# EOF new line
+# * Always use a blank line as EOF (end of file) line

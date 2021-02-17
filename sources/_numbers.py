@@ -40,3 +40,10 @@ print(x)
 # (1+4j)
 print(4j * 4j)
 # (-16+0j) (Complex multiplication)
+
+
+# Number with underscore
+# * Used to make the read easy
+x = 1_000_000
+print(x)
+# 1000000

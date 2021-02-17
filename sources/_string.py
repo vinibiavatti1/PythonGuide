@@ -47,6 +47,7 @@ print(len(text))
 
 # -----------------------------------------------------------------------------
 # Select content
+# [start,end,step]
 
 
 # Contains
@@ -75,10 +76,24 @@ print(text[3:])
 
 
 # Slice with negative numbers
-# Used to reverse the index
+# * Used to reverse the index
 text = 'Hello World'
 print(text[-5:])
 # World
+
+
+# Step Odd
+# * Using step to get odd values
+text = 'Hello World'
+print(text[::2])
+# HloWrd
+
+
+# Step Invert
+# * Using step to invert string
+text = 'Hello World'
+print(text[::-1])
+# dlroW olleH
 
 
 # -----------------------------------------------------------------------------
@@ -91,11 +106,18 @@ print('Hello ' + 'world')  # Hello world
 # print('Hello ' + 1)      # Error
 
 
-# Interpolation
+# Interpolation (MODERN STYLE)
 name = 'Vini'
 age = 26
 text = f'{name} is {age} years old'
 print(text)
+# Vini is 26 years old
+
+
+# Interpolation with % (OLD STYLE)
+name = 'Vini'
+age = 26
+print('%s is %s years old' % (name, age))
 # Vini is 26 years old
 
 
@@ -117,3 +139,8 @@ print(text)
 text = 'The movie \'Back to the future\' is cool'
 print(text)
 # The movie 'Back to the future' is cool
+
+
+# Print unicode char
+print('\U00000040')
+# @
