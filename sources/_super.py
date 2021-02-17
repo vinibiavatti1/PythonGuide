@@ -16,9 +16,14 @@ Super
 * NOTE: To use super() with different parameters between classes the arbitraty
   parameters will be needed to use as arguments (*args, **kwargs)
 
-Syntax: super(t, obj)
-* t: The class that MRO will be followed
-* obj: The parameters to share in MRO
+Example:
+* If __mro__ of object-or-type is D -> B -> C -> A -> object and the value of
+  type is B, then super() searches C -> A -> object.
+
+Syntax: super(type, object-or-type)
+* type: The search starts from the class right after the type
+* object-or-type: The object-or-type determines the method resolution order to
+  be searched
 
 * Guido Van Rossum topic: http://python-history.blogspot.com/2010/06/
                           method-resolution-order.html

@@ -1,3 +1,6 @@
+# Use this file with editorconfig extension in your IDE to configure the right
+# way to programming Python, following the PEP8 recommendations
+
 root = true
 
 [*]

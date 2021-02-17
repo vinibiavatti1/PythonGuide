@@ -1,20 +1,24 @@
 """
 Bool
+
+* The bool class is a subclass of int
+* It cannot be subclassed further. Its only instances are False and True
+* Cast to bool will execute the "Truth testing procedure"
 """
 
 
 # Syntax
-# The bool values always have the first letter capitalized
+# * The bool values always have the first letter capitalized
 x = True
 b = False
 
 
-# Most Values are True
-# Almost any value is evaluated to True if it has some sort of content.
-# Any string is True, except empty strings.
-# Any number is True, except 0.
-# Any list, tuple, set, and dictionary are True, except empty ones.
-# Below are the false values
+# Truth testing procedure
+# * Almost any value is evaluated to True if it has some sort of content.
+# * Any string is True, except empty strings.
+# * Any number is True, except 0.
+# * Any list, tuple, set, and dictionary are True, except empty ones.
+# * Below are the False values
 bool(False)  # False
 bool(None)   # False
 bool(0)      # False
