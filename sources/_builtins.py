@@ -375,55 +375,169 @@ print(tuple(mv))
 
 
 # all()
-# *
+# * Return True if all elements of the iterable are true (or if the iterable is
+#   empty)
+# * Syntax
+#   * all(iterable)
+a1 = all((1, 2, 3))
+a2 = all([1, 2, 0])
+a3 = all({True, False})
+a4 = all([])
+print(a1, a2, a3, a4, sep=', ')
+# True, False, False, True
 
 
 # help()
-# *
+# * NOTE: Check _dir_and_help.py file for more details
+# * Help is used to get help related to the object passed during the call
+# * This is usually used for Python REPL
+# * Syntax
+#   * help([object])
+txt = 'Hello'
+help(txt.upper)
+# upper() method of builtins.str instance
+#     Return a copy of the string converted to uppercase.
 
 
 # min()
-# *
+# * Return the smallest item in an iterable or the smallest of two or more
+#   arguments
+# * Syntax
+#   * min(iterable, *[, key, default])
+#   * min(arg1, arg2, *args[, key])
+m1 = min((3, 1, 2))
+m2 = min(3, 1, 2)
+m3 = min({'n': 2}, {'n': 5}, key=lambda el: el['n'])
+print(m1, m2, m3, sep=', ')
+# 1, 1, {'n': 2}
 
 
 # setattr()
-# *
+# * The string must be the name of one of the object's attributes
+# * The function set the named attribute, provided the object allows it
+# * setattr(x, 'foobar', 1) is equivalent to x.foobar = 1
+# * Syntax
+#   * setattr(object, name, value)
+class Tree:
+    def __init__(self):
+        self.x = 5
+        self.y = 10
+
+
+t = Tree()
+setattr(t, 'x', 500)
+print(t.__dict__)
+# {'x': 500, 'y': 10}
 
 
 # any()
-# *
+# * Return True if any element of the iterable is true. If the iterable is
+#   empty, return False
+# * Syntax
+#   * any(iterable)
+a1 = any((1, 2, 3))
+a2 = any([1, 2, 0])
+a3 = any({True, False})
+a4 = any([])
+a5 = any([0, False])
+print(a1, a2, a3, a4, a5, sep=', ')
+# True, True, True, False, False
 
 
 # dir()
-# *
+# * NOTE: Check _dir_and_help.py file for more details
+# * Dir returns list of the attributes and methods of any object (functions,
+#   modules, strings, lists, dictionaries etc.)
+# * If no argument is passed, dir will return the attributes and methods of the
+#   current scope, not for the specified object
+# * Syntax:
+#   * dir([object])
+lst = dir()
+print(lst)
+# ['Building', 'Car', 'Client', 'Math', 'Person', 'Tower', 'Tree',
+# '__annotations__', '__builtins__', '__cached__', '__doc__', '__file__',
+# '__loader__', '__name__', '__package__', '__spec__', ...]
 
 
 # hex()
-# *
+# * Convert an integer number to a lowercase hexadecimal string prefixed with
+#   '0x'
+# * If x is not a Python int object, it has to define an __index__() method
+#   that returns an integer
+# * Syntax
+#   * hex(x)
+h1 = hex(255)
+h2 = hex(0)
+h3 = hex(-255)
+print(h1, h2, h3, sep=', ')
+# 0xff, 0x0, -0xff
 
 
 # next()
-# *
+# * NOTE: Check _iterator.py file for more details
+# * Retrieve the next item from the iterator by calling its __next__() method.
+#   If default is given, it is returned if the iterator is exhausted, otherwise
+#   StopIteration is raised
+# * If default is given and the iterator is exhausted, it is returned instead
+#   of raising StopIteration
+# * Syntax
+#   * next(iterator[, default])
+lst = ['a', 'b', 'c']
+lst_iter = iter(lst)
+print(next(lst_iter))    # a
+print(next(lst_iter))    # b
+print(next(lst_iter))    # c
+# print(next(lst_iter))  # StopIteration
 
 
 # ascii()
-# *
+# * As repr(), return a string containing a printable representation of an
+#   object, but escape the non-ASCII characters in the string returned by
+#   repr() using \x, \u or \U escapes
+# * Syntax
+#   * ascii(object)
+asc = ascii({'name': 'Vini'})
+print(asc)
+# {'name': 'Vini'}
 
 
 # divmod()
-# *
+# * The divmod() method takes two numbers and returns a pair of numbers
+#   (a tuple) consisting of their quotient and remainder
+# * Syntax
+#   * divmod(a, b)
+res = divmod(9, 2)
+print(res)
+# (4, 1)
 
 
 # id()
-# *
+# * Return the 'identity' of an object
+# * This is the address of the object in memory
+# * Syntax
+#   * id(object)
+x = 5
+print(id(x))
+# 2433823304112 (can be other value)
 
 
 # sorted()
-# *
+# * NOTE: Check _sorted.py file for more details
+# * Return a new sorted list from the items in iterable
+# * Syntax
+#   * sorted(iterable, *, key=None, reverse=False)
+lst = ['C', 'B', 'A']
+print(sorted(lst))
+# ['A', 'B', 'C']
 
 
 # bin()
-# *
+# * Convert an integer number to a binary string prefixed with '0b'
+# * Syntax
+#   * bin(number)
+txt = bin(10)
+print(txt)
+# 0b1010
 
 
 # enumerate()

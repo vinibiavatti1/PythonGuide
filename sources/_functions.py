@@ -40,7 +40,9 @@ print(sum(5, 5))
 
 
 # -----------------------------------------------------------------------------
-# Arbitrary Arguments
+# Arbitrary Arguments (*args)
+# * Used to use more values as parameters (It will become a tuple)
+
 
 # *args
 def prt3(*args):
@@ -76,7 +78,8 @@ prt5(1, 2, 3, 4, 5, txt='6')
 
 
 # -----------------------------------------------------------------------------
-# Keyword Arguments
+# Keyword Arguments (kwargs)
+# * Used to accept arguments defined with their name
 
 
 # Normal parameter used as keyword argument
@@ -110,7 +113,8 @@ print(sum2(**args))
 
 
 # -----------------------------------------------------------------------------
-# Arbitrary Keyword Arguments
+# Arbitrary Keyword Arguments (**kwargs)
+# * Used to define dict that will get the kwargs
 
 
 # **kargs
@@ -149,7 +153,8 @@ show(1, 2, 3, a='one', b='two', c='three')
 
 
 # -----------------------------------------------------------------------------
-# Default parameter values
+# Default parameter values (fn(value=1))
+# * Set the default value when the argument is not inserted
 
 
 # args
@@ -179,7 +184,8 @@ print(sum7())
 
 
 # -----------------------------------------------------------------------------
-# Recursive Function
+# Recursive Function (fn(): fn())
+# * Function that call himselves inside
 
 
 # Recursive operation
@@ -195,7 +201,8 @@ print(arithmetic_progression(1, 10))
 
 
 # -----------------------------------------------------------------------------
-# Functions as variables
+# Functions as variables (var = fn)
+# * Define a variable with function
 
 
 # Define variable as function
@@ -232,7 +239,7 @@ print(dct['action'](5, 5))
 
 
 # -----------------------------------------------------------------------------
-# Functions with more return values
+# Functions with more return values (return x, y)
 # NOTE: To return more values some collection has to be used like tuples
 
 
@@ -258,7 +265,8 @@ print(sum, sub, sep=', ')
 
 
 # -----------------------------------------------------------------------------
-# Functions with datatype
+# Functions with datatype (fn(x: int) -> str)
+# * Define the datatype to parameters and return
 
 
 # Function parameters and return with type
@@ -268,3 +276,16 @@ def sum_with_type(x: int, y: int) -> int:
 
 print(sum_with_type(5, 5))
 # 10
+
+
+# -----------------------------------------------------------------------------
+# Bare * (fn(x, *, y))
+# * Used to force the caller to use named arguments for arguments after bare
+
+
+def sum_bare(x, y, *, z):
+    return x + y + z
+
+
+sum_bare(1, 2, z=3)
+# sum_bare(1, 2, 3)  ERROR (Bare cannot let to put the kwargs as normal arg)
