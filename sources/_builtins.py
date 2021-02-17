@@ -10,12 +10,31 @@ Builtin resources
 # Classes
 
 
-# set()
-# *
+# set([iterable])
+# * Return a new set object, optionally with elements taken from iterable.
+# * Used to cast some object to a set
+# * Syntax
+#   * set([iterable])
+st1 = set()
+st2 = set([1, 2, 3])
+print(st1, st2, sep=', ')
+# set(), {1, 2, 3}
 
 
 # dict()
-# *
+# * Create a new dictionary. The dict object is the dictionary class
+# * Used to cast some object to a dict
+# * Syntax
+#   * dict(**kwarg)
+#   * dict(mapping, **kwarg)
+#   * dict(iterable, **kwarg)
+dct1 = dict()
+dct2 = dict(name='Vini', age=26)
+dct3 = dict({'name': 'Vini'}, age=26)
+dct4 = dict((('age', 26), ), name='Vini')
+print(dct1, dct2, dct3, dct4, sep=', ')
+# {}, {'name': 'Vini', 'age': 26}, {'name': 'Vini', 'age': 26},
+# {'age': 26, 'name': 'Vini'}
 
 
 # slice()
@@ -121,16 +140,20 @@ class Person:
 # * Return the absolute value of a number. The argument may be an integer, a
 #   floating point number, or an object implementing __abs__(). If the argument
 #   is a complex number, its magnitude is returned
+# * Syntax
+#   * abs(n)
 x = 10
 y = -5
 print(abs(x), abs(y), sep=', ')
 # 10, 5
 
 
-# delattr(object, name)
+# delattr()
 # * The string must be the name of one of the object’s attributes.
 # * The function  deletes the named attribute, provided the object allows it.
 # * delattr(x, 'foobar') is equivalent to del x.foobar
+# * Syntax
+#   * delattr(object, name)
 class Client:
     def __init__(self):
         self.x = 5
