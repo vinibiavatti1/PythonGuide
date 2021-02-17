@@ -14,8 +14,9 @@ Builtin resources
 
 
 # set([iterable])
+# * NOTE: Check _set.py file for more details
 # * Return a new set object, optionally with elements taken from iterable.
-# * Used to cast some object to a set
+# * Used to cast some object
 # * Syntax
 #   * set([iterable])
 st1 = set()
@@ -25,8 +26,9 @@ print(st1, st2, sep=', ')
 
 
 # dict()
+# * NOTE: Check _dict.py file for more details
 # * Create a new dictionary. The dict object is the dictionary class
-# * Used to cast some object to a dict
+# * Used to cast some object
 # * Syntax
 #   * dict(**kwarg)
 #   * dict(mapping, **kwarg)
@@ -70,10 +72,12 @@ print(obj)
 
 
 # bool()
+# * NOTE: Check _bool.py file for more details
 # * Return a Boolean value (True or False)
 # * x is converted using the truth testing procedure
 # * If x is false or omitted, this returns False; otherwise it returns True
 # * The bool class is a subclass of int
+# * Used to cast some object
 # * Syntax
 #   * bool([x])
 b1 = bool()
@@ -84,8 +88,10 @@ print(b1, b2, b3, sep=', ')
 
 
 # int()
+# * NOTE: Check _numbers.py file for more details
 # * Return an integer object constructed from a number or string x, or return 0
 #   if no arguments are given
+# * Used to cast some object
 # * If x defines __int__(), int(x) returns x.__int__()
 # * If x defines __index__(), it returns x.__index__()
 # * If x defines __trunc__(), it returns x.__trunc__()
@@ -103,9 +109,11 @@ print(i1, i2, i3, i4, i5, sep=', ')
 
 
 # str()
+# * NOTE: Check _string.py file for more details
 # * Return a string version of object
 # * If neither encoding nor errors is given, str(object) returns
 #   object.__str__()
+# * Used to cast some object
 # * Syntax
 #   * str(object='')
 #   * str(object=b'', encoding='utf-8', errors='strict')
@@ -131,6 +139,7 @@ print(s1, s2, s3, sep=', ')
 # * Return a new array of bytes
 # * The bytearray class is a mutable sequence of integers in the range
 #   0 <= x < 256
+# * Used to cast some object
 # * The optional source parameter can be used as str, int, object or interable
 # * Syntax
 #   * bytearray()
@@ -170,6 +179,7 @@ print(tower._name)
 # bytes()
 # * Return a new bytes object, which is an immutable sequence of integers in
 #   the range 0 <= x < 256
+# * Used to cast some object
 # * bytes is an immutable version of bytearray
 # * It has the same non-mutating methods and the same indexing and slicing
 #   behavior
@@ -192,27 +202,84 @@ print(ba1, ba2, ba3, ba4, sep=', ')
 
 
 # float()
-# *
+# * Return a floating point number constructed from a number or string x
+# * Used to cast some object
+# * Syntax
+#   * float([x])
+f0 = float()
+f1 = float('+1.23')
+f2 = float(5)
+f3 = float('3e2')
+f4 = float('Infinity')
+print(f0, f1, f2, f3, f4, sep=', ')
+# 0.0, 1.23, 5.0, 300.0, inf
 
 
 # tuple()
-# *
+# * NOTE: Check _tuple.py file for more details
+# * Creates a empty tuple
+# * Used to cast some object
+# * Syntax
+#   * tuple([iterable])
+tpl1 = tuple()
+tpl2 = tuple([1, 2, 3])
+print(tpl1, tpl2, sep=', ')
+# (), (1, 2, 3)
 
 
 # type()
-# *
+# * NOTE: Check _type.py file for more details
+# * With one argument, return the type of an object. The return value is a type
+#   object and generally the same object as returned by object.__class__
+# * The isinstance() built-in function is recommended for testing the type of
+#   an object, because it takes subclasses into account
+# * With three arguments, return a new type object. This is essentially a
+#   dynamic form of the class statement
+# * Syntax
+#   * type(object)
+#   * type(name, bases, dict)
+print(type(1))      # <class 'int'>
+print(type('abc'))  # <class 'str'>
+print(type((1,)))   # <class 'tuple'>
+obj = type('Tower', (Building,), {'name': 'Trump tower'})
+print(obj.__dict__)
+# {'name': 'Trump tower', '__module__': '__main__', '__doc__': None}
 
 
 # frozenset()
-# *
+# * NOTE: Check _frozenset.py file for more details
+# * Return a new frozenset object, optionally with elements taken from iterable
+# * Syntax
+#   * frozenset([iterable])
+fs1 = frozenset()
+fs2 = frozenset([1, 2, 3])
+print(fs1, fs2, sep=', ')
+# frozenset(), frozenset({1, 2, 3})
 
 
 # list()
-# *
+# * NOTE: Check _list.py file for more details
+# * Return a new list object, optionally with elements taken from iterable
+# * Syntax
+#   * list([iterable])
+lst1 = list()
+lst2 = list((1, 2, 3))
+print(lst1, lst2, sep=', ')
+# [], [1, 2, 3]
 
 
 # complex()
-# *
+# * Return a complex number with the value real + imag*1j or convert a string
+#   or number to a complex number
+# * Used to cast some object
+# * Syntax
+#   * complex([real[, imag]])
+c1 = complex()
+c2 = complex(1)
+c3 = complex('1+2j')
+c4 = complex(1.0, 5.5)
+print(c1, c2, c3, c4, sep=', ')
+# 0j, (1+0j), (1+2j), (1.0+5.5j)
 
 
 # -----------------------------------------------------------------------------
@@ -289,11 +356,22 @@ print(c.__dict__)
 
 
 # hash()
-# *
+# * Return the hash value of the object
+# * Syntax
+#   * hash(object)
+h1 = hash(1)
+h2 = hash(Tower('Eiffel'))
+print(h1, h2, sep=', ')
+# 1, 79828552111
 
 
 # memoryview()
-# *
+# * Return a 'memory view' object created from the given argument
+# * Syntax
+#   * memoryview(bytes-like-object)
+mv = memoryview(b'abc')
+print(tuple(mv))
+# (97, 98, 99)
 
 
 # all()

@@ -6,6 +6,8 @@ Type class
 * If three parameters are passed to type(), it returns a new class object
   (type will become a metaclass)
 * Type is used as default as metaclass for created classes
+* The isinstance() built-in function is recommended for testing the type of an
+  object, because it takes subclasses into account
 
 Syntax forms: type(object)
               type(name, bases, dict)
