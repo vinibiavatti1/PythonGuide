@@ -603,15 +603,30 @@ print(f.read())
 
 
 # breakpoint()
-# *
+# * This function drops you into the debugger at the call site. Specifically,
+#   it calls sys.breakpointhook()
+# * Syntax:
+#   * breakpoint(*args, **kwargs)
+# * NOTE: The example will be commented to prevent interation in execution
+#
+# breakpoint()
 
 
 # exec()
-# *
+# * NOTE: Check the _exec.py file for more details
+# * This function supports dynamic execution of Python code. object must be
+#   either a string or a code object
+# * Syntax
+#   * exec(object[, globals[, locals]])
+x = 2
+exec('x = x ** 3')
+print(x)
+# 8
 
 
 # isinstance()
-# *
+# * NOTE: Check _isinstance.py file for more details
+#
 
 
 # ord()
@@ -691,7 +706,16 @@ print(f.read())
 
 
 # map()
-# *
+# NOTE: Check _map.py file for more details
+# * Used to process all itens in collection
+# * Return an iterator that applies function to every item of iterable,
+#   yielding the results
+# * Syntax
+#   * map(function, iterable ...)
+lst = [1, 2, 3, 4, 5]
+mapped = list(map(lambda n: n * 2, lst))
+print(mapped)
+# [2, 4, 6, 8, 10]
 
 
 # reversed()
