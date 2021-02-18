@@ -626,19 +626,49 @@ print(x)
 
 # isinstance()
 # * NOTE: Check _isinstance.py file for more details
-#
+# * The isinstance() function returns True if the specified object is of the
+#   specified type, otherwise False.
+# * If the type parameter is a tuple, this function will return True
+# * If the object is one of the types in the tuple.
+# * Syntax
+#   * isinstance(object, type)
+#   * isinstance(object, tuple)
+x = 'text'
+print(isinstance(x, (int, str, float)))
+# True
 
 
 # ord()
-# *
+# * Given a string representing one Unicode character, return an integer
+#   representing the Unicode code point of that character
+# * Syntax
+#   * ord(c)
+o = ord('a')
+print(o)
+# 97
 
 
 # sum()
-# *
+# * Sums start and the items of an iterable from left to right and returns the
+#   total
+# * Syntax
+#   * sum(iterable, /, start=0)
+lst = [1, 2, 3, 4, 5]
+print(sum(lst))
+# 15
 
 
 # filter()
-# *
+# * NOTE: Check _filter.py file for more details
+# * Used to filter elements from some collection
+# * Construct an iterator from those elements of iterable for which function
+#   returns true
+# * Syntax
+#   * filter(function, iterable)
+lst = [1, 2, 3, 4, 5, 6, 7, 8]
+filtered = list(filter(lambda n: n % 2 == 0, lst))
+print(filtered)
+# [2, 4, 6, 8]
 
 
 # issubclass()
@@ -694,7 +724,16 @@ print(x)
 
 
 # zip()
-# *
+# * NOTE: Check _zip.py file for more details
+# * Make an iterator that aggregates elements from each of the iterables
+# * Syntax
+#   * zip(*iterables)
+tpl1 = (5, 6, 7)
+tpl2 = ('house', 'person', 'dog')
+for v1, v2 in zip(tpl1, tpl2):
+    print(f'{v1}: {v2}', end=', ')
+    # 5: house, 6: person, 7: dog,
+print()
 
 
 # compile()

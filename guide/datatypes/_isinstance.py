@@ -5,9 +5,9 @@ Isinstance
   specified type, otherwise False.
 * If the type parameter is a tuple, this function will return True
 * If the object is one of the types in the tuple.
-
-Formats: isinstance(object, type)
-         isinstance(object, tuple)
+* Syntax
+  * isinstance(object, type)
+  * isinstance(object, tuple)
 """
 
 

@@ -289,3 +289,17 @@ def sum_bare(x, y, *, z):
 
 sum_bare(1, 2, z=3)
 # sum_bare(1, 2, 3)  ERROR (Bare cannot let to put the kwargs as normal arg)
+
+
+# -----------------------------------------------------------------------------
+# Slash / (fn(x, y, /))
+# * Used to force the parameters before / to be used as positional parameters
+
+
+def sum_slash(x, y, /):
+    return x + y
+
+
+sum_slash(1, 2)
+# sum_slash(1, y=2) ERROR (sum_slash() got some positional-only arguments
+#                   passed as keyword arguments: 'y')
