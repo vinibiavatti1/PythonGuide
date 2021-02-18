@@ -597,7 +597,7 @@ print(x)
 #     newline=None, closefd=True, opener=None)
 import os
 import sys
-f = open(os.path.join(sys.path[0], '../resources/file_read.txt'), 'r')
+f = open(os.path.join(sys.path[0], '../../resources/file_read.txt'), 'r')
 print(f.read())
 # Lorem ipsum dolor sit amet...
 

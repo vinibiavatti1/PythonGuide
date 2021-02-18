@@ -1,0 +1,5 @@
+"""
+Class as object
+
+TODO
+"""

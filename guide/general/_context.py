@@ -2,6 +2,7 @@
 Context
 
 * To define context for variables, there are two keywords: (global, nonlocal)
+* To get the context as dict, you can use (globals(), locals())
 """
 
 
@@ -46,3 +47,18 @@ def outer():
 
 outer()
 # 2
+
+
+# Get global context
+print(globals())
+# {'__name__': '__main__', '__doc__': ... }
+
+
+# Get local context
+def local():
+    z = 1
+    print(locals())
+
+
+local()
+# {'z': 1}

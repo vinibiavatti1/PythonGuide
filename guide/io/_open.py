@@ -35,19 +35,19 @@ current_path = sys.path[0]
 
 
 # Open file
-file_path = os.path.join(current_path, '../resources/file_read.txt')
+file_path = os.path.join(current_path, '../../resources/file_read.txt')
 f = open(file_path)
 
 
 # Read file
-file_path = os.path.join(current_path, '../resources/file_read.txt')
+file_path = os.path.join(current_path, '../../resources/file_read.txt')
 f = open(file_path)
 print(f.read())
 # Lorem ipsum dolor sit amet...
 
 
 # Read lines
-file_path = os.path.join(current_path, '../resources/file_read.txt')
+file_path = os.path.join(current_path, '../../resources/file_read.txt')
 f = open(file_path)
 for line in f.readlines():
     print(line, end='')
@@ -56,7 +56,7 @@ print()
 
 
 # Append in file
-file_path = os.path.join(current_path, '../resources/file_write.txt')
+file_path = os.path.join(current_path, '../../resources/file_write.txt')
 f = open(file_path, 'a')
 f.write('Lorem')
 f.write(' ')
@@ -65,14 +65,14 @@ f.write('ipsum')
 
 
 # Write in file (The content will be overwrited)
-file_path = os.path.join(current_path, '../resources/file_write.txt')
+file_path = os.path.join(current_path, '../../resources/file_write.txt')
 f = open(file_path, 'w')
 f.write('Lorem ipsum')
 # In file: Lorem ipsum
 
 
 # Read binary file
-file_path = os.path.join(current_path, '../resources/image.png')
+file_path = os.path.join(current_path, '../../resources/image.png')
 f = open(file_path, 'rb')
 print(f.read())
 # b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR...
@@ -87,6 +87,6 @@ except OSError as e:
 
 
 # Clear file content
-file_path = os.path.join(current_path, '../resources/file_write.txt')
+file_path = os.path.join(current_path, '../../resources/file_write.txt')
 f = open(file_path, 'r+')
 f.truncate(0)

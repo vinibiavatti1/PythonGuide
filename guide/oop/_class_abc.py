@@ -6,8 +6,6 @@ ABC (Abstract Base Class)
 * abc.ABC vs abc.ABCmeta is the same thing, the difference is that
   abc.ABCmeta needs to be defined as metaclass
 """
-
-
 import abc
 
 
