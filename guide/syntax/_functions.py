@@ -296,10 +296,10 @@ sum_bare(1, 2, z=3)
 # * Used to force the parameters before / to be used as positional parameters
 
 
-def sum_slash(x, y, /):
-    return x + y
+def sum_slash(x, y, /, z):
+    return x + y + z
 
 
-sum_slash(1, 2)
-# sum_slash(1, y=2) ERROR (sum_slash() got some positional-only arguments
-#                   passed as keyword arguments: 'y')
+sum_slash(1, 2, z=3)
+# sum_slash(1, y=2, z=3)  ERROR (sum_slash() got some positional-only arguments
+#                         passed as keyword arguments: 'y')

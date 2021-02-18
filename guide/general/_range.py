@@ -5,9 +5,9 @@ Range
 * Range can be used to create a collection with some sequence
 * Range type represents an immutable sequence of numbers and is commonly used
   for looping a specific number of times in for loops
-
-Syntax: range(stop)
-        range(start, stop[, step])
+* Syntax
+  * range(stop)
+  * range(start, stop[, step])
 """
 
 

@@ -1,9 +1,10 @@
 """
 Print
 
-The print() function prints the given object to the standard
-output device (screen) or to the text stream file.
-Formats: print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+* Prints the given object to the standard output device (screen) or to the text
+  stream file
+* Syntax
+  * print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
 """
 
 

@@ -473,23 +473,6 @@ print(h1, h2, h3, sep=', ')
 # 0xff, 0x0, -0xff
 
 
-# next()
-# * NOTE: Check _iterator.py file for more details
-# * Retrieve the next item from the iterator by calling its __next__() method.
-#   If default is given, it is returned if the iterator is exhausted, otherwise
-#   StopIteration is raised
-# * If default is given and the iterator is exhausted, it is returned instead
-#   of raising StopIteration
-# * Syntax
-#   * next(iterator[, default])
-lst = ['a', 'b', 'c']
-lst_iter = iter(lst)
-print(next(lst_iter))    # a
-print(next(lst_iter))    # b
-print(next(lst_iter))    # c
-# print(next(lst_iter))  # StopIteration
-
-
 # ascii()
 # * As repr(), return a string containing a printable representation of an
 #   object, but escape the non-ASCII characters in the string returned by
@@ -638,16 +621,6 @@ print(isinstance(x, (int, str, float)))
 # True
 
 
-# ord()
-# * Given a string representing one Unicode character, return an integer
-#   representing the Unicode code point of that character
-# * Syntax
-#   * ord(c)
-o = ord('a')
-print(o)
-# 97
-
-
 # sum()
 # * Sums start and the items of an iterable from left to right and returns the
 #   total
@@ -672,39 +645,137 @@ print(filtered)
 
 
 # issubclass()
-# *
+# * Return True if class is a subclass (direct, indirect or virtual) of
+#   classinfo
+# * A class is considered a subclass of itself
+# * classinfo may be a tuple of class objects, in which case every entry in
+#   classinfo will be checked
+# * Syntax
+#   * issubclass(class, classinfo)
+print(issubclass(Tower, Building))
+# True
 
 
 # pow()
-# *
+# * Return base to the power exp; if mod is present, return base to the power
+#   exp, modulo mod
+# * Without mod parameter is equivalent to (x ** y)
+# * With mod parameter is equivalent to: (x ** y) % z
+# * Syntax
+#   * pow(base, exp[, mod])
+print(pow(2, 8))     # 256
+print(pow(2, 4, 7))  # 2
 
 
 # iter()
-# *
+# * NOTE: Check _iter.py file for more details
+# * An iterator is an object that contains a countable number of values
+# * Used with next() function to iterate some iterable
+# * Syntax
+#   * iter(iterable [, sentinel])
+lst = [1, 2, 3]
+lst_iter = iter(lst)
+print(next(lst_iter))    # 1
+print(next(lst_iter))    # 2
+print(next(lst_iter))    # 3
+# print(next(lst_iter))  # raise StopIteration
+
+
+# next()
+# * NOTE: Check _iterator.py file for more details
+# * Retrieve the next item from the iterator by calling its __next__() method.
+#   If default is given, it is returned if the iterator is exhausted, otherwise
+#   StopIteration is raised
+# * If default is given and the iterator is exhausted, it is returned instead
+#   of raising StopIteration
+# * Syntax
+#   * next(iterator[, default])
+lst = ['a', 'b', 'c']
+lst_iter = iter(lst)
+print(next(lst_iter))    # a
+print(next(lst_iter))    # b
+print(next(lst_iter))    # c
+# print(next(lst_iter))  # StopIteration
 
 
 # print()
-# *
+# * NOTE: Check _print.py file for more details
+# * Prints the given object to the standard output device (screen) or to the
+#   text
+#   stream file
+# * Syntax
+#   * print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+print('Hello', 'World', sep='-')
+# Hello-World
 
 
 # callable()
-# *
+# * Return True if the object argument appears callable, False if not
+# * Syntax
+#   * callable(object)
+def fn():
+    pass
+
+
+print(callable(fn), callable('Hi'), sep=', ')
+# True, False
 
 
 # format()
-# *
+# * NOTE: Check _format.py file for more details
+# * NOTE: Check https://docs.python.org/3/library/string.html#format-specificat
+#               ion-mini-language
+# * Returns a formatted representation of the given value controlled by the
+#   format specifier
+# * Calls __format__ method from class
+# * Syntax
+#   * format(value[, format_spec])
+print(format(123.4567, "^-09.3f"))
+# 0123.4570
 
 
 # len()
-# *
+# * Return the length (the number of items) of an object
+# * Syntax
+#   * len(s)
+lst = ['a', 'b', 'c']
+print(len(lst))
+# 3
+
+
+# ord()
+# * NOTE: Check the _ord_and_chr.py file for more details
+# * Given a string representing one Unicode character, return an integer
+#   representing the Unicode code point of that character
+# * Syntax
+#   * ord(c)
+o = ord('a')
+print(o)
+# 97
 
 
 # chr()
-# *
+# * NOTE: Check the _ord_and_chr.py file for more details
+# * Return the string representing a character whose Unicode code point is the
+#   integer i
+# * Syntax
+#   * chr(i)
+print(chr(97))
+# a
 
 
 # range()
-# *
+# * NOTE: Check _range.py file for more details
+# * Range is used to create a sequence to iterate between
+# * Range can be used to create a collection with some sequence
+# * Syntax
+#   * range(stop)
+#   * range(start, stop[, step])
+lst = range(5)
+for n in range(len(lst)):
+    print(n, end='')
+    # 01234
+print()
 
 
 # vars()
