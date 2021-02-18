@@ -50,17 +50,12 @@ help(Math2.sum)
 
 # Module
 # * This is the first comment in the module (Python file)
-import _datatypes
-help(_datatypes)
+import math
+help(math)
 # NAME
-#     _datatypes - Datatypes
+#     math
 #
 # DESCRIPTION
-#     Text Type:          str
-#     Numeric Types:  int, float, complex
-#     Sequence Types: list, tuple, range
-#     Mapping Type:   dict
-#     Set Types:          set, frozenset
-#     Boolean Type:   bool
-#     Binary Types:   bytes, bytearray, memoryview
+#     This module provides access to the mathematical functions
+#     defined by the C standard.
 # ...
