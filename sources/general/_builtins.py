@@ -541,23 +541,65 @@ print(txt)
 
 
 # enumerate()
-# *
+# * NOTE: Check the _enumerate.py file for more details
+# * When you use enumerate(), the function gives you back two loop variables
+#   * The index of the current iteration
+#   * The value of the item at the current iteration
+# * Syntax
+#   * enumerate(iterable [, start])
+tpl = ('a', 'b', 'c')
+for index, value in enumerate(tpl):
+    print(f'{index}: {value}', end=', ')
+    # 0: a, 1: b, 2: c,
+print()
 
 
 # input()
-# *
+# * NOTE: Check the _input.py file for more details
+# * The input() function allows user input
+# * Syntax
+#   * input(prompt)
+# * NOTE: The example will be commented to prevent interation in execution
+#
+# user_answer = input('Type your answer:')
 
 
 # oct()
-# *
+# * Convert an integer number to an octal string prefixed with '0o'
+# * If x is not a Python int object, it has to define an __index__() method
+#   that returns an integer
+# * Syntax
+#   * oct(x)
+oc = oct(8)
+print(oc)
+# 0o10
 
 
 # eval()
-# *
+# * NOTE: Check the _eval.py file for more details
+# * Evaluates some Python expression and return the new context value
+# * The arguments are a string and optional globals and locals. If provided,
+#   globals must be a dictionary. If provided, locals can be any mapping object
+# * Syntax
+#   * eval(expression[, globals[, locals]])
+x = 2
+x = eval('x ** 3')
+print(x)
+# 8
 
 
 # open()
-# *
+# * NOTE: Check the _open.py file for more details
+# * Open file and return a corresponding file object.
+# * If the file cannot be opened, an OSError is raised
+# * Syntax
+#   * open(file, mode='r', buffering=-1, encoding=None, errors=None,
+#     newline=None, closefd=True, opener=None)
+import os
+import sys
+f = open(os.path.join(sys.path[0], '../resources/file_read.txt'), 'r')
+print(f.read())
+# Lorem ipsum dolor sit amet...
 
 
 # breakpoint()
