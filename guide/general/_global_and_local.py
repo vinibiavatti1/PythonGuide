@@ -1,8 +1,15 @@
 """
-Context
+Global and Local (Context)
 
-* To define context for variables, there are two keywords: (global, nonlocal)
-* To get the context as dict, you can use (globals(), locals())
+global and nonlocal
+* Used to manipulate a global or local variable inside a scoped block
+
+globals() and locals()
+* Used to return the global and local accessible variables as a dict in current
+  scope
+* Syntax
+  * globals()
+  * locals()
 """
 
 

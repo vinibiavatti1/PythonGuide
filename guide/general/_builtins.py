@@ -337,22 +337,15 @@ print(abs(x), abs(y), sep=', ')
 # 10, 5
 
 
-# delattr()
-# * The string must be the name of one of the object’s attributes.
-# * The function  deletes the named attribute, provided the object allows it.
-# * delattr(x, 'foobar') is equivalent to del x.foobar
+# round()
+# * Return number rounded to ndigits precision after the decimal point. If
+#   ndigits is omitted or is None, it returns the nearest integer to its input
 # * Syntax
-#   * delattr(object, name)
-class Client:
-    def __init__(self):
-        self.x = 5
-        self.y = 10
-
-
-c = Client()
-delattr(c, 'x')
-print(c.__dict__)
-# {'y': 10}
+#   * round(number[, ndigits])
+r1 = round(1.234)
+r2 = round(1.234, 2)
+print(r1, r2, sep=', ')
+# 1, 1.23
 
 
 # hash()
@@ -372,19 +365,6 @@ print(h1, h2, sep=', ')
 mv = memoryview(b'abc')
 print(tuple(mv))
 # (97, 98, 99)
-
-
-# all()
-# * Return True if all elements of the iterable are true (or if the iterable is
-#   empty)
-# * Syntax
-#   * all(iterable)
-a1 = all((1, 2, 3))
-a2 = all([1, 2, 0])
-a3 = all({True, False})
-a4 = all([])
-print(a1, a2, a3, a4, sep=', ')
-# True, False, False, True
 
 
 # help()
@@ -412,22 +392,29 @@ print(m1, m2, m3, sep=', ')
 # 1, 1, {'n': 2}
 
 
-# setattr()
-# * The string must be the name of one of the object's attributes
-# * The function set the named attribute, provided the object allows it
-# * setattr(x, 'foobar', 1) is equivalent to x.foobar = 1
+# max()
+# * Return the largest item in an iterable or the largest of two or more
+#   arguments
 # * Syntax
-#   * setattr(object, name, value)
-class Tree:
-    def __init__(self):
-        self.x = 5
-        self.y = 10
+#   * max(iterable, *[, key, default])
+#   * max(arg1, arg2, *args[, key])
+tpl = (1, 10, 5)
+x, y, z = 10, 30, 20
+print(max(tpl), max(x, y, z), sep=', ')
+# 10, 30
 
 
-t = Tree()
-setattr(t, 'x', 500)
-print(t.__dict__)
-# {'x': 500, 'y': 10}
+# all()
+# * Return True if all elements of the iterable are true (or if the iterable is
+#   empty)
+# * Syntax
+#   * all(iterable)
+a1 = all((1, 2, 3))
+a2 = all([1, 2, 0])
+a3 = all({True, False})
+a4 = all([])
+print(a1, a2, a3, a4, sep=', ')
+# True, False, False, True
 
 
 # any()
@@ -442,6 +429,16 @@ a4 = any([])
 a5 = any([0, False])
 print(a1, a2, a3, a4, a5, sep=', ')
 # True, True, True, False, False
+
+
+# sum()
+# * Sums start and the items of an iterable from left to right and returns the
+#   total
+# * Syntax
+#   * sum(iterable, /, start=0)
+lst = [1, 2, 3, 4, 5]
+print(sum(lst))
+# 15
 
 
 # dir()
@@ -471,17 +468,6 @@ h2 = hex(0)
 h3 = hex(-255)
 print(h1, h2, h3, sep=', ')
 # 0xff, 0x0, -0xff
-
-
-# ascii()
-# * As repr(), return a string containing a printable representation of an
-#   object, but escape the non-ASCII characters in the string returned by
-#   repr() using \x, \u or \U escapes
-# * Syntax
-#   * ascii(object)
-asc = ascii({'name': 'Vini'})
-print(asc)
-# {'name': 'Vini'}
 
 
 # divmod()
@@ -558,19 +544,6 @@ print(oc)
 # 0o10
 
 
-# eval()
-# * NOTE: Check the _eval.py file for more details
-# * Evaluates some Python expression and return the new context value
-# * The arguments are a string and optional globals and locals. If provided,
-#   globals must be a dictionary. If provided, locals can be any mapping object
-# * Syntax
-#   * eval(expression[, globals[, locals]])
-x = 2
-x = eval('x ** 3')
-print(x)
-# 8
-
-
 # open()
 # * NOTE: Check the _open.py file for more details
 # * Open file and return a corresponding file object.
@@ -595,18 +568,6 @@ print(f.read())
 # breakpoint()
 
 
-# exec()
-# * NOTE: Check the _exec.py file for more details
-# * This function supports dynamic execution of Python code. object must be
-#   either a string or a code object
-# * Syntax
-#   * exec(object[, globals[, locals]])
-x = 2
-exec('x = x ** 3')
-print(x)
-# 8
-
-
 # isinstance()
 # * NOTE: Check _isinstance.py file for more details
 # * The isinstance() function returns True if the specified object is of the
@@ -619,16 +580,6 @@ print(x)
 x = 'text'
 print(isinstance(x, (int, str, float)))
 # True
-
-
-# sum()
-# * Sums start and the items of an iterable from left to right and returns the
-#   total
-# * Syntax
-#   * sum(iterable, /, start=0)
-lst = [1, 2, 3, 4, 5]
-print(sum(lst))
-# 15
 
 
 # filter()
@@ -779,19 +730,116 @@ print()
 
 
 # vars()
-# *
+# * Return the __dict__ attribute for a module, class, instance, or any other
+#   object with a __dict__ attribute
+# * Syntax
+#   * vars([object])
+v1 = vars(Tower('Eiffel'))
+v2 = vars()
+print(v1, v2, sep=', ')
+# {'_name': 'Eiffel'}, {'__name__': '__main__', '__doc__': ... }
+
+
+# setattr()
+# * The string must be the name of one of the object's attributes
+# * The function set the named attribute, provided the object allows it
+# * setattr(x, 'foobar', 1) is equivalent to x.foobar = 1
+# * Syntax
+#   * setattr(object, name, value)
+class Tree:
+    def __init__(self):
+        self.x = 5
+        self.y = 10
+
+
+t = Tree()
+setattr(t, 'x', 500)
+print(vars(t))
+# {'x': 500, 'y': 10}
 
 
 # getattr()
-# *
+# * Return the value of the named attribute of object
+# * Syntax
+#   * getattr(object, name[, default])
+t = Tree()
+a1 = getattr(t, 'x')
+a2 = getattr(t, 'z', 0)
+print(a1, a2, sep=', ')
+# 5, 0
+
+
+# delattr()
+# * The string must be the name of one of the object’s attributes.
+# * The function  deletes the named attribute, provided the object allows it.
+# * delattr(x, 'foobar') is equivalent to del x.foobar
+# * Syntax
+#   * delattr(object, name)
+t = Tree()
+delattr(t, 'x')
+print(t.__dict__)
+# {'y': 10}
+
+
+# hasattr()
+# * The result is True if the string is the name of one of the object’s
+#   attributes, False if not
+# * Syntax
+#   * hasattr(object, name)
+t = Tree()
+h1 = hasattr(t, 'x')
+h2 = hasattr(t, 'z')
+print(h1, h2, sep=', ')
+# True, False
+
+
+# globals()
+# * Used to return the global accessible variables as a dict in current scope
+# * Syntax
+#   * globals()
+print(globals())
+# {'__name__': '__main__', '__doc__': ... }
 
 
 # locals()
-# *
+# * NOTE: Check the _global_and_local.py file for more details
+# * Used to return the local accessible variables as a dict in current scope
+# * Syntax
+#   * locals()
+def local():
+    x = 5
+    print(locals())
+
+
+local()
+# {'x': 5}
 
 
 # repr()
-# *
+# * Return a string containing a printable representation of an object
+# * A class can control what this function returns for its instances by
+#   defining a __repr__() method
+# * Syntax
+#   * repr(object)
+class Park:
+    def __repr__(self):
+        return 'Relax'
+
+
+p = Park()
+print(repr(p))
+# Relax
+
+
+# ascii()
+# * As repr(), return a string containing a printable representation of an
+#   object, but escape the non-ASCII characters in the string returned by
+#   repr() using \x, \u or \U escapes
+# * Syntax
+#   * ascii(object)
+asc = ascii({'name': 'Vini'})
+print(asc)
+# {'name': 'Vini'}
 
 
 # zip()
@@ -805,14 +853,6 @@ for v1, v2 in zip(tpl1, tpl2):
     print(f'{v1}: {v2}', end=', ')
     # 5: house, 6: person, 7: dog,
 print()
-
-
-# compile()
-# *
-
-
-# globals()
-# *
 
 
 # map()
@@ -829,20 +869,62 @@ print(mapped)
 
 
 # reversed()
-# *
+# * Return a reverse iterator. seq must be an object which has a __reversed__()
+#   method or supports the sequence protocol (the __len__() method and the
+#   __getitem__() method with integer arguments starting at 0)
+# * Syntax
+#   * reversed(seq)
+txt = 'Hello World'
+rev = list(reversed(txt))
+print(''.join(rev))
+# dlroW olleH
+
+
+# exec()
+# * NOTE: Check the _exec.py file for more details
+# * This function supports dynamic execution of Python code. object must be
+#   either a string or a code object
+# * Syntax
+#   * exec(object[, globals[, locals]])
+x = 2
+exec('x = x ** 3')
+print(x)
+# 8
+
+
+# eval()
+# * NOTE: Check the _eval.py file for more details
+# * Evaluates some Python expression and return the new context value
+# * The arguments are a string and optional globals and locals. If provided,
+#   globals must be a dictionary. If provided, locals can be any mapping object
+# * Syntax
+#   * eval(expression[, globals[, locals]])
+x = 2
+x = eval('x ** 3')
+print(x)
+# 8
+
+
+# compile()
+# * NOTE: Check _compile.py file for more details
+# * The compile() method returns a Python code object from the source (normal
+#   string, a byte string, or an AST object)
+# * The object generated can be executed with exec() and eval()
+# * Syntax
+#   * compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1)
+code = 'a = 5\nb=6\nsum=a+b\nprint("sum: ",sum)'
+obj = compile(code, 'sumstring', 'exec')
+exec(obj)
+# sum: 11
 
 
 # __import__()
-# *
-
-
-# hasattr()
-# *
-
-
-# max()
-# *
-
-
-# round()
-# *
+# * NOTE: This is an advanced function that is not needed in everyday Python
+#         programming, unlike importlib.import_module()
+# * NOTE: Check _modules.py to know the right way to import modules
+# * This function is invoked by the import statement
+# * Syntax
+#   * __import__(name, globals=None, locals=None, fromlist=(), level=0)
+math = __import__('math', globals(), locals(), [], 0)
+print(math.ceil(4.1))
+# 5
