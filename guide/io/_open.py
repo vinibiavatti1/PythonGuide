@@ -90,3 +90,10 @@ except OSError as e:
 file_path = os.path.join(current_path, '../../resources/file_write.txt')
 f = open(file_path, 'r+')
 f.truncate(0)
+
+
+# Close the file after open
+# * NOTE: It is not necessary because GC already close opened files
+file_path = os.path.join(current_path, '../../resources/file_read.txt')
+f = open(file_path)
+f.close()
