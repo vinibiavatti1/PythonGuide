@@ -90,7 +90,7 @@ print(lst)
 # Data access
 
 
-# Index
+# Index [start, stop, step]
 lst = ['a', 'b', 'c', 'd', 'e']
 print(lst[0])    # a
 print(lst[1:3])  # ['b', 'c']

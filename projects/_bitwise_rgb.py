@@ -14,7 +14,7 @@ R        G        B
 # 11010110 11011001 10100011
 rgb_decimal = 14080419
 r = rgb_decimal >> 16
-g = (rgb_decimal >> 8) & 255
+g = rgb_decimal >> 8 & 255
 b = rgb_decimal & 255
 print(r, g, b, sep=', ')
 # 214, 217, 163

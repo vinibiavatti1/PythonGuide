@@ -47,7 +47,46 @@ print(st1)
 # {'b', 'c'}
 
 
+# union(s)
+# NOTE: Check _set_operations.py for other way to make this operation
+# Return a set containing the union of sets
+st1 = {'a', 'b'}
+st2 = {'c', 'd'}
+st3 = st1.union(st2)
+print(st3)
+# {'a', 'b', 'c', 'd'}
+
+
+# update()
+# Update the set with the union of this set and others
+st1 = {'a', 'b'}
+st2 = {'c', 'd'}
+st1.update(st2)
+print(st1)
+# {'a', 'b', 'c', 'd'}
+
+
+# intersection()
+# NOTE: Check _set_operations.py for other way to make this operation
+# Returns a set, that is the intersection of two other sets
+st1 = {'a', 'b', 'c'}
+st2 = {'c', 'd'}
+st3 = st1.intersection(st2)
+print(st3)
+# {'c'}
+
+
+# intersection_update()
+# Removes the items in this set that are not present in other, specified set(s)
+st1 = {'a', 'b', 'c'}
+st2 = {'c', 'd'}
+st1.intersection_update(st2)
+print(st1)
+# {'c'}
+
+
 # difference(s)
+# NOTE: Check _set_operations.py for other way to make this operation
 # Returns a set containing the difference between two or more sets
 st1 = {'a', 'b', 'c'}
 st2 = {'c', 'd'}
@@ -66,25 +105,8 @@ print(st1)
 # {'c'}
 
 
-# intersection()
-# Returns a set, that is the intersection of two other sets
-st1 = {'a', 'b', 'c'}
-st2 = {'c', 'd'}
-st3 = st1.intersection(st2)
-print(st3)
-# {'c'}
-
-
-# intersection_update()
-# Removes the items in this set that are not present in other, specified set(s)
-st1 = {'a', 'b', 'c'}
-st2 = {'c', 'd'}
-st1.intersection_update(st2)
-print(st1)
-# {'c'}
-
-
 # symmetric_difference(s)
+# NOTE: Check _set_operations.py for other way to make this operation
 # Returns a set with the symmetric differences of two sets
 st1 = {'a', 'b', 'c'}
 st2 = {'c', 'd'}
@@ -135,21 +157,3 @@ print(st1.issuperset(st3))  # False
 st = {'a', 'b', 'c', 'd'}
 print(st.pop())
 # 'a'
-
-
-# union(s)
-# Return a set containing the union of sets
-st1 = {'a', 'b'}
-st2 = {'c', 'd'}
-st3 = st1.union(st2)
-print(st3)
-# {'a', 'b', 'c', 'd'}
-
-
-# update()
-# Update the set with the union of this set and others
-st1 = {'a', 'b'}
-st2 = {'c', 'd'}
-st1.update(st2)
-print(st1)
-# {'a', 'b', 'c', 'd'}

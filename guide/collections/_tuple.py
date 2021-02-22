@@ -6,7 +6,7 @@ Tuple
   data, the
   other 3 are List, Set, and Dictionary, all with different qualities and usage
 * A tuple is a collection which is ordered and unchangeable.
-* Tuples are written with round brackets.
+* Tuples are defined by commas, but you can define a tuple inside parentheses
 
 (V) Ordered
 ( ) Changeable
@@ -20,14 +20,21 @@ Tuple
 
 
 # Create tuple
-tpl = (1, 2, 3)
+tpl = (1, 2, 3)  # Parentheses
+tpl = (1,)       # One element (comma)
+tpl = 1, 2, 3    # Without parentheses
+tpl = 1,         # Without parentheses and one element
 
 
 # NOTE: To create tuples with just one value, the comma is necessary!
-tpl = ('apple',)
-not_tuple = ('apple')
-print(type(not_tuple))
-# <class 'str'>
+tpl1 = ('apple',)
+tpl2 = ('apple')
+tpl3 = 'apple',
+tpl4 = 'apple'
+print(type(tpl1))  # <class 'tuple'>
+print(type(tpl2))  # <class 'str'>
+print(type(tpl3))  # <class 'tuple'>
+print(type(tpl4))  # <class 'str'>
 
 
 # Create tuple from other collection
@@ -37,8 +44,8 @@ tpl = tuple({1, 2, 3})
 
 # Copy tuple
 tpl1 = (1, 2, 3)
-tpl2 = tuple(tpl1)
-print(tpl2)
+tpl2 = tuple(tpl2)
+print(tpl3)
 # (1, 2, 3)
 
 
@@ -94,7 +101,7 @@ print(tpl)
 # Data access
 
 
-# Index
+# Index [start, stop, step]
 tpl = ('a', 'b', 'c', 'd', 'e')
 print(tpl[0])    # a
 print(tpl[1:3])  # ('b', 'c')
@@ -169,13 +176,13 @@ def adults(el):
 
 
 tpl1 = (5, 19, 4, 26, 18)
-tpl2 = tuple(filter(adults, tpl1))
-print(tpl2)
+tpl3 = tuple(filter(adults, tpl1))
+print(tpl3)
 # (19, 26, 18)
 
 
 # With lambda
 tpl1 = (5, 19, 4, 26, 18)
-tpl2 = tuple(filter(lambda el: el >= 18, tpl1))
-print(tpl2)
+tpl3 = tuple(filter(lambda el: el >= 18, tpl1))
+print(tpl3)
 # (19, 26, 18)
