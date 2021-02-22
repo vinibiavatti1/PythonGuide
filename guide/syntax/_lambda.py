@@ -4,7 +4,8 @@ Lambda
 * Is a small anonymous function.
 * Can take any number of arguments, but can only have ONE expression.
 
-Syntax: lambda arguments : expression
+* Syntax:
+  * lambda arguments : expression
 """
 
 

@@ -12,7 +12,7 @@ PEP (Python Enhancement Proposals)
 
 # Variables
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters

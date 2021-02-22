@@ -59,3 +59,8 @@ help(math)
 #     This module provides access to the mathematical functions
 #     defined by the C standard.
 # ...
+
+
+# Access the docstring of object
+print(sum.__doc__)
+# Add y to x and return the sum

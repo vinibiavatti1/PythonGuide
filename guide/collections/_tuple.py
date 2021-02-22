@@ -75,7 +75,18 @@ print(length)
 # 3
 
 
+# Multiply tuple
+tpl = ('a', 'b')
+tpl *= 2
+print(tpl)
+# ('a', 'b', 'a', 'b')
+
+
+# -----------------------------------------------------------------------------
 # Umpack
+
+
+# Umpack in variables
 tpl = ('a', 'b', 'c')
 el1, el2, el3 = tpl
 print(el1, el2, el3)
@@ -90,11 +101,14 @@ print(left, middle, right)
 # a ['b', 'c', 'd'] e
 
 
-# Multiply tuple
-tpl = ('a', 'b')
-tpl *= 2
-print(tpl)
-# ('a', 'b', 'a', 'b')
+# Umpack as arguments
+def sum(x, y):
+    return x + y
+
+
+tpl = (3, 6)
+print(sum(*tpl))
+# 9
 
 
 # -----------------------------------------------------------------------------

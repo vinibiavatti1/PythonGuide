@@ -303,3 +303,28 @@ def sum_slash(x, y, /, z):
 sum_slash(1, 2, z=3)
 # sum_slash(1, y=2, z=3)  ERROR (sum_slash() got some positional-only arguments
 #                         passed as keyword arguments: 'y')
+
+
+# -----------------------------------------------------------------------------
+# Parameters coorect sequence
+# 1. Required args     (x, y)
+# 2. Arbitrary args    (x, y, *args)
+# 3. Default args      (x, y, *args, z=True)
+# 4. Arbitrary kwargs  (x, y, *args, z=True, **kwargs)
+
+
+# Parameters in order
+def do(x, y, *args, z=True, **kwargs):
+    pass
+
+
+do(1, '2')
+do(1, '2', 3, 4, 5)
+do(1, '2', 3, 4, 5, z=False)
+do(1, '2', 3, 4, 5, z=False, h=True)
+
+# Scheme
+# ----------------------------------
+#  args     *args   default   **kw
+# .--^--.  .--^--.  .--^--.  .--^--.
+do(1, '2', 3, 4, 5, z=False, h=True)

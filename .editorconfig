@@ -12,7 +12,7 @@ end_of_line = lf
 charset = utf-8
 
 [*.py]
-max_line_length = 20
+max_line_length = 79
 
 [*.md]
 trim_trailing_whitespace = false

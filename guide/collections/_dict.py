@@ -92,16 +92,21 @@ print(name, age)
 # Vini 26
 
 
-# Umpack **
+# -----------------------------------------------------------------------------
+# Umpack
 # NOTE: This is different then lists. The operator ** is used to umpack the key
 #       and values from dict to use in other dict or to use as function
 #       arguments
+
+
+# Umpack in dict
 dct1 = {'name': 'Vini', 'age': 26}
 dct2 = {**dct1, 'skill': 'Python'}
 print(dct2)
 # {'name': 'Vini', 'age': 26, 'skill': 'Python programmer'}
 
 
+# Umpack as arguments
 def sum(x, y):
     return x + y
 

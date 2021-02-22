@@ -1,7 +1,5 @@
-"""
-Tests
-"""
 
-def a(b, *, a=None):
-    print(b)
-a(1)
+
+
+matrix = [[i for i in range(10)] for _ in range(10)]
+print(matrix)

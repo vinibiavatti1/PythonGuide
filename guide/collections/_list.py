@@ -65,7 +65,18 @@ print(length)
 # 3
 
 
+# Multiply list
+lst = ['a', 'b']
+lst *= 2
+print(lst)
+# ['a', 'b', 'a', 'b']
+
+
+# -----------------------------------------------------------------------------
 # Umpack
+
+
+# Umpack in variables
 lst = ['a', 'b', 'c']
 el1, el2, el3 = lst
 print(el1, el2, el3)
@@ -79,11 +90,14 @@ print(left, middle, right)
 # a ['b', 'c', 'd'] e
 
 
-# Multiply list
-lst = ['a', 'b']
-lst *= 2
-print(lst)
-# ['a', 'b', 'a', 'b']
+# Umpack as arguments
+def sum(x, y):
+    return x + y
+
+
+lst = [3, 6]
+print(sum(*lst))
+# 9
 
 
 # -----------------------------------------------------------------------------
