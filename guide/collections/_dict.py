@@ -3,7 +3,8 @@ Dictionary (dict)
 
 * Dictionaries are used to store data values in key:value pairs.
 * A dictionary is a collection which is ordered, changeable and does not allow
-  duplicates.
+  duplicates
+* NOTE: keys are case-sensitive
 * Dictionaries are written with curly brackets, and have keys and values:
 (V) Ordered
 (V) Changeable
@@ -17,8 +18,10 @@ Dictionary (dict)
 
 
 # Create dict
-dct = {}  # empty
-dct = {'name': 'Vini', 'age': 26}
+dct = {'name': 'Vini', 'age': 26}  # With data
+dct = {}                           # Empty
+dct = dict()                       # With dict()
+dct = dict(a=1, b=2)               # With kwargs
 
 
 # Nested dicts and lists inside

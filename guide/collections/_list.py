@@ -17,7 +17,9 @@ List
 
 
 # Create list
-lst = [1, 2, 3]
+lst = [1, 2, 3]  # With data
+lst = []         # Empty
+lst = list()     # With list()
 
 
 # Create list from other collection
@@ -111,6 +113,7 @@ print(lst[1:3])  # ['b', 'c']
 print(lst[3:])   # ['d', 'e']
 print(lst[:3])   # ['a', 'b', 'c']
 print(lst[-1])   # e (inverse access)
+print(lst[:])    # copy list
 
 
 # Check if item exists

@@ -21,7 +21,10 @@ Set
 
 
 # Create set
-st = {1, 2, 3}
+st = {1, 2, 3}  # With values
+st = set()      # With set()
+st = set()      # Empty
+# st = {}       # NOTE: Empty brackets create a dict, not a set!!!
 
 
 # Create set from other collection

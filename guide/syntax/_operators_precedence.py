@@ -70,6 +70,12 @@ print(x)
 # -1.0
 
 
+# Expression 4
+x = -2 ** 3
+print(x)
+# 256
+
+
 # Right sided binding (**)
 # NOTE: Important!
 print(2 ** 2 ** 3)

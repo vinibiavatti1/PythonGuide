@@ -2,6 +2,10 @@
 Variables
 
 * the name of the variable must not be any of Python's keywords
+
+* Scalars variables are variables represented with just one value
+* Collections variables are variables represented with some collections
+  containing scalar values
 """
 
 
@@ -25,6 +29,15 @@ x = y = z = 'Orange'
 print(x, y, z, sep=', ')
 # Orange, Orange, Orange
 print()
+
+
+# Swap without auxiliary
+# NOTE: Without using this sintax, a aux variable would need to be used
+x = 10
+y = 5
+x, y = y, x
+print(x, y, sep=', ')
+# 5, 5
 
 
 # Unpack a Collection

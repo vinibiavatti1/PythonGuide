@@ -24,6 +24,8 @@ tpl = (1, 2, 3)  # Parentheses
 tpl = (1,)       # One element (comma)
 tpl = 1, 2, 3    # Without parentheses
 tpl = 1,         # Without parentheses and one element
+tpl = ()         # Empty
+tpl = tuple()    # With tuple()
 
 
 # NOTE: To create tuples with just one value, the comma is necessary!
@@ -122,6 +124,7 @@ print(tpl[1:3])  # ('b', 'c')
 print(tpl[3:])   # ('d', 'e')
 print(tpl[:3])   # ('a', 'b', 'c')
 print(tpl[-1])   # e (inverse access)
+print(tpl[:])    # copy tuple
 
 
 # Check if item exists

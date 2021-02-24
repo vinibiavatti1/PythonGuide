@@ -183,5 +183,13 @@ x = 1
 long_variable = 5
 
 
+# Backslash
+# For long python lines, it is recommended to use backlash (\) to wrap
+if 1 == 1 and 2 == 2 and \
+    3 == 3 or 4 == 4 and \
+        5 == 5 and True:
+    pass
+
+
 # EOF new line
 # * Always use a blank line as EOF (end of file) line

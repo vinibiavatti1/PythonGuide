@@ -4,7 +4,10 @@ Function
 * In Python a function is defined using the "def" keyword
 * A "parameter" is the variable listed inside the parentheses in the function
   definition.
-* An "argument" is the value that is sent to the function when it is called.
+* An "argument" is the value that is sent to the function when it is called
+* Functions are used to decompose problems
+* When pass arguments to a function that doesnt have parameters, it will raise
+  a TypeError
 """
 
 
@@ -37,6 +40,16 @@ def sum(x, y):
 
 print(sum(5, 5))
 # 10
+
+
+# Function returns None if no return provided
+def strange_function(n):
+    if(n % 2 == 0):
+        return True
+
+
+print(strange_function(0))  # True
+print(strange_function(1))  # None
 
 
 # -----------------------------------------------------------------------------
@@ -181,6 +194,11 @@ print(sum7())
 # The arbitraty and arbitraty keyword arguments cannot have default values
 # def sum(*args=(1,2,3))  Syntax Error
 # def sum(**args={'a':1}) Syntax Error
+
+
+# After default parameter, a position parameter cannot be defined
+# def sum(x, y=1, z): SyntaxError: non-default argument follows default
+#     pass            argument
 
 
 # -----------------------------------------------------------------------------
@@ -328,3 +346,31 @@ do(1, '2', 3, 4, 5, z=False, h=True)
 #  args     *args   default   **kw
 # .--^--.  .--^--.  .--^--.  .--^--.
 do(1, '2', 3, 4, 5, z=False, h=True)
+
+
+# -----------------------------------------------------------------------------
+# Arguments in no parameters function
+
+
+# Type error
+def nothing():
+    pass
+
+
+# nothing(1)  TypeError: nothing() takes 0 positional arguments but 1 was given
+# nothing(x=1) TypeError: nothing() got an unexpected keyword argument 'x'
+
+
+# -----------------------------------------------------------------------------
+# Shadowing
+# * Mechanism to differs the parameters from the varaibles
+
+
+# Shadowing example
+def prt_name(name):  # Name will be shadow, to dont change the actual name var
+    print(name)
+
+
+name = 'Vini'
+prt_name('Ana')  # Ana
+print(name)      # Vini
