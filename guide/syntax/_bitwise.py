@@ -9,6 +9,7 @@ Bitwise Operators
 * Python has no unsigned right shift operator (>>>), baceuse integers in Python
   works different of other langs. Integeres are unlimited, so, the sign bit
   doesn't have a fixed position
+* The bits used to separete or targe some bit sequence is called as bit mask
 
 -------------------------------------------------------------------------------
 Operator    Example     Description
