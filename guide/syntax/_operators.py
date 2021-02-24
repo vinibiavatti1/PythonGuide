@@ -6,9 +6,10 @@ Aritmetic operators:
 -	Subtraction	    x - y
 *	Multiplication	x * y
 /	Division	    x / y
-%	Modulus	        x % y
+%	Modulo	        x % y
 **	Exponentiation	x ** y
 //	Floor division	x // y
+NOTE: The ** operator uses Right-sided binding (right to left ordering)
 
 Assignment operators:
 =	    x = 5	    x = 5
@@ -61,8 +62,10 @@ Bitwise operators:
                                 bits fall off
 """
 
+# -----------------------------------------------------------------------------
+# Aritmetic operators
 
-# Aritmetic examples
+
 # Addition (+)
 print(5 + 5)
 # 10
@@ -79,11 +82,22 @@ print(5 * 5)
 
 
 # Division (/)
-print(25 / 5)
-# 5.0
+# NOTE: / by 0 (zero) raises ZeroDivisionError
+print(25 / 5)  # 5.0
+print(4. / 2)  # 2.0
+print(-6 / 4)  # -1.5
 
 
-# Modulus (%)
+# Floor division or Integer division (//) (Used to divide integers)
+# NOTE: The result value is rounding always goes to the LESSER int (1.9 -> 1)
+# NOTE: // by 0 (zero) raises ZeroDivisionError
+print(15 // 2)  # 7 (in normal division, it would be 7.5)
+print(8. // 5)  # 1.0
+print(-6 // 4)  # -2
+
+
+# Modulo (%)
+# NOTE: % by 0 (zero) raises ZeroDivisionError
 print(20 % 7)
 # 6
 
@@ -93,12 +107,22 @@ print(5 ** 2)
 # 25
 
 
-# Floor division (//)
-print(15 // 2)
-# 7 (in normal division, it would be 7.5)
+# -----------------------------------------------------------------------------
+# Casting
 
 
+# When some float number is present in expression, the result will become a
+# float too
+print(3 ** 2 + 5 * 1.)  # 14.0
+print(5. + 5)           # 10.0
+print(5 + 5.)           # 10.0
+
+
+# -----------------------------------------------------------------------------
 # Identity operators
+
+
+# is
 x = [1, 2]
 y = [1, 2]
 print(x is x)      # True
@@ -106,7 +130,11 @@ print(x is y)      # False
 print(x is not y)  # True
 
 
+# -----------------------------------------------------------------------------
 # Membership operators
+
+
+# in
 lst = [1, 2, 3, 4, 5]
 print(3 in lst)      # True
 print(6 in lst)      # False

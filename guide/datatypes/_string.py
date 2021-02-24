@@ -97,13 +97,24 @@ print(text[::-1])
 
 
 # -----------------------------------------------------------------------------
-# Concatenation and Interpolation
+# Concatenation and multiplying
 
 
 # Concatenation
-# The char '+' can be use to concat strings
+# The '+' operator can be used to concat strings
 print('Hello ' + 'world')  # Hello world
 # print('Hello ' + 1)      # Error
+
+
+# Multiplying
+# The '*' operator can be used to multiply strings
+# NOTE: A number less than or equal to zero produces an empty string
+print('Hi' * 3)   # HiHiHi
+print('Hi' * 0)   # (empty)
+print('Hi' * -3)  # (empty)
+
+# -----------------------------------------------------------------------------
+# Interpolation
 
 
 # Interpolation (MODERN STYLE)

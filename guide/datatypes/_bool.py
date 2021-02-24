@@ -1,6 +1,8 @@
 """
 Bool
 
+* The name comes from George Boole (1815-1864), the author of the fundamental
+  work, The Laws of Thought, which contains the definition of Boolean algebra
 * The bool class is a subclass of int
 * It cannot be subclassed further. Its only instances are False and True
 * Cast to bool will execute the "Truth testing procedure"
@@ -37,3 +39,8 @@ class Client():
 
 obj = Client()
 print(bool(obj))  # False
+
+
+# True represents 1 and False represents 0
+print(True > False)  # True
+print(True < False)  # False

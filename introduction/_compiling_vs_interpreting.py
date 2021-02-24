@@ -8,6 +8,7 @@ Compiling
   control over hardware aspects, like memory management and CPU usage
 * Compiled languages need a build step, they need to be manually compiled first
 * You need to rebuild the program every time you need to make a change
+* The code can be run in anywhere after compiling
 * Examples: C, C++, Java
 
 Interpreting
@@ -15,5 +16,7 @@ Interpreting
 * Most command line tools, CLIs, and shells can theoretically be classified as
   interpreted languages
 * The code itself is platform independent
+* The interpreter runs the code every time it is intended to be executed
+* Code cannot be executed anywhere, because the user needs the interpreter
 * Examples: PHP, Ruby, Python, JavaScript
 """

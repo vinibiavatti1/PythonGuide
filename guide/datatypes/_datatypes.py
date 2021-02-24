@@ -1,13 +1,14 @@
 """
 Datatypes
 
-Text Type:	    str
-Numeric Types:	int, float, complex
-Sequence Types:	list, tuple, range
-Mapping Type:	dict
-Set Types:	    set, frozenset
-Boolean Type:	bool
-Binary Types:	bytes, bytearray, memoryview
+* Text Type:	    str
+* Numeric Types:	int, float, complex
+* Sequence Types:	list, tuple, range
+* Mapping Type:	    dict
+* Set Types:	    set, frozenset
+* Boolean Type:	    bool
+* Binary Types:	    bytes, bytearray, memoryview
+* None Types:       (function without return)
 """
 
 
@@ -26,6 +27,7 @@ x = True                  # bool
 x = b'Hello World'        # bytes
 x = bytearray(5)          # bytearray
 x = memoryview(bytes(5))  # memoryview
+x = None                  # NoneType
 
 # Casting
 x = str('Hello World')    # str
@@ -42,3 +44,4 @@ x = bool(5)               # bool
 x = bytes(5)              # bytes
 x = bytearray(5)          # bytearray
 x = memoryview(bytes(5))  # memoryview
+x = None                  # NoneType

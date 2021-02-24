@@ -1,5 +1,7 @@
 """
 Variables
+
+* the name of the variable must not be any of Python's keywords
 """
 
 

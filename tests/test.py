@@ -1,5 +1,8 @@
 
+"""
+sgdf
+fdf
+"""
 
-
-matrix = [[i for i in range(10)] for _ in range(10)]
-print(matrix)
+for i in range():
+    print('a')
