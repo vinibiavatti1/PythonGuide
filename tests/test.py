@@ -1,8 +1,6 @@
+def f():
+    print(x)
 
-"""
-sgdf
-fdf
-"""
 
-for i in range():
-    print('a')
+x = 1
+f()
