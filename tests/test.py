@@ -1,6 +1,9 @@
-def f():
-    print(x)
+class A:
+    def __rtruediv__(self, x):
+        return 2
 
 
-x = 1
-f()
+a = A()
+
+b = 5 / a
+print(b)

@@ -46,7 +46,7 @@ __add__(self, other)	            x + y
 __sub__(self, other)	            x - y
 __mul__(self, other)	            x * y
 __floordiv__(self, other)	        x // y
-__div__(self, other)	            x / y
+__truediv__(self, other)            x / y
 __mod__(self, other)	            x % y
 __pow__(self, other[, modulo])	    x ** y
 __lshift__(self, other)             x << y
@@ -60,7 +60,7 @@ __radd__(self, other)	            y + x
 __rsub__(self, other)	            y - x
 __rmul__(self, other)	            y * x
 __rfloordiv__(self, other)	        y // x
-__rdiv__(self, other)	            y / x
+__rtruediv__(self, other)	        y / x
 __rmod__(self, other)	            y % x
 __rpow__(self, other[, modulo])	    y ** x
 __rlshift__(self, other)            y << x
@@ -74,7 +74,7 @@ __iadd__(self, other)	            x += y
 __isub__(self, other)	            x -= y
 __imul__(self, other)	            x *= y
 __ifloordiv__(self, other)	        x //= y
-__idiv__(self, other)	            x /= y
+__itruediv__(self, other)	        x /= y
 __imod__(self, other)	            x %= y
 __ipow__(self, other)	            x **= y
 __ilshift__(self, other)	        x <<= y

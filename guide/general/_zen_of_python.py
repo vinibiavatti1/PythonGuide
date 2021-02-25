@@ -1,8 +1,7 @@
 """
 The PEP manifest
 
-* The PEP manifest is a easter egg accesible typing "import this" in any Python
-  file
+* The PEP manifest is a easteregg accesible executing the "import this" command
 * This is used to remember the good practicies for developers
 """
 
