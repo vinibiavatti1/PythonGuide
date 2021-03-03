@@ -1,5 +1,5 @@
 """
-OS
+OS module
 
 TODO
 """

@@ -97,3 +97,11 @@ f.truncate(0)
 file_path = os.path.join(current_path, '../../resources/file_read.txt')
 f = open(file_path)
 f.close()
+
+
+# Using with and open
+file_path = os.path.join(current_path, '../../resources/file_read.txt')
+with open(file_path) as f:
+    print(f.name)
+    # c:\git\PythonGuide\guide\io\../../resources/file_read.txt
+# NOTE: Do not need to close because with do it

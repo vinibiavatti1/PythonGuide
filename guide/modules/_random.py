@@ -1,5 +1,5 @@
 """
-Random
+Random module
 
 * To use the random, its module needs to be imported with "import random"
 """

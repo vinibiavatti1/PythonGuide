@@ -374,3 +374,16 @@ def prt_name(name):  # Name will be shadow, to dont change the actual name var
 name = 'Vini'
 prt_name('Ana')  # Ana
 print(name)      # Vini
+
+
+# -----------------------------------------------------------------------------
+# Inner Functions
+# * A function inside a function is called by inner function
+def fn1():
+    def fn2():  # Inner function
+        print('fn2')
+    fn2()
+
+
+fn1()
+# fn2
