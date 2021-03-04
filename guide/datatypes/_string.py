@@ -133,6 +133,24 @@ print('%s is %s years old' % (name, age))
 
 
 # -----------------------------------------------------------------------------
+# Raw string
+# * The 'r' char defines the string is a raw string, so scape chars will not
+#   work
+
+
+# Raw string
+raw = r'Hello \n World'
+print(raw)
+# Hello \n World
+
+
+# Using to define regex
+regex = r'\$\s[0-9,]+'
+print(regex)
+# \$\s[0-9,]+
+
+
+# -----------------------------------------------------------------------------
 # Scape
 
 

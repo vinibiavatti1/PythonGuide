@@ -104,3 +104,21 @@ print(my_print5.__name__)  # my_print5
 my_print5('Wraps!')
 # Function my_print5 called
 # Wraps!
+
+
+# Decorator in class
+def class_decorator(cls):
+    @functools.wraps(cls)
+    def wrapper():
+        print(cls.__name__)
+        return cls()
+    return wrapper
+
+
+@class_decorator
+class MyClass():
+    pass
+
+
+my_class = MyClass()
+# MyClass

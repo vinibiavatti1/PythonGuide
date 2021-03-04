@@ -7,14 +7,14 @@ Bitwise 8bit sum
 
 class ALU8bitSum():
 
-    b1_mask = 2 ** 0
-    b2_mask = 2 ** 1
-    b3_mask = 2 ** 2
-    b4_mask = 2 ** 3
-    b5_mask = 2 ** 4
-    b6_mask = 2 ** 5
-    b7_mask = 2 ** 6
-    b8_mask = 2 ** 7
+    b1_mask = 2 ** 0 # 1    00000001
+    b2_mask = 2 ** 1 # 2    00000010
+    b3_mask = 2 ** 2 # 4    00000100
+    b4_mask = 2 ** 3 # 8    00001000
+    b5_mask = 2 ** 4 # 16   00010000
+    b6_mask = 2 ** 5 # 32   00100000
+    b7_mask = 2 ** 6 # 64   01000000
+    b8_mask = 2 ** 7 # 128  10000000
 
     def sum(self, x, y):
         """
