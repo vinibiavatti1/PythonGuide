@@ -10,9 +10,9 @@ Json module
 * NOTE: 'not s' functions like (load and dump) work with stored data (files)
 
 Python objects and their equivalent conversion to JSON:
--------------------------------------------------------------------------------
+###############################################################################
 Python	                JSON Equivalent
--------------------------------------------------------------------------------
+###############################################################################
 dict	                object
 list, tuple	            array
 str	                    string
@@ -20,7 +20,7 @@ int, float, int	        number
 True	                true
 False	                false
 None	                null
--------------------------------------------------------------------------------
+###############################################################################
 """
 import json
 import os

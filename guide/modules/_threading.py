@@ -10,8 +10,9 @@ import threading
 import time
 
 
-# -----------------------------------------------------------------------------
+###############################################################################
 # Defining thread
+###############################################################################
 
 
 # Create thread using function
@@ -35,8 +36,9 @@ thread.start()
 # Worker
 
 
-# -----------------------------------------------------------------------------
-# Threading methods
+###############################################################################
+# Threading module methods
+###############################################################################
 
 
 # active_count()
@@ -115,8 +117,9 @@ print(main_thread)
 # <_MainThread(MainThread, started 11872)>
 
 
-# -----------------------------------------------------------------------------
+###############################################################################
 # Thread methods
+###############################################################################
 
 
 # run()
@@ -188,7 +191,7 @@ print(thread.isDaemon())
 # True
 
 
-# -----------------------------------------------------------------------------
+###############################################################################
 # Lock
 # * A primitive lock is a synchronization primitive that is not owned by a
 #   particular thread when locked. In Python, it is currently the lowest level
@@ -200,6 +203,7 @@ print(thread.isDaemon())
 # * The with statement can be used with Lock object
 # * NOTE: If another thread tries to enter a with locker: block (with the same
 #   locker object), it's delayed until the first thread exits the block
+###############################################################################
 
 
 # Lock()

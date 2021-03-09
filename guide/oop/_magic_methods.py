@@ -11,9 +11,9 @@ Magic methods
 * Tutorialsteacher: https://www.tutorialsteacher.com/python/magic-methods-in-py
                     thon
 
--------------------------------------------------------------------------------
+###############################################################################
 Magic Method	                    Called when
--------------------------------------------------------------------------------
+###############################################################################
 * NOTE: x represents the object with magic methods
 
 Construction and Initialization
@@ -138,7 +138,7 @@ __getstate__(self)                  pickle.dump(pkl_file, x)
 __setstate__(self, state)           data = pickle.load(pkl_file)
 __reduce__(self)                    pickle.dumps(x)
 __reduce_ex__(self)                 pickle.dumps(x)
--------------------------------------------------------------------------------
+###############################################################################
 """
 
 

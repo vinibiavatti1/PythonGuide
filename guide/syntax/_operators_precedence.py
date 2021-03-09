@@ -4,9 +4,9 @@ Operators precedence
 * Python doc: https://docs.python.org/3/reference/expressions.html#operator-pre
               cedence
 
--------------------------------------------------------------------------------
+###############################################################################
 Priority	    Operator	    Description            Example
--------------------------------------------------------------------------------
+###############################################################################
 1.              (expr)          expression             (1 + 2)
 -               [list]          list display           [1, 2]
 -               {key:v}         dict display           {'k': v}
@@ -48,7 +48,7 @@ Priority	    Operator	    Description            Example
 16.             if-else         condition              if x == 1:
 17.             lambda          lambda expr            lambda x: x * x
 18.             :=              assignment exp         3 += 1
--------------------------------------------------------------------------------
+###############################################################################
 """
 
 
