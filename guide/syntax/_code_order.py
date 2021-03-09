@@ -3,7 +3,7 @@ Code order
 
 * Python interpreter reads the code from the top to bottom, each line from the
   left to right
-* YOu cannot define some function or class after the usage of it
+* You cannot define some function or class after the usage of it
 """
 
 

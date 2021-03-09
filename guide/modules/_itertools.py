@@ -9,9 +9,10 @@ Itertools module
   * Infinite iterators
   * Combinatoric iterators
   * Terminating iterators
+* Reference: https://docs.python.org/3/library/itertools.html
 """
 import itertools
-import collections
+import operator
 
 
 ###############################################################################
@@ -92,3 +93,126 @@ print(list(itertools.combinations_with_replacement([1, 2, 3], 2)))
 # Terminating iterators
 ###############################################################################
 
+
+# accumulate(iterable[, func, *, initial=None])
+# * This iterator takes two arguments, iterable target and the function which
+#   would be followed at each iteration of value in target
+# * If no function is passed, addition takes place by default
+#  * If the input iterable is empty, the output iterable will also be empty
+lst = [1, 2, 3, 4]
+print(list(itertools.accumulate(lst, operator.mul)))
+# [1, 2, 6, 24]
+
+
+# chain(*iterables)
+# * This function is used to print all the values in iterable targets one after
+#   another mentioned in its arguments
+lst1 = [1, 2, 3, 4]
+lst2 = [3, 4, 5, 6]
+print(list(itertools.chain(lst1, lst2)))
+# [1, 2, 3, 4, 3, 4, 5, 6]
+
+
+# chain.from_iterable(iterable)
+# * This function is implemented similarly as chain() but the argument here is
+#   a list of lists or any other iterable container
+lst1 = [1, 2, 3, 4]
+lst2 = [3, 4, 5, 6]
+lst3 = [lst1, lst2]
+print(list(itertools.chain.from_iterable(lst3)))
+# [1, 2, 3, 4, 3, 4, 5, 6]
+
+
+# compress(data, selectors)
+# * This iterator selectively picks the values to print from the passed
+#   container according to the boolean list value passed as other arguments
+# * The arguments corresponding to boolean true are printed else all are
+#   skipped
+txt = 'Hello World'
+print(list(itertools.compress(txt, [0, 1, 0, 1, 1, 0])))
+# ['e', 'l', 'o']
+
+
+# dropwhile(predicate, iterable)
+# * This iterator starts printing the characters only after the func. in
+#   argument returns false for the first time
+txt = 'Hello World'
+print(list(itertools.dropwhile(lambda x: x != ' ', txt)))
+# [' ', 'W', 'o', 'r', 'l', 'd']
+
+
+# filterfalse(predicate, iterable)
+# * This iterator prints only values that return false for the passed function
+lst = [1, 2, 3, 4, 5]
+print(list(itertools.filterfalse(lambda x: x % 2 == 0, lst)))
+# [1, 3, 5]
+
+
+# groupby(iterable, key=None)
+# * Make an iterator that returns consecutive keys and groups from the
+#   iterable
+# * The key is a function computing a key value for each element. If not
+#   specified or is None, key defaults to an identity function and returns the
+#   element unchanged
+# NOTE: The iterable needs to be sort first!
+levels = [(1, 'Vini'), (1, 'Ana'), (3, 'Fulano'), (2, 'Ciclano'), (3, 'Ze')]
+levels.sort(key=lambda x: x[0])
+groups = itertools.groupby(levels, lambda x: x[0])
+for key, group in groups:
+    for level, name in group:
+        print(f'{name} is in group {level}')
+# Vini is in group 1
+# Ana is in group 1
+# Ciclano is in group 2
+# Fulano is in group 3
+# Ze is in group 3
+
+
+# islice(iterable, stop)
+# islice(iterable, start, stop [, step])
+# * Make an iterator that returns selected elements from the iterable
+lst = [0, 1, 2, 3, 4, 5, 6, 7]
+print(list(itertools.islice(lst, 2, 6, 2)))
+# [2, 4]
+
+
+# starmap(function, iterable)
+# * Make an iterator that computes the function using arguments obtained from
+#   the iterable. Used instead of map() when argument parameters are already
+#   grouped in tuples from a single iterable
+lst = [(1, 2, 3), (4, 1, 1), (3, 7, 5)]
+print(list(itertools.starmap(max, lst)))
+# [3, 4, 7]
+
+
+# takewhile(predicate, iterable)
+# * This iterator is opposite of dropwhile(), it prints the values till the
+#   function returns false for 1st time
+txt = 'Hello World'
+print(list(itertools.takewhile(lambda x: x != ' ', txt)))
+# ['H', 'e', 'l', 'l', 'o']
+
+
+# tee(iterable, n=2)
+# * This iterator splits the container into a number of iterators mentioned in
+#   the argument
+lst = [1, 2, 3]
+lst_iter = iter(lst)
+tee = itertools.tee(lst_iter, 3)
+for i in range(3):
+    print(list(tee[i]))
+# [1, 2, 3]
+# [1, 2, 3]
+# [1, 2, 3]
+
+
+# zip_longest(*iterables, fillvalue=None)
+# * This iterator prints the values of iterables alternatively in sequence. If
+#   one of the iterables is printed fully, remaining values are filled by the
+#   values assigned to fillvalue
+lst1 = ['A', 'B', 'C']
+lst2 = [1, 2, 3, 4, 5]
+for x, y in itertools.zip_longest(lst1, lst2, fillvalue='Z'):
+    print(f'({x}, {y})', end=' ')
+print()
+# (A, 1) (B, 2) (C, 3) (Z, 4) (Z, 5)
