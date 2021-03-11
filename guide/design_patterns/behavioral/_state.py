@@ -4,7 +4,9 @@ State design pattern
 * Book: GOF
 * State is a behavioral design pattern that allows an object to change the
   behavior when its internal state changes
-*
+* The State pattern suggests that you create new classes for all possible
+  states of an object and extract all state-specific behaviors into these
+  classes
 """
 from abc import ABC, abstractmethod
 
