@@ -23,7 +23,7 @@ RULES = {
 }
 
 tk = tkinter.Tk()
-screen = tkinter.Canvas(tk, width=800, height=600, bg='black')
+screen = tkinter.Canvas(tk, width=WIDTH, height=HEIGHT, bg='black')
 
 
 x = 10

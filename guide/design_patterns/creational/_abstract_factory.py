@@ -1,6 +1,7 @@
 """
 Abstract Factory design pattern
 
+* Book: GOF
 * Abstract Factory is a creational design pattern that lets you produce
   families of related objects without specifying their concrete classes
 * Abstract Factory pattern suggests is to explicitly declare interfaces for

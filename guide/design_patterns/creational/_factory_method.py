@@ -1,6 +1,7 @@
 """
 Factory Method design pattern
 
+* Book: GOF
 * Factory Method is a creational design pattern that provides an interface for
   creating objects in a superclass, but allows subclasses to alter the type of
   objects that will be created
@@ -11,6 +12,25 @@ Factory Method design pattern
   factory method are often referred to as products
 """
 from abc import ABC, abstractmethod
+
+
+# Click interface
+class Clickable(ABC):
+    @abstractmethod
+    def click(self):
+        pass
+
+
+# Windows Button
+class WinButton(Clickable):
+    def click(self):
+        print('Win Button')
+
+
+# Mac button
+class MacButton(Clickable):
+    def click(self):
+        print('Mac button')
 
 
 # Dialog interface with factory method
@@ -25,14 +45,14 @@ class Dialog(ABC):
 class WinDialog(Dialog):
 
     def create_button(self):
-        print('Windows btn')
+        return WinButton()
 
 
 # Mac dialog
 class MacDialog(Dialog):
 
     def create_button(self):
-        print('Mac btn')
+        return MacButton()
 
 
 # Algorithm
@@ -42,5 +62,6 @@ if os == 'Windows':
     dialog = WinDialog()
 else:
     dialog = MacDialog()
-dialog.create_button()
+btn = dialog.create_button()
+btn.click()
 # Windows btn
