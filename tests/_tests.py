@@ -1,4 +1,3 @@
-"""
 from turtle import Screen, Turtle
 
 screen = Screen()
@@ -12,4 +11,4 @@ for n in range(1, 10):
         turtle.left(5 * n)
 turtle.end_fill()
 screen.mainloop()
-"""
+
