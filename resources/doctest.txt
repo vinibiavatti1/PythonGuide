@@ -1,0 +1,12 @@
+Doctest example
+
+    >>> 5 + 5
+    10
+    >>> 10 / 2
+    5.0
+    >>> 10 // 2
+    5
+
+    Raise an error
+    >>> 3 + 3
+    5

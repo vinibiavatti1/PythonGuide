@@ -178,13 +178,13 @@ print()
 
 # Cast to list
 # * Tuples are not changeable, so, to change data the tuple must be cast to
-# list first
+#   list first
 tpl = (1, 2, 3)
 lst = list(tpl)
-lst[0:] = ['a', 'b', 'c']
+lst[0:2] = ['a', 'b']
 tpl = tuple(lst)
 print(tpl)
-# ('a', 'b', 'c')
+# ('a', 'b', 3)
 
 
 ###############################################################################
@@ -208,3 +208,23 @@ tpl1 = (5, 19, 4, 26, 18)
 tpl3 = tuple(filter(lambda el: el >= 18, tpl1))
 print(tpl3)
 # (19, 26, 18)
+
+
+###############################################################################
+# Operations
+###############################################################################
+
+
+# Comparison operations
+print((1, 5) == (1, 7))  # False
+print((1, 5) == (1, 5))  # True
+print((3, 5) > (3, 5))  # False
+print((2, 6) > (2, 1))  # True
+print((3, 5) >= (3, 5))  # True
+print((2, 6) >= (2, 1))  # True
+print((3, 5) < (3, 5))  # False
+print((2, 1) < (2, 6))  # True
+print((3, 5) <= (3, 5))  # True
+print((2, 1) <= (2, 6))  # True
+print((2, 6, 1) > (2, 6))  # True
+print((2, 6) > (2, 6, 1))  # False

@@ -6,7 +6,7 @@ Dictionary (dict)
   duplicates
 * NOTE: keys are case-sensitive
 * Dictionaries are written with curly brackets, and have keys and values:
-(V) Ordered
+(V) Ordered (Sinse Python 3.7)
 (V) Changeable
 ( ) Allow Duplicate
 (V) Indexed

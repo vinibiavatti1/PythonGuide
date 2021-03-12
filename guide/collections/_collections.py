@@ -17,6 +17,11 @@ There are four collection data types:
 """
 
 
+###############################################################################
+# Collections
+###############################################################################
+
+
 # List
 # (V) Ordered
 # (V) Changeable
@@ -42,7 +47,7 @@ st = {1, 'two', None, True}
 
 
 # Dict
-# ( ) Ordered
+# (V) Ordered (Sinse Python 3.7)
 # (V) Changeable
 # ( ) Allow Duplicate
 # (V) Indexed
@@ -55,6 +60,11 @@ dct = {'name': 'Vini', 'age': 26}
 # ( ) Allow Duplicate
 # ( ) Indexed
 fst = frozenset({1, 2, 3, 4})
+
+
+###############################################################################
+# Builtin functions
+###############################################################################
 
 
 # Builtin functions for collections characteristics
@@ -73,6 +83,11 @@ print(any(lst))  # True  (Any value is True)
 lst = [1, 5, 10, 15, 30]
 print(list(filter(lambda n: n > 10, lst)))  # [15, 30]
 print(list(map(lambda n: n + 1, lst)))      # [2, 6, 11, 16, 31]
+
+
+###############################################################################
+# Memory
+###############################################################################
 
 
 # Memory comparison

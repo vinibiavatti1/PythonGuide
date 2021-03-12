@@ -1,21 +1,15 @@
-from matplotlib import pyplot
-
-x = [i for i in range(1, 30)]
-y = [len(str(i / 3)) for i in range(1, 30)]
-pyplot.plot(x, y, label='val')
-
-
-pyplot.legend()
-pyplot.show()
 """
-2.0
-2.2222222222222223
-2.5
-2.857142857142857
-3.3333333333333335
-4.0
-5.0
-6.666666666666667
-10.0
-20.0
+from turtle import Screen, Turtle
+
+screen = Screen()
+turtle = Turtle()
+
+turtle.color('black', 'red')
+turtle.begin_fill()
+for n in range(1, 10):
+    for i in range(round(360 / (n * 5))):
+        turtle.forward(10)
+        turtle.left(5 * n)
+turtle.end_fill()
+screen.mainloop()
 """
