@@ -36,7 +36,7 @@ print(type(parsed))  # <class 'dict'>
 
 
 # Convert JSON (dict > JSON)
-dct = {'name': 'Vini', 'age': 26}
+dct = dict(name='Vini', age=26)
 dumped = json.dumps(dct)
 print(dumped)        # {"name": "Vini", "age": 26}
 print(type(dumped))  # <class 'str'>
@@ -51,7 +51,7 @@ print(parsed)
 
 
 # Convert JSON File (dict > JSON File)
-dct = {'name': 'Vini', 'age': 26}
+dct = dict(name='Vini', age=26)
 file_path = os.path.join(current_path, '../../resources/file_json.json')
 with open(file_path, 'w') as f:
     json.dump(dct, f)

@@ -5,6 +5,10 @@ Class
 * Almost everything in Python is an object, with its properties and methods.
 * A Class is like an object constructor, or a "blueprint" for creating objects.
 * To create a class, use the keyword class.
+* Class is a collection of related attributes and methods that try to
+  represent a real-world situation. This idea of putting data and functions
+  together in a class is central to the concept of object-oriented
+  programming (OOP)
 """
 
 
