@@ -1,37 +1,45 @@
 from matplotlib import pyplot
 import math
 
-s1 = []
-s2 = []
-c1 = []
-c2 = []
-t1 = []
-t2 = []
 
-x = -10.0
-while x < 10.0:
-    x = round(x, 2)
-    y = math.sin(x)
-    y2 = math.cos(x)
-    y3 = math.tan(x)
-    s1.append(x)
-    s2.append(y)
-    c1.append(x)
-    c2.append(y2)
-    t1.append(x)
-    t2.append(y3)
-    x += 0.1
+def plot(x_points, y_points):
+    fig = pyplot.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    ax.spines['left'].set_position('center')
+    ax.spines['bottom'].set_position('zero')
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
 
-fig = pyplot.figure()
-ax = fig.add_subplot(1, 1, 1)
-ax.spines['left'].set_position('center')
-ax.spines['bottom'].set_position('zero')
-ax.spines['right'].set_color('none')
-ax.spines['top'].set_color('none')
-ax.xaxis.set_ticks_position('bottom')
-ax.yaxis.set_ticks_position('left')
+    print(f'Minimo X: {x_min}')
+    print(f'Minimo Y: {y_min}')
 
-pyplot.plot(s1, s2, label='sen')
-pyplot.plot(c1, c2, label='cos')
-pyplot.plot(t1, t2, label='tan')
-pyplot.show()
+    pyplot.plot(x_points, y_points, label='vals')
+    pyplot.show()
+
+
+x_points = []
+y_points = []
+
+start = -10
+end = 10
+step = 0.1
+a = -2
+b = 0
+c = 3
+
+x_min = None
+y_min = None
+
+x = start
+while x < end:
+    y = a * (x ** 2) + b * x + c
+    x_points.append(x)
+    y_points.append(y)
+    if x_min is None or y < y_min:
+        x_min = x
+        y_min = y
+    x += step
+
+plot(x_points, y_points)

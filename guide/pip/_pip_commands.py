@@ -3,6 +3,8 @@ PIP commands
 
 * pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4
   downloaded from python.org
+* pip can be called using "$ python -m pip" command or just "$ pip" depending
+  the Python version
 * Reference: https://$ pip.pypa.io/en/stable/reference/
 """
 

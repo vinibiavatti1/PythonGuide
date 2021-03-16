@@ -1,4 +1,5 @@
 from turtle import Screen, Turtle
+import pip
 
 screen = Screen()
 turtle = Turtle()
@@ -11,4 +12,3 @@ for n in range(1, 10):
         turtle.left(5 * n)
 turtle.end_fill()
 screen.mainloop()
-

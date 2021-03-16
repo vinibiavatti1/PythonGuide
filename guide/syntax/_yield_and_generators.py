@@ -12,6 +12,8 @@ Generators
 * The major difference between a list comprehension and a generator expression
   is that a list comprehension produces the entire list while the generator
   expression produces one item at a time
+* Is better then list comprehension in some cases because it consumes less
+  memory while in list all the values will be stored in memory
 """
 
 
@@ -77,3 +79,21 @@ squares_generator = (i*i for i in range(5, 7))
 print(next(squares_generator))
 print(next(squares_generator))
 # print(next(squares_generator))  StopIteration
+
+
+# Using as parameter
+# * NOTE: Dont need to put the generator parentesis
+print(all(i for i in range(1, 5)))
+# True
+
+
+###############################################################################
+# Memory compare
+###############################################################################
+
+
+# Generator vs List Comprehension
+lst = [i * 10 for i in range(1000)]
+gen = (i * 10 for i in range(1000))
+print(lst.__sizeof__())  # 8840
+print(gen.__sizeof__())  # 96
