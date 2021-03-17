@@ -1,5 +1,5 @@
 """
-PEP (Python Enhancement Proposals)
+PEP8 (Python Enhancement Proposals / 8)
 
 * PEP8 is a documentation to describe the good practices for Python
 * This is allowed in https://www.python.org/dev/peps/
@@ -165,6 +165,7 @@ Lorem ipsum
 
 
 # Section comments
+# * NOTE: Not real PEP8 recomendation
 # * To separete code sections, use the section comment with "#" char
 # * NOTE: The example below is inside a multi-line comment just to differs from
 #   the other section comments in this file
@@ -176,6 +177,7 @@ Lorem ipsum
 
 
 # Docstrings
+# * NOTE: Not real PEP8 recomendation
 # * Use a multiline comment with dual quotes
 # * Do not use a multiline in just one line (inline) comment
 def function():
