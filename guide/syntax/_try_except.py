@@ -9,18 +9,23 @@ Exceptions
   * finally: Finally is used to execute a code block idependent if some
              exception raised or not. This is usefull to clean up resources
 
-* Syntax:
+* Try, except, else, finnaly syntax:
     try:
         ...
     except exception1:
         ...
     except exception2 as err:
         ...
+    except (exception3, exception4) as err:
+        ...
     else:
         ...
     finally:
         ...
 
+* Raise syntax:
+    raise exception(message)
+    raise exception(message) from cause
 """
 
 
@@ -38,7 +43,7 @@ except:
     # error
 
 
-# Try, except for specific exception without alias (as)
+# Try, except for specific exception
 try:
     x = 5 / 0
 except ZeroDivisionError:
@@ -55,36 +60,26 @@ except ZeroDivisionError as err:
     # division by zero
 
 
-# Try, except chaining exceptions
-# * In this example, when some exception happens, a new exception will be
-#   raised with the origin exception as __cause__
-# * The from keyword specify the __cause__ error for the current exception
-try:
-    try:
-        x = 5 / 0
-    except ZeroDivisionError as err:
-        raise RuntimeError('You cannot divide') from err
-except RuntimeError as err:
-    print(err, err.__cause__, sep=', ')
-    # You cannot divide, division by zero
-
-
 # Try, except with more possible excepts
-def raise_some_error(x):
-    if x == 1:
-        raise ArithmeticError('First error')
-    else:
-        raise StopIteration('Second error')
-
-
-x = 2
+x = 0  # <- Change it to a string to check the execution of TypeError block
 try:
-    raise_some_error(x)
-except ArithmeticError as err:
+    y = 10 / x
+except ZeroDivisionError as err:
     print(err)
-except StopIteration as err:
+    # division by zero
+except TypeError as err:
     print(err)
-    # Second error
+    # unsupported operand type(s) for /: 'int' and 'str'
+
+
+# Try, except with more exception in the same except block
+x = 0  # <- Change it to a string to check the execution of TypeError block
+try:
+    y = 10 / x
+except (ZeroDivisionError, TypeError) as err:
+    print(err)
+    # division by zero
+    # unsupported operand type(s) for /: 'int' and 'str'
 
 
 # Try, except, finally
@@ -129,8 +124,23 @@ finally:
 # finally
 
 
+# Raise from (Set __cause__)
+# * Used to set the __cause__ attribute and the message states that the
+#   exception was directly caused by. If you omit the from then no __cause__ is
+#   set, but the __context__ attribute may be set as well
+# * The "from" keyword specify the __cause__ error for the current exception
+try:
+    try:
+        x = 5 / 0
+    except ZeroDivisionError as err:
+        raise RuntimeError('You cannot divide') from err
+except RuntimeError as err:
+    print(err, err.__cause__, sep=', ')
+    # You cannot divide, division by zero
+
+
 ###############################################################################
-# Create custom exception
+# Create user-defined exception
 ###############################################################################
 
 
@@ -139,29 +149,8 @@ class MyException(Exception):
     pass
 
 
-# try, except, raise with exception created
-def raise_error():
-    raise MyException('My Error')
-
-
 try:
-    raise_error()
+    raise MyException('My Error')
 except MyException as err:
     print(err)
     # My Error
-
-
-###############################################################################
-# Raise, From
-###############################################################################
-
-
-# raise, from
-# * Used to set the __cause__ attribute and the message states that the
-#   exception was directly caused by. If you omit the from then no __cause__ is
-#   set, but the __context__ attribute may be set as well
-try:
-    raise MyException('My Error') from ValueError('Value error')
-except MyException as err:
-    print(err)            # My Error
-    print(err.__cause__)  # Value error
