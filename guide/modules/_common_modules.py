@@ -287,3 +287,8 @@ import xml
 
 # Read and write zip‐format archive files.
 import zipfile
+
+
+# Enable new language features which are not compatible with the current
+# interpreter
+import __future__

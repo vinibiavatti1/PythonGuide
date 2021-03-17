@@ -44,3 +44,22 @@ print(dct['action'](5))
 fn = lambda x: 'one' if x == 1 else 'other'
 print(fn(1))  # one
 print(fn(5))  # other
+
+
+# Function returning lambda
+# * This is a usefull feature to make some function return a different action
+#   by the parameters
+def math_operation(operation):
+    dct = {
+        "+": lambda x, y: x + y,
+        "-": lambda x, y: x - y,
+        "*": lambda x, y: x * y,
+        "/": lambda x, y: x / y,
+    }
+    return dct.get(operation)
+
+
+operation1 = math_operation('*')
+operation2 = math_operation('/')
+print(operation1(5, 5))  # 25
+print(operation2(8, 3))  # 2.6666666666666665
