@@ -4,6 +4,8 @@ PEP (Python Enhancement Proposals)
 * PEP8 is a documentation to describe the good practices for Python
 * This is allowed in https://www.python.org/dev/peps/
 * The idea is to describe the way to type code using 'Pythonic' way
+* Use the editorconfig plugin in your IDE and put the .editorconfig file on the
+  root of this projecto to your projecto to configure the code format
 """
 
 ###############################################################################
@@ -101,6 +103,17 @@ class Bus:
 from abc import ABC
 
 
+# Exceptions
+# * Use a good representation name
+# * Do not use undercore to separete
+# * Use camel case
+# * Do not use special symbols
+# * Do not use letters to represent the type like "E" for Error
+# * Use the 'Error' suffix in the exception class name
+class ValidationError():
+    pass
+
+
 # Strings
 # * Always use ' char to strings
 text = 'Hello'
@@ -119,7 +132,7 @@ import abc
 
 
 # Import a big amount of resources
-# Use multi line to import the resources
+# * Use multi line to import the resources
 from abc import (
     ABC,
     ABCMeta
@@ -140,6 +153,17 @@ x = 10  # My variable
 # * Use """ the single quotes always
 """
 Lorem ipsum
+"""
+
+
+# Section comments
+# * To separete code sections, use the section comment with "#" char
+# * NOTE: The example below is inside a multi-line comment just to differs from
+#   the other section comments in this file
+"""
+###############################################################################
+# Title
+###############################################################################
 """
 
 
@@ -179,7 +203,7 @@ if 1 == 1:
     pass
 
 
-# Dont use unecessary spaces
+# Do not use unecessary spaces
 # * Do not put more spaces in lists, parameters, function names, etc
 # * Do not try to inline vertically some text with spaces
 lst = [1, 2, 3, 4, 5]
