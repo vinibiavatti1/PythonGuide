@@ -16,6 +16,14 @@ for v1, v2 in zip(tpl1, tpl2):
 print()
 
 
+# Cast
+lst1 = ['name', 'age']
+lst2 = ['Vini', 26]
+print(set(zip(lst1, lst2)))    # {('name', 'Vini'), ('age', 26)}
+print(tuple(zip(lst1, lst2)))  # (('name', 'Vini'), ('age', 26))
+print(dict(zip(lst1, lst2)))   # {'name': 'Vini', 'age': 26}
+
+
 # Enumerated iterables
 tpl1 = (5, 6, 7)
 tpl2 = ('house', 'person', 'dog')

@@ -5,9 +5,6 @@ Counter
 * Used to count every element individually
 * Syntax
   * Counter([iterable-or-mapping])
-
-
-
 """
 import collections
 

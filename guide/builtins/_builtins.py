@@ -459,8 +459,8 @@ print(a1, a2, a3, a4, a5, sep=', ')
 # * Syntax
 #   * sum(iterable, /, start=0)
 lst = [1, 2, 3, 4, 5]
-print(sum(lst))
-# 15
+print(sum(lst))           # 15
+print(sum(lst, start=5))  # 20 (5 is initial value)
 
 
 # dir()

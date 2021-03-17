@@ -103,11 +103,11 @@ print(lst)
 
 # sort([key=], [reverse=])
 # * Sorts the list
+# * NOTE: It will change the current list, so,
 lst = ['c', 'b', 'a']
 lst.sort()
 print(lst)
 # ['a', 'b', 'c']
-
 
 lst = ['a', 'b', 'c']
 lst.sort(reverse=True)
