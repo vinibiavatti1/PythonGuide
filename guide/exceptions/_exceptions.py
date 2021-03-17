@@ -112,7 +112,7 @@ Exception: Exception
 #   import statement, in a call to the built-in functions exec() or eval(), or
 #   when reading the initial script or standard input (also interactively)
 """
-def func:  # Without parentesis
+def func:  # Without parenthesis
     pass
 
 SyntaxError: invalid syntax
@@ -250,8 +250,8 @@ ImportError: cannot import name 'invalid_function' from 'math'
 
 
 # RuntimeError
-# * Raised when an error is detected that doesn’t fall in any of the other
-#   categories.
+# * Raised when an error is detected that doesn't fall in any of the other
+#   categoriesS
 # * The associated value is a string indicating what precisely went wrong
 """
 raise RuntimeError('Generic error')

@@ -14,7 +14,7 @@ Exceptions
         ...
     except exception1:
         ...
-    except exception2:
+    except exception2 as err:
         ...
     else:
         ...
@@ -50,9 +50,23 @@ except ZeroDivisionError:
 # * NOTE: In this way, the details for exception can be accessed
 try:
     x = 5 / 0
-except ZeroDivisionError as e:
-    print(e)
+except ZeroDivisionError as err:
+    print(err)
     # division by zero
+
+
+# Try, except chaining exceptions
+# * In this example, when some exception happens, a new exception will be
+#   raised with the origin exception as __cause__
+# * The from keyword specify the __cause__ error for the current exception
+try:
+    try:
+        x = 5 / 0
+    except ZeroDivisionError as err:
+        raise RuntimeError('You cannot divide') from err
+except RuntimeError as err:
+    print(err, err.__cause__, sep=', ')
+    # You cannot divide, division by zero
 
 
 # Try, except with more possible excepts
@@ -66,10 +80,10 @@ def raise_some_error(x):
 x = 2
 try:
     raise_some_error(x)
-except ArithmeticError as e:
-    print(e)
-except StopIteration as e:
-    print(e)
+except ArithmeticError as err:
+    print(err)
+except StopIteration as err:
+    print(err)
     # Second error
 
 
@@ -79,8 +93,8 @@ except StopIteration as e:
 x = 10
 try:
     y = x / 0
-except ZeroDivisionError as e:
-    print(e)
+except ZeroDivisionError as err:
+    print(err)
     # division by zero
 finally:
     x = 0
@@ -92,8 +106,8 @@ print(x)
 x = 10
 try:
     y = x / 0
-except ZeroDivisionError as e:
-    print(e)
+except ZeroDivisionError as err:
+    print(err)
 else:
     x = 0  # Execute just if no raise ocurred
 print(x)
@@ -105,7 +119,7 @@ x = 10
 y = 2  # <- Change to zero to check the result!
 try:
     z = x / y
-except ZeroDivisionError as e:
+except ZeroDivisionError as err:
     print('exception')  # Execute if some raise ocurred
 else:
     print('else')       # Execute just if no raise ocurred
@@ -132,8 +146,8 @@ def raise_error():
 
 try:
     raise_error()
-except MyException as e:
-    print(e)
+except MyException as err:
+    print(err)
     # My Error
 
 
@@ -148,6 +162,6 @@ except MyException as e:
 #   set, but the __context__ attribute may be set as well
 try:
     raise MyException('My Error') from ValueError('Value error')
-except MyException as e:
-    print(e)            # My Error
-    print(e.__cause__)  # Value error
+except MyException as err:
+    print(err)            # My Error
+    print(err.__cause__)  # Value error

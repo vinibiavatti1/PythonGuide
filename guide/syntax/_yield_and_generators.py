@@ -82,7 +82,7 @@ print(next(squares_generator))
 
 
 # Using as parameter
-# * NOTE: Dont need to put the generator parentesis
+# * NOTE: Dont need to put the generator parenthesis
 print(all(i for i in range(1, 5)))
 # True
 

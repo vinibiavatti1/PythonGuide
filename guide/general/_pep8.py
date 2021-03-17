@@ -114,6 +114,14 @@ class ValidationError():
     pass
 
 
+# Exception alias
+# * Use the 'err' name
+try:
+    pass
+except ValueError as err:  # "err" word to reference the error
+    pass
+
+
 # Strings
 # * Always use ' char to strings
 text = 'Hello'
@@ -167,6 +175,16 @@ Lorem ipsum
 """
 
 
+# Docstrings
+# * Use a multiline comment with dual quotes
+# * Do not use a multiline in just one line (inline) comment
+def function():
+    """
+    This function returns True
+    """
+    return True
+
+
 ###############################################################################
 # Code recomendations
 ###############################################################################
@@ -199,6 +217,7 @@ nisl'
 
 # Identation
 # * Always use 4 spaces to indent your code
+# * NOTE: DO NOT use tabs
 if 1 == 1:
     pass
 
@@ -212,10 +231,20 @@ long_variable = 5
 
 
 # Backslash
-# For long python lines, it is recommended to use backlash (\) to wrap
-if 1 == 1 and 2 == 2 and \
-    3 == 3 or 4 == 4 and \
-        5 == 5 and True:
+# * For long python lines, it is recommended to use backlash (\) to wrap
+txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ul" + \
+    "lamcorper ipsum. Nullam et elit nec ante porttitor finibus finibus di" + \
+    "gnissim nulla. In pharetra vulputate magna sodales consequat"
+
+
+# Long if
+# * To make a if with more lines, use parenthesis
+# * From second condition onwards, the conditions must be indented
+# * Always put the logical operator as the end of the line, to the first
+if (1 == 1 and      # Dont use indentation
+        2 == 2 and  # Use indentation
+        3 == 3 or   # Use indentation
+        4 == 4):    # Use indentation
     pass
 
 
