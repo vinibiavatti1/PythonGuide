@@ -190,6 +190,24 @@ Named tuple:        The term "named tuple" applies to any type or class that
                     accessible using named attributes. The type or class may
                     have other features as well
 
+Namespace:          The place where a variable is stored. Namespaces are
+                    implemented as dictionaries. There are the local, global
+                    and built-in namespaces as well as nested namespaces in
+                    objects (in methods). Namespaces support modularity by
+                    preventing naming conflicts. For instance, the functions
+                    builtins.open and os.open() are distinguished by their
+                    namespaces. Namespaces also aid readability and
+                    maintainability by making it clear which module implements
+                    a function. For instance, writing random.seed() or
+                    itertools.islice() makes it clear that those functions are
+                    implemented by the random and itertools modules,
+                    respectively
+
+Namespace Package:  A PEP 420 package which serves only as a container for
+                    subpackages. Namespace packages may have no physical
+                    representation, and specifically are not like a regular
+                    package because they have no __init__.py file
+
 Package:            A Python module which can contain submodules or
                     recursively, subpackages. Technically, a package is a
                     Python module with an __path__ attribute

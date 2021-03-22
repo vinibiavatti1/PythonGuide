@@ -87,11 +87,20 @@ class Bus:
 
 # Packages
 # * Use a good representation name
-# * Use undercore to separete
+# * Use undercore to separete (Avoid)
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
-"""/src/classes/client.py"""
+"""matplotlib"""
+
+
+# Folders
+# * Use a good representation name
+# * Use undercore to separete (Avoid)
+# * Do not use camel case
+# * Do not use special symbols
+# * Do not use capital letters
+"""src/general"""
 
 
 # Modules

@@ -20,6 +20,14 @@ print(rnd)
 # 0.5
 
 
+# uniform(a, b)
+# * Return a random floating point number N such that a <= N <= b for a <= b
+#   and b <= N <= a for b < a
+rnd = random.uniform(3, 6)
+print(rnd)
+# 4.5
+
+
 # randint(a, b)
 # * Return a random integer N such that a <= N <= b.
 # * Alias for randrange(a, b+1)

@@ -17,13 +17,17 @@ class InvalidPositionError(Exception):
 
 
 def create_board():
-    """Create a 3x3 matrix with numbers from 1 to 9"""
+    """
+    Create a 3x3 matrix with numbers from 1 to 9
+    """
 
     return [[x+y for x in range(BOARD_SIZE)] for y in range(1, 9, 3)]
 
 
 def position_to_coords(position):
-    """Convert position (1-9) to coordinates"""
+    """
+    Convert position (1-9) to coordinates
+    """
 
     position -= 1
     y = position // BOARD_SIZE
@@ -32,7 +36,9 @@ def position_to_coords(position):
 
 
 def display_board(board):
-    """Print board into console"""
+    """
+    Print board into console
+    """
 
     for y in board:
         print('+---+---+---+')
@@ -43,7 +49,8 @@ def display_board(board):
 
 
 def validate_position(position, plays):
-    """Validates the position checking if the input is a number, if the input
+    """
+    Validates the position checking if the input is a number, if the input
     is in range 1-9 and if the position has already been marked
     """
 
@@ -61,12 +68,16 @@ def validate_position(position, plays):
 
 
 def has_available_play(plays):
-    """Check if there is available play"""
+    """
+    Check if there is available play
+    """
     return len(plays) != MAX_PLAYS
 
 
 def random_position(plays):
-    """Generates a random position checking the plays already did"""
+    """
+    Generates a random position checking the plays already did
+    """
     available_plays = {i for i in range(1, 10)}
     available_plays.difference_update(plays)
     position = random.choice(tuple(available_plays))
@@ -74,7 +85,8 @@ def random_position(plays):
 
 
 def check_victory(board, player):
-    """Check if the player win the game validation the rows, columns and
+    """
+    Check if the player win the game validation the rows, columns and
     diagonals
     """
     # Lines
