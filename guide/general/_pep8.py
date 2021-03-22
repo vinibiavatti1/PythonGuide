@@ -85,22 +85,13 @@ class Bus:
         self._name = name
 
 
-# Packages
+# Packages (Folders with Python module collections)
 # * Use a good representation name
 # * Use undercore to separete (Avoid)
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
 """matplotlib"""
-
-
-# Folders
-# * Use a good representation name
-# * Use undercore to separete (Avoid)
-# * Do not use camel case
-# * Do not use special symbols
-# * Do not use capital letters
-"""src/general"""
 
 
 # Modules

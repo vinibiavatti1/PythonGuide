@@ -10,14 +10,14 @@ Name
 * When the .py file is running by main (python foo.py), the __name__ variable
   will be set with '__main__' value
 * When the .py file is importing by other file, the __name__ variable will
-  receive the name of its module
+  receive the name of its module with the extension (.py)
 """
 
 
-# Using __name__ to execute code just if the file is main
+# Using __name__ to control the execution/importation of the file
 if __name__ == '__main__':
-    print('This is a main file')
-    # This is a main file
+    print('This file is being executing as main file')
+    # This file is being executing as main file
 else:
     print('This file is being imported')
     # (Just execute if the file is imported from another)

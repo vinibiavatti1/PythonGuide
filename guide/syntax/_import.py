@@ -6,6 +6,9 @@ Import keyword
   classes and functions
 * We can import specific names (definitions) from a module without importing
   the module as a whole using "from" keyword
+* Syntax:
+  * import <module> [as <alias>]
+  * from <package|module> import <module|definition> [as <alias>]
 """
 
 
@@ -14,7 +17,7 @@ Import keyword
 import random
 
 
-# Alias
+# Module alias
 # * Change the module name with alias
 import random as rng
 
@@ -24,11 +27,16 @@ import random as rng
 from random import uniform
 
 
+# Import specific definitions (from) with alias
+# * NOTE: The alias can be used in module or in definition
+from random import randint as rdi
+
+
 # Import more then once definitions
 # * NOTE: PEP8: Use parenthesis to organize
 from random import (
     uniform,
-    randint
+    randint as rdi
 )
 
 

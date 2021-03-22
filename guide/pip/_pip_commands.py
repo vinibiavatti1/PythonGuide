@@ -1,5 +1,5 @@
 """
-PIP commands
+PIP commands (Python Installer Package)
 
 * pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4
   downloaded from python.org
