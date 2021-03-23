@@ -1,11 +1,15 @@
 """
-PEP8 (Python Enhancement Proposals / 8)
+PEP (Python Enhancement Proposals)
 
-* PEP8 is a documentation to describe the good practices for Python
+* PEP is a documentation to describe the good practices for Python
+* This file represents some concepts of:
+  * PEP8: Style Guide for Python Code
+  * PEP257: Docstring Conventions
 * This is allowed in https://www.python.org/dev/peps/
 * The idea is to describe the way to type code using 'Pythonic' way
 * Use the editorconfig plugin in your IDE and put the .editorconfig file on the
   root of this projecto to your projecto to configure the code format
+* Reference: https://www.python.org/dev/peps/
 """
 
 ###############################################################################
@@ -165,7 +169,7 @@ Lorem ipsum
 
 
 # Section comments
-# * NOTE: Not real PEP8 recomendation
+# * NOTE: Not real PEP recomendation
 # * To separete code sections, use the section comment with "#" char
 # * NOTE: The example below is inside a multi-line comment just to differs from
 #   the other section comments in this file
@@ -177,7 +181,7 @@ Lorem ipsum
 
 
 # Docstrings
-# * NOTE: Not real PEP8 recomendation
+# * NOTE: Not real PEP recomendation
 # * Use a multiline comment with dual quotes
 # * Do not use a multiline in just one line (inline) comment
 def function():
