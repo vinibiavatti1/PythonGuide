@@ -174,6 +174,10 @@ import pdb
 import pickle
 
 
+# Used to retrieve as much possible information about the OS
+import platform
+
+
 # This useful module implements pseudo-random number generators for various
 # distributions.
 import random

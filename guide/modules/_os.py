@@ -10,6 +10,8 @@ import os
 
 ###############################################################################
 # OS attributes
+# * NOTE: You can use platform module (_platform.py file) to get more info from
+#   operating system
 ###############################################################################
 
 
@@ -80,6 +82,24 @@ print(os.listdir())
 # NOTE: If a new directory is specified, the file will be moved
 open('C:\\pg_test\\pg_file.txt', 'w')
 os.rename('C:\\pg_test\\pg_file.txt', 'C:\\pg_test\\pg_other.txt')
+
+
+# path.isdir(path)
+# * Check if the path is a directory
+print(os.path.isdir('C:\\pg_test'))
+# True
+
+
+# path.isfile(path)
+# * Check if the path is a file
+print(os.path.isfile('C:\\pg_test'))
+# False
+
+
+# path.isabs(path)
+# * Check if the path is absolute
+print(os.path.isabs('C:\\pg_test'))
+# True
 
 
 ###############################################################################
