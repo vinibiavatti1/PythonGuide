@@ -102,6 +102,13 @@ print(os.path.isabs('C:\\pg_test'))
 # True
 
 
+# path.join(path)
+# * Join one or more path components intelligently (using the correct path
+#   separator from the OS)
+print(os.path.join(os.getcwd(), 'folder', 'file.txt'))
+# C:\folder\file.txt
+
+
 ###############################################################################
 # Execute OS command
 ###############################################################################
