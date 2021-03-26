@@ -19,9 +19,10 @@ print()
 # Cast
 lst1 = ['name', 'age']
 lst2 = ['Vini', 26]
-print(set(zip(lst1, lst2)))    # {('name', 'Vini'), ('age', 26)}
-print(tuple(zip(lst1, lst2)))  # (('name', 'Vini'), ('age', 26))
-print(dict(zip(lst1, lst2)))   # {'name': 'Vini', 'age': 26}
+zp = zip(lst1, lst2)
+print(set(zp))    # {('name', 'Vini'), ('age', 26)}
+print(tuple(zp))  # (('name', 'Vini'), ('age', 26))
+print(dict(zp))   # {'name': 'Vini', 'age': 26}
 
 
 # Enumerated iterables
