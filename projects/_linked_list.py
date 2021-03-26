@@ -106,6 +106,12 @@ class LinkedList:
     Traceback (most recent call last):
         ...
     IndexError: the linked list is empty
+
+    To dict
+    >>> linked_list.append_right('Hi')
+    >>> linked_list.append_right(3)
+    >>> linked_list.to_dict()
+    {'value': 'Hi', 'next': {'value': 3, 'next': {}}}
     """
     def __init__(self):
         """
@@ -184,6 +190,17 @@ class LinkedList:
             i += 1
         self.remove(i)
         return node.value
+
+    def to_dict(self):
+        dct = {}
+        current_dct = dct
+        node = self.root
+        while node is not None:
+            current_dct['value'] = node.value
+            current_dct['next'] = {}
+            current_dct = current_dct['next']
+            node = node.next
+        return dct
 
     def __len__(self):
         """
@@ -292,6 +309,12 @@ def tests():
         assert False, 'An Index error has to be thrown'
     except IndexError as err:
         assert isinstance(err, IndexError)
+
+    # To dict
+    linked_list.append_right('Hi')
+    linked_list.append_right(3)
+    assert linked_list.to_dict() == \
+        {'value': 'Hi', 'next': {'value': 3, 'next': {}}}
 
 
 # Algorithm
