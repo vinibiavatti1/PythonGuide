@@ -1,5 +1,5 @@
 """
-Class metaclass
+Metaclass
 
 * The class of a class. Class definitions create a class name, a class
   dictionary, and a list of base classes. The metaclass is responsible for

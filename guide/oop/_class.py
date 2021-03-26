@@ -9,6 +9,12 @@ Class
   represent a real-world situation. This idea of putting data and functions
   together in a class is central to the concept of object-oriented
   programming (OOP)
+
+* Syntaxes to define a class:
+  * class <name>:
+  * class <name>():  # Same result of above
+  * class <name>(<bases>)
+  * class <name>(<bases>, metaclass=<meta>):
 """
 
 

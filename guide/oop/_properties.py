@@ -1,15 +1,23 @@
 """
-Class properties
+Properties
 
-* There are 3 ways to create get and set methods in classes
-  * Property methods defined with decorators @property (RECOMENDED)
+* Properties are special kind of attributes which have getter, setter and
+  delete methods
+* There are 3 ways to create property methods in classes
+  * Property methods defined with decorators @property (RECOMMENDED)
   * Property methods as normal methods ()
   * Property methods defined with property() function
+* The underscore as prefix of some attribute indicates that this attribute is
+  private (Example: _name), and can have property methods to manipulate its val
 
-* There are 3 property methods to manipulate a property
-  * Set (Set the value)
-  * Get (Get the value)
-  * Del (Delete the property)
+There are 3 property methods to manipulate a property:
+###############################################################################
+Method              Description             Trigger
+###############################################################################
+Setter              Sets the value          obj.prop = val
+Getter              Gets the value          obj.prop
+Deleter             Deletes the property    del obj.prop
+###############################################################################
 """
 
 
@@ -20,7 +28,7 @@ class Client1:
         self._name = name
 
 
-# Property methods defined with decorators @property (RECOMENDED)
+# Property methods defined with decorators @property (RECOMMENDED)
 class Client2:
     # Init method
     def __init__(self, name):

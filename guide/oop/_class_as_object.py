@@ -1,5 +1,0 @@
-"""
-Class as object
-
-TODO
-"""
