@@ -3,7 +3,7 @@ Open
 
 * Open file and return a corresponding file object.
 * If the file cannot be opened, an OSError is raised
-* NOTE: Files dont need to be closed due GC will care it
+* NOTE: Files don't need to be closed due GC will care it
 * Syntax
   * open(file, mode='r', buffering=-1, encoding=None, errors=None,
     newline=None, closefd=True, opener=None)
@@ -16,6 +16,7 @@ Open
   * newline​: How newlines mode works (None, ' ', '\n', 'r', or '\r\n')
   * closefd: Must be True (Default); Used only with file descriptors
   * opener: A custom opener, must return an open file descriptor
+* NOTE: To work with directories, check _os.py file
 
 Open Modes
 ###############################################################################
