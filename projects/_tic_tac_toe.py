@@ -1,160 +1,204 @@
 """
-Tic-tac-toe
+Tic Tac Toe
+
+* Tic Tac Toe is a paper-and-pencil game for two players, X and O, who take
+  turns marking the spaces in a 3×3 grid. The player who succeeds in placing
+  three of their marks in a diagonal, horizontal, or vertical row is the winner
 """
 import random
 
 
+###############################################################################
 # Constants
-BOARD_SIZE = 3
-MAX_PLAYS = 9
-PLAYER_1 = 'X'
-PLAYER_2 = 'O'
+###############################################################################
 
 
-# Exception for invalid positions
-class InvalidPositionError(Exception):
+# Players
+PLAYER_X = 'X'
+PLAYER_O = 'O'
+
+
+###############################################################################
+# Classes
+###############################################################################
+
+
+# Tic Tac Toe Exception
+class TicTacToeError(Exception):
     pass
 
 
-def create_board():
-    """
-    Create a 3x3 matrix with numbers from 1 to 9
-    """
+# Tic Tac Toe class
+class TicTacToe:
+    def __init__(self):
+        """
+        Constructs a Tic Tac Toe game
+        """
+        self.board = [i for i in range(1, 10)]
+        self.current_player = PLAYER_X
 
-    return [[x+y for x in range(BOARD_SIZE)] for y in range(1, 9, 3)]
-
-
-def position_to_coords(position):
-    """
-    Convert position (1-9) to coordinates
-    """
-
-    position -= 1
-    y = position // BOARD_SIZE
-    x = position % BOARD_SIZE
-    return x, y
-
-
-def display_board(board):
-    """
-    Print board into console
-    """
-
-    for y in board:
-        print('+---+---+---+')
-        for x in y:
-            print('|', x, end=' ')
-        print('|')
-    print('+---+---+---+')
-
-
-def validate_position(position, plays):
-    """
-    Validates the position checking if the input is a number, if the input
-    is in range 1-9 and if the position has already been marked
-    """
-
-    if not position.isdigit():
-        raise InvalidPositionError('Invalid position')
-
-    position = int(position)
-    if position < 1 or position > 9:
-        raise InvalidPositionError('Invalid position')
-
-    if position in plays:
-        raise InvalidPositionError('This position has already been marked')
-
-    return True
-
-
-def has_available_play(plays):
-    """
-    Check if there is available play
-    """
-    return len(plays) != MAX_PLAYS
-
-
-def random_position(plays):
-    """
-    Generates a random position checking the plays already did
-    """
-    available_plays = {i for i in range(1, 10)}
-    available_plays.difference_update(plays)
-    position = random.choice(tuple(available_plays))
-    return position
-
-
-def check_victory(board, player):
-    """
-    Check if the player win the game validation the rows, columns and
-    diagonals
-    """
-    # Lines
-    for y in range(BOARD_SIZE):
-        victory = True
-        for x in range(BOARD_SIZE):
-            victory &= board[y][x] == player
-        if victory:
-            return True
-
-    # Columns
-    for x in range(BOARD_SIZE):
-        victory = True
-        for y in range(BOARD_SIZE):
-            victory &= board[y][x] == player
-        if victory:
-            return True
-
-    # Main diagonal
-    victory = True
-    for x in range(BOARD_SIZE):
-        victory &= board[x][x] == player
-    if victory:
-        return True
-
-    # Inverse diagonal
-    victory = True
-    for x in range(BOARD_SIZE):
-        victory &= board[x][(BOARD_SIZE - 1) - x] == player
-    if victory:
-        return True
-
-
-# Variables
-board = create_board()
-plays = []
-player = PLAYER_1
-
-# Algorithm
-while True:
-    display_board(board)
-
-    if player == PLAYER_1:
-        print(f'Player {player} turn...')
-        position = input('Type a position (1-9): ')
-        try:
-            validate_position(position, plays)
-        except InvalidPositionError as e:
-            print(e)
-            continue
+    def play(self, position):
+        """
+        Chooses a position in the board for the current player
+        """
+        if not str(position).isdigit():
+            raise TicTacToeError('The position must be a number')
         position = int(position)
-        x, y = position_to_coords(position)
-    else:
-        position = random_position(plays)
-        x, y = position_to_coords(position)
+        if position < 1 or position > 9:
+            raise TicTacToeError('Invalid position')
+        if not self.is_valid_position(position):
+            raise TicTacToeError('The position must be empty')
+        self.board[position - 1] = self.current_player
+        self.swap_player()
 
-    plays.append(position)
+    def is_valid_position(self, position):
+        """
+        Checks if the position is valid
+        """
+        if position < 1 or position > 9:
+            raise TicTacToeError('Invalid position')
+        return str(self.board[position - 1]).isdigit()
 
-    board[y][x] = player
+    def is_player_in_positions(self, player, *positions):
+        """
+        Checks if the player is in a list of positions
+        """
+        for pos in positions:
+            if self.board[pos - 1] != player:
+                return False
+        return True
 
-    if check_victory(board, player):
-        display_board(board)
-        print(f'Player {player} win!')
-        break
+    def swap_player(self):
+        """
+        Swaps the current player
+        """
+        if self.current_player == PLAYER_X:
+            self.current_player = PLAYER_O
+        else:
+            self.current_player = PLAYER_X
 
-    if not has_available_play(plays):
-        display_board(board)
-        print(f'TIC TAC TOE!')
-        break
+    def is_player_winner(self, player):
+        """
+        Checks if the player is the winner
+        """
+        h1 = self.is_player_in_positions(player, 1, 2, 3)
+        h2 = self.is_player_in_positions(player, 4, 5, 6)
+        h3 = self.is_player_in_positions(player, 7, 8, 9)
+        v1 = self.is_player_in_positions(player, 1, 4, 7)
+        v2 = self.is_player_in_positions(player, 2, 5, 8)
+        v3 = self.is_player_in_positions(player, 3, 6, 9)
+        d1 = self.is_player_in_positions(player, 1, 5, 9)
+        d2 = self.is_player_in_positions(player, 3, 5, 7)
+        return h1 or h2 or h3 or v1 or v2 or v3 or d1 or d2
 
-    player = PLAYER_1 if player != PLAYER_1 else PLAYER_2
+    def get_winner(self):
+        """
+        Gets the winner. If there is no winner, returns None
+        """
+        px = self.is_player_winner(PLAYER_X)
+        if px:
+            return PLAYER_X
+        po = self.is_player_winner(PLAYER_O)
+        if po:
+            return PLAYER_O
+        return None
+
+    def is_tictactoe(self):
+        """
+        Checks if there is no possible play to do
+        """
+        for pos in self.board:
+            if str(pos).isdigit():
+                return False
+        return True
+
+    def print_board(self):
+        """
+        Prints the board into console
+        """
+        b = self.board
+        print('+', '+', '+', '+', sep='-----')
+        print('| ', b[0], ' | ', b[1], ' | ', b[2], ' |')
+        print('+', '+', '+', '+', sep='-----')
+        print('| ', b[3], ' | ', b[4], ' | ', b[5], ' |')
+        print('+', '+', '+', '+', sep='-----')
+        print('| ', b[6], ' | ', b[7], ' | ', b[8], ' |')
+        print('+', '+', '+', '+', sep='-----')
+
+
+# Computer
+class Computer:
+    @staticmethod
+    def choose_position(game):
+        """
+        Choose a random position in the board
+        """
+        available_positions = list(
+            filter(lambda p: str(p).isdigit(), game.board)
+        )
+        return random.choice(available_positions)
+
+
+# User interation class
+class Interaction:
+    @staticmethod
+    def welcome():
+        """
+        Prints the welcome message
+        """
+        print('Welcome to Python Tic Tac Toe!')
+        print('By: Vini')
+        print()
+        print('** Type enter to start! **')
+        input()
+
+    @staticmethod
+    def play(game):
+        """
+        Ask for a position and make the play
+        """
+        while True:
+            position = input('Choose a position (1 - 9): ')
+            try:
+                game.play(position)
+                break
+            except TicTacToeError as err:
+                print(err)
+                continue
+
+
+###############################################################################
+# Algorithm
+###############################################################################
+
+
+# Main
+def main():
+    """
+    Main method
+    """
+    Interaction.welcome()
+    game = TicTacToe()
+    player = random.choice((PLAYER_X, PLAYER_O))
+    winner = None
+    game.print_board()
+    while True:
+        print(f'Player {game.current_player} turn...')
+        if game.current_player == player:
+            Interaction.play(game)
+        else:
+            position = Computer.choose_position(game)
+            game.play(position)
+        game.print_board()
+        winner = game.get_winner()
+        if winner is not None:
+            print(f'The player {winner} won this game!')
+            break
+        if game.is_tictactoe():
+            print(f'TIC TAC TOE!')
+            break
+
+
+# Init
+if __name__ == '__main__':
+    main()
