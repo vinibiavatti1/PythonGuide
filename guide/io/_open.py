@@ -47,9 +47,22 @@ import sys
 
 
 CURRENT_PATH = sys.path[0]
+FILE_CREATE = os.path.join(CURRENT_PATH, '../../resources/file_create.txt')
 FILE_READ = os.path.join(CURRENT_PATH, '../../resources/file_read.txt')
 FILE_WRITE = os.path.join(CURRENT_PATH, '../../resources/file_write.txt')
 FILE_IMAGE = os.path.join(CURRENT_PATH, '../../resources/image.png')
+
+
+###############################################################################
+# Create and remove file
+###############################################################################
+
+
+# Create file
+# * Creates the file with open w function
+# * NOTE: For guarantee, the file is closed after creation using .close()
+open(FILE_CREATE, 'w').close()
+os.remove(FILE_CREATE)
 
 
 ###############################################################################

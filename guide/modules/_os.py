@@ -28,7 +28,7 @@ print(os.linesep)
 
 
 ###############################################################################
-# Path commands
+# OS commands
 ###############################################################################
 
 
@@ -70,11 +70,27 @@ os.rmdir('C:\\pg_test\\python\\directory')
 os.rmdir('C:\\pg_test\\python')
 
 
-# listdir()
+# removedirs(path)
+# * Remove a tree of empty directories
+os.chdir('C:\\pg_test')
+os.makedirs('python\\directory\\example')
+os.removedirs('python\\directory\\example')
+
+
+# listdir(path='.')
 # * List Files and Sub-directories
 os.chdir('C:\\')
 print(os.listdir())
 # ['Windows', 'Program Files (x86)', 'Users', ...]
+
+
+# scandir(path='.')
+# * Return an iterator of os.DirEntry objects corresponding to the entries in
+#   the directory given by path
+# * It is similar to listdir, but this brings more information for each file
+#   found
+print(list(os.scandir()))
+# [<DirEntry '$Recycle.Bin'>, <DirEntry '$WinREAgent'>, ...]
 
 
 # rename(src, dst, src_dir_fd=None, dst_dir_fd=None)
@@ -82,6 +98,11 @@ print(os.listdir())
 # NOTE: If a new directory is specified, the file will be moved
 open('C:\\pg_test\\pg_file.txt', 'w')
 os.rename('C:\\pg_test\\pg_file.txt', 'C:\\pg_test\\pg_other.txt')
+
+
+###############################################################################
+# Path
+###############################################################################
 
 
 # path.isdir(path)
@@ -109,8 +130,14 @@ print(os.path.join(os.getcwd(), 'folder', 'file.txt'))
 # C:\folder\file.txt
 
 
+# path.exists(path)
+# * Check if some path exists
+print(os.path.exists('C:\\pg_test'))  # True (Directory)
+print(os.path.exists('C:\\pg_test\\pg_other.txt'))  # True (File)
+
+
 ###############################################################################
-# Execute OS command
+# System commands
 ###############################################################################
 
 

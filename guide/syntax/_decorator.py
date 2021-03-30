@@ -3,7 +3,8 @@ Decorator (@)
 
 * A decorator, is a callable that is used to extend the functionality of other
   callables. In simple words, It allows you to decorate a function with
-  another function
+  another function. This concept is called Higher-order functions (Check
+  _higher_order_functions.py file)
 * The @ symbol in this context is sometimes referred to as Pie Syntax to a
   decorator
 * The pie syntax makes it more easy to access and extend

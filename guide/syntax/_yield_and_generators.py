@@ -15,6 +15,7 @@ Generators
 * Is better then list comprehension in some cases because it consumes less
   memory while in list all the values will be stored in memory
 """
+import time
 
 
 ###############################################################################
@@ -88,7 +89,7 @@ print(all(i for i in range(1, 5)))
 
 
 ###############################################################################
-# Memory compare
+# Memory comparing
 ###############################################################################
 
 

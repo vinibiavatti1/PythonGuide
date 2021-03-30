@@ -223,6 +223,10 @@ import subprocess
 import sys
 
 
+# Creating and handling temporary files
+import tempfile
+
+
 # Builds higher-level threading interfaces on top of the lower level _thread
 # module.
 import threading

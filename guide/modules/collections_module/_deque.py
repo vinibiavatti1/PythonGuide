@@ -16,6 +16,12 @@ Deque
 import collections
 
 
+# Empty deque
+dq = collections.deque()
+print(dq)
+# deque([])
+
+
 # Append Left
 dq = collections.deque([1, 2, 3])
 dq.appendleft(0)
