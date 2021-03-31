@@ -65,6 +65,34 @@ message('Hi Pie Decorator!')
 # Hi Pie Decorator!
 
 
+# Accepting any parameter in function
+# * To accept any parameter in wrapper function you can use *args and **kwargs
+def show_today(func):
+    def wrapper(*args, **kwargs):
+        print(datetime.today())
+        return func(*args, **kwargs)
+    return wrapper
+
+
+# Creating and decorating functions with different parameters
+# * This function will have different parameters
+# * The decorator can handle different parameters, not only one
+@show_today
+def dialog(text):
+    print(text)
+
+
+@show_today
+def conversation(name, text):
+    print(name + ': ' + text)
+
+
+# Call the function with different parameters
+# * Both functions will work correctly
+dialog('Hi')                   # 2021-03-31 13:41:22.014080 Hi
+conversation('Vini', 'hello')  # 2021-03-31 13:41:22.014080 Vini: hello
+
+
 ###############################################################################
 # Decorator parameters
 ###############################################################################
