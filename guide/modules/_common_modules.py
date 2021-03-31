@@ -174,6 +174,10 @@ import pdb
 import pickle
 
 
+# Python Imaging Library used to process images
+import PIL
+
+
 # Used to retrieve as much possible information about the OS
 import platform
 
