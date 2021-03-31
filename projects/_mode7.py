@@ -99,7 +99,7 @@ class Mode7:
         Converts RGB to HEX
         """
         if alpha:
-            r, g, b, a = rgb
+            r, g, b, _ = rgb
         else:
             r, g, b = rgb
         return f'#{r:02x}{g:02x}{b:02x}'
