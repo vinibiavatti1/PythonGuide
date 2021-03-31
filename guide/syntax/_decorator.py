@@ -11,115 +11,175 @@ Decorator (@)
 * Decorators wrap a function, modifying its behavior
 
 * Syntax
-  * @<decorator_name>
+  * @<decorator_name>(<parameters>)
     any_callable
 """
 import functools
+from datetime import datetime
 
 
-# Decorator without pie syntax
-def decorator(func):
+###############################################################################
+# Decorator
+###############################################################################
+
+
+# Define a decorator function
+# * To create a decorator, you must create a function that will be the
+#   decorator, and a function inside that will be the wrapper
+# * The decorator function must receive a function as argument
+def show_date(func):
     def wrapper(text):
-        print(f'Function {func.__name__} called')
+        print(datetime.today())
         return func(text)
     return wrapper
 
 
-def my_print(text):
+# Create a normal function
+# * This function will be decorated with the decorator created before
+def text(text):
     print(text)
 
 
-my_print = decorator(my_print)
-my_print('Hi decorator!')
-# Function my_print called
+# Decorating a function and call it (without pie syntax @)
+# * To decorate some function, you must call the decorator function passing the
+#   target function as argument, and the return will be the function decorated
+# * NOTE: This way is not recommended since the Python has the Pie Syntax to
+#   use for decorate function or classes (Check the next example)
+text = show_date(text)
+text('Hi decorator!')
+# 2021-03-30 22:50:07.713562
 # Hi decorator!
 
 
-# Decorator with pie syntax
-def show_fn_name(func):
-    def wrapper(text):
-        print(f'Function {func.__name__} called')
-        return func(text)
-    return wrapper
-
-
-@show_fn_name
-def my_print2(text):
+# Creating and decorating a function (with pie syntax @)
+# * NOTE: This way is recommended and is beeter to undertanding
+@show_date
+def message(text):
     print(text)
 
 
-my_print2('Hi Pie Decorator!')
-# Function my_print2 called
+# Call decorated function
+# * In this way you can call the function and it will be decorated already
+message('Hi Pie Decorator!')
+# 2021-03-30 22:50:07.713562
 # Hi Pie Decorator!
 
 
-# Decorator with parameters
-def join_text(join_text):           # decorator
+###############################################################################
+# Decorator parameters
+###############################################################################
+
+
+# Define a decorator with parameters
+# * To define parameters to the decorator, it need three functions:
+#   * 1. The decorator function (containing the decorator paramenters)
+#   * 2. The decorator wrapper (containing the function as paramenter)
+#   * 3. The function wrapper
+def join_text(text):                # decorator
     def decorator_wrapper(func):    # decorator wrapper
-        def wrapper(text):          # function wrapper
-            return func(f'{text} {join_text}')
+        def wrapper(message):       # function wrapper
+            return func(f'{text} {message}')
         return wrapper
     return decorator_wrapper
 
 
-@join_text('Decorator text')
-def my_print3(text):
+# Decorating a function (with parameters)
+# * To decorate a function with a decorator that contains parameters, you can
+#   just set the parameters to the decorator inside the parenthesis ()
+@join_text('Guy says: ')
+def say(message):
+    print(message)
+
+
+# Call decorated function (with parameters)
+# * You can call the function using the same way
+say('Hello my friend!')
+# Guy says: Hello my friend!
+
+
+###############################################################################
+# Nested decorators
+###############################################################################
+
+
+# Set a nested decorators to function
+# * You can add more then once decorator for a function or a class
+@show_date
+@join_text('Guy says: ')
+def speak(text):
     print(text)
 
 
-my_print3('Func text')
-# Func text Decorator text
+# Call a function that contains nested decorators
+# * Use the same way to call a function, and the decorators will be executed
+speak('This function is so decorated!')
+# 2021-03-30 22:50:07.713562
+# Guy says: This function is so decorated!
 
 
-# Nesting decorators
-@show_fn_name
-@join_text('joined text')
-def my_print4(text):
-    print(text)
+###############################################################################
+# Wraps
+###############################################################################
 
 
-my_print4('Nesting...')
-# Function wrapper called  NOTE: The incorrect named was displayed
-# Nesting... joined text
-
-
-# Functools wrap
-# * Used to make reference to corret function, not to the wrapper function
-# * If used dir or help command in a function witout wraps, the incorrenct
+# Functools Wraps
+# * The wraps decorator is used to make reference to corret function, not to
+#   the wrapper function
+# * If dir or help command is used in a function witout wraps, the incorrenct
 #   information will be displayed. To fix it, the functools.wraps function
 #   can be used
-def show_fn_name_wrapped(func):
+def show_time(func):
     @functools.wraps(func)
     def wrapper(text):
-        print(f'Function {func.__name__} called')
+        print(datetime.today())
         func(text)
     return wrapper
 
 
-@show_fn_name_wrapped
-def my_print5(text):
+# Decorate a function with a decorator using wraps
+# * To decorate is the same way of others
+@show_time
+def ask(text):
+    """
+    Ask something
+    """
     print(text)
 
 
-print(my_print5.__name__)  # my_print5
-my_print5('Wraps!')
-# Function my_print5 called
-# Wraps!
+# Check the information os a decorated function with wraps
+# * To check the information you can check the attributes of the function or
+#   use dir or help functions
+print(ask.__name__)    # ask (With wraps)
+print(speak.__name__)  # wrapper (Without wraps) (incorrect)
+help(ask)              # ask(text)
+help(speak)            # wrapper(text) (incorrect)
 
 
-# Decorator in class
-def class_decorator(cls):
+###############################################################################
+# Class decorator
+###############################################################################
+
+
+# Define a decorator to some class
+# * You can decorate classes too, to manipulate the way to instantiate objects
+#   of it
+# * The parameter for a class decorator will be the class, not a function
+def class_name(cls):
     @functools.wraps(cls)
     def wrapper():
-        print(cls.__name__)
+        print(f'Class name: {cls.__name__}')
         return cls()
     return wrapper
 
 
-@class_decorator
-class MyClass():
+# Decorate a class
+# * To decorate a class, you can use the same way to decorate a function
+@class_name
+class Person():
     pass
 
 
-my_class = MyClass()
-# MyClass
+# Create a object from class
+# * It will execute the wrapper fisrt
+person = Person()
+# Class name: Person

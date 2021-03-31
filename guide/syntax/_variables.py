@@ -13,6 +13,7 @@ Variables
 x = 1               # Integer
 y = 'Hello world'   # String
 avg = 3.5           # Float
+cpx = 2j            # Complex
 lst = [1, 2, 3]     # List
 tpl = (1, 2, 3)     # Tuple
 

@@ -66,8 +66,8 @@ x = 'a'
 if x == 'a': print(True)  # Same line
 
 
-# If ternary
-# NOTE: It needs the else!
+# Ternary if
+# NOTE: It needs the else statement!
 x = 'b'
 print('a') if x == 'a' else print('b')
 # b
