@@ -1,50 +1,94 @@
 """
 Cache decorator
+
+* Create a cache decorator that will store the result of the function for the
+  args
 """
+from functools import wraps
+from time import time
 
 
+###############################################################################
+# Decorator
+###############################################################################
+
+
+# Cache decorator
 def cache(func):
-    def wrapper(number, **kwargs):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # disable cache
         if not kwargs.get('cache', True):
-            return func(number)
-        if hasattr(func, '_cache'):
-            if kwargs.get('clear_cache', False):
-                func._cache = {}
-            if number in func._cache:
-                print('[From cache]', end=' ')
-                return func._cache[number]
-        else:
-            func._cache = {}
-        result = func(number)
-        func._cache[number] = result
+            return func(*args, **kwargs)
+        if kwargs.get('cache', False):
+            del kwargs['cache']
+
+        # generate cache key
+        cache_key = ''
+        sep = ''
+        for arg in args:
+            cache_key += sep + str(arg)
+            sep = '__'
+        for arg in kwargs.values():
+            cache_key += sep + str(arg)
+            sep = '__'
+
+        # check cache
+        if not hasattr(wrapper, 'cache'):
+            wrapper.cache = {}
+        if wrapper.cache.get(cache_key):
+            return wrapper.cache.get(cache_key)
+
+        # execute and store
+        result = func(*args, **kwargs)
+        wrapper.cache[cache_key] = result
         return result
     return wrapper
 
 
+###############################################################################
+# Decorated functions
+###############################################################################
+
+
+# Fibonatti function
 @cache
-def get_prime_numbers_until(number, **kwargs):
-    primes = []
-    for n in range(2, number + 1):
-        divisible = False
-        for i in range(2, n):
-            if n % i == 0:
-                divisible = True
-                break
-        if not divisible:
-            primes.append(n)
-    return primes
+def fib(amount, **kwargs):
+    x, y = 1, 1
+    result = []
+    for _ in range(amount):
+        result.append(x)
+        x, y = y, x + y
+    return result
 
 
-print(get_prime_numbers_until(5))   # [2, 3, 5]
-print(get_prime_numbers_until(10))  # [2, 3, 5, 7]
-print(get_prime_numbers_until(5))   # [From cache] [2, 3, 5]
-print(get_prime_numbers_until(10))  # [From cache] [2, 3, 5, 7]
+# Sum range function
+@cache
+def sum_range(start, end, initial=0, **kwargs):
+    result = initial
+    for i in range(start, end):
+        result += i
+    return result
 
-print(get_prime_numbers_until(5, clear_cache=True))
-# [2, 3, 5]
 
-print(get_prime_numbers_until(10))  # [2, 3, 5, 7]
-print(get_prime_numbers_until(5))   # [From cache] [2, 3, 5]
+###############################################################################
+# Algorithm
+###############################################################################
 
-print(get_prime_numbers_until(5, cache=False))
-# [2, 3, 5]
+
+# Main
+def main(cache):
+    start = time()
+    fib(1000, cache=cache)
+    sum_range(10, 100_000_000, cache=cache)
+    print(f'Execution time: {time() - start} seconds')
+
+
+# Init
+if __name__ == '__main__':
+    main(True)   # cache true
+    main(True)   # cache true
+    main(False)  # cache false
+    # Execution time: 4.411196708679199 seconds (not in cache)
+    # Execution time: 0.0 seconds               (got from cache)
+    # Execution time: 4.546623229980469 seconds (ignored cache)

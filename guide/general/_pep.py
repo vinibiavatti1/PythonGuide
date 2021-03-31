@@ -254,5 +254,12 @@ if (1 == 1 and      # Dont use indentation
     pass
 
 
+# Unused resource
+# * To mark some resource as unused intentionally, use the "_" char as the name
+#   of the resource
+for _ in range(10):
+    pass
+
+
 # EOF new line
 # * Always use a blank line as EOF (end of file) line
