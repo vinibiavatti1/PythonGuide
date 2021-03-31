@@ -31,7 +31,13 @@ Syntax: super(type, object-or-type)
 """
 
 
+###############################################################################
+# Base class call vs Super
+###############################################################################
+
+
 # Method call with base class name
+# * In this, the method will be called by the base class name
 class Car:
     def __init__(self, name):
         self.name = name
@@ -39,7 +45,6 @@ class Car:
 
 class Kombi(Car):
     def __init__(self):
-        # Without super (base class method call)
         Car.__init__(self, 'Kombi')
 
 
@@ -49,51 +54,64 @@ print(car.name)
 
 
 # Method call with super()
-class Car2:
+# * In this, the method will be called by the super() keyword
+# * NOTE: To use super(), even the root class need to call super to object!
+class Tower:
     def __init__(self, name):
         self.name = name
         # NOTE: Even to object as base class the super has to be called!
         super().__init__()
 
 
-class Kombi2(Car2):
+class Pisa(Tower):
     def __init__(self):
-        # Same of super(Kombi2, self) (Implicit)
-        super().__init__('Kombi')
+        # Same of super(Tower, self) (Implicit)
+        super().__init__('Pisa')
 
 
-car = Kombi2()
-print(car.name)
-# Kombi
+tower = Pisa()
+print(tower.name)
+# Pisa
+
+
+###############################################################################
+# Super parameters
+###############################################################################
 
 
 # Super parameters
-# NOTE: It is nor recommended to change the default parameters to super
-#       the parametrization was allowed just to configure the MRO resolution in
-#       Python 2. For Python 3 we can use super without parameters (super())
-#       and change the default parameters can be indication of archicteture
-#       problems
-class Car3(object):
+# * NOTE: It is nor recommended to change the default parameters to super the
+#   parametrization was allowed just to configure the MRO resolution in Python
+#   2. For Python 3 we can use super without parameters (super()) and change
+#   the default parameters can be indication of archicteture problems
+class Building(object):
     def __init__(self, name):
         self.name = name
         # NOTE: Even to object as base class the super has to be called!
-        super(Car3, self).__init__()
+        super(Building, self).__init__()
 
 
-class Kombi3(Car3):
+class Castle(Building):
     def __init__(self):
-        # Same of super(Kombi2, self) (Implicit)
-        super(Kombi3, self).__init__('Kombi')
+        # Same of super(Castle, self) (Implicit)
+        super(Castle, self).__init__('Castle')
 
 
-car = Kombi3()
-print(car.name)
-# Kombi
+building = Castle()
+print(building.name)
+# Castle
 
 
-# Cooperative Super (super with different parameters)
-# NOTE: To use different parameters to methods called with super and using
-#       multi inheritance the *args and **kwargs must be used
+###############################################################################
+# Dynamic super
+###############################################################################
+
+
+# Dynamic Super (super methods with different parameters)
+# * NOTE: To use different parameters to methods called with super and using
+#   multi inheritance the *args and **kwargs must be used
+# * This situation is common when multi-inheritance is being used, and the base
+#   classes have different parameters to the methods
 class Auto:
     def __init__(self):
         super().__init__()

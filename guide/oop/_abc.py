@@ -6,29 +6,56 @@ ABC (Abstract Base Class)
 * abc.ABC vs abc.ABCmeta is the same thing, the difference is that
   abc.ABCmeta needs to be defined as metaclass
 """
-import abc
+from abc import ABC, abstractmethod
 
 
-# Abstract Class
-class Vehicle(abc.ABC):
+###############################################################################
+# ABC class
+###############################################################################
+
+
+# Define an abstract class
+# * To define an ABC class you can pass the ABC class from abc module as
+#   extension for the class
+# * NOTE: ABC classes cannot be instantiated. They are used always as base
+#   classes
+class Vehicle(ABC):
     pass
 
 
-# Abstract methods
-class Vehicle2(abc.ABC):
-    @abc.abstractmethod
-    def run(self):
+# Implement the ABC class
+# * To use the ABC class (Vehicle) as base class, you can just add this as
+#   extension
+class Car(Vehicle):
+    pass
+
+
+###############################################################################
+# ABC method
+###############################################################################
+
+
+# Define abstract method
+# * Abstract methods must create inside the ABC classes only
+# * NOTE: The abstract method does not contains any implementation, and always
+#   has the "pass" keyword as the body for the method
+# * NOTE: This kind of method needs to be implemented in the child class
+class Animal(ABC):
+    @abstractmethod
+    def say(self):
         pass
 
 
-# Inheritance
-class Car(Vehicle2):
-    def __init__(self):
-        self.speed = 0
+# Implement the ABC class with abstract method
+# * When some ABC class containing an abstract method is inherited, this method
+#   must be implemented as mandatory
+class Duck(Animal):
+    def say(self):
+        print('quack!')
 
-    def run(self):
-        self.speed += 1
 
-
-car = Car()
-car.run()
+# Class abstract method
+# * To call any abstract method it must be implemented in the concrete class
+duck = Duck()
+duck.say()
+# quack!

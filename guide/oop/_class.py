@@ -18,58 +18,80 @@ Class
 """
 
 
-# Define class
-class Client1:
+###############################################################################
+# Class
+###############################################################################
+
+
+# Define a class
+# * To define some class, the "class" keyword must be used
+class Client:
     pass
 
 
-class Client2():  # Used for extensions
+# Define a class with parenthesis
+# * This works the same as the before example. This parenthesis are used to
+#   define the base classes for this class.
+class Person():
     pass
 
 
-# Create instance
-client = Client1()  # New object
+# Creating an instance
+# * To create an instance of the class, just call the class
+person = Person()
+print(type(person))
+# <class '__main__.Person'>
 
 
 ###############################################################################
-# Class scope
+# Class context
 ###############################################################################
 
 
 # Class variables
-# * Variables that will be shared with the instances of the class
-class Client3:
-    name = 'Vini'
+# * These kind of variables will be shared between the instances of the class
+# * If the value for this variable is changed, all of the classes will have the
+#   value changed too
+class Animal:
+    name = 'Duck'
 
 
 # Access class variable
-print(Client3.name)
-# Vini
+# * To access a class variable, you access this from the class, not the
+#   instance
+print(Animal.name)
+# Duck
 
 
 # Class methods
 # * Usually used to define other constructors for the class, or create a
 #   factory methods
-# * Has the 'cls' as first parameters to reference the class itself
-class Client4:
+# * The decorator @classmethod is used to define this kind of method
+# * Need to have as the first parameter the "cls", that represents the class
+#   itself
+class Vehicle:
     @classmethod
     def create(cls):
         return cls()
 
 
 # Access class methods
-print(Client4.create())
-# <__main__.Client4 object at 0x000002D75B713F70>
+# * To access a class method, you access this from the class, not the
+#   instance
+vehicle = Vehicle.create()
+print(vehicle)
+# <__main__.Vehicle object at 0x000002D75B713F70>
 
 
 ###############################################################################
-# Static scope
+# Static context
 ###############################################################################
 
 
 # Static methods
 # * Usually used to create utility methods (like Math.sum())
-# * Dont has any parameters as first mandatory
+# * The decorator @staticmethod is used to define this kind of method
+# * This kind of method does not have any reserved parameters as first
 class Math:
     @staticmethod
     def sum(x, y):
@@ -77,60 +99,69 @@ class Math:
 
 
 # Access static methods
+# * To access a class method, you access this from the class, not the
+#   instance
 print(Math.sum(5, 5))
 # 10
 
 
 ###############################################################################
-# Instance scope
+# Instance context
 ###############################################################################
 
 
-# Init (Constructor)
-class Client5:
-    # Called when create new object of this class (aka Contructor)
+# Define a class with constructor (__init__ method)
+# * To define the constructor of the class you use the magic method __init__()
+# * This constructor will be called when some instance of the class is being
+#   created
+# * NOTE: All the instance methods in the class must have the "self" parameter
+#   as first
+class House:
     def __init__(self, name):
-        self._name = name  # Used _ to define it is a private property
+        self.name = name
 
 
-# Access init (constructor)
-client = Client5('Vini')  # Constructor
+# Call constructor (__init__)
+# * The constructor will be called during the instantiation of some object of
+#   this class
+home = House('My home')
+print(home.name)
+# My home
 
 
 # Instance variables (properties)
-class Client6:
-    # Self as first parameter always for constructor
+# * Properties are variables for the instance, not the class
+# * Each instance will have an own value for the instance variables
+# * Properties are defined inside the constructor
+class Lamp:
     def __init__(self):
-        self._name = 'Vini'  # Property. Unique for each instance of the class
+        self.color = 'Yellow'
 
 
 # Instance Methods
-class Client7:
-    # Self as first parameter always for instance methods
-    def set_name(self, name):
-        self._name = name
+# * Methods are instance functions, that will use the properties to change the
+#   state of the object
+# * NOTE: All the instance methods in the class must have the "self" parameter
+#   as first
+class Light:
+    def turn_on(self):
+        self.__on = True
 
 
-c = Client7()
-c.set_name('Vini')
+# Call instance method
+# * To call the instance method, an instance of the class need to be created
+#   first
+light = Light()
+light.turn_on()
 
 
-###############################################################################
-# CAUTION
-###############################################################################
-
-
-# NOTE: If you access the class variable from the instance to set a new value
-#       using normal way, the class variable will not be changed, as
-#       consequence a new variable will be create for that instance
-class Car:
-    whells = 4
-
-
-car1 = Car()
-
-# DO NOT changed the class variable. It created a new variable in instance
-car1.whells = 3
-print(car1.whells)            # 3 (new property)
-print(car1.__class__.whells)  # 4 (kept)
-print(Car.whells)             # 4 (kept)
+# Class variable vs instance variable (CAUTION)
+# * NOTE: If you access the class variable from the instance to set a new value
+#   using normal way, the class variable will not be changed, as consequence a
+#   new variable will be create for that instance
+# * NOTE: DO NOT change the class variable from the instance, to avoid problems
+fish = Animal()
+fish.name = 'Fish'          # NOTE: It not changes the class variable
+print(fish.name)            # Fish (new property)
+print(fish.__class__.name)  # Duck (kept)
+print(Animal.name)          # Duck (kept)

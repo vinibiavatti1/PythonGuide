@@ -33,7 +33,7 @@ class Template(object, metaclass=type):
 
     # Method
     def get_full_name(self):
-        return f'{self.name}: {Template.version}'
+        return f'{self.name}: {Template.number}'
 
     # Class methods
     @classmethod

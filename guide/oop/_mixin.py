@@ -13,7 +13,8 @@ MixIn
 import json
 
 
-# MixIn
+# Define a MixIn class
+# * The MixIn class must have the MixIn suffix in the name
 class JSONParseMixIn:
     def toJSON(self):
         return json.dumps(self.__dict__)
@@ -22,7 +23,8 @@ class JSONParseMixIn:
         return json.loads(json_object)
 
 
-# Base Class
+# Define a base class
+# * This class will be used as the base class
 class Customer:
     def __init__(self, name, company):
         self._name = name
@@ -37,17 +39,19 @@ class Customer:
         return self._company
 
 
-# Child Class with MixIn
-# NOTE: MixIn classes have to be in the front to guarantee the correct MRO
-# processing
+# Define the child class with MixIn
+# * NOTE: MixIn classes have to be set in the front to guarantee the correct
+#   MRO (Method Resolution Order) processing
 class CustomerData(JSONParseMixIn, Customer):
     def __init__(self, name, company):
         super().__init__(name, company)
 
 
+# Call MixIn methods
+# * The MixIn methods will be available in the class that inherites it
 customerData = CustomerData('Vini', 'ABC S/A')
-print(customerData.toJSON())
-# {"_name": "Vini", "_company": "ABC S/A"}
 jsonData = {"name": "Vini", "company": "ABC S/A"}
+print(customerData.toJSON())
 print(customerData.fromJSON(jsonData))
+# {"_name": "Vini", "_company": "ABC S/A"}
 # {'name': 'Vini', 'company': 'ABC S/A'}

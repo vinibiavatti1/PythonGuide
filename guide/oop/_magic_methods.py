@@ -142,7 +142,13 @@ __reduce_ex__(self)                 pickle.dumps(x)
 """
 
 
-# Defining magic method
+###############################################################################
+# Examples
+###############################################################################
+
+
+# Define magic method
+# * __init__ and __gt__ are magic methods
 class MagicClass:
     def __init__(self, val):
         self.val = val
@@ -151,7 +157,8 @@ class MagicClass:
         return self.val > other
 
 
-# Using magic method
+# Call magic method
+# * The magic methods usually are called in specific cases
 mc = MagicClass(5)
 print(mc > 4, mc > 6, sep=', ')
 # True, False

@@ -21,92 +21,82 @@ Deleter             Deletes the property    del obj.prop
 """
 
 
+###############################################################################
 # Property
-class Client1:
-    def __init__(self, name):
-        # property (With '_' to define it as a private property)
-        self._name = name
+###############################################################################
 
 
-# Property methods defined with decorators @property (RECOMMENDED)
-class Client2:
-    # Init method
+# Define a property
+# * Properties are defined inside the __init__ method (constructor)
+# * NOTE: To make a property being private, you can use dunder "__"
+# * NOTE: Private properties have the name changed with the class name as
+#   prefix to avoid access to this.
+class Person:
+    def __init__(self, name, age):
+        self.__name = name  # private
+        self.age = age      # public
+
+
+###############################################################################
+# Property methods
+###############################################################################
+
+
+# Define property methods (with decorator @) (Recommended)
+# * To define property methods it is recommended to use the decorators:
+#   @property, @setter, @deleter
+class Client:
     def __init__(self, name):
-        self._name = name
+        self.__name = name
 
     @property
     def name(self):
-        return self._name
+        return self.__name
 
     @name.setter
     def name(self, name):
-        self._name = name
+        self.__name = name
 
     @name.deleter
     def name(self):
-        del self._name
+        del self.__name
 
 
-client = Client2('Vini')  # Constructor
-print(client.name)        # Get > Vini
-client.name = 'Truta'     # Set
-print(client.name)        # Get > Truta
-del client.name           # Delete
-# print(client.name)      # AttributeError
+# Manipulate properties in instance
+# * The access to the properties will be handled by the property methods, not
+#   directly to property itself
+client = Client('Vini')  # Constructor
+print(client.name)       # Call getter
+client.name = 'John'     # Call setter
+del client.name          # Call deleter
+# client.__name          # raise AttributeError
 
 
-# Property methods as normal methods
-class Client3:
-    # Init method
+# Define property methods (with property fn) (Old way)
+# * To define property methods in a old way you can use the property function,
+#   passing as argument the getter, setter and deleater methods
+class Customer:
     def __init__(self, name):
-        self._name = name
+        self.__name = name
 
-    # Get method
     def get_name(self):
-        return self._name
+        return self.__name
 
-    # Set method
     def set_name(self, name):
-        self._name = name
+        self.__name = name
 
-    # Del method
     def del_name(self):
-        del self._name
-
-
-client = Client3('Vini')   # Constructor
-print(client.get_name())   # Get > Vini
-client.set_name('Truta')   # Set
-print(client.get_name())   # Get > Truta
-client.del_name()          # Delete
-# print(client.get_name()) # AttributeError
-
-
-# Property methods defined with property() function
-class Client4:
-    # Init method
-    def __init__(self, name):
-        self._name = name
-
-    # Get method
-    def get_name(self):
-        return self._name
-
-    # Set method
-    def set_name(self, name):
-        self._name = name
-
-    # Del method
-    def del_name(self):
-        del self._name
+        del self.__name
 
     # Property function (get, set, del, doc)
     name = property(get_name, set_name, del_name, 'Name of client')
 
 
-client = Client4('Vini')   # Constructor
-print(client.name)         # Get > Vini
-client.name = 'Truta'      # Set
-print(client.name)         # Get > Truta
-del client.name            # Delete
-# print(client.name)       # AttributeError
+# Manipulate properties in instance
+# * The access to the properties will be handled by the property methods, not
+#   directly to property itself
+customer = Customer('Vini')  # Constructor
+print(customer.name)         # Call getter
+customer.name = 'John'       # Call setter
+del customer.name            # Call deleter
+# customer.__name            # raise AttributeError
