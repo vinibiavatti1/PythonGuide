@@ -34,7 +34,7 @@ DEFAULT_RGB = (0, 0, 0)
 
 # Mode7 SNES logic class
 class Mode7:
-    def __init__(self, width, height, image):
+    def __init__(self, width, height, image, alpha=True):
         """
         Construct a mode 7 processor
         """
@@ -46,6 +46,7 @@ class Mode7:
         self.image_data = image.load()
         self.image_width, self.image_heigth = self.image.size
         self.pixels = None
+        self.alpha = alpha
         self.reset_pixels()
 
     def reset_pixels(self):
@@ -75,7 +76,10 @@ class Mode7:
                 xx = x - self.half_width
                 xx = abs(xx)
                 zx = ((xx / zz) * 8) % self.image_width
-                pixel = self.rgb_to_hex(self.image_data[zx, zy])
+                pixel = self.rgb_to_hex(
+                    self.image_data[zx, zy],
+                    alpha=self.alpha
+                )
                 self.pixels[self.width * y + x] = pixel
             z += 1
 

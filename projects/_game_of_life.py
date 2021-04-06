@@ -16,7 +16,7 @@ import copy
 ###############################################################################
 
 
-# Rules
+# Rules Born/Survive
 RULE_GOL = '3/23'
 RULE_HIGH_LIFE = '23/36'
 RULE_ASSIMILATION = '345/4567'

@@ -22,27 +22,26 @@ Deleter             Deletes the property    del obj.prop
 
 
 ###############################################################################
-# Property
+# Attributes
 ###############################################################################
 
 
-# Define a property
-# * Properties are defined inside the __init__ method (constructor)
-# * NOTE: To make a property being private, you can use dunder "__"
-# * NOTE: Private properties have the name changed with the class name as
-#   prefix to avoid access to this.
+# Define the attributes
+# * NOTE: Check the _attributes.py file for more details
 class Person:
     def __init__(self, name, age):
-        self.__name = name  # private
+        self.__name = name  # private (Access from name mangling only)
         self.age = age      # public
 
 
 ###############################################################################
-# Property methods
+# Properties
 ###############################################################################
 
 
-# Define property methods (with decorator @) (Recommended)
+# Define the attributes as properties (with decorator @) (Recommended)
+# * To define the attrbiute as a property, you have to create the getter,
+#   setter, and/or deleater for this attribute to control the access for it
 # * To define property methods it is recommended to use the decorators:
 #   @property, @setter, @deleter
 class Client:
@@ -65,16 +64,18 @@ class Client:
 # Manipulate properties in instance
 # * The access to the properties will be handled by the property methods, not
 #   directly to property itself
-client = Client('Vini')  # Constructor
-print(client.name)       # Call getter
-client.name = 'John'     # Call setter
-del client.name          # Call deleter
-# client.__name          # raise AttributeError
+client = Client('Vini')      # Constructor
+print(client.name)           # Call getter
+print(client._Client__name)  # Name Mangling (Pvt. access not recommended)
+client.name = 'John'         # Call setter
+del client.name              # Call deleter
+client.surname = 'Due'       # Create dynamic attribute in runtime
+# client.__name              # raise AttributeError
 
 
-# Define property methods (with property fn) (Old way)
+# Define the attributes as properties (with property fn) (Old way)
 # * To define property methods in a old way you can use the property function,
-#   passing as argument the getter, setter and deleater methods
+#   passing as argument the getter, setter and deleter methods
 class Customer:
     def __init__(self, name):
         self.__name = name
@@ -95,8 +96,10 @@ class Customer:
 # Manipulate properties in instance
 # * The access to the properties will be handled by the property methods, not
 #   directly to property itself
-customer = Customer('Vini')  # Constructor
-print(customer.name)         # Call getter
-customer.name = 'John'       # Call setter
-del customer.name            # Call deleter
-# customer.__name            # raise AttributeError
+customer = Customer('Vini')      # Constructor
+print(customer.name)             # Call getter
+print(customer._Customer__name)  # Name Mangling (Pvt. access not recommended)
+customer.name = 'John'           # Call setter
+del customer.name                # Call deleter
+customer.surname = 'Due'         # Create dynamic attribute in runtime
+# customer.__name                # raise AttributeError
