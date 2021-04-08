@@ -1,15 +1,17 @@
-import os
-import time
+class A:
+    def __init__(self, name):
+        self.__name = name
 
-print('asdasd')
-time.sleep(1)
-os.system('cls')
-print('346436436')
-time.sleep(1)
-os.system('cls')
-print('214124214')
-time.sleep(1)
-os.system('cls')
-print('9769yukuy')
-time.sleep(1)
-os.system('cls')
+
+class B:
+    def __init__(self, name):
+        self.__name = name
+
+    def test(self, a):
+        print(dir(a))
+        print(a.__name)  # Invalid access!
+
+
+a1 = A('a')
+b1 = B('b')
+b1.test(a1)

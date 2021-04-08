@@ -1,7 +1,7 @@
 """
 Template
 
-* Tiis is the template for class construction
+* This is the template for class construction
 """
 
 
@@ -39,6 +39,10 @@ class Template(object, metaclass=type):
     # Private method
     def __erase_name(self):
         self.name = ''
+
+    # Magic method
+    def __gt__(self, other):
+        return True
 
     # Class methods
     @classmethod
