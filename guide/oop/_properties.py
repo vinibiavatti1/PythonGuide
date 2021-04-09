@@ -22,19 +22,6 @@ Deleter             Deletes the property    del obj.prop
 
 
 ###############################################################################
-# Attributes
-###############################################################################
-
-
-# Define the attributes
-# * NOTE: Check the _attributes.py file for more details
-class Person:
-    def __init__(self, name, age):
-        self.__name = name  # private (Access from name mangling only)
-        self.age = age      # public
-
-
-###############################################################################
 # Properties
 ###############################################################################
 

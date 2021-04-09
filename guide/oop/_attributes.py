@@ -18,23 +18,25 @@ Attributes
 #   method, usually inside the constructor (__init__)
 # * This kind of attribute will have the value defined by the object, not the
 #   class (each object will have a different value for the attribute)
-# * NOTE: To make a attribute being private, you can use dunder "__"
+# * NOTE: To make an attribute being protected, you can use underline "_"
+# * NOTE: To make an attribute being private, you can use dunder "__"
 # * NOTE: Private attributes have the name changed with the class name as
 #   prefix to avoid access to this (Name mangling)
 # * NOTE: To access the private attribute, the best way is to define this
 #   attribute as a property (check _properties.py file)
 class Client:
-    def __init__(self, name, surname):
-        self.name = name          # public
-        self.__surname = surname  # private
+    def __init__(self, name, surname, identifier):
+        self.name = name                # public
+        self._surname = surname         # protected
+        self.__identifier = identifier  # private
 
 
 # Access the instance attributes
 # * To access the public attribute, you can just access it
 # * To access the private attribute, you can define this attribute as a
 #   property, or access by name mangling (not recommended)
-client1 = Client('Vini', 'Biavatti')
-client2 = Client('Ana', 'Almeida')
+client1 = Client('Vini', 'Biavatti', 1)
+client2 = Client('Ana', 'Almeida', 2)
 print(client1.name, client2.name)  # Vini Ana
 # print(client1.surname)           # raise Attribute error
 
@@ -48,11 +50,12 @@ print(client1.name, client2.name)  # Vini Ana
 # * To define this kind of attributes, you must define it inside the class only
 # * This kind of attribute will have the value defined by the class, not the
 #   object (every object will have the same value for this attribute)
-# * NOTE: You cannot make a class attribute as private
 # * NOTE. In other programming languages, this kind of attribute is called by
 #   static attribute
 class Product:
-    tax = 0.05
+    tax = 0.05    # public
+    _next_id = 1  # protected
+    __count = 10  # private
 
     def __init__(self, name, value):
         self.name = name
@@ -60,8 +63,8 @@ class Product:
 
 
 # Access the class attributes
-# * To access the public attribute, you can just access it
-# * To access the private attribute, you can define this attribute as a
+# * To access the public class attribute, you can just access it
+# * To access the private class attribute, you can define this attribute as a
 #   property, or access by name mangling (not recommended)
 product1 = Product('Book', 50)
 print(product1.name, product1.value, Product.tax, sep=', ')

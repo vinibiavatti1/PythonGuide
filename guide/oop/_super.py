@@ -2,7 +2,7 @@
 Super
 
 * Used to solve the diamond problem, when using multi inheritance
-* This will call the constructors using Method Resolution Order (MRO) __mro__
+* This will call the constructors using Method Resolution Order (MRO)
 * NOTE: The parameterless call to is recommended and sufficient for most use
   cases, and needing to change the search hierarchy regularly could be
   indicative of a larger design problem
@@ -12,8 +12,8 @@ Super
 * NOTE: People omit calls to super(...).__init__ if the only superclass is
   'object', as, after all, object.__init__ doesn't do anything! However, this
   is very incorrect. Doing so will cause other classes' __init__ methods to not
-  be called.
-* NOTE: To use super() with different parameters between classes the arbitraty
+  be called!
+* NOTE: To use super() with different parameters between classes, the arbitraty
   parameters will be needed to use as arguments (*args, **kwargs)
 
 Example:
@@ -24,6 +24,7 @@ Syntax: super(type, object-or-type)
 * type: The search starts from the class right after the type
 * object-or-type: The object-or-type determines the method resolution order to
   be searched
+* NOTE: It is recommended to use super() with parameterless
 
 * Guido Van Rossum topic: http://python-history.blogspot.com/2010/06/
                           method-resolution-order.html
@@ -32,12 +33,13 @@ Syntax: super(type, object-or-type)
 
 
 ###############################################################################
-# Base class call vs Super
+# Base class call vs super()
 ###############################################################################
 
 
-# Method call with base class name
+# Define inheritance without super()
 # * In this, the method will be called by the base class name
+# * This way will not fix the diamond problem (Check _mro.py)
 class Car:
     def __init__(self, name):
         self.name = name
@@ -48,27 +50,27 @@ class Kombi(Car):
         Car.__init__(self, 'Kombi')
 
 
+# Create an instance of inheritance without super()
+# * This will work correctly, but for multi inheritance, its is not recommended
 car = Kombi()
 print(car.name)
 # Kombi
 
 
-# Method call with super()
-# * In this, the method will be called by the super() keyword
-# * NOTE: To use super(), even the root class need to call super to object!
+# Define inheritance with super()
+# * In this situation, the method will be called by the super() keyword
 class Tower:
     def __init__(self, name):
         self.name = name
-        # NOTE: Even to object as base class the super has to be called!
-        super().__init__()
 
 
 class Pisa(Tower):
     def __init__(self):
-        # Same of super(Tower, self) (Implicit)
-        super().__init__('Pisa')
+        super().__init__('Pisa')  # Same of super(Tower, self) (Implicit)
 
 
+# Create an instance of inheritance with super()
+# * This is recommended because super() with follow the MRO
 tower = Pisa()
 print(tower.name)
 # Pisa
@@ -80,38 +82,38 @@ print(tower.name)
 
 
 # Super parameters
-# * NOTE: It is nor recommended to change the default parameters to super the
-#   parametrization was allowed just to configure the MRO resolution in Python
-#   2. For Python 3 we can use super without parameters (super()) and change
-#   the default parameters can be indication of archicteture problems
+# * NOTE: It is recommended to user super() with parameterless to prevent
+#   architectural problems
+# * In bellow versions of Python, the parameters of super were required
+# * In this example, we used parameters just to show how it works
 class Building(object):
     def __init__(self, name):
         self.name = name
-        # NOTE: Even to object as base class the super has to be called!
-        super(Building, self).__init__()
 
 
 class Castle(Building):
     def __init__(self):
-        # Same of super(Castle, self) (Implicit)
         super(Castle, self).__init__('Castle')
 
 
+# Create an instance of inheritance with super(parameters)
+# * Using parameters in super() is not recommended
 building = Castle()
 print(building.name)
 # Castle
 
 
 ###############################################################################
-# Dynamic super
+# Different methods signatures
 ###############################################################################
 
 
-# Dynamic Super (super methods with different parameters)
+# Define an inheritance of different methods signatures
 # * NOTE: To use different parameters to methods called with super and using
 #   multi inheritance the *args and **kwargs must be used
 # * This situation is common when multi-inheritance is being used, and the base
-#   classes have different parameters to the methods
+#   classes have different parameters in the methods
+# * To solve this situation, the unique way is using the arbitrary parameters
 class Auto:
     def __init__(self):
         super().__init__()
@@ -135,6 +137,8 @@ class TourismBus(Vehicle, Bus):
         super().__init__(**kwargs)
 
 
+# Create an instance of inheritance witg different method signatures
+# * To solve this problem, the parameters must be set using keyword arguments
 bus = TourismBus(id='Vehicle', version=1, name='Tourism Bus')
 print(bus.name, bus.id, bus.version, sep=', ')
 # Tourism Bus, Vehicle, 1

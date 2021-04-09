@@ -1,5 +1,5 @@
 """
-Exceptions
+Try, except, finally
 
 * Used to control the exceptions and create validations
 * The keyword used to manipulate exceptions are:

@@ -1,17 +1,18 @@
-class A:
-    def __init__(self, name):
-        self.__name = name
+print(dir(object))
 
 
-class B:
-    def __init__(self, name):
-        self.__name = name
 
-    def test(self, a):
-        print(dir(a))
-        print(a.__name)  # Invalid access!
+# ['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__',
+# '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__',
+# '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__',
+# '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__',
+# '__subclasshook__']
 
 
-a1 = A('a')
-b1 = B('b')
-b1.test(a1)
+print('asd'.__class__)
+
+
+def a(): ...
+
+
+a()

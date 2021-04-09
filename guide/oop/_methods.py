@@ -18,6 +18,7 @@ Methods
 # Define instance method
 # * Instace methods are called by the instance (object) created from the class
 # * This kind of method has as the first parameter the self (instance)
+# * NOTE: Protected methods have as prefix the underline "_" signature
 # * NOTE: Private methods have as prefix the dunder "__" signature
 class Product:
     def __init__(self, name, price):
@@ -26,6 +27,9 @@ class Product:
 
     def price(self, discount=0):  # public method
         return self.__price - discount
+
+    def _get_price(self):  # protected method
+        return self.__price
 
     def __reset_price(self):  # private method
         self.__price = 0
