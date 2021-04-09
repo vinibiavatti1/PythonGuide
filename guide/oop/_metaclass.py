@@ -62,6 +62,8 @@ class DBConnection(metaclass=Singleton):
     pass
 
 
+# Check the work of the metaclass
+# * Both instances will be the same
 db1 = DBConnection()
 db2 = DBConnection()
 print(id(db1) == id(db2))
@@ -82,6 +84,8 @@ class Transaction(metaclass=RegisterTimeType):
     pass
 
 
+# Check the work of the metaclass
+# * The class will always has the _creation_time variable
 transaction = Transaction()
 print(getattr(transaction, '_creation_time'))
 # 2021-03-17 20:37:21.760565

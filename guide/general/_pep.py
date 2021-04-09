@@ -131,6 +131,17 @@ except ValueError as err:  # "err" word to reference the error
 text = 'Hello'
 
 
+# Class access modifiers
+# * Use nothing as prefix to public resources
+# * Use underline "_" to protected resources
+# * Use dunder "__" to private resources
+class Forest:
+    def __init__(self, name, size, country):
+        self.name = name          # public
+        self._size = size         # protected
+        self.__country = country  # private
+
+
 ###############################################################################
 # Importation
 ###############################################################################
