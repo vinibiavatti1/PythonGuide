@@ -170,7 +170,7 @@ import os.path
 import pdb
 
 
-# Convert Python objects to streams of bytes and back.
+# Convert Python objects to streams of bytes and back (Serializer).
 import pickle
 
 
