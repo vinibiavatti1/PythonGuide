@@ -6,6 +6,8 @@ Repr (Representation)
   object created from object as base class
 * To change the default implementation, just implement the __repr__ magic
   method inside the object class
+* NOTE: If the __str__ magic method is implemented, it will be call as
+  priority
 """
 
 
