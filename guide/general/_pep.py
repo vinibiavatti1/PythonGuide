@@ -11,6 +11,8 @@ PEP (Python Enhancement Proposals)
   root of this projecto to your projecto to configure the code format
 * Reference: https://www.python.org/dev/peps/
 """
+import unittest
+
 
 ###############################################################################
 # Naming
@@ -28,7 +30,7 @@ client_name = 'Vini'
 
 # Constants
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Use all letters capitalized
 # * Do not use special symbols
 PI = 3.14
@@ -36,7 +38,7 @@ PI = 3.14
 
 # Functions
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -46,7 +48,7 @@ def sum(x, y):
 
 # Classes
 # * Use a good representation name
-# * Do not use undercore to separete
+# * Do not use underscore to separete
 # * Use camel case
 # * Do not use special symbols
 # * Capitalize all letters of an abbreviation
@@ -57,7 +59,7 @@ class HTTPServer:
 
 # Methods
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Do not use camel case
 # * Do not use special symbols
 # * Instance methods should have their first parameter named 'self'.
@@ -77,9 +79,22 @@ class Car:
         pass
 
 
+# Test methods (TestCase)
+# * Use "test_" as prefix
+# * Use a good representation name
+# * Use underscore to separete
+# * Do not use camel case
+# * Do not use special symbols
+# * Must have their first parameter named 'self'.
+# * Do not use capital letters
+class ListTest(unittest.TestCase):
+    def test_append(self):
+        pass
+
+
 # Private properties
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Do not use camel case
 # * Do not use special symbols
 # * Always start the property name with uderscore
@@ -91,7 +106,7 @@ class Bus:
 
 # Packages (Folders with Python module collections)
 # * Use a good representation name
-# * Use undercore to separete (Avoid)
+# * Use underscore to separete (Avoid)
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -100,7 +115,7 @@ class Bus:
 
 # Modules
 # * Use a good representation name
-# * Use undercore to separete
+# * Use underscore to separete
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -109,7 +124,7 @@ from abc import ABC
 
 # Exceptions
 # * Use a good representation name
-# * Do not use undercore to separete
+# * Do not use underscore to separete
 # * Use camel case
 # * Do not use special symbols
 # * Do not use letters to represent the type like "E" for Error

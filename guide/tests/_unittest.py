@@ -9,6 +9,8 @@ Unittest
   specific test cases and suites (TestCase, TestSuite etc.), and also a
   text-based utility class for running the tests and reporting the results
   (TextTestRunner)
+* NOTE: For convension, the test methods follow has always the "test_" prefix
+  nomenclature
 
 Assertion methods
 ###############################################################################
