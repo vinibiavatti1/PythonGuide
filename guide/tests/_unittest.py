@@ -11,6 +11,8 @@ Unittest
   (TextTestRunner)
 * NOTE: For convension, the test methods follow has always the "test_" prefix
   nomenclature
+* NOTE: The -v argument can be used in the module run to check more details of
+  the test execution
 
 Assertion methods
 ###############################################################################
