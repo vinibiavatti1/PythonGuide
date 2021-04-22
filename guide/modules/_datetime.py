@@ -64,8 +64,16 @@ Code        Meaning                                                 Example
 ###############################################################################
 * Reference: https://strftime.org/
 """
-from datetime import date, datetime, timedelta, MAXYEAR, MINYEAR
-import time
+from datetime import (
+    date,
+    datetime,
+    timedelta,
+    MAXYEAR,
+    MINYEAR,
+    time,
+    timezone
+)
+import time as t
 
 
 ###############################################################################
@@ -114,6 +122,25 @@ print(my_date.month)  # 3
 print(my_date.day)    # 5
 
 
+# Week day
+# * Get the week day from a date
+# * weekday:    Monday is 0 and Sunday is 6
+# * isoweekday: Monday is 1 and Sunday is 7
+my_date = date(2020, 3, 5)
+week_day = my_date.weekday()
+iso_week_day = my_date.isoweekday()
+print(week_day, iso_week_day)
+# 3, 4
+
+
+# Calendar
+# * Return a IsoCalendarDate obj with three components: year, week and weekday
+my_date = date(2020, 3, 5)
+calendar = my_date.isocalendar()
+print(calendar)
+# datetime.IsoCalendarDate(year=2020, week=10, weekday=4)
+
+
 # Replace date attributes
 # * Replace the attributes for some date
 my_date = date(2020, 3, 5)
@@ -127,9 +154,19 @@ print(my_date)
 ###############################################################################
 
 
+# Current datetime (with timezone)
+# * Create a datetime using the current date and time
+# * NOTE: The now() method provides an way to set the timezone
+# * Check the Timezone section to see about timezones
+current = datetime.now(tz=None)
+print(current)
+# 2021-03-03 17:05:28.886813
+
+
 # Current datetime
 # * Create a datetime using the current date and time
-current = datetime.now()
+# * NOTE: The today() method not provides an way to set the timezone
+current = datetime.today()
 print(current)
 # 2021-03-03 17:05:28.886813
 
@@ -156,12 +193,40 @@ print(my_datetime.second)       # 20
 print(my_datetime.microsecond)  # 500
 
 
+# Week day
+# * Get the week day from a datetime
+# * weekday:    Monday is 0 and Sunday is 6
+# * isoweekday: Monday is 1 and Sunday is 7
+my_datetime = datetime(2020, 3, 5, 10, 30)
+week_day = my_datetime.weekday()
+iso_week_day = my_datetime.isoweekday()
+print(week_day, iso_week_day)
+# 3, 4
+
+
+# Calendar
+# * Return a IsoCalendarDate obj with three components: year, week and weekday
+my_datetime = datetime(2020, 3, 5, 10, 30)
+calendar = my_datetime.isocalendar()
+print(calendar)
+# datetime.IsoCalendarDate(year=2020, week=10, weekday=4)
+
+
 # Replace datetime attributes
 # * Replace the attributes for some datetime
 my_datetime = datetime(2020, 9, 15, 10, 30, 00)
 my_datetime = my_datetime.replace(year=1994, hour=17, minute=30)
 print(my_datetime)
 # 1994-09-15 17:30:00
+
+
+# Combining a datetime with time
+# * You can combine a datetime with a time to generate a new datetime
+my_datetime = datetime(1994, 9, 15, 17, 30, 15)
+my_time = time(22, 30, 0)
+my_datetime = datetime.combine(my_datetime, my_time)
+print(my_datetime)
+# 1994-09-15 22:30:00
 
 
 ###############################################################################
@@ -171,14 +236,14 @@ print(my_datetime)
 
 # Current timestemp
 # * Return the current timestemp as float
-current_ts = time.time()
+current_ts = t.time()
 print(current_ts)
 # 1614791610.5159419
 
 
 # Create date from timestamp
 # * Create a date from timestemp (float)
-current_ts = time.time()
+current_ts = t.time()
 my_date = date.fromtimestamp(current_ts)
 print(my_date)
 # 2021-03-03
@@ -312,4 +377,14 @@ print(my_date)
 ###############################################################################
 # Timezone
 ###############################################################################
-# TODO
+
+
+# Current datetime with timezone
+# * To create a timezone object, the timezone class can be used
+# * The argument for timezone must be a timedelta object
+timezone_offset = -8.0  # Pacific Standard Time (UTC−08:00)
+delta = timedelta(hours=timezone_offset)
+tz = timezone(delta)
+my_datetime = datetime.now(tz=tz)
+print(my_datetime)
+# 2021-04-22 06:34:38.290535-08:00
