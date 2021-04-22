@@ -64,59 +64,88 @@ Code        Meaning                                                 Example
 ###############################################################################
 * Reference: https://strftime.org/
 """
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, MAXYEAR, MINYEAR
 import time
 
 
 ###############################################################################
-# Date and datetime
+# Constants
 ###############################################################################
 
 
-# Get current date
+# Min Year
+# * Contains the min year allowed to work with datetime module
+print(MINYEAR)
+# 1
+
+
+# Max year
+# * Contains the max year allowed to work with datetime module
+print(MAXYEAR)
+# 9999
+
+
+###############################################################################
+# Date
+###############################################################################
+
+
+# Current date
+# * Create a date using the current date
 current = date.today()
 print(current)
 # 2021-03-03
 
 
-# Get current datetime
-current = datetime.now()
-print(current)
-# 2021-03-03 17:05:28.886813
-
-
 # Create date
+# * Create a date specifing the values for the date attributes
+# * Syntax
+#   date(year, month, day)
 my_date = date(2020, 3, 5)
 print(my_date)
 # 2020-03-05
 
 
-# Create datetime
-my_datetime = datetime(2020, 3, 5, 17, 30, 20)
-print(my_datetime)
-# 2020-03-05 17:30:20
-
-
-# Get current timestemp
-current_ts = time.time()
-print(current_ts)
-# 1614791610.5159419
-
-
-# Get date from timestamp
-ts_date = date.fromtimestamp(time.time())
-print(ts_date)
-# 2021-03-03
-
-
 # Get date attributes
+# * Get the attributes from a date (year, month, day)
 my_date = date(2020, 3, 5)
 print(my_date.year)   # 2020
 print(my_date.month)  # 3
 print(my_date.day)    # 5
 
 
+# Replace date attributes
+# * Replace the attributes for some date
+my_date = date(2020, 3, 5)
+my_date = my_date.replace(year=1994, month=9, day=15)
+print(my_date)
+# 1994-09-15
+
+
+###############################################################################
+# Datetime
+###############################################################################
+
+
+# Current datetime
+# * Create a datetime using the current date and time
+current = datetime.now()
+print(current)
+# 2021-03-03 17:05:28.886813
+
+
+# Create datetime
+# * Create a datetime specifing the values for the date and time attributes
+# * Syntax
+#   datetime(year, month, day[, hour[, minute[, second[, microsecond]]]])
+my_datetime = datetime(2020, 3, 5, 17, 30, 20)
+print(my_datetime)
+# 2020-03-05 17:30:20
+
+
 # Get datetime attributes
+# * Get the attributes from a datetime
+#   (year, month, day, hour, minute, second, microsecond)
 my_datetime = datetime(2020, 3, 5, 17, 30, 20, 500)
 print(my_datetime.year)         # 2020
 print(my_datetime.month)        # 3
@@ -127,19 +156,50 @@ print(my_datetime.second)       # 20
 print(my_datetime.microsecond)  # 500
 
 
-# Get datetime timestemp
+# Replace datetime attributes
+# * Replace the attributes for some datetime
+my_datetime = datetime(2020, 9, 15, 10, 30, 00)
+my_datetime = my_datetime.replace(year=1994, hour=17, minute=30)
+print(my_datetime)
+# 1994-09-15 17:30:00
+
+
+###############################################################################
+# Timestemp
+###############################################################################
+
+
+# Current timestemp
+# * Return the current timestemp as float
+current_ts = time.time()
+print(current_ts)
+# 1614791610.5159419
+
+
+# Create date from timestamp
+# * Create a date from timestemp (float)
+current_ts = time.time()
+my_date = date.fromtimestamp(current_ts)
+print(my_date)
+# 2021-03-03
+
+
+# Get timestemp from datetime
+# * Get the timestemp (float) from datetime object
 my_datetime = datetime(2020, 3, 5, 17, 30, 20, 500)
-print(my_datetime.timestamp())
+ts = my_datetime.timestamp()
+print(ts)
 # 1583429420.0005
 
 
 ###############################################################################
 # Timedelta
-# * A timedelta object represents the difference between two dates or times
 ###############################################################################
 
 
 # Difference between two dates
+# * A timedelta object represents the difference between two dates or times
+# * The Python aritmetic operators can be used to generate a timedelta
 d1 = date(2020, 9, 15)
 d2 = date(1994, 9, 15)
 delta = d1 - d2
@@ -149,6 +209,7 @@ print(delta.days)   # 9497
 
 
 # Difference between two timedeltas
+# * Get the difference between two timedeltas using '-' operator
 t1 = timedelta(weeks=10, days=50, hours=18)
 t2 = timedelta(days=5, hours=39)
 delta = t1 - t2
@@ -158,6 +219,9 @@ print(delta.days)   # 114
 
 
 # Negative timedelta
+# * The timedelta can return negative values if the second date is far the the
+#   first date
+# * To get the absolute value, the abs() function can be used
 t1 = timedelta(days=5)
 t2 = timedelta(days=10)
 delta = t1 - t2
@@ -167,29 +231,56 @@ print(abs(delta.days))  # 5  NOTE: Used abs() to get absolute
 
 
 # Time duration in seconds
+# * Get the time duration in seconds (float) from a timedelta
 t1 = timedelta(days=50)
 print(t1.total_seconds())
 # 4320000.0
 
 
-###############################################################################
-# Format (strptime)
-# * Syntax: date.strptime(format)
-###############################################################################
+# Incrementing the date
+# * To add days, hours or any value for the date, the timedelta can be used
+# * The operator '+' was used to add
+my_date = date(2020, 1, 1)
+add = timedelta(days=14)
+my_date = my_date + add
+print(my_date)
+# 2020-01-15
 
 
-# Format date
-my_date = date(2020, 3, 15)
-formated = my_date.strftime('%d/%m/%Y')
-print(formated)
-# 15/03/2020
+# Decrementing the date
+# * To subtract days, hours or any value for the date, the timedelta can be
+#   used
+# * The operator '-' was used to subtract
+my_date = date(2020, 1, 1)
+add = timedelta(days=14)
+my_date = my_date - add
+print(my_date)
+# 2019-12-18
+
+
+###############################################################################
+# Format (strftime)
+###############################################################################
 
 
 # Format datetime
+# * Create a string version of the datetime by a format
+# * NOTE: The formats on the top of this file can be used
+# * Syntax: datetime_obj.strptime(format)
 my_datetime = datetime(2020, 3, 15, 17, 30, 45)
 formated = my_datetime.strftime('%d/%m/%Y %H:%M:%S')
 print(formated)
 # 15/03/2020 17:30:45
+
+
+# Format date
+# * Create a string version of the date by a format
+# * NOTE: The formats on the top of this file can be used
+# * Syntax: date_obj.strptime(format)
+my_date = date(2020, 3, 15)
+formated = my_date.strftime('%d/%m/%Y')
+print(formated)
+# 15/03/2020
 
 
 ###############################################################################
@@ -198,14 +289,21 @@ print(formated)
 ###############################################################################
 
 
-# Create datetime
+# Parse datetime
+# * Create a datetime version of the string by a format
+# * NOTE: The formats on the top of this file can be used
+# * Syntax: date.strftime(format)
 date_str = '15/09/1994 17:30:25'
 my_datetime = datetime.strptime(date_str, '%d/%m/%Y %H:%M:%S')
 print(my_datetime)
 # 1994-09-15 17:30:25
 
 
-# Convert datetime to date
+# Parse date
+# * NOTE: There is no way to parse only a date using strptime(). For this, we
+#   must create the datetime object and then, convert to date
+date_str = '15/09/1994'
+my_datetime = datetime.strptime(date_str, '%d/%m/%Y')
 my_date = my_datetime.date()
 print(my_date)
 # 1994-09-15
