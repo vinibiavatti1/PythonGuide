@@ -51,7 +51,7 @@ Virtual Environment
 """
 1. Click on the Python interpreter in the booton toolbar or press Ctrl + Shift
    + P and type "Python: Select Interpreter"
-2. Add the "python.exe" interpreter from the virtual env created
+2. Enter with the "python.exe" interpreter from the virtual env created
 3. To run the Python file with this interpreter, just click in the green play
    button on the top right, or right click in the file and choose "Run Python
    File in Terminal"

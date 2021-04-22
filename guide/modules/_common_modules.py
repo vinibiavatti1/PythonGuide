@@ -4,48 +4,48 @@ Common python modules
 * Here there is the list of the most common modules in Python
 * Reference: https://docs.python.org/3/py-modindex.html
 """
-# delivers the environment you need for creating abstract base classes.
+# delivers the environment you need for creating abstract base classes
 import abc
 
 
-# Command‐line option and argument-parsing library.
+# Command‐line option and argument-parsing library
 import argparse
 
 
-# Delivers the framework and environment for asynchronous programming.
+# Delivers the framework and environment for asynchronous programming
 import asyncio
 
 
-# Coding and decoding binary code into a format that can be displayed.
+# Coding and decoding binary code into a format that can be displayed
 import base64
 
 
 # Functions for working with calendars, including some emulation of the UNIX
-# cal(1) program.
+# cal(1) program
 import calendar
 
 
-# Mathematical functions for complex numbers.
+# Mathematical functions for complex numbers
 import cmath
 
 
-# Build line‐oriented command interpreters.
+# Build line‐oriented command interpreters
 import cmd
 
 
-# Container data types.
+# Container data types
 import collections
 
 
-# Configuration file parser.
+# Configuration file parser
 import configparser
 
 
-# Utilities for with‐statement contexts.
+# Utilities for with‐statement contexts
 import contextlib
 
 
-# Copy and deep copy data operations.
+# Copy and deep copy data operations
 import copy
 
 
@@ -55,36 +55,36 @@ import csv
 
 
 # A foreign function library that provides C compatible data types and allows
-# calling functions in DLLs.
+# calling functions in DLLs
 import ctypes
 
 
-# Basic date and time types.
+# Basic date and time types
 import datetime
 
 
 # Delivers a data type called Decimal. Its main advantage is correct rounding
-# of decimal numbers which is extremely important in billing systems.
+# of decimal numbers which is extremely important in billing systems
 import decimal
 
 
-# Interfaces to various key‐value database formats.
+# Interfaces to various key‐value database formats
 import dbm
 
 
-# Implementation of the General Decimal Arithmetic Specifi cation.
+# Implementation of the General Decimal Arithmetic Specifi cation
 import decimal
 
 
-# Test snippets of code appearing within docstrings.
+# Test snippets of code appearing within docstrings
 import doctest
 
 
-# Rational numbers.
+# Rational numbers
 import fractions
 
 
-# Higher‐order functions and operations on callable objects.
+# Higher‐order functions and operations on callable objects
 import functools
 
 
@@ -93,33 +93,33 @@ import functools
 import hashlib
 
 
-# Multilingual internationalization services.
+# Multilingual internationalization services
 import gettext
 
 
-# UNIX shell–style pathname pattern expansion.
+# UNIX shell–style pathname pattern expansion
 import glob
 
 
-# Data structures useful for processing HTML.
+# Data structures useful for processing HTML
 import html.entities
 
 
-# A simple parser that can handle HTML and XHTML.
+# A simple parser that can handle HTML and XHTML
 import html.parser
 
 
 # Package supporting use of HTTP including client, server, and cookie
-# management.
+# management
 import http
 
 
-# HTTP server and request handlers.
+# HTTP server and request handlers
 import http.server
 
 
 # The package provides the implementation of the import statement (and the
-# __import__() function).
+# __import__() function)
 import importlib
 
 
@@ -128,49 +128,49 @@ import importlib
 import inspect
 
 
-# Functions creating iterators for efficient looping.
+# Functions creating iterators for efficient looping
 import itertools
 
 
-# JSON (JavaScript Object Notation) operations.
+# JSON (JavaScript Object Notation) operations
 import json
 
 
-# Internationalization services.
+# Internationalization services
 import locale
 
 
-# Flexible event logging for applications.
+# Flexible event logging for applications
 import logging
 
 
-# Mathematical functions.
+# Mathematical functions
 import math
 
 
-# (Windows) Miscellaneous useful routines from the MS VC++ runtime.
+# (Windows) Miscellaneous useful routines from the MS VC++ runtime
 import msvcrt
 
 
 # The package supports spawning processes with the help of an API similar to
 # the threading module. It provides both local and remote concurrency using
-# subprocesses instead of threads.
+# subprocesses instead of threads
 import multiprocessing
 
 
-# Miscellaneous operating system interfaces.
+# Miscellaneous operating system interfaces
 import os
 
 
-# Provides helper functions for manipulating and testing file paths.
+# Provides helper functions for manipulating and testing file paths
 import os.path
 
 
-# A debugger for interactive Python interpreters.
+# A debugger for interactive Python interpreters
 import pdb
 
 
-# Convert Python objects to streams of bytes and back (Serializer).
+# Convert Python objects to streams of bytes and back (Serializer)
 import pickle
 
 
@@ -183,47 +183,47 @@ import platform
 
 
 # This useful module implements pseudo-random number generators for various
-# distributions.
+# distributions
 import random
 
 
-# Regular‐expression operations.
+# Regular‐expression operations
 import re
 
 
-# Python object persistence.
+# Python object persistence
 import shelve
 
 
-# High-level operations on files and collections of files.
+# High-level operations on files and collections of files
 import shutil
 
 
-# Low‐level networking interface.
+# Low‐level networking interface
 import socket
 
 
-# A framework for network servers.
+# A framework for network servers
 import socketserver
 
 
-# A DB‐API 2.0 implementation using SQLite 3.x.
+# A DB‐API 2.0 implementation using SQLite 3.x
 import sqlite3
 
 
-# Mathematical statistics functions.
+# Mathematical statistics functions
 import statistics
 
 
-# Read and write binary data in a byte array.
+# Read and write binary data in a byte array
 import struct
 
 
-# Subprocess management.
+# Subprocess management
 import subprocess
 
 
-# Access system‐specific parameters and functions.
+# Access system‐specific parameters and functions
 import sys
 
 
@@ -232,35 +232,39 @@ import tempfile
 
 
 # Builds higher-level threading interfaces on top of the lower level _thread
-# module.
+# module
 import threading
 
 
-# Time access and conversions.
+# Time access and conversions
 import time
 
 
-# Interface to Tcl/Tk for graphical user interfaces.
+# Tool for measuring execution time of small code snippets
+import timeit
+
+
+# Interface to Tcl/Tk for graphical user interfaces
 import tkinter
 
 
-# Standard message dialogs.
+# Standard message dialogs
 import tkinter.messagebox
 
 
-# Tk Extension Widgets for Tkinter.
+# Tk Extension Widgets for Tkinter
 import tkinter.tix
 
 
-# Tk themed widget set.
+# Tk themed widget set
 import tkinter.ttk
 
 
-# Variations on standard File dialogs.
+# Variations on standard File dialogs
 import tkinter.filedialog
 
 
-# A base class for building custom dialogs.
+# A base class for building custom dialogs
 import tkinter.simpledialog
 
 
@@ -268,36 +272,36 @@ import tkinter.simpledialog
 import types
 
 
-# An educational framework for developing simple graphics applications.
+# An educational framework for developing simple graphics applications
 import turtle
 
 
-# Access the Unicode database.
+# Access the Unicode database
 import unicodedata
 
 
-# Unit testing framework for Python.
+# Unit testing framework for Python
 import unittest
 
 
-# Package for processing URLs including requests, responses, errors, and so on.
+# Package for processing URLs including requests, responses, errors, and so on
 import urllib
 
 
-# Provides immutable UUID objects.
+# Provides immutable UUID objects
 import uuid
 
 
 # Provides helper functions and a Key class for manipulating the Windows
-# registry.
+# registry
 import winreg
 
 
-# Package containing XML processing modules.
+# Package containing XML processing modules
 import xml
 
 
-# Read and write zip‐format archive files.
+# Read and write zip‐format archive files
 import zipfile
 
 

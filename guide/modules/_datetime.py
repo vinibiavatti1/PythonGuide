@@ -230,6 +230,38 @@ print(my_datetime)
 
 
 ###############################################################################
+# Time
+###############################################################################
+
+
+# Create time
+# * Create a time specifing the values for the time attributes
+# * Syntax
+#   time([hour[, minute[, second[, microsecond]]]])
+my_time = time(22, 30, 10)
+print(my_time)
+# 22:30:10
+
+
+# Get time attributes
+# * Get the attributes from a time
+#   (hour, minute, second, microsecond)
+my_time = time(22, 30, 10, 500)
+print(my_time.hour)         # 22
+print(my_time.minute)       # 30
+print(my_time.second)       # 10
+print(my_time.microsecond)  # 500
+
+
+# Replace time attributes
+# * Replace the attributes for some time
+my_time = time(22, 30, 10, 500)
+my_time = my_time.replace(hour=12, minute=0)
+print(my_time)
+# 12:00:10.000500
+
+
+###############################################################################
 # Timestemp
 ###############################################################################
 
