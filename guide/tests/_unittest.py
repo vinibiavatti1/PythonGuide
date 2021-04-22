@@ -28,6 +28,7 @@ assertIn(a, b)                      a in b
 assertNotIn(a, b)                   a not in b
 assertIsInstance(a, b)              isinstance(a, b)
 assertNotIsInstance(a, b)           not isinstance(a, b)
+assertRaises(error, fn, *args)      raise Error
 ###############################################################################
 """
 import unittest
@@ -90,18 +91,19 @@ class FirstTest(unittest.TestCase):
 class SecondTest(unittest.TestCase):
     def test(self):
         a, b, c, d = 1, True, False, None
-        self.assertEqual(a, 1)              # a == b
-        self.assertNotEqual(a, 2)           # a != b
-        self.assertTrue(b)                  # bool(x) is True
-        self.assertFalse(c)                 # bool(x) is False
-        self.assertIs(d, None)              # a is b
-        self.assertIsNot(d, 1)              # a is not b
-        self.assertIsNone(d)                # x is None
-        self.assertIsNotNone(a)             # x is not None
-        self.assertIn(a, [0, 1, 2])         # a in b
-        self.assertNotIn(a, [3, 4, 5])      # a not in b
-        self.assertIsInstance(a, int)       # isinstance(a, b)
-        self.assertNotIsInstance(a, str)    # not isinstance(a, b)
+        self.assertEqual(a, 1)                # a == b
+        self.assertNotEqual(a, 2)             # a != b
+        self.assertTrue(b)                    # bool(x) is True
+        self.assertFalse(c)                   # bool(x) is False
+        self.assertIs(d, None)                # a is b
+        self.assertIsNot(d, 1)                # a is not b
+        self.assertIsNone(d)                  # x is None
+        self.assertIsNotNone(a)               # x is not None
+        self.assertIn(a, [0, 1, 2])           # a in b
+        self.assertNotIn(a, [3, 4, 5])        # a not in b
+        self.assertIsInstance(a, int)         # isinstance(a, b)
+        self.assertNotIsInstance(a, str)      # not isinstance(a, b)
+        self.assertRaises(TypeError, any, a)  # raise Error
 
 
 ###############################################################################
@@ -124,7 +126,7 @@ class List:
 
     def get(self, index):
         if index < 0 or index >= len(self.elements):
-            raise ValueError('Index out of range')
+            raise IndexError('Index out of range')
         return self.elements[index]
 
 
@@ -156,6 +158,10 @@ class ListTest(unittest.TestCase):
         e2 = self.lst.get(1)
         self.assertEqual(e1, 'a')
         self.assertEqual(e2, 'b')
+
+    def test_get_raises_out_of_range(self):
+        self.assertRaises(IndexError, self.lst.get, -1)
+        self.assertRaises(IndexError, self.lst.get, 999)
 
     # Execute after each test
     def tearDown(self):
