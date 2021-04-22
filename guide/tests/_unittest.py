@@ -14,7 +14,7 @@ Unittest
 * NOTE: The -v argument can be used in the module run to check more details of
   the test execution
 
-Assertion methods
+TestCase assertion
 ###############################################################################
 Assert expr.                        Equivalent
 ###############################################################################
@@ -31,6 +31,16 @@ assertNotIn(a, b)                   a not in b
 assertIsInstance(a, b)              isinstance(a, b)
 assertNotIsInstance(a, b)           not isinstance(a, b)
 assertRaises(error, fn, *args)      raise Error
+###############################################################################
+
+TestCase hooks
+###############################################################################
+Method                              Definition
+###############################################################################
+setUpClass(cls)                     Execute before the test
+setUp(self)                         Execute before each test
+tearDownClass(cls)                  Execute after the test
+tearDown(self)                      Execute after each test
 ###############################################################################
 """
 import unittest
