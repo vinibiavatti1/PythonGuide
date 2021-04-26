@@ -312,7 +312,7 @@ TypeError: sum_values() takes 2 positional arguments but 3 were given
 # * This is the oposite for the bare, that is used to force the parameters
 #   before slash "/" to be used as positional-only parameters
 # * To define a slash, you must use the "/" symbol as a parameter
-def sub_values(x, y, z, /):
+def sub_values(x, y, /, z):
     return x + y + z
 
 
@@ -321,7 +321,7 @@ def sub_values(x, y, z, /):
 #   parameters before the slash to be set as positional arguments only
 # * If you try to set these arguments as keyword arguments, a TypeError will be
 #   ocurred
-result = sub_values(3, 4, 5)
+result = sub_values(3, 4, z=5)
 print(result)
 # 12
 
@@ -329,10 +329,10 @@ print(result)
 # Call function with a slahs passing arg as keyword
 # * This will raise a TypeError
 """
-result = sub_values(3, 4, z=5)
+result = sub_values(3, y=4, z=5)
 
 TypeError: sub_values() got some positional-only arguments passed as keyword
-arguments: 'z'
+arguments: 'y'
 """
 
 

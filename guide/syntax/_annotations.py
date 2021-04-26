@@ -6,8 +6,8 @@ Annotations (Type Hints)
   up Python code to easier static analysis and refactoring, potential runtime
   type checking, and (perhaps, in some contexts) code generation utilizing type
   information
+* NOTE: Check _typing.py file for more usefull available types to be used
 """
-from typing import List, Dict, Tuple, Set
 
 
 ###############################################################################
@@ -50,14 +50,6 @@ lst: list[str] = ['John']
 tpl: tuple[str] = ('John')
 dct: dict[str, int] = {'age': 26}
 st: set[str] = {'John'}
-
-
-# Define collection variable with annotation using typing
-# * There is a module that bring the datetypes to Python, that can be used too
-lst: List[str] = ['John']
-tpl: Tuple[str] = ('John')
-dct: Dict[str, int] = {'age': 26}
-st: Set[str] = {'John'}
 
 
 ###############################################################################

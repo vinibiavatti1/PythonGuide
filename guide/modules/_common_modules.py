@@ -276,6 +276,10 @@ import tkinter.simpledialog
 import types
 
 
+# Provides runtime support for type hints
+import typing
+
+
 # An educational framework for developing simple graphics applications
 import turtle
 
