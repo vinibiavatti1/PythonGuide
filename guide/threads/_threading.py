@@ -5,6 +5,10 @@ Threading module
   working with threads even easier and more pythonic
 * Using threads allows a program to run multiple operations concurrently in the
   same process space
+* Threads in python are locked by the GIL (Global Interpreter Lock) that allow
+  just one thread do be executed. Check the _gil.py for more details. So, in
+  Python, even if you create a Thread, the program will be executed as single
+  thread. The multiprocessing can be used to run async operations in Python
 """
 import threading
 import time
@@ -15,22 +19,29 @@ import time
 ###############################################################################
 
 
-# Create thread using function
-def worker():
+# Define the worker as a function
+# * This function will be executed in other thread
+def worker(arg):
     print('Worker')
 
 
-thread = threading.Thread(target=worker)
+# Create thread with function
+# * To create a Thread, the Thread class can be used setting a function as a
+#   target
+thread = threading.Thread(target=worker, args=('Some value',))
 thread.start()
 # Worker
 
 
-# Create thread using class
+# Define the worker as a class
+# * The Thread class can be used as base class to create a thread too
 class Worker(threading.Thread):
     def run(self):
         print('Worker')
 
 
+# Create thread using class
+# * The created class can be instantiated and executed as a thread
 thread = Worker()
 thread.start()
 # Worker

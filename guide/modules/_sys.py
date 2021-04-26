@@ -7,6 +7,11 @@ Sys module
 import sys
 
 
+###############################################################################
+# Variables and Constants
+###############################################################################
+
+
 # argv
 # * Returns a list of command line arguments passed to a Python script
 print(sys.argv)
@@ -35,6 +40,19 @@ print(sys.path)
 print(sys.version)
 # 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55)
 # [MSC v.1928 64 bit (AMD64)]
+
+
+###############################################################################
+# Functions
+###############################################################################
+
+
+# getrefcount()
+# * The the reference count to some object
+# * This is used by Garbage Collector to clean heap memory
+a = []
+print(sys.getrefcount(a))
+# 2
 
 
 # exit(arg)

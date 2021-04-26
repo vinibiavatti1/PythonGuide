@@ -88,6 +88,10 @@ import fractions
 import functools
 
 
+# Garbage Collector features
+import gc
+
+
 # Implements a common interface to numerous secure hash and message digest
 # algorithms
 import hashlib

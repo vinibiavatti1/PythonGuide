@@ -12,7 +12,8 @@ Functions
   * Named functions: Functions with name, that can be defined using "def"
   * Anonymous functions: Lambda functions that can be defined usign "lambda"
     (Check _lambda.py for more details)
-* For parameters, check _parameters.py file
+* NOTE: For parameters, check _parameters.py file
+* NOTE: For type_hints, check _type_hints.py file
 """
 
 
@@ -210,25 +211,3 @@ dct = {'sum': sum_values}
 result = dct['sum'](6, 4)
 print(result)
 # 10
-
-
-###############################################################################
-# Typing
-###############################################################################
-
-
-# Define function specifing the type for parameter and return
-# * It is allowed to specify the type annotation for a parameter or return
-# * NOTE: The Python runtime does not enforce function and variable type
-#   annotations
-# * Syntax: Parameter: (arg: type) / Return: def fn() -> type:
-def integer_sum(x: int, y: int) -> int:
-    return x + y
-
-
-# Call function with typing
-# * We use the same way to call any function, but for this function, if you
-#   provide wrong datatype, the IDE can warn about it
-result = integer_sum(9, 3)
-print(result)
-# 12
