@@ -15,16 +15,16 @@ import math
 ###############################################################################
 
 
-# ceil(x)
-# * Return the ceiling of x, the smallest integer greater than or equal to x
-print(math.ceil(5.7))
-# 6
-
-
 # floor(x)
 # * Return the floor of x, the largest integer less than or equal to x
 print(math.floor(5.7))
 # 5
+
+
+# ceil(x)
+# * Return the ceiling of x, the smallest integer greater than or equal to x
+print(math.ceil(5.7))
+# 6
 
 
 # fabs(x)
@@ -123,6 +123,33 @@ print(math.sqrt(25))
 ###############################################################################
 
 
+# cos(x)
+# * Return the cosine of x radians
+print(math.cos(1))
+# 0.5403023058681398
+
+
+# sin(x)
+# * Return the sine of x radians
+print(math.cos(1))
+# 0.5403023058681398
+
+
+# tan(x)
+# * Return the tangent of x radians
+print(math.cos(1))
+# 0.5403023058681398
+
+
+# hypot(*coordinates)
+# * Return the Euclidean norm
+# * For a two dimensional point (x, y), this is equivalent to computing the
+#   hypotenuse of a right triangle using the Pythagorean theorem,
+#   sqrt(x*x + y*y)
+print(math.hypot(3, 4))
+# 5.0
+
+
 # acos(x)
 # * Return the arc cosine of x, in radians
 print(math.acos(1))
@@ -147,37 +174,10 @@ print(math.atan2(5, 3))
 # 1.0303768265243125
 
 
-# cos(x)
-# * Return the cosine of x radians
-print(math.cos(1))
-# 0.5403023058681398
-
-
-# sin(x)
-# * Return the sine of x radians
-print(math.cos(1))
-# 0.5403023058681398
-
-
-# tan(x)
-# * Return the tangent of x radians
-print(math.cos(1))
-# 0.5403023058681398
-
-
 # dist(p, q)
 # * Return the Euclidean distance between two points p and q
 print(math.dist([5, 3], [7, 8]))
 # 5.385164807134505
-
-
-# hypot(*coordinates)
-# * Return the Euclidean norm
-# * For a two dimensional point (x, y), this is equivalent to computing the
-#   hypotenuse of a right triangle using the Pythagorean theorem,
-#   sqrt(x*x + y*y)
-print(math.hypot(3, 4))
-# 5.0
 
 
 ###############################################################################
