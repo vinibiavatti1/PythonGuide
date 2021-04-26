@@ -206,6 +206,16 @@ Lorem ipsum
 """
 
 
+# Idented section comments
+# * NOTE: Not real PEP recomendation
+# * To use section inside code blocks, ident the section comments
+"""
+    ###########################################################################
+    # Title
+    ###########################################################################
+"""
+
+
 # Docstrings
 # * NOTE: Not real PEP recomendation
 # * Use a multiline comment with dual quotes
@@ -284,6 +294,20 @@ if (1 == 1 and      # Dont use indentation
 # * To mark some resource as unused intentionally, use the "_" char as the name
 #   of the resource
 for _ in range(10):
+    pass
+
+
+# Function arguments
+# * When some function exceeds the line length, use multi-line parameters
+def fn(
+    argument_1,
+    argument_2,
+    argument_3,
+    argument_4,
+    argument_5,
+    argument_6,
+    argument_7
+):
     pass
 
 
