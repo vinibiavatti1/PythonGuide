@@ -13,7 +13,7 @@ Functions
   * Anonymous functions: Lambda functions that can be defined usign "lambda"
     (Check _lambda.py for more details)
 * NOTE: For parameters, check _parameters.py file
-* NOTE: For type_hints, check _type_hints.py file
+* NOTE: For annotations, check _annotatons.py file
 """
 
 
