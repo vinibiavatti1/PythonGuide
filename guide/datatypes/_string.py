@@ -1,6 +1,13 @@
 """
 String
+
+* String datatype
+* NOTE: Check _raw_string.py
+* NOTE: Check _string_interpolation.py
 """
+import string
+
+
 ###############################################################################
 # Intro
 ###############################################################################
@@ -119,45 +126,6 @@ print('Hi' * -3)  # (empty)
 
 
 ###############################################################################
-# Interpolation
-###############################################################################
-
-
-# Interpolation (MODERN STYLE)
-name = 'Vini'
-age = 26
-text = f'{name} is {age} years old'
-print(text)
-# Vini is 26 years old
-
-
-# Interpolation with % (OLD STYLE)
-name = 'Vini'
-age = 26
-print('%s is %s years old' % (name, age))
-# Vini is 26 years old
-
-
-###############################################################################
-# Raw string
-# * The 'r' char defines the string is a raw string, so scape chars will not
-#   work
-###############################################################################
-
-
-# Raw string
-raw = r'Hello \n World'
-print(raw)
-# Hello \n World
-
-
-# Using to define regex
-regex = r'\$\s[0-9,]+'
-print(regex)
-# \$\s[0-9,]+
-
-
-###############################################################################
 # Scape
 ###############################################################################
 
@@ -181,3 +149,16 @@ print(text)
 # Print unicode char
 print('\U00000040')
 # @
+
+
+###############################################################################
+# Templates
+###############################################################################
+
+
+# Define string templates
+# * The Template class in string module can be used to define string templates
+template = string.Template('Name: $name, age: $age')
+txt = template.substitute(name='Vini', age=26)
+print(txt)
+# Name: Vini, age: 26
