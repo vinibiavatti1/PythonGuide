@@ -17,6 +17,7 @@ from typing import (
     Literal,
     Union,
     Final,
+    final,
     TypedDict,
     Generic,
     KT,
@@ -135,6 +136,16 @@ def msg() -> NoReturn:
 # * Text is an alias for str. It is provided to supply a forward compatible
 #   path for Python 2 code
 txt: Text = 'Hello'
+
+
+# final decorator
+# * Decorator to indicate to type checkers that the decorated method cannot be
+#   overridden, and decorated class cannot be subclassed
+@final
+class Animal:  # Cannot be used as super class
+    @final  # Cannot be overrided
+    def eat(self):
+        ...
 
 
 ###############################################################################
