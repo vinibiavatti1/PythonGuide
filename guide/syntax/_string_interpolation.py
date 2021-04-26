@@ -193,10 +193,10 @@ print(f'{person}')
 ###############################################################################
 
 
-# Debug with fstrings
-# * A short way to print values with some name is available
-# * With '=' char after the value, the Python will transform the result putting
-#   the name of the variable as prefix
+# Debug with f-string
+# * A short way to print values with the originary expression is available
+# * With '=' char after the expression, the Python will print the expression
+#   and the result
 name = 'Vini'
-print(f'{name=}')
-# name='Vini'
+print(f'{name.upper() = }')
+# name.upper() = 'VINI''
