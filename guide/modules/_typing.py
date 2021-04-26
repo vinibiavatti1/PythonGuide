@@ -96,9 +96,8 @@ def double(value: Union[int, str]):
 
 # Final
 # * A special typing construct to indicate to type checkers that a name cannot
-#   be re-assigned or overridden in a subclass
-class Super:
-    VALUE: Final[int] = 1234  # Cannot be changed in sub classes
+#   be re-assigned or overridden
+VALUE: Final[int] = 1234  # Cannot be changed anymore
 
 
 # TypedDict
