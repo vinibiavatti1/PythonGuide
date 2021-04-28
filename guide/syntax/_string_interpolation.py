@@ -97,9 +97,11 @@ print(f'The date is: {dt:%d-%m-%Y %H:%M:%S}')
 # Float
 # * Floating point values have the f suffix
 # * The precision can be set
-val = 28.9372
+val = 28678.9372
 print(f'Value: {val:.2f}')
-# Value: 28.94
+print(f'Value: {val:,.2f}')
+# Value: 28678.94
+# Value: 28,678.94
 
 
 # Width
