@@ -110,7 +110,7 @@ print(y)
 # yes
 
 
-# if (chained)
+# if (chained conparison)
 x = 5
 if 0 <= x <= 10:
     print(f'{x} is inside range 0 - 10')
