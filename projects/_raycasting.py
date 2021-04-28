@@ -126,6 +126,7 @@ class RayCasting:
         """
         self.rc_map = rc_map
         self.rc_camera = rc_camera
+        self.precision = 5
         self.reset_screen()
 
     def reset_screen(self):
@@ -139,28 +140,36 @@ class RayCasting:
 
     def raycasting(self):
         """
-        Runs the raycasting algorithm and set the screen
+        Runs the raycasting algorithm and render the result
         """
         angle_step = self.rc_camera.fov / self.rc_camera.width
         angle = self.rc_camera.angle - self.rc_camera.fov / 2
+
+        # Throw rays
         for ray in range(self.rc_camera.width):
             angle %= 360
 
-            cos = math.cos(self._to_rad(angle)) * 0.05
-            sin = math.sin(self._to_rad(angle)) * 0.05
+            # Get vectors
+            cos = math.cos(math.radians(angle)) / self.precision
+            sin = math.sin(math.radians(angle)) / self.precision
 
-            x, y = self.rc_camera.x, self.rc_camera.y
+            # Check distance to wall
+            init_x, init_y = self.rc_camera.x, self.rc_camera.y
+            x, y = init_x, init_y
             entity = None
-            distance = 0
             while entity != WALL:
                 entity = self.rc_map.get_entity(round(x), round(y))
                 x += cos
                 y += sin
-                distance += 1
-            distance = 1000 / distance
+            distance = math.hypot(x - init_x, y - init_y)
 
+            # Get adjacent side distance
+            distance = math.cos(math.radians(angle - self.rc_camera.angle)) \
+                * distance
+            distance /= 1.5
+
+            # Draw
             self.draw_strip(ray, distance)
-
             angle += angle_step
 
     def draw_strip(self, x, distance):
@@ -170,17 +179,16 @@ class RayCasting:
         if x < 0 or x > self.rc_camera.width:
             raise RayCastingError('Invalid x coord value')
 
-        midheight = self.rc_camera.height / 2
         cheight = self.rc_camera.height
 
-        strip_start = midheight - distance
-        strip_end = midheight + distance
+        strip_start = distance
+        strip_end = self.rc_camera.height - distance
         strip_start = math.floor(strip_start)
         strip_end = math.floor(strip_end)
         if strip_start < 0:
             strip_start = 0
         if strip_end >= cheight:
-            strip_end = cheight -1
+            strip_end = cheight - 1
 
         for i in range(0, strip_start):
             self.screen[i][x] = SKY
@@ -205,12 +213,6 @@ class RayCasting:
         [print('-', end='') for _ in range(self.rc_camera.width)]
         print('+')
 
-    def _to_rad(self, degree):
-        """
-        Converts degree to radians
-        """
-        return degree * math.pi / 180
-
 
 ###############################################################################
 # Algorithm
@@ -221,13 +223,8 @@ class RayCasting:
 def main():
     os.system('@echo off')
     rc_mp = RayCastingMap(20, 20)
-    rc_mp.set_entity(2, 2)
-    rc_mp.set_entity(3, 2)
-    rc_mp.set_entity(2, 3)
-    rc_mp.set_entity(7, 7)
-    rc_mp.set_entity(15, 15)
-    rc_mp.set_entity(17, 15)
-    rc_camera = RayCastingCamera(10, 10, 80, 25, 0)
+    angle = 0
+    rc_camera = RayCastingCamera(10, 10, 80, 25, angle)
     raycasting = RayCasting(rc_mp, rc_camera)
 
     while True:

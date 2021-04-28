@@ -122,6 +122,13 @@ class Bus:
 from abc import ABC
 
 
+# Main module
+# * NOTE: Not real PEP recomendation
+# * The main module is the entry module for the application
+# * Use the 'main.py' name for this module
+"""main.py"""
+
+
 # Exceptions
 # * Use a good representation name
 # * Do not use underscore to separete

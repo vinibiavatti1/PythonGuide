@@ -10,7 +10,7 @@ from collections.abc import Iterable
 # Bubble sort
 def bubble_sort(collection):
     """
-    List sorting algorithm
+    Collection sorting algorithm
     """
     if not isinstance(collection, Iterable):
         raise ValueError('The collection must be iterable')

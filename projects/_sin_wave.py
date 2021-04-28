@@ -114,7 +114,7 @@ def main():
     while True:
         wave.reset()
         wave.process_sin(angle, step)
-        # wave.process_cos(angle, step)
+        wave.process_cos(angle, step)
         os.system('cls')
         wave.render()
         time.sleep(0.05)

@@ -131,14 +131,14 @@ print(math.cos(1))
 
 # sin(x)
 # * Return the sine of x radians
-print(math.cos(1))
-# 0.5403023058681398
+print(math.sin(1))
+# 0.8414709848078965
 
 
 # tan(x)
 # * Return the tangent of x radians
-print(math.cos(1))
-# 0.5403023058681398
+print(math.tan(1))
+# 1.5574077246549023
 
 
 # hypot(*coordinates)
