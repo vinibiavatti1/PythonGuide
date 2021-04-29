@@ -19,49 +19,49 @@ if
 ###############################################################################
 
 
-# if
+# If
 x = 5
 if x > 3:
     print('Grater')
 # Grater
 
 
-# if in
+# If in
 x = 1
 if x in (1, 2, 3):
     print(f'{x} is inside the tuple')
 # 1 is inside the tuple
 
 
-# if is
+# If is
 x = None
 if x is None:
     print(f'{x} is None')
 # None is None
 
 
-# if is
+# If is
 x = None
 if x is None:
     print(f'{x} is None')
 # None is None
 
 
-# if and
+# If and
 x = 5
 if x > 0 and x < 10:
     print(f'{x} is inside the range 0 - 10')
 # 5 is inside the range 0 - 10
 
 
-# if or
+# If or
 x = 5
 if x == 0 or x == 5:
     print(f'{x} is 0 or 5')
 # 5 is 0 or 5
 
 
-# if not
+# If not
 x = 10
 y = 20
 if not x == y:
@@ -69,7 +69,19 @@ if not x == y:
 # 10 is not equal to 20
 
 
-# if else
+# If (short hand)
+# * NOTE: (PEP8 NOT RECOMENDED)
+x = 'a'
+if x == 'a': print(True)  # Same line
+# True
+
+
+###############################################################################
+# Elif and Else
+###############################################################################
+
+
+# If else
 x = True
 if x:
     print('good')
@@ -78,7 +90,7 @@ else:
 # good
 
 
-# if elif else
+# If elif else
 x = 3
 if x == 1:
     print('one')
@@ -89,28 +101,31 @@ else:
 # three
 
 
-# if (short hand)
-# * NOTE: (PEP8 NOT RECOMENDED)
-x = 'a'
-if x == 'a': print(True)  # Same line
-# True
+###############################################################################
+# Ternary
+###############################################################################
 
 
-# if (ternary)
+# If (ternary)
 # * NOTE: It needs the else statement always!
 x = 'b'
 print('a') if x == 'a' else print('b')
 # b
 
 
-# if (tuple ternary)
+# If (tuple ternary)
 x = True
 y = ('no', 'yes')[x]
 print(y)
 # yes
 
 
-# if (chained conparison)
+###############################################################################
+# Chained comparison
+###############################################################################
+
+
+# If (chained comparison)
 x = 5
 if 0 <= x <= 10:
     print(f'{x} is inside range 0 - 10')
