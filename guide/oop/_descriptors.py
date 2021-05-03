@@ -12,6 +12,8 @@ Descriptors
 * If your descriptor implements just .__get__(), then it’s said to be a
   non-data descriptor. If it implements .__set__() or .__delete__(), then
   it’s said to be a data descriptor
+* The descriptor works like a Proxy, controlling the resource that it is
+  attached on
 * Reference:
   * https://realpython.com/python-descriptors/
 """
@@ -140,7 +142,7 @@ class LazyProperty:
 class Customer:
     @LazyProperty
     def data(self):
-        time.sleep(3)
+        time.sleep(1)
         return 'data'
 
 
@@ -151,3 +153,36 @@ customer = Customer()
 print(customer.data)  # Take time
 print(customer.data)  # Fast
 print(customer.data)  # Fast
+
+
+# Private attribute
+# * The descriptor can be used to set some attribute as private also
+class Private:
+    def __init__(self):
+        self.value = None
+
+    def __get__(self, obj, type=None):
+        raise AttributeError('Private access to attribute')
+
+    def __set__(self, obj, value):
+        self.value = value
+
+
+# Create class with private attribute
+# * The private descriptor will be used to block the access to the attribute
+# * The descriptor could be created as decorator too
+class Bank:
+    master_password = Private()
+
+    def __init__(self):
+        self.master_password = '12345'
+
+
+# Try to access the attribute
+# * Now, we will try to access that attribute
+"""
+bank = Bank()
+print(bank.master_password)
+
+AttributeError: Private access to attribute
+"""

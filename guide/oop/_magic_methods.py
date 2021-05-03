@@ -138,6 +138,12 @@ __getstate__(self)                  pickle.dump(pkl_file, x)
 __setstate__(self, state)           data = pickle.load(pkl_file)
 __reduce__(self)                    pickle.dumps(x)
 __reduce_ex__(self)                 pickle.dumps(x)
+
+Descriptor protocol
+__get__(self, obj, type=None)       object.attribute
+__set__(self, obj, value)           object.attribute = value
+__delete__(self, obj)               del object.attribute
+__set_name__(self, owner, name)     attribute = descriptor()
 ###############################################################################
 """
 
