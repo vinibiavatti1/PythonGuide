@@ -11,9 +11,16 @@ Lambda
 
 # Lambda Function
 # NOTE: PEP8 recomend to use def for this case
-sum = lambda x, y: x + y
-print(sum(5, 5))
+calc = lambda x, y: x + y
+print(calc(5, 5))
 # 10
+
+
+# Lambda Function with default args
+# * You can use this way to freeze values to the parameters
+calc = lambda x=1, y=2: x + y
+print(calc())
+# 3
 
 
 # Return lambda from function
