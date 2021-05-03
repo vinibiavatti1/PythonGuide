@@ -34,15 +34,15 @@ PyInstaller
 # Generate executable
 # * Normally, PyInstaller creates a bundle with the executable and the python
 #   dependencies outside the executable
-""" $ pip install pyinstaller <file>.py """
+""" $ pyinstaller <file>.py """
 
 
 # Generate one file executable
 # * With this option, the PyInstaller will put everything inside the executable
-""" $ pip install pyinstaller --onefile <file>.py """
+""" $ pyinstaller --onefile <file>.py """
 
 
 # Generate from spec file
 # * The spec file contains the arguments used in the last generation to create
 #   the executable
-""" $ pip install pyinstaller <file>.spec """
+""" $ pyinstaller <file>.spec """
