@@ -15,7 +15,7 @@ Checkbutton widget
     “push-push” button that looks recessed when it is set, and looks raised
     when it is cleared.
 * Syntax:
-  * Checkbutton(master, option, ...)
+  * tk.Checkbutton(master, option, ...)
 * Reference:
   * https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
 """

@@ -1,18 +1,19 @@
 """
-Button widget
+Combobox widget (TTK)
 
-* The Button widget is used to add buttons in a Python application
-* These buttons can display text or images that convey the purpose of the
-  buttons
-* You can attach a function or a method to a button which is called
-  automatically when you click the button
+* This widget is a combination of an Entry and a drop-down menu. In your
+  application, you will see the usual text entry area, with a downward-pointing
+  arrow. When the user clicks on the arrow, a drop-down menu appears. If the
+  user clicks on one, that choice replaces the current contents of the entry.
+  However, the user may still type text directly into the entry (when it has
+  focus), or edit the current text
 * Syntax:
-  * Button(master, option=value, ...)
+  * ttk.Combobox(parent, option, ...)
 * Reference:
   * https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
 """
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk
 
 
 ###############################################################################
@@ -24,45 +25,30 @@ from tkinter import messagebox
 # * The keys method shows all parameters for the widget creation
 window = tk.Tk()
 window.withdraw()
-keys = tk.Button(master=window).keys()
+keys = ttk.Combobox(master=window).keys()
 [print(k) for k in keys]
 window.destroy()
 """
-activebackground
-activeforeground
-anchor
-background
-bd
-bg
-bitmap
-borderwidth
-command
-compound
-cursor
-default
-disabledforeground
-fg
-font
-foreground
 height
-highlightbackground
-highlightcolor
-highlightthickness
-image
+postcommand
+values
+exportselection
+font
+invalidcommand
 justify
-overrelief
-padx
-pady
-relief
-repeatdelay
-repeatinterval
+show
 state
-takefocus
-text
 textvariable
-underline
+validate
+validatecommand
 width
-wraplength
+xscrollcommand
+foreground
+background
+takefocus
+cursor
+style
+class
 """
 
 
@@ -74,8 +60,8 @@ wraplength
 # Methods
 # * The common methods for the widget are:
 """
-flash()
-invoke()
+current([index])
+set(value)
 """
 
 
@@ -89,18 +75,12 @@ invoke()
 window = tk.Tk()
 
 
-# Create the command function
-# * This function will be executed when the button is clicked
-def command(message):
-    messagebox.showinfo('Information', message)
-
-
 # Create the widget
 # * The widget will be created and put inside the window
-widget = tk.Button(
+widget = ttk.Combobox(
     master=window,
-    text='Click',
-    command=lambda: command('Hello world!')
+    text='Select an option',
+    values=('Option 1', 'Option 2')
 )
 
 

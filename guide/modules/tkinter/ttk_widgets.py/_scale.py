@@ -1,15 +1,14 @@
 """
-Menubutton widget
+Scale widget (TTK)
 
-* A menubutton is the part of a drop-down menu that stays on the screen all the
-  time. Every menubutton is associated with a Menu widget (see above) that can
-  display the choices for that menubutton when the user clicks on it
+* This is the ttk version of Scale widget from TK
 * Syntax:
-  * tk.Menubutton(parent, option, ...)
+  * ttk.Scale(parent, option, ...)
 * Reference:
   * https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
 """
 import tkinter as tk
+from tkinter import ttk
 
 
 ###############################################################################
@@ -21,43 +20,35 @@ import tkinter as tk
 # * The keys method shows all parameters for the widget creation
 window = tk.Tk()
 window.withdraw()
-keys = tk.Menubutton(master=window).keys()
+keys = ttk.Scale(master=window).keys()
 [print(k) for k in keys]
 window.destroy()
 """
-activebackground
-activeforeground
-anchor
-background
-bd
-bg
-bitmap
-borderwidth
-cursor
-direction
-disabledforeground
-fg
-font
-foreground
-height
-highlightbackground
-highlightcolor
-highlightthickness
-image
-indicatoron
-justify
-menu
-padx
-pady
-relief
-compound
+command
+variable
+orient
+from
+to
+value
+length
 state
 takefocus
-text
-textvariable
-underline
-width
-wraplength
+cursor
+style
+class
+"""
+
+
+###############################################################################
+# Methods
+###############################################################################
+
+
+# Methods
+# * The common methods for the widget are:
+"""
+get()
+set(newValue)
 """
 
 
@@ -73,20 +64,14 @@ window = tk.Tk()
 
 # Create the widget
 # * The widget will be created and put inside the window
-widget = tk.Menubutton(
+variable = tk.DoubleVar()
+variable.set(5.)
+widget = ttk.Scale(
     master=window,
-    text='Click here'
+    variable=variable,
+    from_=0,
+    to=10
 )
-menu = tk.Menu(
-    master=widget
-)
-menu.add_checkbutton(label='Option 1')
-menu.add_checkbutton(label='Option 2')
-
-
-# Set the menu for the menubutton
-# * The 'menu' key must be set with the menu
-widget['menu'] = menu
 
 
 # Set the position of the widget
