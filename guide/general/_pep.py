@@ -21,7 +21,7 @@ import unittest
 
 # Variables
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -30,7 +30,7 @@ client_name = 'Vini'
 
 # Constants
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Use all letters capitalized
 # * Do not use special symbols
 PI = 3.14
@@ -38,7 +38,7 @@ PI = 3.14
 
 # Functions
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -48,7 +48,7 @@ def sum(x, y):
 
 # Classes
 # * Use a good representation name
-# * Do not use underscore to separete
+# * Do not use underscore to separate
 # * Use camel case
 # * Do not use special symbols
 # * Capitalize all letters of an abbreviation
@@ -59,7 +59,7 @@ class HTTPServer:
 
 # Methods
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Instance methods should have their first parameter named 'self'.
@@ -82,7 +82,7 @@ class Car:
 # Test methods (TestCase)
 # * Use "test_" as prefix
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Must have their first parameter named 'self'.
@@ -94,7 +94,7 @@ class ListTest(unittest.TestCase):
 
 # Private properties
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Always start the property name with uderscore
@@ -104,18 +104,27 @@ class Bus:
         self._name = name
 
 
-# Packages (Folders with Python module collections)
+# Project (Root folder)
 # * Use a good representation name
-# * Use underscore to separete (Avoid)
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
-"""matplotlib"""
+"""my_project"""
+
+
+# Packages (Folders with __init__.py)
+# * Use a good representation name
+# * Use underscore to separate
+# * Do not use camel case
+# * Do not use special symbols
+# * Do not use capital letters
+"""my_package"""
 
 
 # Modules
 # * Use a good representation name
-# * Use underscore to separete
+# * Use underscore to separate
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
@@ -131,7 +140,7 @@ from abc import ABC
 
 # Exceptions
 # * Use a good representation name
-# * Do not use underscore to separete
+# * Do not use underscore to separate
 # * Use camel case
 # * Do not use special symbols
 # * Do not use letters to represent the type like "E" for Error
@@ -203,7 +212,7 @@ Lorem ipsum
 
 # Section comments
 # * NOTE: Not real PEP recomendation
-# * To separete code sections, use the section comment with "#" char
+# * To separate code sections, use the section comment with "#" char
 # * NOTE: The example below is inside a multi-line comment just to differs from
 #   the other section comments in this file
 """
