@@ -4,8 +4,8 @@ VS Code configurations
 * VS Code IDE can be used for Python programming
 * It is recommended to configure the IDE to has the PEP8 linter, Python linter,
   and other features to follow the good practicies of Python
-* NOTE: THE REPOSITORY PythonStarterKit contains all you need to start a Python
-  project withou need to configure everything
+* NOTE: The repository python_project_template contains all you need to start a
+  Python project withou need to configure everything
 """
 
 ###############################################################################
