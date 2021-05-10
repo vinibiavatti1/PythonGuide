@@ -31,7 +31,7 @@ Virtual Environment
 #   what virtual environment you're using, and modify the environment so that
 #   running python will get you that particular version and installation of
 #   Python
-""" $ my-app/activate.bat """
+""" $ my-app/Scripts/activate.bat """
 
 
 # Managing Packages with pip

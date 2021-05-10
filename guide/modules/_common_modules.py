@@ -80,6 +80,10 @@ import decimal
 import doctest
 
 
+# Create enum datatypes
+import enum
+
+
 # Rational numbers
 import fractions
 

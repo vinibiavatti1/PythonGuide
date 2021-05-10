@@ -24,8 +24,7 @@ print(__name__)
 
 
 # Dunder module
-# * The example below is used to mark some folder as a package (It is not
-#   necessary in Python 3 anymore)
+# * The example below is used to mark some folder as a package
 """ __init__.py """
 
 
