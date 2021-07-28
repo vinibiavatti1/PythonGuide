@@ -290,8 +290,8 @@ long_variable = 5
 
 # Backslash
 # * For long python lines, it is recommended to use backlash (\) to wrap
-txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ul" + \
-    "lamcorper ipsum. Nullam et elit nec ante porttitor finibus finibus di" + \
+txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ul " \
+    "lamcorper ipsum. Nullam et elit nec ante porttitor finibus finibus di " \
     "gnissim nulla. In pharetra vulputate magna sodales consequat"
 
 
@@ -314,16 +314,9 @@ for _ in range(10):
 
 
 # Function arguments
-# * When some function exceeds the line length, use multi-line parameters
-def fn(
-    argument_1,
-    argument_2,
-    argument_3,
-    argument_4,
-    argument_5,
-    argument_6,
-    argument_7
-):
+# * When some function exceeds the line length, use berak-line
+def fn(argument1: str, argument2: list[str], argument3: int,
+       argument4: int) -> None:
     pass
 
 

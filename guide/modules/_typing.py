@@ -122,13 +122,24 @@ point: Point = dict(x=4)  # Fails type check
 # * There are commonly generics types already defined in typing module:
 #   * KT: Key type
 #   * VT: Value type
+KT = TypeVar('KT')
+VT = TypeVar('VT')
+
+
 class HashMap(Generic[KT, VT]):
     ELEMENTS: dict[KT, VT] = {}
 
 
 # NoReturn
-# * Specifies that the function has no return
+# * Specifies that the function never returns (the function will raise an
+#   exception, or will stay in a loop forever)
 def msg() -> NoReturn:
+    ...
+
+
+# None
+# * Specifies that the function returns None (common return type)
+def action() -> None:
     ...
 
 
