@@ -9,8 +9,7 @@ learning. I decided to share it because one of my goals with the knowledge I
 will conquist is to share and help the people enjoy it!
 
 This project has some folders with a specific concept:
-* /introduction: Introduction files
-* /config:       Guides for Python and IDE configurations
+* /introduction: Introduction files and IDE configuration
 * /guide:        Source files with many Python concepts
 * /projects:     Some Python projects made for excercices
 * /tests:        Tests to check some Python operation

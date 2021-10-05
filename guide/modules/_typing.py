@@ -24,7 +24,8 @@ from typing import (
     VT,
     TypeVar,
     Callable,
-    NoReturn
+    NoReturn,
+    Optional
 )
 
 
@@ -35,31 +36,36 @@ from typing import (
 
 # List
 # * Define the variable type as list
+# * The same for using list[]
 lst: List[str] = ['John']
 
 
 # Tuple
 # * Define the variable type as tuple
+# * The same for using list[]
 tpl: Tuple[str] = ('John')
 
 
 # Dict
 # * Define the variable type as dict
+# * The same for using dict[]
 dct: Dict[str, int] = {'age': 26}
 
 
 # Set
 # * Define the variable type as set
+# * The same for using set[]
 st: Set[str] = {'John'}
 
 
 # Frozenset
 # * Define the variable type as frozenset
+# * The same for using frozenset[]
 fst: FrozenSet[str] = frozenset({'John'})
 
 
 # Any
-# * Define the variable type as any (Can has any value)
+# * Define the variable type as any (Can has any type of value)
 val: Any = 'Hello'
 
 
@@ -69,7 +75,7 @@ fn: Callable = lambda x: x
 
 
 ###############################################################################
-# Enum types
+# Literal type
 ###############################################################################
 
 
@@ -83,11 +89,42 @@ def send_mail(_from: str, _to: str, /) -> Literal['success', 'error']:
     ...
 
 
+###############################################################################
+# Union type (|)
+###############################################################################
+
+
 # Union
 # * Used to define more than on possible type for some resource
+# * Since Python 3.10, you can use the pipe char (|) for union
 # * In the example, the function can receive the value as integer or string
-def double(value: Union[int, str]):
+def double(value: Union[int, str]) -> Union[int, str]:
     ...
+
+
+# Union Pipe
+# * You can define union types using the pipe char- In this way, the
+#   declaration is less verboose
+def triple(value: int | str) -> int | str:
+    pass
+
+
+###############################################################################
+# Optional
+###############################################################################
+
+
+# Optional
+# * The optional is used as a annotation in a context which the value can be
+#   the specified type or None
+def get_idx(index: int) -> Optional[str]:
+    pass
+
+
+# Optional Pipe
+# * The same result can be made using the pipe (|) char and None
+def get_the(index: int) -> str | None:
+    pass
 
 
 ###############################################################################

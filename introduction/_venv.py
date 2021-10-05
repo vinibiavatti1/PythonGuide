@@ -49,7 +49,7 @@ Virtual Environment
 # * VSCode provides a way to change the Python interpreter for the current
 #   project. To do it, you can:
 """
-1. Click on the Python interpreter in the booton toolbar or press Ctrl + Shift
+1. Click on the Python interpreter in the botton toolbar or press Ctrl + Shift
    + P and type "Python: Select Interpreter"
 2. Enter with the "python.exe" interpreter from the virtual env created
 3. To run the Python file with this interpreter, just click in the green play

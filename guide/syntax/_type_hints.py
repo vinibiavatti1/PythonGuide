@@ -1,17 +1,17 @@
 """
-Annotations (Type Hints)
+Type Hints (annotations)
 
 * New feature provided by PEP 484
 * The PEP 484 aims to provide a standard syntax for type annotations, opening
   up Python code to easier static analysis and refactoring, potential runtime
   type checking, and (perhaps, in some contexts) code generation utilizing type
   information
-* NOTE: Check _typing.py file for more usefull available types to be used
+* NOTE: Check _typing.py file for more usefull available types that can be used
 """
 
 
 ###############################################################################
-# Function and Variable annotations
+# Function and Variable Type Hints
 ###############################################################################
 
 
@@ -33,7 +33,7 @@ print(result)
 
 
 # Check the annotations of a function
-# * The annotations of the function are stored in the __annotations__ attribute
+# * The type hints of the function are stored in the __annotations__ attribute
 print(work.__annotations__)
 # {'x': <class 'int'>, 'y': <class 'float'>, 'z': list[str], 'return':
 # <class 'bool'>}

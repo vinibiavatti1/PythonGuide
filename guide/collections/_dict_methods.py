@@ -72,6 +72,7 @@ print(dct3)
 
 # get(k, [default])
 # Returns the value of the specified key
+# Default is None when not set
 dct = {'name': 'Vini', 'age': 26}
 print(dct.get('age'))  # 26
 print(dct.get('abc', 999))  # 999

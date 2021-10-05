@@ -15,7 +15,7 @@ VS Code configurations
 
 # Create a new folder with the Python env
 """
-1. Create a folder called "env" or "venv" inside the projecto
+1. Create a folder called ".venv" inside the project
 2. Access this folder with prompt command line
 3. Type $ python -m venv <project-name> to create a new Python environment
 4. Select this Python environment to be used in VS Code (Check _venv.py)
@@ -23,17 +23,34 @@ VS Code configurations
 
 
 ###############################################################################
-# Configure PEP8
+# Configure Python Code Style (PEP8)
 ###############################################################################
 
 
-# Configure the PEP8 code style linter (pycodestyle)
+# The pycodestyle is a python package that works as a lint to validate the PEP8
+# convetions into the source code
 """
-1. File > Preferences > Settings
-2. Type "pycodestyle"
-3. Mark "Pycodestyle Enabled"
-4. Select "Information" for "Pycodestyle Category Severity: E"
-5. Select "Information" for "Pycodestyle Category Severity: W"
+1. Install pycodestyle using pip (pip install pycodestyle)
+2. In VSCode, access File > Preferences > Settings
+3. Type "pycodestyle"
+4. Mark "Pycodestyle Enabled"
+5. Select "Information" for "Pycodestyle Category Severity: E"
+6. Select "Information" for "Pycodestyle Category Severity: W"
+"""
+
+
+###############################################################################
+# Configure Python Linter (pylint)
+###############################################################################
+
+
+# The pylint is a python package that validates the source code finding syntax
+# and semantic errors
+"""
+1. Install pylint using pip (pip install pylint)
+2. In VSCode, access File > Preferences > Settings
+3. Type "pylint"
+4. Mark "Python linting Enabled"
 """
 
 
@@ -44,11 +61,11 @@ VS Code configurations
 
 # Configure the vertical line to show the limit of the line of 79 characters
 """
-1. File > Preferences > Settings
+1. Access File > Preferences > Settings
 2. Type "rulers"
 3. In "Rulers" select "Edit in settings.json"
-4. Put 79 inside the array
-5. save
+4. Put the 79 value inside the array (PEP8 convention)
+5. Save the file
 """
 
 
@@ -74,7 +91,7 @@ end_of_line = lf
 charset = utf-8
 
 [*.py]
-max_line_length = 20
+max_line_length = 79
 
 [*.md]
 trim_trailing_whitespace = false
