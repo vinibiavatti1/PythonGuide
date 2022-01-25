@@ -10,6 +10,7 @@ Magic methods
 * Rszalski article: https://rszalski.github.io/magicmethods/
 * Tutorialsteacher: https://www.tutorialsteacher.com/python/magic-methods-in-py
                     thon
+* Python Data Model: https://docs.python.org/3/reference/datamodel.html
 
 ###############################################################################
 Magic Method	                    Called when
@@ -20,6 +21,11 @@ Construction and Initialization
 __new__(cls [,...])	                x = MyClass(arg1, arg2)
 __init__(self [,...])	            x = MyClass(arg1, arg2)
 __del__(self)                       called when an object is GC
+
+Class Creation Customization
+__init_subclass__(cls)              class Super(Subclass): pass
+__set_name__(self, owner, name)     x.attribute = Class()
+__prepare__(name, bases, **kwargs)  namespace = mc.__prepare__(...)
 
 Attribute access
 __getattr__(self, name)	            self.name  # name doesn't exist
@@ -139,11 +145,10 @@ __setstate__(self, state)           data = pickle.load(pkl_file)
 __reduce__(self)                    pickle.dumps(x)
 __reduce_ex__(self)                 pickle.dumps(x)
 
-Descriptor protocol
+Descriptor Protocol
 __get__(self, obj, type=None)       object.attribute
 __set__(self, obj, value)           object.attribute = value
 __delete__(self, obj)               del object.attribute
-__set_name__(self, owner, name)     attribute = descriptor()
 ###############################################################################
 """
 
