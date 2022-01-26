@@ -3,15 +3,15 @@ Descriptors
 
 * Descriptors are Python objects that implement a method of the descriptor
   protocol, which gives you the ability to create objects that have special
-  behavior when they’re accessed as attributes of other objects
+  behavior when they're accessed as attributes of other objects
 * The methods of the descriptor protocol are:
   * __get__(self, obj, type=None) -> object
   * __set__(self, obj, value) -> None
   * __delete__(self, obj) -> None
   * __set_name__(self, owner, name)
-* If your descriptor implements just .__get__(), then it’s said to be a
+* If your descriptor implements just .__get__(), then it's said to be a
   non-data descriptor. If it implements .__set__() or .__delete__(), then
-  it’s said to be a data descriptor
+  it's said to be a data descriptor
 * The descriptor works like a Proxy, controlling the resource that it is
   attached on
 * Reference:
@@ -28,7 +28,7 @@ import time
 # Define descriptor
 # * The descriptor will be create as a class
 # * The parameters of the descriptor methods are:
-#   * self: is the instance of the descriptor you’re writing.
+#   * self: is the instance of the descriptor you're writing.
 #   * obj: is the instance of the object your descriptor is attached to
 #   * type: is the type of the object the descriptor is attached to
 class Descriptor:

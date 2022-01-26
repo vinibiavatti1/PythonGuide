@@ -205,7 +205,7 @@ IndentationError: expected an indented block
 
 
 # StopIteration
-# * Raised by built-in function next() and an iterator’s __next__() method to
+# * Raised by built-in function next() and an iterator's __next__() method to
 #   signal that there are no further items produced by the iterator
 """
 iterator = iter([1, 2])

@@ -38,7 +38,7 @@ b(reak):                With a lineno argument, set a break there in the
                         the first executable statement within that function.
                         The line number may be prefixed with a filename and a
                         colon, to specify a breakpoint in another file
-                        (probably one that hasn’t been loaded yet)
+                        (probably one that hasn't been loaded yet)
 
 cl(ear):                With a filename:lineno argument, clear all the
                         breakpoints at this line. With a space separated list

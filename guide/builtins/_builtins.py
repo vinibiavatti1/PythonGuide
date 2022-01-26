@@ -792,7 +792,7 @@ print(a1, a2, sep=', ')
 
 
 # delattr()
-# * The string must be the name of one of the object’s attributes.
+# * The string must be the name of one of the object's attributes.
 # * The function  deletes the named attribute, provided the object allows it.
 # * delattr(x, 'foobar') is equivalent to del x.foobar
 # * Syntax
@@ -804,7 +804,7 @@ print(t.__dict__)
 
 
 # hasattr()
-# * The result is True if the string is the name of one of the object’s
+# * The result is True if the string is the name of one of the object's
 #   attributes, False if not
 # * Syntax
 #   * hasattr(object, name)

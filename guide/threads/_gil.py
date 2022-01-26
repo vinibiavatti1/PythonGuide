@@ -13,7 +13,7 @@ GIL (Global Interpreter Lock)
   will be able to geenrate some deadlocks, and it will impact in performance
 * The most popular way to prevent GIL is to use a multi-processing approach
   where you use multiple processes instead of threads. Each Python process gets
-  its own Python interpreter and memory space so the GIL won’t be a problem.
+  its own Python interpreter and memory space so the GIL won't be a problem.
   Python has a multiprocessing module which lets us create processes easily
 * NOTE: Check the _gc.py file for more details of GC
 * NOTE: Check the _gc.py for Garbage Collector details

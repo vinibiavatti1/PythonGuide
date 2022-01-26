@@ -21,14 +21,14 @@ Code        Meaning                                                 Example
 %S	        Second as a zero-padded decimal number.	                05
 
 # Not common
-%a	        Weekday as locale’s abbreviated name.	                Mon
-%A	        Weekday as locale’s full name.	                        Monday
+%a	        Weekday as locale's abbreviated name.	                Mon
+%A	        Weekday as locale's full name.	                        Monday
 %w	        Weekday as a decimal number, where 0 is Sunday and 6
             is Saturday.	                                        1
 %-d	        Day of the month as a decimal number. (Platform
             specific)	                                            30
-%b	        Month as locale’s abbreviated name.	                    Sep
-%B	        Month as locale’s full name.	                        September
+%b	        Month as locale's abbreviated name.	                    Sep
+%B	        Month as locale's full name.	                        September
 %-m	        Month as a decimal number. (Platform specific)	        9
 %y	        Year without century as a zero-padded decimal number.	13
 %-H	        Hour (24-hour clock) as a decimal number. (Platform     7
@@ -36,7 +36,7 @@ Code        Meaning                                                 Example
 %I	        Hour (12-hour clock) as a zero-padded decimal number.	07
 %-I	        Hour (12-hour clock) as a decimal number. (Platform     7
             specific)
-%p	        Locale’s equivalent of either AM or PM.	                AM
+%p	        Locale's equivalent of either AM or PM.	                AM
 %-M	        Minute as a decimal number. (Platform specific)	        6
 %-S	        Second as a decimal number. (Platform specific)	        5
 %f	        Microsecond as a decimal number, zero-padded on the     000000
@@ -55,11 +55,11 @@ Code        Meaning                                                 Example
             the week) as a decimal number. All days in a new year
             preceding the first Monday are considered to be in
             week 0.
-%c	        Locale’s appropriate date and time representation.	    Mon Sep 30
+%c	        Locale's appropriate date and time representation.	    Mon Sep 30
                                                                     07:06:05
                                                                     2013
-%x	        Locale’s appropriate date representation.	            09/30/13
-%X	        Locale’s appropriate time representation.	            07:06:05
+%x	        Locale's appropriate date representation.	            09/30/13
+%X	        Locale's appropriate time representation.	            07:06:05
 %%	        A literal '%' character.	                            %
 ###############################################################################
 * Reference: https://strftime.org/

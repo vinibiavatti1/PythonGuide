@@ -13,11 +13,11 @@ Named Tuple
   * rename: We can specify rename to True so that invalid fields are renamed to
     their index names. For example, 'name def class' will be renamed to
     'name', '_1', '_2'.
-  * defaults: It’s used to define default values to the optional parameters.
+  * defaults: It's used to define default values to the optional parameters.
     Since fields with a default value must come after any fields without a
     default, the defaults are applied to the rightmost parameters. For example,
     if the fieldnames are ['a', 'b', 'c'] and the defaults are (1, 2), then 'a'
-    will be a required argument, ‘b’ will default to 1, and ‘c’ will default to
+    will be a required argument, ‘b' will default to 1, and ‘c' will default to
     2.
   * module: If module is defined, the __module__ attribute of the named tuple
     is set to that value. This parameter was introduced in Python 3.6 release

@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
 
 # start()
-# * Start the process’s activity
+# * Start the process's activity
 if __name__ == '__main__':
     process = multiprocessing.Process(target=worker, args=(8,))
     process.start()

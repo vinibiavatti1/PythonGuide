@@ -276,7 +276,7 @@ import tkinter.filedialog
 import tkinter.simpledialog
 
 
-# Names for Python’s built‐in types
+# Names for Python's built‐in types
 import types
 
 

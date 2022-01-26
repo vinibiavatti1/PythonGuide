@@ -30,7 +30,7 @@ print(platform.machine())
 
 
 # node()
-# * Returns the computer’s network name
+# * Returns the computer's network name
 # * An empty string is returned if the value cannot be determined
 print(platform.node())
 # PC
@@ -50,7 +50,7 @@ print(platform.processor())
 
 
 # release()
-# * Returns the system’s release
+# * Returns the system's release
 print(platform.release())
 # 10
 
@@ -72,7 +72,7 @@ print(platform.system_alias(system, release, version))
 
 
 # version()
-# * Returns the system’s release version
+# * Returns the system's release version
 print(platform.version())
 # 10.0.19041
 

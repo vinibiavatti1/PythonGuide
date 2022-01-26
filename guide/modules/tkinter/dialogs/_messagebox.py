@@ -2,7 +2,7 @@
 TKInter messagebox module
 
 * The message boxes are modal and will return a subset of (True, False, OK,
-  None, Yes, No) based on the user’s selection
+  None, Yes, No) based on the user's selection
 """
 from tkinter import Tk, messagebox
 

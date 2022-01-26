@@ -89,7 +89,7 @@ $ pip search numpy
 
 
 # PIP cache
-# * Inspect and manage $ pip’s wheel cache
+# * Inspect and manage $ pip's wheel cache
 """
 $ pip cache dir
 $ pip cache info

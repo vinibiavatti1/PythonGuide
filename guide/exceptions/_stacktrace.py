@@ -10,7 +10,7 @@ Stacktrace
     name)
     NOTE: the number may be misleading, as Python usually shows the place where
     it first notices the effects of the error, not necessarily the error itself
-  * Line content: note: IDLE’s editor window doesn’t show line numbers, but it
+  * Line content: note: IDLE's editor window doesn't show line numbers, but it
     displays the current cursor location at the bottom-right corner; use it to
     locate the erroneous line in a long source code
   * Error's name: the name of the error and a short explanation.

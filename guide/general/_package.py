@@ -1,7 +1,7 @@
 """
 Package
 
-* Packages are a way of structuring Python’s module namespace by using "dotted
+* Packages are a way of structuring Python's module namespace by using "dotted
   module names"
 * For example, the module name A.B designates a submodule named B in a package
   named A

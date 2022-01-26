@@ -1,10 +1,10 @@
 """
-PEP (Python Enhancement Proposals)
+Python Style Guide
 
-* PEP is a documentation to describe the good practices for Python
 * This file represents some concepts of:
   * PEP8: Style Guide for Python Code
   * PEP257: Docstring Conventions
+  * PEP484: Type Hints
 * This is allowed in https://www.python.org/dev/peps/
 * The idea is to describe the way to type code using 'Pythonic' way
 * Use the editorconfig plugin in your IDE and put the .editorconfig file on the
@@ -92,18 +92,6 @@ class ListTest(unittest.TestCase):
         pass
 
 
-# Private properties
-# * Use a good representation name
-# * Use underscore to separate
-# * Do not use camel case
-# * Do not use special symbols
-# * Always start the property name with uderscore
-# * Do not use capital letters
-class Bus:
-    def __init__(self, name):
-        self._name = name
-
-
 # Project (Root folder)
 # * Use a good representation name
 # * Use underscore to separate
@@ -145,7 +133,8 @@ from abc import ABC
 # * Do not use special symbols
 # * Do not use letters to represent the type like "E" for Error
 # * Use the 'Error' suffix in the exception class name
-class ValidationError():
+# * Extends an Exception subclass
+class ValidationError(Exception):
     pass
 
 
@@ -168,9 +157,13 @@ text = 'Hello'
 # * Use dunder "__" to private resources
 class Forest:
     def __init__(self, name, size, country):
-        self.name = name          # public
-        self._size = size         # protected
-        self.__country = country  # private
+        self.name = name               # public
+        self._size = size              # protected
+        self.__country = country       # private
+
+    def public_method(self): pass      # public
+    def _protected_method(self): pass  # protected
+    def __private_method(self): pass   # private
 
 
 ###############################################################################
@@ -182,14 +175,14 @@ class Forest:
 # * Do not use different imports at same line like import sys, abc
 # * Always put the imports at the top of the file of after the first comment
 import sys
-import abc
+import abc as myabc
 
 
 # Import a big amount of resources
 # * Use multi line to import the resources
 from abc import (
     ABC,
-    ABCMeta
+    ABCMeta as MyABCMeta
 )
 
 
@@ -241,6 +234,38 @@ def function():
     This function returns True
     """
     return True
+
+
+###############################################################################
+# Type hints
+###############################################################################
+
+
+# Type hints in functions
+# * Always try to use type hints in functions
+# * When no return type, specify None
+# * Use typing module for more types
+def typed_function(number: int, name: str, lst: list[str]) -> None:
+    pass
+
+
+# Type hints in functions (multi line)
+# * When some function exceeds the line length, use berak-line
+def typed_function(number: int, name: str, lst: list[str],
+                   other: tuple[int], another: bool) -> None:
+    pass
+
+
+# Type hints in classes
+# * The self and cls parameters does not need a type hint
+class TypedClass:
+
+    def method(self, name: str) -> str:
+        pass
+
+    @classmethod
+    def class_method(cls, name: str) -> None:
+        pass
 
 
 ###############################################################################

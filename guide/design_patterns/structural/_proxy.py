@@ -7,7 +7,7 @@ Proxy design pattern
   gets through to the original object
 * The Proxy pattern suggests that you create a new proxy class with the same
   interface as an original service object. Then you update your app so that it
-  passes the proxy object to all of the original object’s client
+  passes the proxy object to all of the original object's client
 """
 from abc import ABC, abstractmethod
 

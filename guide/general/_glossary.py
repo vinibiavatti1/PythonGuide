@@ -16,7 +16,7 @@ ABC:                (Abstract Base Class) complement duck-typing by providing a
                     way to define interfaces when other techniques like
                     hasattr() would be clumsy or subtly wrong (for example with
                     magic methods). ABCs introduce virtual subclasses, which
-                    are classes that don’t inherit from a class but are still
+                    are classes that don't inherit from a class but are still
                     recognized by isinstance() and issubclass(); see the abc
                     module documentation. Python comes with many built-in ABCs
                     for data structures (in the collections.abc module),
@@ -95,7 +95,7 @@ Dictionary:         An associative array, where arbitrary keys are mapped to
 
 Dictionary view:    The objects returned from dict.keys(), dict.values(), and
                     dict.items() are called dictionary views. They provide a
-                    dynamic view on the dictionary’s entries, which means that
+                    dynamic view on the dictionary's entries, which means that
                     when the dictionary changes, the view reflects these
                     changes. To force the dictionary view to become a full list
                     use list(dictview). See Dictionary view objects
@@ -106,7 +106,7 @@ Docstring:          A string literal which appears as the first expression in a
                     __doc__ attribute of the enclosing class, function or
                     module
 
-Extension module:   A module written in C or C++, using Python’s C API to
+Extension module:   A module written in C or C++, using Python's C API to
                     interact with the core and with user code.
 
 f-string:           String literals prefixed with 'f' or 'F' are commonly
