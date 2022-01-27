@@ -1,19 +1,13 @@
 {
-    // Python linter
+    // Python Path
 	"python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
-    "python.linting.pycodestyleEnabled": true,
+
+    // Python linter
     "python.linting.enabled": true,
-    "python.linting.pycodestyleCategorySeverity.E": "Information",
-    "python.linting.pycodestyleCategorySeverity.W": "Information",
-    "python.linting.pylintArgs": [
-        "--unsafe-load-any-extension=y",
-        "--errors-only",
-    ],
+    "python.linting.pycodestyleEnabled": true,
 
     // Editor
-    "editor.rulers": [
-        79
-    ],
+    "editor.rulers": [79],
 
     // Hide files
     "files.exclude": {
@@ -24,5 +18,5 @@
 		"**/.DS_Store": true,
         "**/__pycache__": true,
         "**/*.pyc": true
-	},
+    },
 }

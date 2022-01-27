@@ -237,8 +237,15 @@ def function():
 
 
 ###############################################################################
-# Type hints
+# Function and Type hints
 ###############################################################################
+
+
+# Function arguments
+# * When some function exceeds the line length, use berak-line
+def function(argument1, argument2, argument3, argument4, argument5, argument6,
+             argument7):
+    pass
 
 
 # Type hints in functions
@@ -335,13 +342,6 @@ if (1 == 1 and      # Dont use indentation
 # * To mark some resource as unused intentionally, use the "_" char as the name
 #   of the resource
 for _ in range(10):
-    pass
-
-
-# Function arguments
-# * When some function exceeds the line length, use berak-line
-def fn(argument1: str, argument2: list[str], argument3: int,
-       argument4: int) -> None:
     pass
 
 
