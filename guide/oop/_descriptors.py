@@ -8,7 +8,6 @@ Descriptors
   * __get__(self, obj, type=None) -> object
   * __set__(self, obj, value) -> None
   * __delete__(self, obj) -> None
-  * __set_name__(self, owner, name)
 * If your descriptor implements just .__get__(), then it's said to be a
   non-data descriptor. If it implements .__set__() or .__delete__(), then
   it's said to be a data descriptor
@@ -46,9 +45,6 @@ class Descriptor:
     def __delete__(self, obj):
         print('Descriptor: delete')
         del self.value
-
-    def __set_name__(self, owner, name):
-        print('Descriptor: set_name')
 
 
 # Attach descriptor

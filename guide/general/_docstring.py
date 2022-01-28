@@ -4,38 +4,117 @@ Docstring
 * PEP 257 is the convention for docstrings in Python
 * Appears after the definition of a function, method, class, or module
 * NOTE: Check _doctests.py too
+* References: https://google.github.io/styleguide/pyguide.html
+              https://www.python.org/dev/peps/pep-0257/
 """
 
 
 ###############################################################################
-# Docstrings
+# Module Docstrings
 ###############################################################################
 
 
-# Class
-class Math:
-    """
-    Class with math operations
-    """
-    ...
+# Module docstring
+# * All modules must contain a docstring at the top of the file
+# * It can has some examples of code to show the purpose of it
+"""
+A one line summary of the module or program, terminated by a period.
+
+Leave one blank line.  The rest of this docstring should contain an
+overall description of the module or program.  Optionally, it may also
+contain a brief description of exported classes ad functions and/or usage
+examples.n
+
+Examples:
+    Typical usage example:
+
+    foo = ClassFoo()
+    bar = foo.FunctionBar()
+
+See Also:
+    math.pi: Example of module constant documentation.
+
+Notes:
+    Some notes here.
+
+Authors:
+    John Due: john.due@email.com
+
+References:
+    Python website: https://www.python.org/
+"""
 
 
-# Function
-def sum(x, y):
-    """
-    Add y to x and return the sum
-    """
-    return x + y
+###############################################################################
+# Class Docstrings
+###############################################################################
 
 
-# Method
-class Math2:
-    @staticmethod
-    def sum(x, y):
-        """
-        Add y to x and return the sum
-        """
-        return x + y
+# Class docstring
+# * It can has a list of attributes/methods description
+class SampleClass:
+    """
+    Summary of class here.
+
+    Longer class information....
+    Longer class information....
+
+    Attributes:
+        likes_spam: A boolean indicating if we like SPAM or not.
+        eggs: An integer count of the eggs we have laid.
+
+    See Also:
+        math.pi: Example of module constant documentation.
+
+    Notes:
+        Some notes here.
+
+    References:
+        Python website: https://www.python.org/
+    """
+
+
+###############################################################################
+# Function/Methods Docstrings
+###############################################################################
+
+
+# Functions/Methods
+# * Use sections to separate documentation for arguments, keyword-arguments,
+#   returns, yeilds, etc.
+def functions_and_methods(value, *values, **kwargs):
+    """
+    Summary of function/methods here.
+
+    Args:
+        value: Positional argument description with some information and with
+            break line for multi-line description.
+        *values: Arbitraty argument description.
+        **kwvalue: Keyword argument description.
+
+    Returns:
+        Return type description.
+
+    Yields:
+        Return type description used when the function is a generator.
+
+    Raises:
+        IOError: Erro description and some information.
+
+    Examples:
+        Sum two integer or float numbers and returns the result
+        >>> add(1, 3)
+        4
+
+    See Also:
+        math.pi: Example of module constant documentation.
+
+    Notes:
+        Some notes here.
+
+    References:
+        Python website: https://www.python.org/
+    """
 
 
 ###############################################################################
@@ -45,192 +124,9 @@ class Math2:
 
 # Access the docstring of object
 print(sum.__doc__)
-# Add y to x and return the sum
+"""
+Return the sum of a 'start' value (default: 0) plus an iterable of numbers
 
-
-###############################################################################
-# Docstring simple conventions
-# * Simple way to document the code
-###############################################################################
-
-
-# Documentation
-# * Explanation of the code, with code examples, tests, etc
-def add(x, y):
-    """
-    Sum two integer or float numbers and returns the result
-
-    >>> add(1, 3)
-    4
-    >>> add(1.5, 3.5)
-    5.0
-    """
-    pass
-
-
-###############################################################################
-# Docstring advance conventions
-# * Advance way to document the code
-###############################################################################
-
-
-# Summary
-# * Every docstring must contain a summary as first
-def fn_summary():
-    """
-    Example of 'Summary'
-    """
-    pass
-
-
-# Parameters
-# * Description of the function arguments, keywords and their respective types
-def fn_parameters():
-    """
-    Example of 'Parameters' documentation
-
-    Parameters
-    ----------
-    value
-        Example of no type parameter
-    number: int
-        Example of integer parameter
-    text: str
-        Example of string parameter
-    active: bool
-        Example of bool parameter
-    words: list[str]
-        Example of list of string parameter
-    status: {'success', 'error'}
-        Example of enum parameter
-    debug: bool, default False
-        Example of parameter with default value
-    ...
-    """
-    pass
-
-
-# Returns
-# * Explanation of the returned values and their types
-def fn_returns():
-    """
-    Example of 'Returns' documentation
-
-    Returns
-    -------
-    result: float
-        Example of return value
-    ...
-    """
-    pass
-
-
-# Yields
-# * Explanation of the yielded values and their types
-def fn_yields():
-    """
-    Example of 'Yields' documentation
-
-    Yields
-    ------
-    current: int
-        Example of yield value
-    ...
-    """
-    pass
-
-
-# Raises
-# * Explanation of excpetions that the function can raises
-def fn_raises():
-    """
-    Example of 'Raises' documentation
-
-    Raises
-    ------
-    TypeError
-        Example of TypeError documentation
-    ValueError
-        Example of ValueError documentation
-    ...
-    """
-    pass
-
-
-# See also
-# * Suggest for the user to see other resources
-def fn_see_also():
-    """
-    Example of 'See Also' documentation
-
-    See Also
-    --------
-    print
-        Example of global function documentation
-    math.cos
-        Example of module function documentation
-    math.pi
-        Example of module constant documentation
-    ...
-    """
-    pass
-
-
-# Notes
-# * Provides additional information about the code
-def fn_notes():
-    """
-    Example of 'Notes' documentation
-
-    Notes
-    -----
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a
-    lobortis diam, id suscipit neque. Pellentesque malesuada mi nec dolor
-    suscipit euismod
-    ...
-    """
-    pass
-
-
-# References
-# * Provides references of information or something about the code
-def fn_references():
-    """
-    Example of 'References' documentation
-
-    References
-    ----------
-    Python website
-        https://www.python.org/
-    ...
-    """
-    pass
-
-
-# Examples
-# * Provides examples of the code usage
-def fn_examples():
-    """
-    Example of 'Examples' documentation
-
-    Examples
-    --------
-    >>> add(5, 5)
-    10
-    >>> add(3.5, 2.5)
-    6.0
-    ...
-    """
-    pass
-
-
-# Class summary
-# * The class can be documentad also, with a summary only
-class Documentation:
-    """
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a
-    lobortis diam, id suscipit neque. Pellentesque malesuada mi nec dolor
-    suscipit euismod
-    ...
-    """
-    pass
+When the iterable is empty, return the start value. This function is intended
+specifically for use with numeric values and may reject non-numeric types.
+"""
