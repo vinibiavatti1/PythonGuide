@@ -9,6 +9,7 @@ Class
   represent a real-world situation. This idea of putting data and functions
   together in a class is central to the concept of object-oriented
   programming (OOP)
+* NOTE: Check the _class_template.py file for a template
 
 * Syntaxes to define a class:
   * class <name>:

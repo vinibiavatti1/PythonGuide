@@ -27,6 +27,7 @@ from typing import (
     NoReturn,
     Optional
 )
+import typing
 
 
 ###############################################################################
@@ -207,3 +208,15 @@ class Animal:  # Cannot be used as super class
 KEY = TypeVar('KEY', str, int)
 key_1: KEY = 1
 key_2: KEY = '2'
+
+
+###############################################################################
+# Cyclic importations
+###############################################################################
+
+
+# Type Checking Flag
+# * To handle with cyclic importantions, the typing.TYPE_CHECKING flag can be
+#   used to import the object just for type checking
+if typing.TYPE_CHECKING:
+    from abc import ABC  # ABC will just be used for type hints

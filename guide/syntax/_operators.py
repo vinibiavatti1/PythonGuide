@@ -21,6 +21,7 @@ Aritmetic operators:
 //		        x // y                  Floor division
 %		        x % y                   Modulo
 **		        x ** y                  Exponentiation
+@               x @ y                   Matrix Multiplication
 NOTE: The ** operator uses Right-sided binding (right to left ordering)
 
 Assignment operators:
@@ -122,6 +123,11 @@ print(20 % 7)
 # Exponentiation (**)
 print(5 ** 2)
 # 25
+
+
+# Matrix Multiplication (@)
+# * NOTE: There is no builtin type that implements the Matrix Multiplication
+#   methods. Check _matrix_multiplication.py for more details
 
 
 ###############################################################################

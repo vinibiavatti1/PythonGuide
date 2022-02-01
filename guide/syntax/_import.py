@@ -51,3 +51,12 @@ from random import *
 import example._example_module as example
 print(example.MESSAGE)
 # Hello World
+
+
+# Import for type checking only
+# * To import data just to usage on type hints, the typing.TYPE_CHECKING can
+#   be used.
+# * NOTE: Check _typing.py file for more details
+import typing
+if typing.TYPE_CHECKING:
+    from abc import ABC

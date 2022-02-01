@@ -69,7 +69,7 @@ class ClassTemplate(ABC):
     @abstractmethod
     def abstract_method(self, parameter: Any) -> None:
         """
-        Public method.
+        Abstract method.
         """
 
     ###########################################################################

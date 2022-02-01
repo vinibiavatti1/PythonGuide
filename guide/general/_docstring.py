@@ -27,7 +27,6 @@ examples.n
 
 Examples:
     Typical usage example:
-
     foo = ClassFoo()
     bar = foo.FunctionBar()
 
@@ -56,12 +55,15 @@ class SampleClass:
     """
     Summary of class here.
 
-    Longer class information....
-    Longer class information....
+    More optional class information...
 
     Attributes:
         likes_spam: A boolean indicating if we like SPAM or not.
         eggs: An integer count of the eggs we have laid.
+
+    Examples:
+        Sum two integer or float numbers and returns the result
+        add(1, 3) -> 4
 
     See Also:
         math.pi: Example of module constant documentation.
@@ -71,6 +73,10 @@ class SampleClass:
 
     References:
         Python website: https://www.python.org/
+
+    Tests:
+        Sum two integer or float numbers and returns the result
+        >>> obj = SampleClass()
     """
 
 
@@ -103,8 +109,7 @@ def functions_and_methods(value, *values, **kwargs):
 
     Examples:
         Sum two integer or float numbers and returns the result
-        >>> add(1, 3)
-        4
+        add(1, 3) -> 4
 
     See Also:
         math.pi: Example of module constant documentation.
@@ -114,6 +119,11 @@ def functions_and_methods(value, *values, **kwargs):
 
     References:
         Python website: https://www.python.org/
+
+    Tests:
+        Sum two integer or float numbers and returns the result
+        >>> add(1, 3)
+        4
     """
 
 

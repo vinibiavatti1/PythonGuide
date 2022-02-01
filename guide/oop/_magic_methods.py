@@ -60,6 +60,7 @@ __rshift__(self, other)             x >> y
 __and__(self, other)                x & y
 __or__(self, other)                 x | y
 __xor__(self, other)                x ^ y
+__matmul__(self, other)             x @ y
 
 Reflected arithmetic operators
 __radd__(self, other)	            y + x
@@ -74,6 +75,7 @@ __rrshift__(self, other)            y >> x
 __rand__(self, other)               y & x
 __ror__(self, other)                y | x
 __rxor__(self, other)               y ^ x
+__rmatmul__(self, other)            y @ x
 
 Augmented assignment
 __iadd__(self, other)	            x += y
@@ -88,6 +90,7 @@ __irshift__(self, other)	        x >>= y
 __iand__(self, other)	            x &= y
 __ior__(self, other)	            x |= y
 __ixor__(self, other)	            x ^= y
+__imatmul__(self, other)            x @= y
 
 Type conversion
 __str__(self)	                    str(x)
