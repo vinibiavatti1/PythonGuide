@@ -5,10 +5,11 @@ Module Template
 """
 from typing import (
     Any,
+    Final,
     TYPE_CHECKING,
 )
 if TYPE_CHECKING:
-    pass  # Type hint importations
+    pass  # Type hint imports
 
 
 ###############################################################################
@@ -16,8 +17,8 @@ if TYPE_CHECKING:
 ###############################################################################
 
 
-PUBLIC_CONST = 1      # public
-__PRIVATE_CONST = 2   # private
+PUBLIC_CONST: Final[int] = 1      # public
+__PRIVATE_CONST: Final[int] = 2   # private
 
 
 ###############################################################################
@@ -25,8 +26,8 @@ __PRIVATE_CONST = 2   # private
 ###############################################################################
 
 
-public_var = 1      # public
-__private_var = 2   # private
+public_var: int = 1      # public
+__private_var: int = 2   # private
 
 
 ###############################################################################

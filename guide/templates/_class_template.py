@@ -4,7 +4,14 @@ Class Template
 * This is the template for class construction
 """
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import (
+    Any,
+    Final,
+    ClassVar,
+    TYPE_CHECKING
+)
+if TYPE_CHECKING:
+    pass  # Type hint imports
 
 
 class ClassTemplate(ABC):
@@ -18,17 +25,17 @@ class ClassTemplate(ABC):
     # Class Constants
     ###########################################################################
 
-    PUBLIC_CONST = 1      # public
-    _PROTECTED_CONST = 2  # protected
-    __PRIVATE_CONST = 3   # private
+    PUBLIC_CONST: Final[int] = 1      # public
+    _PROTECTED_CONST: Final[int] = 2  # protected
+    __PRIVATE_CONST: Final[int] = 3   # private
 
     ###########################################################################
-    # Class Attributes
+    # Class Variables
     ###########################################################################
 
-    public_attr = 1      # public
-    _protected_attr = 2  # protected
-    __private_attr = 3   # private
+    public_attr: ClassVar[int] = 1      # public
+    _protected_attr: ClassVar[int] = 2  # protected
+    __private_attr: ClassVar[int] = 3   # private
 
     ###########################################################################
     # Static Methods

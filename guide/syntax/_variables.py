@@ -1,13 +1,12 @@
 """
 Variables
 
-* the name of the variable must not be any of Python's keywords
-
+* The name of the variable or constant must not be any of Python's keywords
+* The constant name must be uppercase
 * Scalars variables are variables represented with just one value
 * Collections variables are variables represented with some collections
   containing scalar values
 """
-
 
 # Declaration
 x = 1               # Integer
@@ -33,7 +32,7 @@ print()
 
 
 # Swap without auxiliary
-# NOTE: Without using this sintax, a aux variable would need to be used
+# NOTE: Without using this sintax, an aux variable would need to be used
 x = 10
 y = 5
 x, y = y, x
