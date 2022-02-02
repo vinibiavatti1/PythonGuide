@@ -86,6 +86,7 @@ assert x == 5, 'Error message'
 # async, await
 # * The async and await keywords are provided by the asyncio library in Python
 # * They are used to write concurrent code
+# * NOTE: Check _asyncio.py for more details
 async def async_function():
     await asyncio.sleep(0.1)
     print('Async')
@@ -224,16 +225,17 @@ print(x)
 
 
 # in
-# * in is used to test if a sequence (list, tuple, string etc) contains a value
+# * in is used to test if a sequence (list, tuple, string, ..) contains a value
 # * The secondary use of in is to traverse through a sequence in a for loop
 lst = [1, 2, 3]
 dct = dict(name='Vini', age=26)
+print('cd' in 'abcde')   # True
 print(2 in lst)          # True
 print(4 in lst)          # False
 print('name' in dct)     # True
 print('surname' in dct)  # False
 
-for i in range(5):  # Used in for syntax
+for i in range(5):  # Used to for syntax
     pass
 
 # is
