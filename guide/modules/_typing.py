@@ -163,12 +163,6 @@ def get_idx(index: int) -> Optional[str]: ...
 def get_the(index: int) -> str | None: ...
 
 
-# Callable
-# * Define the variable type as callable (Any resource that can be called)
-# * Template: Callable[[Arg1Type, Arg2Type, ...], ReturnType]
-x: Callable[[str], str] = lambda x: x
-
-
 # Type
 # * Accept classes and subclasses of the typed class
 class User:
@@ -201,6 +195,22 @@ def send_mail(_from: str, _to: str, /) -> Literal['success', 'error']: ...
 #      TypeGuard.
 # * Available in 3.10 version
 def is_str_list(lst: list[object]) -> TypeGuard[list[str]]: ...
+
+
+###############################################################################
+# Callable
+###############################################################################
+
+
+# Callable
+# * Define the variable type as callable (Any resource that can be called)
+# * Template: Callable[[Arg1Type, Arg2Type, ...], ReturnType]
+x: Callable[[str], str] = lambda x: x
+
+
+# Callable Ellipsis
+# * Use ellipsis to define any amount of parameters
+x: Callable[..., Any] = lambda x, y, z: x
 
 
 ###############################################################################
