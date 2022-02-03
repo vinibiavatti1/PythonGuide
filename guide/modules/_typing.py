@@ -78,6 +78,24 @@ x: dict[str, int] = {'age': 26}
 
 
 ###############################################################################
+# Arbitraty and Keyword Arguments
+###############################################################################
+
+
+# Specifing the Function with *args and **kwargs
+# * The type specify the same type of all arguments
+# * Use Any for any data type
+def my_fn(*args: int, **kwargs: str) -> None: ...
+
+
+# Calling the function
+# * The type must be respected
+my_fn(1, 2, 3)
+my_fn(a='a', b='b')
+my_fn(1, 2, 3, a='a', b='b')
+
+
+###############################################################################
 # Special Types
 ###############################################################################
 
