@@ -105,7 +105,7 @@ def functions_and_methods(value, *values, **kwargs):
         Return type description used when the function is a generator.
 
     Raises:
-        IOError: Erro description and some information.
+        IOError: Error description and some information.
 
     Examples:
         Sum two integer or float numbers and returns the result
