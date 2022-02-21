@@ -166,6 +166,13 @@ class Forest:
     def __private_method(self): pass   # private
 
 
+# Reserved words/Builtin words
+# * Never use a python reserved word or builtin word as name for any artifact
+# * Use underline "_" as suffix
+from_ = 'Hello'
+input_ = 'World'
+
+
 ###############################################################################
 # Importation
 ###############################################################################
