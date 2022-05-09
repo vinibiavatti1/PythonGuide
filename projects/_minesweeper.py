@@ -7,6 +7,7 @@ logics of that.
 import random
 import tkinter as tk
 from tkinter import messagebox
+from typing import Final
 
 
 ###############################################################################
@@ -14,9 +15,9 @@ from tkinter import messagebox
 ###############################################################################
 
 
-WIDTH = 15
-HEIGHT = 10
-MINES_AMOUNT = 20
+WIDTH: Final[int] = 15
+HEIGHT: Final[int] = 10
+MINES_AMOUNT: Final[int] = 20
 
 
 ###############################################################################
