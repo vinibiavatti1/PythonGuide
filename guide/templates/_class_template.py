@@ -70,7 +70,7 @@ class ClassTemplate(ABC):
         self.__age = age         # private attribute
 
     ###########################################################################
-    # Abstract Instance Methods
+    # Abstract Methods
     ###########################################################################
 
     @abstractmethod
@@ -80,7 +80,7 @@ class ClassTemplate(ABC):
         """
 
     ###########################################################################
-    # Public Instance Methods
+    # Public Methods
     ###########################################################################
 
     def public_method(self, parameter: Any) -> None:
@@ -89,7 +89,7 @@ class ClassTemplate(ABC):
         """
 
     ###########################################################################
-    # Protected Instance Methods
+    # Protected Methods
     ###########################################################################
 
     def _protected_method(self, parameter: Any) -> None:
@@ -98,7 +98,7 @@ class ClassTemplate(ABC):
         """
 
     ###########################################################################
-    # Private Instance Methods
+    # Private Methods
     ###########################################################################
 
     def __private_method(self, parameter: Any) -> None:
@@ -107,7 +107,7 @@ class ClassTemplate(ABC):
         """
 
     ###########################################################################
-    # Instance Properties
+    # Getters
     ###########################################################################
 
     @property
@@ -115,10 +115,18 @@ class ClassTemplate(ABC):
         """Age getter."""
         return self.__age
 
+    ###########################################################################
+    # Setters
+    ###########################################################################
+
     @age.setter
     def age(self, age: int) -> None:
         """Age setter."""
         self.__age = age
+
+    ###########################################################################
+    # Deleters
+    ###########################################################################
 
     @age.deleter
     def age(self) -> None:
