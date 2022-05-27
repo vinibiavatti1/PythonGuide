@@ -1,7 +1,7 @@
 """
 Class Template
 
-* This is the template for class construction
+* This fiel should be used as a template for class creation/implementation.
 """
 from abc import ABC, abstractmethod
 from typing import (
@@ -11,31 +11,29 @@ from typing import (
     TYPE_CHECKING
 )
 if TYPE_CHECKING:
-    pass  # Type hint imports
+    pass  # Type checking imports
 
 
 class ClassTemplate(ABC):
     """
     Summary of the class.
-
-    Some description here.
     """
 
     ###########################################################################
     # Class Constants
     ###########################################################################
 
-    PUBLIC_CONST: Final[int] = 1      # public
-    _PROTECTED_CONST: Final[int] = 2  # protected
-    __PRIVATE_CONST: Final[int] = 3   # private
+    PUBLIC_CONST: Final[int] = 1
+    _PROTECTED_CONST: Final[int] = 2
+    __PRIVATE_CONST: Final[int] = 3
 
     ###########################################################################
     # Class Variables
     ###########################################################################
 
-    public_attr: ClassVar[int] = 1      # public
-    _protected_attr: ClassVar[int] = 2  # protected
-    __private_attr: ClassVar[int] = 3   # private
+    public_attr: ClassVar[int] = 1
+    _protected_attr: ClassVar[int] = 2
+    __private_attr: ClassVar[int] = 3
 
     ###########################################################################
     # Static Methods
@@ -80,6 +78,15 @@ class ClassTemplate(ABC):
         """
 
     ###########################################################################
+    # Override Methods
+    ###########################################################################
+
+    def override_method(self, parameter: Any) -> None:
+        """
+        Override method from base class.
+        """
+
+    ###########################################################################
     # Public Methods
     ###########################################################################
 
@@ -112,15 +119,21 @@ class ClassTemplate(ABC):
 
     @property
     def age(self) -> int:
-        """Age getter."""
+        """
+        Age getter.
+        """
         return self.__age
 
     @age.setter
     def age(self, age: int) -> None:
-        """Age setter."""
+        """
+        Age setter.
+        """
         self.__age = age
 
     @age.deleter
     def age(self) -> None:
-        """Age deleter."""
+        """
+        Age deleter.
+        """
         del self.__age

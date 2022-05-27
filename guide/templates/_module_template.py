@@ -17,8 +17,8 @@ if TYPE_CHECKING:
 ###############################################################################
 
 
-PUBLIC_CONST: Final[int] = 1      # public
-__PRIVATE_CONST: Final[int] = 2   # private
+PUBLIC_CONST: Final[int] = 1
+__PRIVATE_CONST: Final[int] = 2
 
 
 ###############################################################################
@@ -26,8 +26,8 @@ __PRIVATE_CONST: Final[int] = 2   # private
 ###############################################################################
 
 
-public_var: int = 1      # public
-__private_var: int = 2   # private
+public_var: int = 1
+__private_var: int = 2
 
 
 ###############################################################################
@@ -75,5 +75,6 @@ def main() -> None:
     """
 
 
+# Initialization
 if __name__ == '__main__':
     main()

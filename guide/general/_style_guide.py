@@ -217,7 +217,7 @@ Lorem ipsum
 #   the other section comments in this file
 """
 ###############################################################################
-# Title
+# The Title
 ###############################################################################
 """
 
@@ -227,7 +227,7 @@ Lorem ipsum
 # * To use section inside code blocks, ident the section comments
 """
     ###########################################################################
-    # Title
+    # The Title
     ###########################################################################
 """
 
@@ -249,10 +249,24 @@ def function():
 
 
 # Function arguments
-# * When some function exceeds the line length, use berak-line
+# * When some function exceeds the line length, use break-line
 def function(argument1, argument2, argument3, argument4, argument5, argument6,
              argument7):
     pass
+
+
+# Function calls
+# * When some function call exceeds the line length, use break-line
+function('argument1', 'argument2', 'argument3', 'argument4', 'argument5',
+         'argument6', 'argument7')
+
+
+# Function calls with big identation
+# * When some function identation is too big, and the arguments exceeds the
+#   line length, use break-line
+function.function.function.function.function.function.function.function(
+    'argument1', 'argument2', 'argument3', 'argument4', 'argument5'
+)
 
 
 # Type hints in functions
@@ -264,9 +278,16 @@ def typed_function(number: int, name: str, lst: list[str]) -> None:
 
 
 # Type hints in functions (multi line)
-# * When some function exceeds the line length, use berak-line
+# * When some function exceeds the line length, use break-line
 def typed_function(number: int, name: str, lst: list[str],
                    other: tuple[int], another: bool) -> None:
+    pass
+
+
+# Type hints in functions (multi line for return only)
+# * When only the return exceeds the line length, use break-line for return
+def typed_function(number: int, name: str, lst: list[str], other: tuple[int]
+                   ) -> None:
     pass
 
 
