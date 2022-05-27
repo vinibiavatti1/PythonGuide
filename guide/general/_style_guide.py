@@ -373,5 +373,12 @@ for _ in range(10):
     pass
 
 
+# Multiple unused resources
+# * Concat more "_" to unused resources at same context.
+for _ in range(10):
+    for __ in range(10):
+        pass
+
+
 # EOF new line
 # * Always use a blank line as EOF (end of file) line
