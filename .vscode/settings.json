@@ -24,7 +24,9 @@
         "Cython",
         "PCAP",
         "PCEP",
+        "PCPP",
         "Rossum",
-        "venvs"
+        "venvs",
+        "Vini"
     ],
 }

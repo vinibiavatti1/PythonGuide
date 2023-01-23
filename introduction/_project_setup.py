@@ -24,8 +24,7 @@ Project Setup
 
 
 {
-    "python.defaultInterpreterPath":
-        "${workspaceFolder}/.venv/Scripts/python.exe"
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
 }
 """
 
@@ -191,5 +190,43 @@ trim_trailing_whitespace = false
         "**/__pycache__": true,
         "**/*.pyc": true
     },
+}
+"""
+
+
+###############################################################################
+# Python Snippets
+###############################################################################
+
+
+# Code snippets are small blocks of reusable code that you can add to a code
+# file by using the right-click context menu command or a combination of
+# hotkeys. You can set code snippets to Python by following below steps:
+"""
+1. Create the file: /.vscode/python.code-snippets.json
+2. Put the content below into the created file:
+
+
+{
+    "Section Comment": {
+        "scope": "python",
+        "prefix": "##",
+        "body": [
+            "###############################################################################",
+            "# ${1:comment}",
+            "###############################################################################"
+        ],
+        "description": "Create a top-level section comment"
+    },
+    "Sub Section Comment": {
+        "scope": "python",
+        "prefix": "###",
+        "body": [
+            "###########################################################################",
+            "# ${1:comment}",
+            "###########################################################################"
+        ],
+        "description": "Create a second-level section comment"
+    }
 }
 """
