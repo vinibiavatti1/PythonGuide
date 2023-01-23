@@ -4,7 +4,8 @@
 
     // Python linter
     "python.linting.enabled": true,
-    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pylamaEnabled": true,
+    "python.linting.mypyEnabled": true,
 
     // Editor
     "editor.rulers": [79],
@@ -19,4 +20,11 @@
         "**/__pycache__": true,
         "**/*.pyc": true
     },
+    "cSpell.words": [
+        "Cython",
+        "PCAP",
+        "PCEP",
+        "Rossum",
+        "venvs"
+    ],
 }

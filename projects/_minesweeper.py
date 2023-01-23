@@ -15,9 +15,9 @@ from typing import Final
 ###############################################################################
 
 
-WIDTH: Final[int] = 15
-HEIGHT: Final[int] = 10
-MINES_AMOUNT: Final[int] = 20
+WIDTH: Final[int] = 30
+HEIGHT: Final[int] = 16
+MINES_AMOUNT: Final[int] = 99
 
 
 ###############################################################################
@@ -46,6 +46,7 @@ class Mine:
         self.__height = 0
         self.__button = None
         self.__clicked = False
+        self.__right_clicked = False
         self.__bomb_char = '*'
         self.__bomb_bg_color = '#FF0000'
         self.__bg = '#C0C0C0'
@@ -79,6 +80,7 @@ class Mine:
             borderwidth=1,
             command=self.click_event
         )
+        button.bind('<Button-3>', self.right_click_event)
         button.grid(row=self.__y, column=self.__x)
         self.__button = button
 
@@ -91,6 +93,8 @@ class Mine:
         Click event handler.
         """
         if self.__clicked:
+            return
+        if self.__right_clicked:
             return
         self.__clicked = True
         self.__button['relief'] = tk.SUNKEN
@@ -119,6 +123,19 @@ class Mine:
             messagebox.showinfo(title='Success', message='You won!')
             self.__mine_camp.reset()
             return
+
+    def right_click_event(self, _) -> None:
+        """
+        Right click event.
+        """
+        if self.__clicked:
+            return
+        self.__right_clicked = not self.__right_clicked
+        if self.__right_clicked:
+            self.__button['text'] = self.__bomb_char
+        else:
+            self.__button['text'] = ''
+
 
     def destroy_ui(self) -> None:
         """

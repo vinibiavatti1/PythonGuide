@@ -17,6 +17,6 @@ Interpreting
   interpreted languages
 * The code itself is platform independent
 * The interpreter runs the code every time it is intended to be executed
-* Code cannot be executed anywhere, because the user needs the interpreter
-* Examples: PHP, Ruby, Python, JavaScript
+* The interpreter software is required to execute the code of the language
+* Examples: Python, Ruby, PHP, JavaScript
 """

@@ -1,16 +1,16 @@
 """
 Interpreter
 
-* Python is a interpreted language
-* The used need the interpreter to run a Python code
-* There are some tools to work with Python code:
+* Python is an interpreted language
+* The developer has to have the interpreter installed to run Python code
+* These are the available interpreter for Python:
   * CPython
   * Cython
   * Jython
   * Pypy
   * RPython
 
-CPython
+CPython (Standard)
 * Interpreter made by Guido Von Rossum with C lang
 * It is maintained by PSF (Python Software Foundation)
 * Github page: https://github.com/python/cpython
