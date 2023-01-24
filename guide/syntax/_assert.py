@@ -6,7 +6,8 @@ Assert
 * It can be used to test some module, or to debug the code
 * You can specify a message to the assert expression
 * NOTE: If the Python program is running with '-O' argument, the assertions
-  will be ignored!
+  will be disabled
+  * Ex: $ python -O main.py
 * Syntax:
   * assert <expression>
   * assert <expression>, <message>

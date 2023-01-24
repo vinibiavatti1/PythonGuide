@@ -1,26 +1,45 @@
 """
-Dunder
+Dunder (__)
 
-* Dunder means "Double Under (Underscores)"
-* Dunder in Python are objects having two prefix and suffix underscores in the
-  object name, like: __example__
-* This nomenclature is used to avoid conflicts with simple names in python, or
-  to represent some special behavior to some object
+* Dunder is an acronym to "Double Underscores"
+* Dunder is defined by objects in Python that contains two underscores together
+  in their identifier
+* This nomenclature is used to avoid conflicts with simple names in python, to
+  represent some special behavior to some object or to define that the object
+  has the name reserved
+* Example: __init__ (Constructor method name)
 """
+
+
+###############################################################################
+# In Code
+###############################################################################
 
 
 # Dunder magic method
 # * Represents some special characteristics for the methods
+# * The example below shows how to define a class constructor
 class Person:
-    def __init__(self):  # Double Under (Underscores) as prefix and suffix
+    def __init__(self):  # Double Underscores as prefix and suffix
         pass
 
 
 # Dunder variable
-# * Represents some special characteristics for variables or avoid conflicts
+# * Represents some special characteristics or reserved name for variables
 # * NOTE: Check the _name.py file
 print(__name__)
 # __main__
+
+
+# Private variable in module
+# * The dunder used as prefix to variables can be used to define the access
+#   modifier of this variable
+__internal_variable = 106
+
+
+###############################################################################
+# Files/Directories
+###############################################################################
 
 
 # Dunder module

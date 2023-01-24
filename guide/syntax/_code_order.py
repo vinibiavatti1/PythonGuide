@@ -1,23 +1,48 @@
 """
-Code order
+Code Order
 
 * Python interpreter reads the code from the top to bottom, each line from the
   left to right
-* You cannot define some function or class after the usage of it
+* NOTE: You cannot define some function or class after the usage of it
+* Inside class this rule is not applied
 """
 
 
-# Function
-# print(sum_vals(5, 5))  # Error (name 'sum_vals' is not defined)
+###############################################################################
+# Define Function Before Call (OK)
+###############################################################################
 
 
-def sum_vals(x, y):
+def sum_(x, y):
     return x + y
 
 
-# Class
-# car = Car()  # NameError: name 'Car' is not defined
+sum_(2, 3)
+# 5
 
 
-class Car:
-    pass
+###############################################################################
+# Define Function Before Call (ERROR)
+###############################################################################
+
+
+"""
+sum_(2, 3)
+def sum_(x, y):
+    return x + y
+# NameError: name 'sum_' is not defined.
+"""
+
+
+###############################################################################
+# Inside Class Works Anyway
+###############################################################################
+
+
+class CodeOrderExample:
+
+    def __init__(self):
+        sum_(2, 3)  # Works
+
+    def sum_(x, y):
+        return x + y

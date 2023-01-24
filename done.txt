@@ -1,0 +1,17 @@
+/introduction
+_certification
+_compiling_vs_interpreting
+_idle
+_installation
+_interpreter
+_project_setup
+_venv
+
+/guide/syntax
+_assert
+_code_order
+_dunder
+_for
+_functions
+_operators
+_parameters
