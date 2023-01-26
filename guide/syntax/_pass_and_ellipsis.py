@@ -1,13 +1,19 @@
 """
 Pass and Ellipsis (...)
 
-* The pass keyword is used to make some empty block in Python. This operator
-  does nothing.
+* The pass keyword and the ellipsis are used to define an empty block in Python
+* These instructions doesn't do anything, only are used to correct the syntax
+  for the Python interpreter
 * Empty instructions like if, class, functions, etc. without pass will raise
   an error
-* The ellipsis (...) operator can also be used for the same purpose
+
+###############################################################################
+Instruction         Description
+###############################################################################
+pass                Define an empty block (that contains nothing)
+...                 Define an empty block (that contains something)
+###############################################################################
 """
-from threading import Lock
 
 
 ###############################################################################
@@ -16,6 +22,7 @@ from threading import Lock
 
 
 # If
+# * Define an empty block to condition
 if 1 == 1:
     pass
 else:
@@ -23,26 +30,31 @@ else:
 
 
 # While
+# * Define an empty block to loop
 while False:
     pass
 
 
 # For
+# * Define an empty block to loop (iteration)
 for i in range(5):
     pass
 
 
 # Function
+# * Define an empty block to a function
 def sum(x, y):
     pass
 
 
 # Class
+# * Define an empty block to a class
 class Client():
     pass
 
 
 # try, except, finally
+# * Define an empty block to try, except, finally
 try:
     pass
 except BaseException as e:
@@ -52,7 +64,8 @@ finally:
 
 
 # With
-with Lock():
+# * Define an empty block to with instruction
+with True:
     pass
 
 
@@ -62,6 +75,7 @@ with Lock():
 
 
 # If
+# * Define an empty block to condition
 if 1 == 1:
     ...
 else:
@@ -69,26 +83,31 @@ else:
 
 
 # While
+# * Define an empty block to loop
 while False:
     ...
 
 
 # For
+# * Define an empty block to loop (iteration)
 for i in range(5):
     ...
 
 
 # Function
+# * Define an empty block to a function
 def calc(x, y):
     ...
 
 
 # Class
+# * Define an empty block to a class
 class Person():
     ...
 
 
 # try, except, finally
+# * Define an empty block to try, except, finally
 try:
     ...
 except BaseException as e:
@@ -98,5 +117,6 @@ finally:
 
 
 # With
-with Lock():
+# * Define an empty block to with instruction
+with True:
     ...

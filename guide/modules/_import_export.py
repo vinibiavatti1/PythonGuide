@@ -1,5 +1,5 @@
 """
-Import/Export Modules
+Import/Export
 
 To use the import syntax, you have to know three concepts:
 ###############################################################################

@@ -13,3 +13,4 @@ class CustomType:
 
 class OtherCustomType:
     pass
+print(__path__)

@@ -79,5 +79,5 @@ print(x)
 # Right sided binding (**)
 # NOTE: Important!
 print(2 ** 2 ** 3)
-# It is calculed as 2 ** (2 ** 4)
+# It is calculed as 2 ** (2 ** 3)
 # 256

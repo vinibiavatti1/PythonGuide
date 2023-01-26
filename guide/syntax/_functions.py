@@ -43,6 +43,11 @@ show_message()
 # Function!
 
 
+###############################################################################
+# Functions Parameters
+###############################################################################
+
+
 # Define a function with parameters
 # * Parameters are data that functions require to be executed
 # * The values passed to the function parameters are called arguments
@@ -55,6 +60,11 @@ def show_text(txt):
 #   required parameters
 show_text('abc')
 # abc
+
+
+###############################################################################
+# Functions Return
+###############################################################################
 
 
 # Define a function with return
@@ -112,6 +122,21 @@ print(r1, r2, sep=', ')
 print(results[0], results[1], sep=', ')
 # 10, 4
 # 10, 4
+
+
+# Define a function with empty return
+# * The return keyword can be used in a function that does't return anything to
+#   terminate the function execution
+def is_correct(correct):
+    if not correct:
+        return
+    print('It is correct')
+
+
+# Call a function with empty return
+# * When the empty return is reached, it will stop the function execution
+is_correct(False)
+# (Nothing was printed because the empty return was reached)
 
 
 # Define a nested function (inner function)

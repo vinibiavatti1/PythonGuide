@@ -48,5 +48,5 @@ __internal_variable = 106
 
 
 # Dunder package
-# * The example below is used by Python to store cache for some package
+# * The example below is used by Python to store cache for packages
 """ src/__pycache__ """

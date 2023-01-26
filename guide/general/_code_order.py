@@ -13,6 +13,7 @@ Code Order
 ###############################################################################
 
 
+# Define function before calling
 def sum_(x, y):
     return x + y
 
@@ -26,6 +27,7 @@ sum_(2, 3)
 ###############################################################################
 
 
+# Call the function before definition
 """
 sum_(2, 3)
 def sum_(x, y):
@@ -39,6 +41,7 @@ def sum_(x, y):
 ###############################################################################
 
 
+# Call the method before method signature
 class CodeOrderExample:
 
     def __init__(self):
