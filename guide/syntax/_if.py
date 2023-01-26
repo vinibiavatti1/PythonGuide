@@ -11,9 +11,11 @@ If (condition)
   * Greater than or equal to: a >= b
 * Python supports chained conditions too:
   * Example: y1 < x < y2
-* Syntax:
-  * if <condition>:
-  * if (<conditions):
+* Types:
+  * if
+  * if else
+  * if elif else
+  * ternary if
 """
 
 
