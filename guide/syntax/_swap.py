@@ -3,6 +3,7 @@ Swap
 
 * Swap is a special syntax of Python which permits to move variable data
   between each other without the need to use a temporary variable for it
+* The swap syntax uses the same concept of the unpack syntax
 * Syntax: x, y = y, x
 """
 
