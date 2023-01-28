@@ -11,6 +11,15 @@ Variables
   represented as constants.
 * The examples use the variable name "x", but any name can be given to the
   variable
+* The datatypes are:
+  * Text Type: str
+  * Numeric Types: int, float, complex
+  * Sequence Types: list, tuple, range
+  * Mapping Type: dict
+  * Set Types: set, frozenset
+  * Boolean Type: bool
+  * Binary Types: bytes, bytearray, memoryview
+  * None Type: NoneType
 """
 
 
@@ -34,9 +43,12 @@ x = False
 
 # Declare a variable (int)
 # * The example below declares a variable with an integer value
-# * THe negative numbers are allowed
+# * Negative numbers are also allowed
+# * The underscore "_" can be use to identify bigger numbers.
+#   * Example: (x=100_000) will be equivalent to (x=100000)
 x = 1
 x = -5
+x = 100_000_000
 
 
 # Declare a variable (float)
@@ -79,7 +91,16 @@ x = 0o0    # 0
 # Declare a variable (string)
 # * The example below declares a variable with a string value
 # * The char ' and " can be used to declare a string
+# * Multiline strings can be defined by using ''' or """ char pattern
 x = 'Hello World'
+
+
+# Declare a variable (multiline string)
+# * Multiline strings can be defined by using ''' or """ char pattern
+x = '''This is an
+example of a text
+with multiple
+lines'''
 
 
 ###############################################################################
@@ -120,7 +141,7 @@ x = tuple()
 # * The range is used to create a generator of a sequence of numbers
 # * Only integer values are allowed
 # * The range() builtin function is used to define ranges
-# * The
+# * It can be iterated by using "for" or "iter() next()"
 x = range(10)
 x = range(5, 10)
 x = range(5, 10, 2)
@@ -213,70 +234,16 @@ x = bytearray(5)  # b'\x00\x00\x00\x00\x00'
 ###############################################################################
 
 
-# Declare multiple variables inline
+# Declare multiple variables (inline)
 # * We can declare multiple variable in the same line using the syntax below
 # * The expression (x, y, z = 1, 2, 3) will result to: x = 1, y = 2, z = 3
 x, y, z = 1, 2, 3
 x, y = 'Hello', 'World'
 
 
-# Declare multiple variables with the same value inline
+# Declare multiple variables with the same value (inline)
 # * To create multiple variables containing the same value inline, we can use
 #   the syntax below
 # * The expression (x = y = z = 1) will result to: x = 1, y = 1, z = 1
 x = y = z = 1
 x = y = 'Hello World'
-
-
-###############################################################################
-# Swap
-###############################################################################
-
-
-# Swap variables value
-# * To transfer the value of two variables between each other, we can use the
-#   syntax below:
-x, y = y, x
-
-
-# Example with Swap
-# * The example below shows better how swap works
-x = 1
-y = 2
-x, y = y, x
-print(x, y)
-# 2, 1
-
-
-# Example without Swap
-# * The code below is equivalent of swap
-x = 1
-y = 2
-temp = x
-x = y
-y = temp
-print(x, y)
-# 2, 1
-
-
-###############################################################################
-# Unpack Collections
-###############################################################################
-
-
-# Unpack collection data to variables (all collection data)
-# * The syntax below can be used to store collection values to variables
-collection = (1, 2, 3)
-(x, y, z) = collection
-
-
-# Unpack collection data to variables (part of collection data)
-# * We can define a variable with "*" as prefix to be the group of the leftover
-#   data. The "*" variable will take the "rest" of the data as a collection.
-collection = [1, 2, 3, 4, 5]
-(*x, y, z) = collection
-(x, *y, z) = collection
-(x, y, *z) = collection
-# x=[1, 2, 3] / y=4 / z=5
-# x=1 / y=[2, 3, 4] / z=5
-# x=1 / y=2 / z=[3, 4, 5]
