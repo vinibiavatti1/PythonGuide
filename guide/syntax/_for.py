@@ -59,11 +59,11 @@ print()
 # * The "for" instruction can be used to iterate a collection
 # * Each element of the collection will be given to the "for" variable
 # * Strings can be iterated as any collection, since it is also a collection
-txt = 'Hello world'
+txt = 'Hello World'
 for char in txt:
     print(char, end='')
 print()
-# Hello world
+# Hello World
 
 
 # Create a for loop to iterate a tuple
@@ -108,8 +108,8 @@ print()
 # Create a for loop to iterate a dictionary (by key)
 # * The "for" instruction can also be used to iterate a dictionary
 # * As default, the "for" will iterate each key of the dictionary
-dct = {'name': 'Vini', 'level': 5}
-for key in dct:
+dictionary = {'name': 'Vini', 'level': 5}
+for key in dictionary:
     print(key, end=' ')  # Uses dct[key] to access the value
 print()
 # name level
@@ -174,7 +174,7 @@ print()
 # * Python has a additional curious syntax. It is the "else" that can also be
 #   used to "for" loops.
 # * The else block in a for expression is always be executed after the loop
-#   terminates
+#   terminates normally (without a break)
 # * It can be useful to ensure that some code will be performed only if the
 #   loop is executed
 for i in range(5):

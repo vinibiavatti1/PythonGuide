@@ -1,55 +1,91 @@
-###############################################################################
-# Break and Continue
-###############################################################################
+"""
+Break and Continue
+
+* Break is an instruction used to interrupt a loop (for or while)
+* Continue is an instruction used to process the next cycle of a loop (for or
+  while)
+* When the loop is interrupted by a break, the else block will not be performed
+"""
 
 
+###############################################################################
 # Break
-# * The break keyword stops the iteration
-for i in range(50):
-    print(i, end=', ')
-    if i == 5:
-        break  # Jump out of loop
-print()
-# 0, 1, 2, 3, 4, 5,
-
-
-# Continue
-# * The continue keyword skips the rest of the loop code
-for i in range(10):
-    if i % 2 != 0:
-        continue  # Skip and process the next element
-    print(i, end=', ')
-print()
-# 0, 2, 4, 6, 8,
-
-
-
-
-
-###############################################################################
-# Break and continue
 ###############################################################################
 
 
-# Break
-# * Breaks the loop
-i = 0
-while i < 10:
-    i += 1
-    if i > 5:
+# Break a while loop
+# * The break keyword stops the iteration of the loop
+# * In the example, when the variable x gets the 5 value, the loop will be
+#   interrupted
+x = 0
+while x < 10:
+    print(x, end=' ')
+    if x == 5:
         break
-    print(i, end=', ')
+    x += 1
 print()
-# 1, 2, 3, 4, 5,
+# 0 1 2 3 4 5
 
 
+# Break a for loop
+# * Break can be used to "for" loops too with the same behavior
+for x in range(10):
+    print(x, end=' ')
+    if x == 5:
+        break
+print()
+# 0 1 2 3 4 5
+
+
+# Break a for loop with else
+# * The else block will not be performed when the loop is interrupted
+# * In the example below, the "end" word will not be printed
+for x in range(10):
+    print(x, end=' ')
+    if x == 5:
+        break
+else:
+    print('end')
+print()
+# 0 1 2 3 4 5
+
+
+###############################################################################
 # Continue
-# * Skips the rest of the loop code
-i = 0
-while i < 10:
-    i += 1
-    if i % 2 != 0:
+###############################################################################
+
+
+# Continue in a while loop
+# * The continue instruction is used to skip the current iteration of a loop
+x = 0
+while x < 5:
+    x += 1
+    if x == 3:
         continue
-    print(i, end=', ')
+    print(x, end=' ')
 print()
-# 2, 4, 6, 8, 10,
+# 1 2 4 5
+
+
+# Continue in a for loop
+# * The continue works the same way to "for" loops
+for i in range(5):
+    if i == 3:
+        continue
+    print(i, end=' ')
+print()
+# 0 1 2 4
+
+
+# Continue in a for loop iterating a collection
+# * The example below is a useful way to test and process each element of a
+#   collection
+# * The None value will not be processed due to the existent validation inside
+#   the loop
+collection = ['A', 'B', None, 'D']
+for value in collection:
+    if value is None:
+        continue
+    print(value, end=' ')
+print()
+# A B D

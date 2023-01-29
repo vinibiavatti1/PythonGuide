@@ -73,7 +73,7 @@ while True:
 # * Python has a additional curious syntax. It is the "else" that can also be
 #   used to "while" loops.
 # * The else block in a while expression is always be executed after the loop
-#   terminates
+#   terminates normally (without a break)
 # * It can be useful to ensure that some code will be performed only if the
 #   loop is executed
 x = 0

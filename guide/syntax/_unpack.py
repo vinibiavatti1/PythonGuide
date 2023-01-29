@@ -16,7 +16,7 @@ Unpack
 # * The syntax below can be used to store collection values to variables
 # * The tuple is used as a collection for this example
 collection = (1, 2, 3)
-(x, y, z) = collection
+x, y, z = collection
 print(x, y, z)
 # 1 2 3
 
@@ -26,21 +26,21 @@ print(x, y, z)
 #   data. The "*" variable will take the "rest" of the data as a collection.
 # * The list is used as a collection for this example
 collection = [1, 2, 3, 4, 5]
-(*x, y, z) = collection
+*x, y, z = collection
 print(x, y, z)
 # [1, 2, 3] 4 5
 
 
 # Unpack collection data to variables (* in the middle)
 # * In this case, the middle variable will store the "rest" of the data
-(x, *y, z) = collection
+x, *y, z = collection
 print(x, y, z)
 # 1 [2, 3, 4] 5
 
 
 # Unpack collection data to variables (* in the end)
 # * In this case, the last variable will store the "rest" of the data
-(x, y, *z) = collection
+x, y, *z = collection
 print(x, y, z)
 # 1 2 [3, 4, 5]
 

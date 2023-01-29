@@ -211,7 +211,8 @@ x = None
 #   string type
 # * The first example stores the value "蓏콯" of UTF-16 format
 # * The "bytes()" function can be used to define a variable of bytes type
-# * The value is immutable
+# * The difference of bytes to bytearray is that bytes contains an immutable
+#   value while bytearray is mutable
 x = b'\xcf\x84o\xcf'
 x = b'Hello World'
 x = b''
