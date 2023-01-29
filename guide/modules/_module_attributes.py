@@ -16,7 +16,7 @@ __name__            Name of the module (__main__ when the module is main)
 __package__         Package of the module
 __file__            Path of the file
 __cached__          Path to any compiled version of the code
-__annotations__     Annotations defined in locals (used by type checkers)
+__annotations__     Annotations defined in locals
 __builtins__        Module with direct access to all builtin resources
 __doc__             Docstring of the module
 
@@ -113,10 +113,11 @@ print(__cached__)
 
 
 # Get the annotations of the module
-# * Annotations are the type hints that the module contains
+# * Annotations are the type hints specified to the module resources
 # * The __annotations__ variable contain all type hint definitions of the
 #   module
-# * Can be used to validate the type hints of the imported module
+# * It is used by type checkers to validate the types of the module, to create
+#   a code documentation or for code analysis
 # * It is a dict
 value: int
 print(__annotations__)

@@ -157,7 +157,7 @@ print(x)
 
 
 # Matrix Multiplication (@)
-# * NOTE: There is no builtin type that implements the Matrix Multiplication
+# * NOTE: There is no native type that implements the Matrix Multiplication
 #   methods. Check _matrix_multiplication.py for more details
 
 
