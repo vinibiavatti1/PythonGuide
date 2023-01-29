@@ -46,7 +46,7 @@ Comparison operators:
 Logical operators:
 and 	        x and y         Returns True if both statements are true
 or	            x or y          Returns True if one of the statements is true
-not	            not(x)          Returns the inverse result
+not	            not x           Returns the inverse result
 
 Identity operators:
 is 	            x is y          Returns True if both variables are the same
@@ -337,7 +337,7 @@ if False or True:
 # * Used to negate the boolean value (inverse)
 # 0 = 1
 # 1 = 0
-if not(False and True):
+if not (False and True):
     print(True)
 # True
 

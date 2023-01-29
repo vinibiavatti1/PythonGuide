@@ -1,74 +1,85 @@
 """
 While
 
-* With the while loop we can execute a set of statements as long as a condition
-  is true
+* The "while" instruction is used to create a loop by a condition
+* When the condition is true, the loop will be performed
+* It can be used to iterate collections, create a simple loop, read threads,
+  etc.
+* It is recommended to use the "for" instruction to iterate collections
+* Syntax: while <condition>:
 """
 
 
 ###############################################################################
-# While loop
+# While Loop
 ###############################################################################
 
 
-# While
-i = 0
-while i < 10:
-    i += 1
-    print(i, end=', ')
+# Create a while loop
+# * To create a simple loop, we can use the while instruction
+# * The loop will be stopped when the condition of the while gets False
+x = 0
+while x <= 5:
+    print(x, end=' ')
+    x += 1
 print()
-# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+# 0 1 2 3 4 5
 
 
-###############################################################################
-# Break and continue
-###############################################################################
-
-
-# Break
-# * Breaks the loop
-i = 0
-while i < 10:
-    i += 1
-    if i > 5:
-        break
-    print(i, end=', ')
+# Create a while loop with multiple conditions
+# * Like the "if" instruction, the while can receive multiple conditions to
+#   check if the loop should be performed or not
+x = 0
+y = 5
+while x < 10 and y > 0:
+    print(x, y, end=' ')
+    x += 1
+    y -= 1
 print()
-# 1, 2, 3, 4, 5,
+# 0 5 1 4 2 3 3 2 4 1
 
 
-# Continue
-# * Skips the rest of the loop code
-i = 0
-while i < 10:
-    i += 1
-    if i % 2 != 0:
-        continue
-    print(i, end=', ')
+# Create a while loop to iterate a collection
+# * The while instruction can be used to iterate a collection
+# * The "for" instruction is preferred since the "for" will work with each
+#   element of the collection, since the "while" will need a manual index to
+#   to select each element from the collection
+collection = [1, 2, 3, 4, 5]
+index = 0
+while index < len(collection):
+    print(collection[index], end=' ')
+    index += 1
 print()
-# 2, 4, 6, 8, 10,
+# 1 2 3 4 5
 
 
-###############################################################################
-# For else
-###############################################################################
-
-
-# While else
-i = 0
-while i < 5:
-    i += 1
-    print(i, end=', ')
-else:
-    print('end')
-# 1, 2, 3, 4, 5, end
-
-
-###############################################################################
-# Infinity loop
-###############################################################################
-
-
-# While true
+# Create a while infinite loop
+# * To create a infinite loop, we can just add the True value to the condition
+# * Take care when creating while loops. If you make a mistake, the loop can
+#   become infinite and the application will stop to work.
+# * Infinite loops are useful to observe threads, events, etc.
+"""
 while True:
-    break
+    ...
+"""
+
+
+###############################################################################
+# While Loop with Else
+###############################################################################
+
+
+# Create a while loop with else
+# * Python has a additional curious syntax. It is the "else" that can also be
+#   used to "while" loops.
+# * The else block in a while expression is always be executed after the loop
+#   terminates
+# * It can be useful to ensure that some code will be performed only if the
+#   loop is executed
+x = 0
+while x < 5:
+    print(x, end=' ')
+    x += 1
+else:
+    print('done')
+# 0 1 2 3 4 done
