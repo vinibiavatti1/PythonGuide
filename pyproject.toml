@@ -1,0 +1,15 @@
+[tool.pylama]
+linters = "pycodestyle"
+
+[tool.pylama.linter.pycodestyle]
+max_line_length = 79
+count = true
+statistics = true
+ignore = []
+
+[tool.mypy]
+strict = false
+check_untyped_defs = false
+show_error_codes = true
+disallow_any_generics = false
+disable_error_code = []

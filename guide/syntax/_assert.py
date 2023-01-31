@@ -14,13 +14,23 @@ Assert
 """
 
 
-# Assert expression
-lst = [1, 2, 3]
-assert len(lst) == 3
-assert len(lst) == 999  # AssertionError
+###############################################################################
+# Assert
+###############################################################################
 
 
-# Assert expression with message
+# Use the assert instruction
+# * The assert instruction can be used to validate an expression
 lst = [1, 2, 3]
 assert len(lst) == 3
-assert len(lst) == 999, 'Invalid length'  # AssertionError: Invalid length
+assert len(lst) == 999
+# AssertionError
+
+
+# Use the assert instruction with a custom message
+# * We can set a custom message to the assert instruction to be used when the
+#   assert fails
+lst = [1, 2, 3]
+assert len(lst) == 3
+assert len(lst) == 999, 'Invalid length'
+# AssertionError: Invalid length
