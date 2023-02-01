@@ -5,7 +5,7 @@
     // Python linter
     "python.linting.enabled": true,
     "python.linting.pylamaEnabled": true,
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
 
     // Editor
     "editor.rulers": [79],

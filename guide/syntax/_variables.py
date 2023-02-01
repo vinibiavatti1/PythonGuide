@@ -168,7 +168,7 @@ x = {}
 ###############################################################################
 
 
-# Define a variable (set)
+# Declare a variable (set)
 # * The set is a collection that cannot has duplicated values
 # * The set itself will parse the values to contain only unique values
 # * The { and } are used to define a set. NOTE: The format of the value will
@@ -180,7 +180,7 @@ x = {True, 'Hi', 2j}
 x = set()
 
 
-# Define a variable (frozenset)
+# Declare a variable (frozenset)
 # * The frozenset is similar to the set, but it is immutable
 # * To create a frozenset, the "frozenset()" function must be used
 # * A set must be passed as an argument to the frozenset, and the set will be
@@ -195,7 +195,7 @@ x = frozenset()
 ###############################################################################
 
 
-# Define a null pointer variable (None)
+# Declare a null pointer variable (None)
 # * To define a variable with a null pointer, the "None" type can be used
 # * The None value must be defined capitalized
 x = None
@@ -206,7 +206,7 @@ x = None
 ###############################################################################
 
 
-# Define a variable (bytes)
+# Declare a variable (bytes)
 # * To define a variable that store bytes, we can use the "b" prefix to a
 #   string type
 # * The first example stores the value "蓏콯" of UTF-16 format
@@ -220,7 +220,7 @@ x = bytes('Hello World', 'utf-8')
 x = bytes(5)  # b'\x00\x00\x00\x00\x00'
 
 
-# Define a variable (bytearray)
+# Declare a variable (bytearray)
 # * Similar to bytes, but it is mutable
 # * The "bytearray()" function can be used to define a variable of bytearray
 #   type
@@ -228,6 +228,21 @@ x = bytearray(b'\xcf\x84o\xcf')
 x = bytearray('Hello World', 'utf-8')
 x = bytearray()
 x = bytearray(5)  # b'\x00\x00\x00\x00\x00'
+
+
+# Declare a variable (memoryview)
+# * The "memoryview" datatype is used to access the memory of an object
+#   directly, without needing to create a copy of the object
+# * This can be used efficiently to manipulate arrays, without needing to
+#   create a copy of the array to another variable
+# * Only objects that implements the buffer protocol can be memory viewed
+# * Basically, the "memoryview" creates a direct pointer to the memory
+#   reference of the object
+array = bytearray(b'abc')
+reference = memoryview(array)
+reference[0] = 65  # Unicode to "A"
+print(array)
+# bytearray(b'Abc')
 
 
 ###############################################################################
