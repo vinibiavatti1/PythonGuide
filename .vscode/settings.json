@@ -23,6 +23,7 @@
     "cSpell.words": [
         "Cython",
         "Dunder",
+        "frozensets",
         "getnewargs",
         "ndigits",
         "PCAP",
