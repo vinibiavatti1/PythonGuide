@@ -5,4 +5,4 @@ linters = "pycodestyle"
 max_line_length = 79
 count = true
 statistics = true
-ignore = "E731,E402,E306"
+ignore = "E731,E402,E306,E302,E305"
