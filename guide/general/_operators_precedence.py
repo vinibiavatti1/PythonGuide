@@ -1,8 +1,10 @@
 """
 Operators precedence
 
-* Python doc: https://docs.python.org/3/reference/expressions.html#operator-pre
-              cedence
+* Operators precedence is the order in which operators are evaluated
+* In Python, there is a table that defines the precedence of each operator
+* Python documentation
+  * https://docs.python.org/3/reference/expressions.html#operator-precedence
 
 ###############################################################################
 Priority	    Operator	    Description            Example
@@ -21,7 +23,7 @@ Priority	    Operator	    Description            Example
 -               -x              negative               -5
 -               ~x              bitwise not            ~5
 6.              *               multiplication         2 * 3
--               @               matrix multip.         a @ b
+-               @               matrix multiplication  a @ b
 -               /               division               10 / 5
 -               //              floor div.             7 // 8
 -               %               remainder              5 % 3
@@ -52,32 +54,33 @@ Priority	    Operator	    Description            Example
 """
 
 
+###############################################################################
+# Examples
+###############################################################################
+
+
 # Expression 1
+# * The expression below is evaluated from left to right
+# * The multiplication operator has precedence over the addition operator
 x = 3 + 5 * 2
 print(x)
 # 13
 
 
 # Expression 2
-x = 2 ** 2 / 4 * 1
+# * The exponentiation operator has precedence over the division operator
+x = 5 ** 2 / 2
 print(x)
-# 1.0
+# 12.5
 
 
 # Expression 3
-x = 1 - 3 * -4 // -5.
-print(x)
-# -1.0
-
-
-# Expression 4
-x = -2 ** 3
-print(x)
-# 256
-
-
-# Right sided binding (**)
-# NOTE: Important!
+# * On this example, the expression is evaluated from right to left since it is
+#   a chain of exponentiation
+# * This is called: Right Sided Binding (**)
+# * It will be calculated as 2 ** (2 ** 3)
+#     2 ** 2 ** 3
+#     2 ** 8
+#     256
 print(2 ** 2 ** 3)
-# It is calculed as 2 ** (2 ** 3)
 # 256

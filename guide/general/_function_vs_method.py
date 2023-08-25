@@ -8,25 +8,42 @@ Function vs Method
 """
 
 
+###############################################################################
 # Function
-def sum(x, y):
+###############################################################################
+
+
+# Function
+# * The function is defined using the "def" keyword
+# * Functions are at module level
+def add(x, y):
     return x + y
 
 
-# Method
-class Person:
-    def get_name(self):
-        return 'Vini'
-
-
-# Calling function
-x = sum(5, 5)
+# Call a function
+# * The function is called by its name
+# * If the function is located in another module, it must be imported
+x = add(5, 5)
 print(x)
 # 10
 
 
-# Calling method
+###############################################################################
+# Method
+###############################################################################
+
+
+# Method
+# * A method is a function present inside a class
+# * Methods are at class level
+class Person:
+    def get_name(self):
+        return 'John'
+
+
+# Call a method
+# * To call a method, it is necessary to create an instance of the class
 person = Person()
 x = person.get_name()
 print(x)
-# Vini
+# John

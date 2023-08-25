@@ -11,6 +11,11 @@ Protocols
 * It is not mandatory to implement all the methods of a protocol to gives to
   the class some custom behavior
 * In the list below, we can find a documentation for each Python protocol
+* In some OOP languages, the protocols are called interfaces on which we can
+  define that our class implements some interface, and then, the interface
+  methods will be present to be implemented. In Python, we don't need to
+  specify that some protocol is being implemented, we just need to implement
+  the methods that we want to use in our class
 * NOTE: The list contains only the standard Python protocols
 
 ###############################################################################

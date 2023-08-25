@@ -72,11 +72,11 @@ import decimal
 import dbm
 
 
-# Implementation of the General Decimal Arithmetic Specifi cation
+# Implementation of the General Decimal Arithmetic Specification
 import decimal
 
 
-# Test snippets of code appearing within docstrings
+# Test snippets of code appearing within doc strings
 import doctest
 
 
@@ -180,10 +180,6 @@ import pdb
 
 # Convert Python objects to streams of bytes and back (Serializer)
 import pickle
-
-
-# Python Imaging Library used to process images
-import PIL
 
 
 # Used to retrieve as much possible information about the OS

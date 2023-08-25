@@ -1,7 +1,7 @@
 """
 Class Template
 
-* This fiel should be used as a template for class creation/implementation.
+* This is an example of a class template
 """
 from abc import ABC, abstractmethod
 from typing import (

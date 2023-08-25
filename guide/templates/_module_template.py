@@ -1,7 +1,7 @@
 """
 Module Template
 
-* This is the template for module construction
+* This is a template for module construction
 """
 from typing import (
     Any,
@@ -9,7 +9,7 @@ from typing import (
     TYPE_CHECKING,
 )
 if TYPE_CHECKING:
-    pass  # Type hint imports
+    pass  # Type checking imports
 
 
 ###############################################################################

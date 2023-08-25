@@ -6,9 +6,11 @@ Literals
 """
 
 
-# Literal (The value by itself)
+# Literal
+# * The variable bellow is defined with a literal value
 x = 123
 
 
-# No literal (Variables can contain any value)
+# No literal
+# * The variable bellow is defined with a variable value (not a literal)
 x = __name__

@@ -2,14 +2,12 @@
 Python Style Guide
 
 * This file represents some concepts of:
-  * PEP8: Style Guide for Python Code
+  * PEP008: Style Guide for Python Code
   * PEP257: Docstring Conventions
   * PEP484: Type Hints
-* This is allowed in https://www.python.org/dev/peps/
-* The idea is to describe the way to type code using 'Pythonic' way
-* Use the editorconfig plugin in your IDE and put the .editorconfig file on the
-  root of this projecto to your projecto to configure the code format
-* Reference: https://www.python.org/dev/peps/
+* These PEPs can be found at https://www.python.org/dev/peps/
+* The idea of this documentation is to be a quick reference for the most used
+  concepts of how to write a good Python code (aka Pythonic code)
 """
 import unittest
 
@@ -54,7 +52,7 @@ def sum(x, y):
 # * Capitalize all letters of an abbreviation
 # * Do not use letters to represent the type like "I" for interface
 class HTTPServer:
-    pass
+    ...
 
 
 # Methods
@@ -67,16 +65,17 @@ class HTTPServer:
 # * Static methods doesn't need to have a default first parameter
 # * Do not use capital letters
 class Car:
+
     def start_acceleration(self):
-        pass
+        ...
 
     @classmethod
     def create(cls):
-        pass
+        ...
 
     @staticmethod
     def version():
-        pass
+        ...
 
 
 # Test methods (TestCase)
@@ -116,11 +115,11 @@ class ListTest(unittest.TestCase):
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
-from abc import ABC
+import collections.abc
 
 
 # Main module
-# * NOTE: Not real PEP recomendation
+# * NOTE: Not real PEP recommendation
 # * The main module is the entry module for the application
 # * Use the 'main.py' name for this module
 """main.py"""
@@ -156,14 +155,20 @@ text = 'Hello'
 # * Use underline "_" to protected resources
 # * Use dunder "__" to private resources
 class Forest:
-    def __init__(self, name, size, country):
-        self.name = name               # public
-        self._size = size              # protected
-        self.__country = country       # private
 
-    def public_method(self): pass      # public
-    def _protected_method(self): pass  # protected
-    def __private_method(self): pass   # private
+    def __init__(self, name, size, country):
+        self.name = name          # public
+        self._size = size         # protected
+        self.__country = country  # private
+
+    def public_method(self):      # public
+        ...
+
+    def _protected_method(self):  # protected
+        ...
+
+    def __private_method(self):   # private
+        ...
 
 
 # Reserved words/Builtin words
@@ -178,15 +183,15 @@ input_ = 'World'
 ###############################################################################
 
 
-# Import in multiple lines
+# Multiple module imports
 # * Do not use different imports at same line like import sys, abc
-# * Always put the imports at the top of the file of after the first comment
+# * Always put the imports at the top of the file after the module docstring
 import sys
-import abc as myabc
+import abc as my_abc
 
 
-# Import a big amount of resources
-# * Use multi line to import the resources
+# Multiple module resources imports
+# * Use multi line to import the resources from a specific module
 from abc import (
     ABC,
     ABCMeta as MyABCMeta
@@ -199,19 +204,19 @@ from abc import (
 
 
 # Inline comments
-# * Use two spaces after expression for inline comments
+# * Use two spaces after the expression for inline comments
 x = 10  # My variable
 
 
 # Multiline comments
-# * Use """ the single quotes always
+# * Use double quotes (""") for multiline comments
 """
 Lorem ipsum
 """
 
 
 # Section comments
-# * NOTE: Not real PEP recomendation
+# * NOTE: Not real PEP recommendation
 # * To separate code sections, use the section comment with "#" char
 # * NOTE: The example below is inside a multi-line comment just to differs from
 #   the other section comments in this file
@@ -222,9 +227,9 @@ Lorem ipsum
 """
 
 
-# Idented section comments
-# * NOTE: Not real PEP recomendation
-# * To use section inside code blocks, ident the section comments
+# Sub section comments
+# * NOTE: Not real PEP recommendation
+# * For sub sections, use the indentation in the section comment
 """
     ###########################################################################
     # The Title
@@ -232,15 +237,15 @@ Lorem ipsum
 """
 
 
-# Docstrings
-# * NOTE: Not real PEP recomendation
-# * Use a multiline comment with dual quotes
-# * Do not use a multiline in just one line (inline) comment
+# Documentation strings
+# * NOTE: Not real PEP recommendation
+# * Use a multiline comment with double quotes
+# * Don't use the quotes and the documentation in a single line
 def function():
     """
     This function returns True
     """
-    return True
+    ...
 
 
 ###############################################################################
@@ -249,20 +254,22 @@ def function():
 
 
 # Function arguments
-# * When some function exceeds the line length, use break-line
+# * When some function exceeds the max line length, break-line the parameters
+#   and fit the next line with the first parameters
 def function(argument1, argument2, argument3, argument4, argument5, argument6,
              argument7):
-    pass
+    ...
 
 
 # Function calls
-# * When some function call exceeds the line length, use break-line
+# * When some function call exceeds the line length, break-line the arguments
+#   and fit the next line with the first argument
 function('argument1', 'argument2', 'argument3', 'argument4', 'argument5',
          'argument6', 'argument7')
 
 
-# Function calls with big identation
-# * When some function identation is too big, and the arguments exceeds the
+# Function calls with big indentation
+# * When some function indentation is too big, and the arguments exceeds the
 #   line length, use break-line
 function.function.function.function.function.function.function.function(
     'argument1', 'argument2', 'argument3', 'argument4', 'argument5'
@@ -270,25 +277,25 @@ function.function.function.function.function.function.function.function(
 
 
 # Type hints in functions
-# * Always try to use type hints in functions
-# * When no return type, specify None
+# * Use type hints in functions
+# * When there is no return type, specify it using None
 # * Use typing module for more types
 def typed_function(number: int, name: str, lst: list[str]) -> None:
-    pass
+    ...
 
 
 # Type hints in functions (multi line)
-# * When some function exceeds the line length, use break-line
+# * Use the same approach of function arguments with a break-line
 def typed_function(number: int, name: str, lst: list[str],
                    other: tuple[int], another: bool) -> None:
-    pass
+    ...
 
 
 # Type hints in functions (multi line for return only)
 # * When only the return exceeds the line length, use break-line for return
 def typed_function(number: int, name: str, lst: list[str], other: tuple[int]
                    ) -> None:
-    pass
+    ...
 
 
 # Type hints in classes
@@ -296,27 +303,27 @@ def typed_function(number: int, name: str, lst: list[str], other: tuple[int]
 class TypedClass:
 
     def method(self, name: str) -> str:
-        pass
+        ...
 
     @classmethod
     def class_method(cls, name: str) -> None:
-        pass
+        ...
 
 
 ###############################################################################
-# Code recomendations
+# Code recommendations
 ###############################################################################
 
 
-# Spacement and line breaks
-# * Use two line breaks before and after functions, classes and multi line
+# Spacing and line breaks
+# * Use two line breaks before and after functions, classes and multi-line
 #   comments
 def action():
-    pass
+    ...
 
 
 class Person():
-    pass
+    ...
 
 
 x = 1
@@ -329,18 +336,18 @@ Comment
 
 # Line length
 # * Respect the line length limit (79 chars)
-x = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nulla \
-nisl'
+x = 'This is a big text that respects the line length limit (79 chars) and ' \
+    'breaks the line to fit the limit'
 
 
-# Identation
+# Indentation
 # * Always use 4 spaces to indent your code
-# * NOTE: DO NOT use tabs
+# * NOTE: DO NOT use tabs, use only spaces
 if 1 == 1:
     pass
 
 
-# Do not use unecessary spaces
+# Do not use un-necessary spaces
 # * Do not put more spaces in lists, parameters, function names, etc
 # * Do not try to inline vertically some text with spaces
 lst = [1, 2, 3, 4, 5]
@@ -350,34 +357,34 @@ long_variable = 5
 
 # Backslash
 # * For long python lines, it is recommended to use backlash (\) to wrap
-txt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ul " \
-    "lamcorper ipsum. Nullam et elit nec ante porttitor finibus finibus di " \
-    "gnissim nulla. In pharetra vulputate magna sodales consequat"
+txt = 'This is a big text that respects the line length limit (79 chars) ' \
+      'breaks the line to fit the limit'
 
 
 # Long if
 # * To make a if with more lines, use parenthesis
 # * From second condition onwards, the conditions must be indented
-# * Always put the logical operator as the end of the line, to the first
-if (1 == 1 and      # Dont use indentation
-        2 == 2 and  # Use indentation
-        3 == 3 or   # Use indentation
-        4 == 4):    # Use indentation
-    pass
+# * Always put the logical operator as the front of the condition
+if (
+    1 == 1
+    and 2 == 2
+    or 3 == 3
+):
+    ...
 
 
 # Unused resource
 # * To mark some resource as unused intentionally, use the "_" char as the name
 #   of the resource
 for _ in range(10):
-    pass
+    ...
 
 
-# Multiple unused resources
-# * Concat more "_" to unused resources at same context.
+# Multiple unused resources in the same context
+# * Concat more "_" to unused resources at same context
 for _ in range(10):
     for __ in range(10):
-        pass
+        ...
 
 
 # EOF new line

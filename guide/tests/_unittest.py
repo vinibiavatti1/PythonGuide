@@ -1,20 +1,20 @@
 """
 Unittest
 
-* The unittest Python module is a module that provides ways to create tests
-  for you code
+* The unittest Python module is a module that provides ways to create unit
+  tests for your code
 * It is based on Erich Gamma's JUnit and Kent Beck's Smalltalk testing
   framework
 * This module contains the core framework classes that form the basis of
   specific test cases and suites (TestCase, TestSuite etc.), and also a
   text-based utility class for running the tests and reporting the results
   (TextTestRunner)
-* NOTE: For convension, the test methods follow has always the "test_" prefix
-  nomenclature
-* NOTE: The -v argument can be used in the module run to check more details of
+* NOTE: As convention, the test methods must has the "test_" signature as
+  prefix
+* NOTE: The -v argument can be used in the runner to check more details of
   the test execution
 
-TestCase assertion
+TestCase Assertions
 ###############################################################################
 Assert expr.                        Equivalent
 ###############################################################################
@@ -33,7 +33,7 @@ assertNotIsInstance(a, b)           not isinstance(a, b)
 assertRaises(error, fn, *args)      raise Error
 ###############################################################################
 
-TestCase hooks
+TestCase Hooks
 ###############################################################################
 Method                              Definition
 ###############################################################################
@@ -43,7 +43,17 @@ tearDownClass(cls)                  Execute after the test
 tearDown(self)                      Execute after each test
 ###############################################################################
 """
-import unittest
+
+
+###############################################################################
+# Imports
+###############################################################################
+
+
+# Importing the unittest module
+# * To define the unit tests, the unittest module must be imported
+# * The unittest.main method is used to execute the tests
+from unittest import TestCase, main
 from collections.abc import Iterable
 
 
@@ -52,14 +62,14 @@ from collections.abc import Iterable
 ###############################################################################
 
 
-# Testcase
-# * To create a test the TestCase class from unittest module is used as a base
+# TestCase class
+# * To create a test, the TestCase class from unittest module is used as a base
 #   class for the test class
 # * The test case has some methods to configure the test, and assertions that
 #   can be used to validate the values
 # * The following code will create an test class
 # * The methods inside the class are optionals
-class FirstTest(unittest.TestCase):
+class FirstTest(TestCase):
 
     # setUpClass()
     # * A class method called before tests in an individual class are run.
@@ -100,7 +110,7 @@ class FirstTest(unittest.TestCase):
 # * The assertion methods provide by the TestCase class are used to validate
 #   the values of the test
 # * The following class has the most used asserts
-class SecondTest(unittest.TestCase):
+class SecondTest(TestCase):
     def test(self):
         a, b, c, d = 1, True, False, None
         self.assertEqual(a, 1)                # a == b
@@ -145,7 +155,7 @@ class List:
 # Create TestCase
 # * To create the tests, the TestCase class is used as a base class for the
 #   test class that will be created
-class ListTest(unittest.TestCase):
+class ListTest(TestCase):
 
     # Execute before each test
     def setUp(self):
@@ -191,7 +201,7 @@ class ListTest(unittest.TestCase):
 # * It is recommended to call this function in the __name__ validation of the
 #   module
 if __name__ == '__main__':
-    unittest.main()
+    main()
     # Test result:
     """
     .....

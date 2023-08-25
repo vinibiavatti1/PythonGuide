@@ -1,8 +1,8 @@
 """
 Swap
 
-* Swap is a special syntax of Python which permits to move variable data
-  between each other without the need to use a temporary variable for it
+* Swap is a special syntax in Python that allows moving variables data
+  between each other without needing to use a temporary variable for it
 * The swap syntax uses the same concept of the unpack syntax
 * Syntax: x, y = y, x
 """

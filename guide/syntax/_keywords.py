@@ -48,6 +48,7 @@ try                     Defines a try block for exception handling
 while                   Defines a conditional loop
 with                    Creates a context to a resource
 yield                   Defines the generator return data
+_                       Used as a wildcard in some cases (Soft keyword)
 ###############################################################################
 """
 
@@ -497,3 +498,17 @@ print(next(generator_iter))
 print(next(generator_iter))
 # 1
 # 2
+
+
+# _ (wildcard)
+# * The "_" is used as a wildcard in some cases
+# * For example, in the "match" block, the "_" is used as a wildcard to perform
+#   a block that will be executed when no other case is matched
+match None:
+    case 1:
+        print('one')
+    case 2:
+        print('two')
+    case _:
+        print('unknown')
+# unknown

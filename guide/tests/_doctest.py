@@ -1,7 +1,7 @@
 """
 Doctest
-* Use ">>>" sequence to define a doctext inside a docstring
-* The definition is equivalet of the execution in Python console
+* Use ">>>" sequence to define a statement inside a docstring
+* The definition is equivalent of the execution in Python console
 * The expected result must be equal the result returned in the Python console
 * The doctest module searches for pieces of text that look like interactive
   Python sessions, and then executes those sessions to verify that they work
