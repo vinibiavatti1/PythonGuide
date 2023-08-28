@@ -17,16 +17,23 @@ Stacktrace
 """
 
 
-# Run the code to raise an error
+# Stack with a single expression
+# * The error below will be raised and generate the stacktrace with only one
+#   call since it is a single expression at module level
 x = 1 / 0
-# Traceback (most recent call last):
-#   File "c:\git\PythonGuide\guide\exceptions\_stacktrace.py", line 21, in
-#   <module>
-#     1 / 0
-# ZeroDivisionError: division by zero
+"""
+Traceback (most recent call last):
+  File "c:/.../_stacktrace.py", line 21, in <module>
+    x = 1 / 0
+        ~~^~~
+ZeroDivisionError: division by zero
+"""
 
 
-# Stack with function chain
+# Stack with multiple functions
+# * The error below will be raised and generate the stacktrace with multiple
+#   calls since the error ocurred inside the function that was called by
+#   other functions
 def c():
     return 1 / 0
 
@@ -40,14 +47,18 @@ def a():
 
 
 a()
-# Traceback (most recent call last):
-#   File "c:\git\PythonGuide\guide\exceptions\_stacktrace.py", line 42, in
-#   <module>
-#     a()
-#   File "c:\git\PythonGuide\guide\exceptions\_stacktrace.py", line 39, in a
-#     return b()
-#   File "c:\git\PythonGuide\guide\exceptions\_stacktrace.py", line 35, in b
-#     return c()
-#   File "c:\git\PythonGuide\guide\exceptions\_stacktrace.py", line 31, in c
-#     return 1 / 0
-# ZeroDivisionError: division by zero
+"""
+Traceback (most recent call last):
+  File "c:/.../_stacktrace.py", line 44, in <module>
+    a()
+  File "c:/.../_stacktrace.py", line 41, in a
+    return b()
+           ^^^
+  File "c:/.../_stacktrace.py", line 37, in b
+    return c()
+           ^^^
+  File "c:/.../_stacktrace.py", line 33, in c
+    return 1 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+"""
