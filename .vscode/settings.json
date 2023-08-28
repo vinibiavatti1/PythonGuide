@@ -22,6 +22,8 @@
     },
     "cSpell.words": [
         "Cython",
+        "docstrings",
+        "doctests",
         "Dunder",
         "frozensets",
         "getdefaultencoding",
