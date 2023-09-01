@@ -1,23 +1,24 @@
-"""
-Module Attributes
-"""
-
-a: int = 1
+from abc import ABC, abstractmethod
 
 
-'__annotations__',
-'__builtins__',
-'__cached__',
-'__doc__',
-'__file__',
-'__loader__',
-'__name__',
-'__package__',
-'__spec__'
+class IBuilding(ABC):
 
-a = b'\x41'
-b = u'asd'
-# a = f''
-# a = r''
-# a = u''
-print(b)
+    @abstractmethod
+    def get_name(self) -> str:
+        pass
+
+    @abstractmethod
+    def build(self) -> None:
+        pass
+
+
+class GoldMine(IBuilding):
+
+    def __init__(self) -> None:
+        self.name = "Gold Mine"
+
+    def get_name(self) -> str:
+        return self.name
+
+    def build(self) -> None:
+        print(f"{self.name} is building")
