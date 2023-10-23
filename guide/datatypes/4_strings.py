@@ -329,17 +329,25 @@ print(x[7:3])
 
 
 ###############################################################################
-# Concatenating Strings
+# Concatenating
 ###############################################################################
 
 
 # Concatenating strings
 # * To concatenate strings, we can use the '+' operator
 # * Since strings are immutable, the '+' operator will create a new string
-x = 'Hello'
-y = x + ' World'
-print(y)
+x = 'Hello' + ' ' + 'World'
+print(x)
 # Hello World
+
+
+# Concatenating other types
+# * When other object type (int, float, etc.) is concatenated with a string,
+#   it must be converted to string first
+# * If the value is not converted, a TypeError will be raised
+x = 'The number is: ' + str(5)
+print(x)
+# The number is: 5
 
 
 ###############################################################################
