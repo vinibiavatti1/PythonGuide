@@ -1,7 +1,7 @@
 """
 Module Attributes
 
-* The modules in Python contains (by default) some attributes that contains
+* Modules in Python contains (by default) some attributes that contains
   important information
 * You can see the available attributes at current module by executing "dir()"
   function, without any argument
@@ -148,5 +148,5 @@ print(__doc__)
 """
 Module Attributes
 
-* The modules in Python ...
+* Modules in Python contains ...
 """

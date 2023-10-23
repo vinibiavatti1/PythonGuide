@@ -180,7 +180,7 @@ print(ba1, ba2, ba3, ba4, sep=', ')
 # * Determines the MRO (method resolution order) to be searched
 # * Its is recommended to use super without parameters, like 'super().method'
 # * Syntax:
-#   * super(type: Any, obj: Any)
+#   * super()
 class Building:
     def __init__(self, name):
         self._name = name
@@ -188,7 +188,7 @@ class Building:
 
 class Tower(Building):
     def __init__(self, name):
-        super(Tower, self).__init__(name)
+        super().__init__(name)
 
 
 tower = Tower('Trump tower')

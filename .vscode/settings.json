@@ -22,14 +22,19 @@
     },
     "cSpell.words": [
         "Cython",
+        "dlro",
         "docstrings",
         "doctests",
         "Dunder",
+        "fillchar",
         "frozensets",
         "getdefaultencoding",
         "getfilesystemencoding",
         "getnewargs",
+        "keepends",
+        "maxsplit",
         "ndigits",
+        "olle",
         "PCAP",
         "PCEP",
         "PCPP",
@@ -38,6 +43,7 @@
         "Sina",
         "subclasscheck",
         "venvs",
-        "Vini"
+        "Vini",
+        "xmlcharrefreplace"
     ],
 }

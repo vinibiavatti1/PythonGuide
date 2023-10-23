@@ -337,7 +337,7 @@ print(x.name, x.company)
 # * Sometimes referred to as the "Deadly Diamond of Death"
 # * By knowing that Python allows multi inheritance, we can have some
 #   additional problems with this concept
-# * The diamond problem in an ambiguity that occurs when a class (D) inherits
+# * The diamond problem is an ambiguity that occurs when a class (D) inherits
 #   from two other classes (B, C) that has the same class as base (A). If the
 #   base class (A) has a method that the child classes (B, C) override but the
 #   child class (D) does not, then, which method will be used?
