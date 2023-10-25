@@ -1,7 +1,7 @@
 """
-Booleans
+Boolean
 
-* Booleans (bool) is a datatype that stores True or False values only
+* Boolean (bool) is a datatype that stores True or False values only
 * The name comes from George Boole (1815-1864), the author of the fundamental
   work, The Laws of Thought, which contains the definition of Boolean algebra
 * The bool class is a subclass of the integer (int) class

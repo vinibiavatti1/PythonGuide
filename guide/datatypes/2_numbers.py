@@ -118,6 +118,49 @@ print(x)
 
 
 ###############################################################################
+# Casting
+###############################################################################
+
+
+# Casting numbers
+# * A number can be cast by using the built-in functions
+# * If the number could not be cast, a ValueError will be raised
+x = int(1)          # 1
+x = int(1.5)        # 1
+x = int('1')        # 1
+x = float(1)        # 1.0
+x = float(1.5)      # 1.5
+x = float('1.5')    # 1.5
+x = float('1.')     # 1.0
+x = float('.1')     # 0.1
+x = float('1e3')    # 1000.0
+x = complex(1)      # 1+0j
+x = complex(1.5)    # 1.5+0j
+x = complex('1')    # 1+0j
+x = complex('1.5')  # 1.5+0j
+
+
+# Coercion
+# * Coercion is the implicit conversion of one datatype to another made by the
+#   interpreter
+# * Some cases, the coercion will be made without any problem, but in other
+#   cases, a manual conversion is required to prevent runtime errors
+# * In the case below, the "10" will be cast to float before the sum
+x = 3.5 + 10  # Equivalent to x = 3.5 + float(10)
+
+
+# Casting to int with a custom base
+# * The int() function allows to specify numbers in other base, but setting the
+#   base parameter
+# * It can be useful to cast hexadecimal, octal, etc... numbers to int,
+#   without using a wrong base
+x = int('15')           # 15 is a decimal number
+y = int('15', base=16)  # 15 is a hexadecimal number
+print(x, y, sep=', ')
+# 15, 21
+
+
+###############################################################################
 # Underscore
 ###############################################################################
 

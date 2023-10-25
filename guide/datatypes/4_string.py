@@ -1,5 +1,5 @@
 """
-Strings
+String
 
 * Python strings are char arrays
 * They are immutable, which means that changing the value of a string requires
