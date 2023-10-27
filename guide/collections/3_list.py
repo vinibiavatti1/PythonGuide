@@ -398,9 +398,10 @@ print()
 # * In this example, we will not use the result of the comprehension, so the
 #   result will not be stored in memory
 x = [1, 2, 3]
-[print(el, end=', ') for el in x]
-print()
-# 1, 2, 3,
+[print(el) for el in x]
+# 1
+# 2
+# 3
 
 
 # Iterating over a List (with iter)
@@ -431,22 +432,6 @@ print(y)
 # 2, 4, 6
 
 
-# Mapping a List (with while)
-# * In this case, we will create a new list based on the original list
-#   using the `while` loop
-# * Since lists are immutable, we will need to create a new list and add
-#   each element to it. Note that a new list is created on each iteration
-#   and is concatenated with the previous list
-x = [1, 2, 3]
-y = []
-i = 0
-while i < len(x):
-    y.append(x[i] * 2)
-    i += 1
-print(y)
-# 2, 4, 6
-
-
 # Mapping a List (with for-each)
 # * The for-each notation can be used to iterate over a list without the need
 #   of a preset index variable
@@ -464,10 +449,26 @@ print(y)
 #   element into another element in a new list
 # * The `map` function accepts a function as first argument that will be
 #   applied for each element
-# * Note that we needed to convert the comprehension to a list, since the
-#   result of a map operation is a map object
+# * Note that we needed to convert the result to a list, since the result of a
+#   map operation is a map object
 x = [1, 2, 3]
 y = list(map(lambda el: el * 2, x))
+print(y)
+# 2, 4, 6
+
+
+# Mapping a List (with while)
+# * In this case, we will create a new list based on the original list
+#   using the `while` loop
+# * Since lists are immutable, we will need to create a new list and add
+#   each element to it. Note that a new list is created on each iteration
+#   and is concatenated with the previous list
+x = [1, 2, 3]
+y = []
+i = 0
+while i < len(x):
+    y.append(x[i] * 2)
+    i += 1
 print(y)
 # 2, 4, 6
 
@@ -484,20 +485,6 @@ print(y)
 #   that will be returned
 x = [1, 2, 3, 4]
 y = [el for el in x if el > 2]
-print(y)
-# 3, 4
-
-
-# Filtering a List (with while)
-# * A new list with the elements filtered will be created
-# * In this case, we will use the `while` loop to iterate over the list
-x = [1, 2, 3, 4]
-y = []
-i = 0
-while i < len(x):
-    if x[i] > 2:
-        y.append(x[i])
-    i += 1
 print(y)
 # 3, 4
 
@@ -527,6 +514,20 @@ print(y)
 # 3, 4
 
 
+# Filtering a List (with while)
+# * A new list with the elements filtered will be created
+# * In this case, we will use the `while` loop to iterate over the list
+x = [1, 2, 3, 4]
+y = []
+i = 0
+while i < len(x):
+    if x[i] > 2:
+        y.append(x[i])
+    i += 1
+print(y)
+# 3, 4
+
+
 ###############################################################################
 # List Reducing
 ###############################################################################
@@ -546,19 +547,6 @@ print(acc)
 # 10
 
 
-# Reducing a List (with while)
-# * The while loop can be used to reduce a list
-# * In this case, the index variable will be used to iterate over the list
-x = [1, 2, 3, 4]
-acc = 0
-i = 0
-while i < len(x):
-    acc += x[i]
-    i += 1
-print(acc)
-# 10
-
-
 # Reducing a List (with reduce)
 # * The `functools.reduce` function can be used to reduce a list
 # * For this case, we must import the `reduce` function from the `functools`
@@ -573,21 +561,32 @@ print(result)
 # 10
 
 
+# Reducing a List (with while)
+# * The while loop can be used to reduce a list
+# * In this case, the index variable will be used to iterate over the list
+x = [1, 2, 3, 4]
+acc = 0
+i = 0
+while i < len(x):
+    acc += x[i]
+    i += 1
+print(acc)
+# 10
+
+
 ###############################################################################
 # List Sorting
 ###############################################################################
 
 
 # Sorting a List (with sorted)
-# * The `sorted` function can be used to sort a tuple
-# * Since tuples are immutable, the unique way to sort a tuple is to create a
-#   new tuple with the sorted elements
-x = 3, 1, 4, 2
-y1 = tuple(sorted(x))
-y2 = tuple(sorted(x, reverse=True))
+# * The `sorted` function can be used to sort a list
+x = [3, 1, 4, 2]
+y1 = sorted(x)
+y2 = sorted(x, reverse=True)
 print(y1, y2, sep='\n')
-# (1, 2, 3, 4)
-# (4, 3, 2, 1)
+# [1, 2, 3, 4]
+# [4, 3, 2, 1]
 
 
 # Sorting a List (with sort)

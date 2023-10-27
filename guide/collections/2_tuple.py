@@ -266,9 +266,10 @@ print()
 # * Note that we needed to convert the comprehension to a tuple, since the
 #   result of a "tuple comprehension" is a generator
 x = 1, 2, 3
-tuple(print(el, end=', ') for el in x)
-print()
-# 1, 2, 3,
+tuple(print(el) for el in x)
+# 1
+# 2
+# 3
 
 
 # Iterating over a Tuple (with iter)

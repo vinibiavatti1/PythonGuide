@@ -568,9 +568,10 @@ print()
 # * In this example, we will not use the result of the comprehension, so the
 #   result will not be stored in memory
 x = {1, 2, 3}
-{print(el, end=', ') for el in x}
-print()
-# 1, 2, 3,
+{print(el) for el in x}
+# 1
+# 3
+# 2
 
 
 # Iterating over a Set/Frozenset (with iter)

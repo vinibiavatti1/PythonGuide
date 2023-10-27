@@ -282,3 +282,310 @@ x2 = {'name': 'Mary', 'gender': 'Female'}
 x1.update(x2)
 print(x1)
 # {'name': 'Mary', 'age': 50, 'gender': 'Female'}
+
+
+###############################################################################
+# Dictionary Iteration
+###############################################################################
+
+
+# Iterating over the dictionary items (with for-each) (XXX recommended XXX)
+# * The for-each loop can be used to iterate over the dictionary items
+# * Dictionary items is a list of tuples, where each tuple contains a key-value
+#   pair
+# * To iterate over the dictionary items, the `items()` method must be used
+x = {'name': 'John', 'age': 50}
+for key, value in x.items():
+    print(key, value, sep=': ')
+# name: John
+# age: 50
+
+
+# Iterating over the dictionary keys (with for-each)
+# * To iterate only over the dictionary keys, the `keys()` method must be used
+x = {'name': 'John', 'age': 50}
+for key in x.keys():
+    print(key)
+# name
+# age
+
+
+# Iterating over the dictionary values (with for-each)
+# * To iterate only over the dictionary values, the `values()` method must be
+x = {'name': 'John', 'age': 50}
+for value in x.values():
+    print(value)
+# John
+# 50
+
+
+# Iterating over the dictionary items (with comprehension)
+# * The comprehension can be used to iterate over the dictionary items
+# * In this case, the comprehension result will not be stored into a variable,
+#   since we will not need the result
+# * To iterate over the dictionary items, the `items()` method must be used
+x = {'name': 'John', 'age': 50}
+[print(key, value, sep=': ') for key, value in x.items()]
+# name: John
+# age: 50
+
+
+# Iterating over the dictionary keys (with comprehension)
+# * The comprehension can be used to iterate over the dictionary keys
+# * To iterate over the dictionary keys, the `keys()` method must be used
+x = {'name': 'John', 'age': 50}
+[print(key) for key in x.keys()]
+# name
+# age
+
+
+# Iterating over the dictionary values (with comprehension)
+# * The comprehension can be used to iterate over the dictionary values
+# * To iterate over the dictionary values, the `values()` method must be used
+x = {'name': 'John', 'age': 50}
+[print(value) for value in x.values()]
+# John
+# 50
+
+
+# Iterating over the dictionary items (with while)
+# * The while loop can be used to iterate over the dictionary items
+# * To iterate over the dictionary items, the `items()` method must be used
+# * Note that we must cast the items to a tuple, since the dict_items object
+#   does not support indexing
+# * NOTE: Its is not recommended to use the while loop to iterate over a
+#   dictionary since it is more verbose than the for-each loop
+x = {'name': 'John', 'age': 50}
+items = tuple(x.items())
+i = 0
+while i < len(items):
+    key, value = items[i]
+    print(key, value, sep=': ')
+    i += 1
+# name: John
+# age: 50
+
+
+# Iterating over the dictionary keys (with while)
+# * The while loop can be used to iterate over the dictionary keys
+# * To iterate over the dictionary keys, the `keys()` method must be used
+# * Note that we must cast the items to a tuple, since the dict_items object
+#   does not support indexing
+# * NOTE: Its is not recommended to use the while loop to iterate over a
+#   dictionary since it is more verbose than the for-each loop
+x = {'name': 'John', 'age': 50}
+keys = tuple(x.keys())
+i = 0
+while i < len(keys):
+    print(keys[i])
+    i += 1
+# name
+# age
+
+
+# Iterating over the dictionary values (with while)
+# * The while loop can be used to iterate over the dictionary values
+# * To iterate over the dictionary keys, the `values()` method must be used
+# * Note that we must cast the items to a tuple, since the dict_items object
+#   does not support indexing
+# * NOTE: Its is not recommended to use the while loop to iterate over a
+#   dictionary since it is more verbose than the for-each loop
+x = {'name': 'John', 'age': 50}
+values = tuple(x.values())
+i = 0
+while i < len(values):
+    print(values[i])
+    i += 1
+# John
+# 50
+
+
+###############################################################################
+# Dictionary Mapping
+###############################################################################
+
+
+# Mapping a Dictionary (with comprehension) (XXX recommended XXX)
+# * A mapping process is a process that will transform each element of a
+#   collection into another element
+# * The comprehension can be used to map a dictionary
+# * In this example, we will use the result of the comprehension, so the
+#   result will be stored in memory
+x = {'n1': 1, 'n2': 2, 'n3': 3}
+y = {key: value * 2 for key, value in x.items()}
+print(y)
+# {'n1': 2, 'n2': 4, 'n3': 6}
+
+
+# Mapping a Dictionary (with for-each)
+# * The for-each loop can be used to map a dictionary
+# * Note that we created a new dictionary that will be the result of the
+#   mapping process
+x = {'n1': 1, 'n2': 2, 'n3': 3}
+y = {}
+for key, value in x.items():
+    y[key] = value * 2
+print(y)
+# {'n1': 2, 'n2': 4, 'n3': 6}
+
+
+# Mapping a Dictionary (with map)
+# * The `map` function can be used to iterate over a dictionary transforming
+#   each element into another element in a new dictionary
+# * The `map` function accepts a function as first argument that will be
+#   applied for each element
+# * Note that we needed to convert the result to a dictionary, since the
+#   result of a map operation is a map object
+x = {'n1': 1, 'n2': 2, 'n3': 3}
+y = dict(map(lambda item: (item[0], item[1] * 2), x.items()))
+print(y)
+# {'n1': 2, 'n2': 4, 'n3': 6}
+
+
+# Mapping a Dictionary (with while)
+# * The while loop can be used to map a dictionary too
+# * The other ways above are better than this one, since this one is more
+#   verbose
+x = {'n1': 1, 'n2': 2, 'n3': 3}
+y = {}
+items = tuple(x.items())
+i = 0
+while i < len(items):
+    key, value = items[i]
+    y[key] = value * 2
+    i += 1
+print(y)
+# {'n1': 2, 'n2': 4, 'n3': 6}
+
+
+###############################################################################
+# Dictionary Filtering
+###############################################################################
+
+
+# Filtering a Dictionary (with comprehension) (XXX recommended XXX)
+# * The comprehension can be used to filter a dictionary using a condition
+#   that will be applied for each element
+# * In this example, we will use the result of the comprehension, so the
+#   result will be stored in memory
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+y = {key: value for key, value in x.items() if value > 2}
+print(y)
+# {'n3': 3, 'n4': 4}
+
+
+# Filtering a Dictionary (with for-each)
+# * The for-each loop can be used to filter a dictionary using a condition
+#   that will be applied for each element
+# * Note that we created a new dictionary that will be the result of the
+#   filtering process
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+y = {}
+for key, value in x.items():
+    if value > 2:
+        y[key] = value
+print(y)
+# {'n3': 3, 'n4': 4}
+
+
+# Filtering a Dictionary (with filter)
+# * The `filter` function can be used to iterate over a dictionary filtering
+#   each element based on a condition
+# * The `filter` function accepts a function as first argument that will be
+#   applied for each element
+# * Note that we needed to convert the result to a dictionary, since the
+#   result of a filter operation is a filter object
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+y = dict(filter(lambda item: item[1] > 2, x.items()))
+print(y)
+# {'n3': 3, 'n4': 4}
+
+
+# Filtering a Dictionary (with while)
+# * While can be used to filter a dictionary too
+# * The other ways above are better than this one, since this one is more
+#   verbose
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+y = {}
+items = tuple(x.items())
+i = 0
+while i < len(items):
+    key, value = items[i]
+    if value > 2:
+        y[key] = value
+    i += 1
+print(y)
+# {'n3': 3, 'n4': 4}
+
+
+###############################################################################
+# Dictionary Reducing
+###############################################################################
+
+
+# Reducing a Dictionary (with for-each)
+# * The reducing process is a process that will reduce the elements of a
+#   collection into a single value
+# * The reducing process can be done by using the for-each notation
+# * Note that we can use the built-in functions `sum()`, `min()` and `max()`
+#   for the most common reducing operations
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+acc = 0
+for key, value in x.items():
+    acc += value
+print(acc)
+# 10
+
+
+# Reducing a Dictionary (with reduce)
+# * The `functools.reduce` function can be used to reduce a dictionary
+# * For this case, we must import the `reduce` function from the `functools`
+#   module
+# * The `reduce` function accepts a function as first argument that will be
+#   applied for each element. The function has two arguments, the first is
+#   the accumulator and the second is the current element
+from functools import reduce
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+acc = reduce(lambda acc, item: acc + item[1], x.items(), 0)
+print(acc)
+# 10
+
+
+# Reducing a Dictionary (with while)
+# * The while loop can be used to reduce a dictionary
+# * In this case, the index variable will be used to iterate over the
+#   dictionary
+# * The other ways above are better than this one, since this one is more
+#   verbose
+x = {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+acc = 0
+items = tuple(x.items())
+i = 0
+while i < len(items):
+    key, value = items[i]
+    acc += value
+    i += 1
+print(acc)
+# 10
+
+
+###############################################################################
+# Dictionary Sorting
+###############################################################################
+
+
+# Sorting a Dictionary (with sorted)
+# * The `sorted` function can be used to sort a dictionary
+# * For this case, we must pass the `items()` method as argument to the
+#   `sorted` function
+# * We needed to pass a lambda function as argument to the `key` parameter
+#   to define that the sorting will be done by the second element of the
+#   tuple, i.e. the value, not the key
+# * Note that the result of the `sorted` function is a list of tuples, where
+#   we needed to convert to a dictionary again
+x = {'n3': 3, 'n1': 1, 'n4': 4, 'n2': 2}
+y1 = dict(sorted(x.items(), key=lambda el: el[1]))
+y2 = dict(sorted(x.items(), key=lambda el: el[1], reverse=True))
+print(y1, y2, sep='\n')
+# {'n1': 1, 'n2': 2, 'n3': 3, 'n4': 4}
+# {'n4': 4, 'n3': 3, 'n2': 2, 'n1': 1}
