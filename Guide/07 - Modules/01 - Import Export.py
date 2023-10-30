@@ -58,12 +58,12 @@ import typing as tp
 # Import module specifying package
 # * You can define the location of the module that will be imported by
 #   specifying the package that the module is located
-import example.modules.example_module
+import __example.modules.example_module
 
 
 # Import module specifying package with alias
 # * The same alias rule can be used on this import method
-import example.modules.example_module as example
+import __example.modules.example_module as example
 
 
 ###############################################################################
@@ -73,12 +73,12 @@ import example.modules.example_module as example
 
 # Import module from package
 # * The same syntax can be used to import a whole module instead
-from example.modules import example_module
+from __example.modules import example_module
 
 
 # Import module from package with alias
 # * The alias can be set to the imported module too
-from example.modules import example_module as example
+from __example.modules import example_module as example
 
 
 ###############################################################################
@@ -121,18 +121,18 @@ from typing import Union as un
 #   For this example, only ("message" and "CustomType") will be imported. The
 #   "OtherCustomType" will be ignored since it is not defined in __all__
 #   variable.
-from example.modules.example_module import *
+from __example.modules.example_module import *
 
 
 # Import definition from module on package
 # * To import a single definition from a module specifying the location of the
 #   module, you can use the syntax below
-from example.modules.example_module import message
+from __example.modules.example_module import message
 
 
 # Import definition from module on package with alias
 # * The alias can be set to the imported definition
-from example.modules.example_module import message as msg
+from __example.modules.example_module import message as msg
 
 
 ###############################################################################
@@ -172,4 +172,4 @@ from typing import (
 #   imported for the static type checker.
 import typing
 if typing.TYPE_CHECKING:
-    from example.modules.example_module import CustomType
+    from __example.modules.example_module import CustomType

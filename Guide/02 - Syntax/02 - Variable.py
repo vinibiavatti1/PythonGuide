@@ -1,5 +1,5 @@
 """
-Variables
+Variable
 
 * Variables store data to the memory
 * The name of the variable or constant must not be any of Python's keywords

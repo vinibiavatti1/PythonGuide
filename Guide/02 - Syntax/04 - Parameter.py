@@ -1,5 +1,5 @@
 """
-Parameters
+Parameter
 
 * Function parameters are the names listed in the function's definition
 * Function arguments are the real values passed to the function

@@ -1,5 +1,5 @@
 """
-Functions
+Function
 
 * In Python, a named function is defined using the "def" keyword
 * A "parameter" is the variable listed inside the parentheses in the function
