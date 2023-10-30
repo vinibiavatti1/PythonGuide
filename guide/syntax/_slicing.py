@@ -1,4 +1,6 @@
 """
+TODO
+
 Slicing
 
 * It is a notation to select, update or delete elements in collections by some

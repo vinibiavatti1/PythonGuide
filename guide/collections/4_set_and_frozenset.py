@@ -585,6 +585,21 @@ print(next(y))  # 3
 print(next(y))  # 1
 
 
+# Iterating over multiple Set/Frozensets (with zip)
+# * The `zip` function can be used to iterate over multiple set and frozensets
+# * The `zip` function returns a tuple with the elements of each collections in
+#   the same index position
+# * The `strict` argument can be used to indicate that an exception must be
+#   raised if the collections have different lengths
+x1 = {1, 2, 3}
+x2 = frozenset({'a', 'b', 'c', 'd'})
+for el1, el2 in zip(x1, x2):
+    print(el1, el2, sep=', ')
+# 1, b
+# 3, c
+# 2, d
+
+
 ###############################################################################
 # Set/Frozenset Mapping
 ###############################################################################

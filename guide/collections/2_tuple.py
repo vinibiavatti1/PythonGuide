@@ -237,8 +237,10 @@ print()
 
 
 # Iterating over a Tuple (with for-each and enumerate)
-# * If the index is still needed, the `enumerate()` function can be used to
-#   get the index of each element in for-each loop
+# * If the index is needed, the `enumerate()` function can be used to get the
+#   index of each element in for-each loop
+# * The enumerate function returns a tuple with the index and the element
+#   value
 x = 'a', 'b', 'c'
 for i, el in enumerate(x):
     print(i, el, sep=': ', end=', ')
@@ -281,6 +283,21 @@ y = iter(x)
 print(next(y))  # 1
 print(next(y))  # 2
 print(next(y))  # 3
+
+
+# Iterating over multiple Tuples (with zip)
+# * The `zip` function can be used to iterate over multiple tuples
+# * The `zip` function returns a tuple with the elements of each collections in
+#   the same index position
+# * The `strict` argument can be used to indicate that an exception must be
+#   raised if the collections have different lengths
+x1 = 1, 2, 3
+x2 = 'a', 'b', 'c', 'd'
+for el1, el2 in zip(x1, x2):
+    print(el1, el2, sep=', ')
+# 1, a
+# 2, b
+# 3, c
 
 
 ###############################################################################

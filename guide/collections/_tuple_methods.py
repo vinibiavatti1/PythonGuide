@@ -1,6 +1,0 @@
-"""
-Tuple methods
-"""
-
-
-
