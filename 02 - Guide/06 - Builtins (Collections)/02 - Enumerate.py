@@ -13,13 +13,16 @@ Enumerate
 
 
 ###############################################################################
-# Enumerate Result
+# Enumerate Object
 ###############################################################################
 
 
-# Adding indexes to a collection
+# The enumerate object
 # * The result of the enumerate function is a generator of tuples, where each
 #   tuple contains the index and the value of the iterable
+# * The enumerate function accepts two parameters:
+#   * iterable: The iterable that will be used to generate the enumerate
+#   * start: The start index of the enumerate
 # * Note that in this example, we needed to convert the result of the enumerate
 #   into a list since it is a generator
 x = ['a', 'b', 'c']
@@ -29,7 +32,7 @@ print(y)
 # [(0, 'a'), (1, 'b'), (2, 'c')]
 
 
-# Adding indexes to a collection (with start)
+# The enumerate object (with start)
 # * The `start` parameter is used to define the start index of the enumerate
 # * Note that in the example below, the index starts at 1 instead of 0
 x = ['a', 'b', 'c']
@@ -40,7 +43,7 @@ print(y)
 
 
 ###############################################################################
-# Iterating Over an Enumerate
+# Enumerate Operations
 ###############################################################################
 
 
