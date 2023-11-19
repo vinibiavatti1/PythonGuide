@@ -48,7 +48,7 @@ print(y)
 
 
 # Iterating over an enumerate (with for-each) (XXX recommended XXX)
-# * When can use the for-each to iterate over the enumerate
+# * We can use the for-each to iterate over the enumerate
 # * Since each item of the enumerate is a tuple, we can use tuple unpacking to
 #   get the index and the value of the current iteration
 x = ['a', 'b', 'c']

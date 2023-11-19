@@ -11,7 +11,7 @@ Sorted
   * iterable: The iterable to be sorted
   * key: A function to identify the key to be used to sort the iterable
   * reverse: If the iterable should be sorted in reverse order
-* Syntax: sorted(iterable, key=None, reverse=False)
+* Syntax: sorted(iterable, key = None, reverse = False)
 """
 
 
