@@ -1,25 +1,39 @@
 """
 Input
 
-* The input() function allows user input
-* The input() always return a string type
-* NOTE: VS CODE does not allow to interact with OUTPUT, use TERMINAL instead
-
-Syntax: input(prompt)
+* The input() function can be used to get input from the user in the terminal.
+* It always return a string data type.
+* The `prompt` parameter is optional and represents the message that will be 
+  displayed to the user.
+* Syntax: input(prompt)
 """
 
 
-# Define a variable with input value
-x = input('Type the value:')
-print(x)
+###############################################################################
+# Input
+###############################################################################
 
 
-# Input without text
-print('Type the value:')
+# Input
+# * In the example below, the main thread will wait for the user to type a 
+#   value. This value will be returned as a string by the `input` function.
 x = input()
 print(x)
+# ...
 
 
-# Input cast
-x = int(input('Type the value'))
-print(x * 2)
+# Input (with prompt)
+x = print('Type a value: ')
+print(x)
+# ...
+
+
+# Input (with validation)
+# * In the case below, we want only a number as input. To ensure that, we can
+#   use the `int` function to convert the input to an integer. If the input is
+#   not a number, a ValueError will be raised.
+x = input('Type a number: ')
+if not x.isdecimal():
+    raise ValueError('Invalid input.')
+x = int(x)
+print(x)

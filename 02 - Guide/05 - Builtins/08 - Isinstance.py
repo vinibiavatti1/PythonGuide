@@ -1,33 +1,62 @@
 """
 Isinstance
 
-* The isinstance() function returns True if the specified object is of the
+* The `isinstance()` function returns True if the specified object is of the
   specified type, otherwise False.
-* If the type parameter is a tuple, this function will return True
-* If the object is one of the types in the tuple.
-* Syntax
-  * isinstance(object, type)
-  * isinstance(object, tuple)
+* This is used to check if an object is an instance of a class or subclass.
+* If the `type` parameter is a tuple, this function will return True if the
+  object matches with one of the types inside the tuple.
+###############################################################################
+Syntax                      Description
+###############################################################################
+isinstance(object, type)    Check if the object is an instance of the type
+isinstance(object, tuple)   Check if the object is an instance of one of the
+                            types inside the tuple
+###############################################################################
 """
 
 
-# Int
+###############################################################################
+# Checking Native Types
+###############################################################################
+
+
+# Checking the object type
+# * In the example below, we will check if the variable is of type int
 x = 1
-print(isinstance(x, int))    # True
-print(isinstance(x, float))  # False
+y = isinstance(x, int)
+print(y)
+# True
 
 
-# Str
-x = 'text'
-print(isinstance(x, (int, str, float)))  # True
-print(isinstance(x, (int, float)))       # False
+# Checking the object type (with multiple types)
+# * To check if the object is an instance of one of multiple types, we can set
+#   the second parameter as a tuple with the types we want to check
+x1 = 'text'
+x2 = 1.2
+y1 = isinstance(x1, (int, str))
+y2 = isinstance(x2, (int, str))
+print(y1, y2)
+# True, False
 
 
-# Class
-class Client():
+###############################################################################
+# Checking Custom Types
+###############################################################################
+
+
+# Creating a custom class
+# * We can use the `isinstance()` function to check if an object is an instance
+#   of custom classes as well
+# * In the example below, we will create a custom class
+class CustomObject():
     pass
 
 
-client = Client()
-print(isinstance(client, Client))  # True
-print(isinstance(client, str))     # False
+# Checking if the object is an instance of a custom class
+# * Now, we will create an object of the custom class and check if it is an
+#   instance of the class
+x = CustomObject()
+y = isinstance(x, CustomObject)
+print(y)
+# True

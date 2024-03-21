@@ -717,24 +717,6 @@ print(x1, x2, sep='\n')
 # False
 
 
-# isdecimal()
-# * Returns True if all characters in the string are decimals, False otherwise
-x1 = '1'.isdecimal()
-x2 = '1.5'.isdecimal()
-print(x1, x2, sep='\n')
-# True
-# False
-
-
-# isdigit()
-# * Returns True if all characters in the string are digits, false otherwise
-x1 = '1'.isdecimal()
-x2 = '1.5'.isdecimal()
-print(x1, x2, sep='\n')
-# True
-# False
-
-
 # isidentifier()
 # * Returns True if the string is a valid identifier in Python, False otherwise
 x1 = 'my_var'.isidentifier()
@@ -757,15 +739,6 @@ print(x1, x2, sep='\n')
 # * Returns True if all characters in the string are in uppercase
 x1 = 'HELLO WORLD'.isupper()
 x2 = 'Hello World'.isupper()
-print(x1, x2, sep='\n')
-# True
-# False
-
-
-# isnumeric()
-# * Returns True if all characters in the string are numeric, False otherwise
-x1 = '1'.isnumeric()
-x2 = '1.5'.isnumeric()
 print(x1, x2, sep='\n')
 # True
 # False
@@ -876,3 +849,33 @@ x2 = '25'.zfill(2)
 print(x1, x2, sep='\n')
 # 04
 # 25
+
+
+###############################################################################
+# String Methods (isnumeric, isdecimal and isdigit)
+###############################################################################
+
+
+# isdecimal(), isnumeric() and isdigit()
+# * Returns True if all characters in the string represents the classification
+"""
+###############################################################################
+Type        Examples (True)         Examples (False)
+###############################################################################
+Decimal     [0-9]                   '-', '.', ',', 'e', '²', '⅓', 'Ⅲ', ...
+Numeric     [0-9] '²', '⅓', 'Ⅲ'    '-', '.', ',', 'e', ...
+Digit       [0-9] '²'               '-', '.', ',', 'e', '⅓', 'Ⅲ', ...
+###############################################################################
+"""
+chars =  ['1', '12', '123', '-1', '1.2', '1e2', '²', '⅓', 'Ⅲ']
+for char in chars:
+    print(char, '\t:', char.isdecimal(), char.isnumeric(), char.isdigit())
+# 1       : True True True
+# 12      : True True True
+# 123     : True True True
+# -1      : False False False
+# 1.2     : False False False
+# 1e2     : False False False
+# ²       : False True True
+# ⅓       : False True False
+# Ⅲ      : False True False

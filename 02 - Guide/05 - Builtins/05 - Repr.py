@@ -1,46 +1,69 @@
 """
 Repr (Representation)
 
-* The repr function calls the __repr__ method inside the object
-* By default, the __repr__ is implemented to show the memory position of the
-  object created from object as base class
-* To change the default implementation, just implement the __repr__ magic
-  method inside the object class
-* NOTE: If the __str__ magic method is implemented, it will be call as
-  priority
+* The `repr()` function calls the `__repr__` method inside the object
+* For objects, the `__repr__` returns a string containing the memory position
+  by default
+* The return value can be set by implementing the Representation Protocol
 """
 
 
 ###############################################################################
-# Repr
+# Representation of Native Objects
 ###############################################################################
 
 
-# Define a class
-# * This class will not implement the __repr__ method
-class Person:
-    def __init__(self, name):
-        self.name = name
+# Representation of an integer
+# * The integer will return the value as a string
+x = 1
+print(repr(x))
+# 1
 
 
-# Check the representation of the object
-person = Person('Vini')
-print(repr(person))  # <__main__.Person object at 0x000002E1FE1DCE80>
-print(person)        # <__main__.Person object at 0x000002E1FE1DCE80> (same)
+# Representation of a string
+# * The string will return its value
+x = 'text'
+print(repr(x))
+# 'text'
 
 
-# Define a class with __repr__ implemented
-# * In this case, we will re-implement the repr class to represent our object
-#   in a better way
-class Guy:
-    def __init__(self, name):
-        self.name = name
+# Representation of a collection
+# * The collection will return the collection as a string
+x = [1, 2, 3]
+print(repr(x))
+# [1, 2, 3]
 
+
+###############################################################################
+# Representation of Custom Objects
+###############################################################################
+
+
+# Creating a custom object (without Representation Protocol)
+# * In this example, the custom object will not implement the Representation
+#   Protocol, so the `repr` function will return the default representation
+class CustomObject:
+    pass
+
+
+# Representation of a custom object
+# * The default representation of an object is the memory position
+x = CustomObject()
+print(repr(x))
+# <__main__.CustomObject object at 0x000001E1A889B920>
+
+
+# Creating a custom object (without Representation Protocol)
+# * We can implement the Representation Protocol to define the representation
+#   of the object
+class CustomObject:
     def __repr__(self):
-        return self.name
+        return 'Custom Object'
 
 
-# Check the representation of the object
-guy = Guy('Vini')
-print(repr(guy))  # Vini
-print(guy)        # Vini (same)
+# Representation of a custom object
+# * When the `repr` function is called, it will return the result of the
+#   `__repr__` function
+x = CustomObject()
+print(repr(x))
+# Custom Object

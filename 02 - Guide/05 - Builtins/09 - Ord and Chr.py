@@ -1,27 +1,39 @@
 """
-Ord and Chr functions
+Ord (Ordinal) and Chr (Character)
 
-Ord
-* Given a string representing one Unicode character, return an integer
-  representing the Unicode code point of that character
-* Syntax
-  * ord(c)
-
-Chr
-* Return the string representing a character whose Unicode code point is the
-  integer i
-* Syntax
-  * chr(i)
+* The `ord()` and `chr()` functions are used to convert characters to their
+  unicode code points and vice versa.
+* The `ord()` function returns an integer representing the unicode code point
+  of the character.
+* The `chr()` function returns an character related to the unicode code point.
+* Syntax:
+    * ord(char)
+    * chr(integer)
+* Reference: https://en.wikipedia.org/wiki/List_of_Unicode_characters
 """
 
 
-# String > Integer
-char_str = 'A'
-print(ord(char_str))
+###############################################################################
+# Ord (Ordinal)
+###############################################################################
+
+
+# Getting the code point (integer) related to a character
+# * We can use `ord()` to get the code point (integer) of a character
+x = 'A'
+y = ord(x)
+print(y)
 # 65
 
 
-# Integer > String
-char_code = 65
-print(chr(char_code))
+###############################################################################
+# Chr (Character)
+###############################################################################
+
+
+# Getting the character related to a code point (integer)
+# * We can use `chr()` to get the character related to a code point (integer)
+x = 65
+y = chr(x)
+print(y)
 # A
