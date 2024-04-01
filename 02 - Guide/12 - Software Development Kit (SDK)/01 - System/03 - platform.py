@@ -1,17 +1,25 @@
 """
-Platform module
+Platform Module
 
 * Is used to retrieve as much possible information about the platform on which
   the program is being currently executed.
-* Now by platform info, it means information about the device, it's OS, node,
-  OS version, Python version, etc
-* Reference: https://docs.python.org/3/library/platform.html
+* This module brings nformation about the device, about the OS, node, OS
+  version, Python version, etc
 """
+
+
+###############################################################################
+# Module Import
+###############################################################################
+
+
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import platform
 
 
 ###############################################################################
-# Platform general information
+# Module Resources
 ###############################################################################
 
 

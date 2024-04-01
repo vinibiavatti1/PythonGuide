@@ -1,14 +1,23 @@
 """
-Sys module
+Sys Module
 
-* The sys module provides functions and variables used to manipulate different
-  parts of the Python runtime environment
+* The `sys` module provides functions and variables used to manipulate
+  different parts of the Python runtime environment
 """
+
+
+###############################################################################
+# Module Import
+###############################################################################
+
+
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import sys
 
 
 ###############################################################################
-# Variables and Constants
+# Module Resources
 ###############################################################################
 
 
@@ -40,11 +49,6 @@ print(sys.path)
 print(sys.version)
 # 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55)
 # [MSC v.1928 64 bit (AMD64)]
-
-
-###############################################################################
-# Functions
-###############################################################################
 
 
 # getrefcount()

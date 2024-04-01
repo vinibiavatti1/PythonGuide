@@ -1,17 +1,24 @@
 """
-OS module
+OS Module
 
-* The OS module in Python provides functions for creating and removing a
+* The `os` module in Python provides functions for creating and removing a
   directory (folder), fetching its contents, changing and identifying the
-  current directory, execute OS commands, get OS information, etc
+  current directory, execute OS commands, get OS information, etc...
 """
+
+
+###############################################################################
+# Module Import
+###############################################################################
+
+
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import os
 
 
 ###############################################################################
-# OS attributes
-# * NOTE: You can use platform module (_platform.py file) to get more info from
-#   operating system
+# Module Resources
 ###############################################################################
 
 
@@ -25,11 +32,6 @@ print(os.name)
 # * Gives the line separator of OS
 print(os.linesep)
 # \r\n
-
-
-###############################################################################
-# OS commands
-###############################################################################
 
 
 # getcwd()
@@ -160,10 +162,11 @@ print(stream.read())
 
 
 ###############################################################################
-# Remove examples
+# Cleanup
 ###############################################################################
 
 
-# Remove the examples used above
+# Cleaning up
+# * We will remove the files and directories created before
 os.remove('C:\\pg_test\\pg_other.txt')
 os.rmdir('C:\\pg_test')

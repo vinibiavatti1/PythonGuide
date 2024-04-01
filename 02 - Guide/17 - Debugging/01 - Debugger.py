@@ -156,22 +156,23 @@ w(here):                Print a stack trace, with the most recent frame at the
 
 ###############################################################################
 """
+
+
+###############################################################################
+# Module
+###############################################################################
+
+
+# Importing the module
+# * We will import the module
 import pdb
 
 
-# Make breakpoint using module (set_trace())
-# * NOTE: Since version 3.7, the new builtin function breakpoint() can be used
-x, y = 5, 7
-z = x + y
-pdb.set_trace()  # will wait for commands...
-z = z * x + y
-print(z)
-
-
-# Make breakpoint using builtin function (breakpoint())
-# * It is recommended to be used
-x, y = 5, 7
-z = x + y
+# Make breakpoint using builtin function
+# * The `breakpoint()` function is a builtin function that will call the PDB
+#   debugger
+x = 1
 breakpoint()  # will wait for commands...
-z = z * x + y
-print(z)
+x += 1
+print(x)
+# 2
