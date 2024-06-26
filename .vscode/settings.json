@@ -2,11 +2,6 @@
     // Python Path
 	"python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
 
-    // Python linter
-    "python.linting.enabled": true,
-    "python.linting.pylamaEnabled": true,
-    "python.linting.mypyEnabled": false,
-
     // Editor
     "editor.rulers": [79],
 

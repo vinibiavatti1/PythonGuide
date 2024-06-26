@@ -199,11 +199,12 @@ def _(message: float):
 # * Note that we will make multiple calls to the `say` function with different
 #   types of arguments, and the function will choose the implementation based
 #   on the type of the argument
-x1 = say('Test')  # Will call the default implementation
-x2 = say(1)       # Will call the integer implementation
-x3 = say(1.0)     # Will call the float implementation
-print(x1, x2, x3, sep=', ')
-# Default: Test, Integer: 1, Float: 1.0
+say('Test')  # Will call the default implementation
+say(1)       # Will call the integer implementation
+say(1.0)     # Will call the float implementation
+# Default: Test
+# Integer: 1
+# Float: 1.0
 
 
 # Single Dispatch Method
@@ -220,11 +221,11 @@ class CustomMessage:
         print('Default:', message)
 
     @say.register
-    def say(self, message: int):
+    def _(self, message: int):
         print('Integer:', message)
 
     @say.register
-    def say(self, message: float):
+    def _(self, message: float):
         print('Float:', message)
 
 
@@ -232,11 +233,12 @@ class CustomMessage:
 # * As the example above, the method will choose the implementation based on
 #   the type of the argument
 x = CustomMessage()
-y1 = x.say('Test')  # Will call the default implementation
-y2 = x.say(1)       # Will call the integer implementation
-y3 = x.say(1.0)     # Will call the float implementation
-print(y1, y2, y3, sep=', ')
-# Default: Test, Integer: 1, Float: 1.0
+x.say('Test')  # Will call the default implementation
+x.say(1)       # Will call the integer implementation
+x.say(1.0)     # Will call the float implementation
+# Default: Test
+# Integer: 1
+# Float: 1.0
 
 
 ###############################################################################

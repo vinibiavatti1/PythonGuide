@@ -1,27 +1,26 @@
 """
 Future module
 
-* __future__ is a real module, and serves three purposes:
-  * To avoid confusing existing tools that analyze import statements and expect
-    to find the modules they're importing
-  * To ensure that future statements run under releases prior to 2.1 at least
-    yield runtime exceptions (the import of __future__ will fail, because there
-    was no module of that name prior to 2.1)
-  * To document when incompatible changes were introduced, and when they will
-    be — or were — made mandatory. This is a form of executable documentation,
-    and can be inspected programmatically via importing __future__ and
-    examining its contents
-
-* The future module can enable new language features which are not compatible
-  with the current
+* The `__future__` module is used to enable features that are not available in
+  the current Python version
 """
+
+
+###############################################################################
+# Importing New Features
+###############################################################################
+
+
+# Importing a new feature
+# * We can use the `__future__` module to enable features that are not
+#   available in the current Python version
+# * In the example below, we enable the `with_statement` feature
+# * NOTE: This feature is already available in the current Python version, it
+#   is used here as an example only
+# * The `threading.Lock` class is only used as example here to demonstrate the
+#   `with` statement behavior
 from __future__ import with_statement
-import threading
-
-
-# Using with statement in different Python versions
-# * Enable PEP 343: The "with" Statement
-lock = threading.Lock()
-with lock:
-    print('Running!')
-# Running!
+from threading import Lock
+with Lock():
+    print('With statement is available')
+# With statement is available
