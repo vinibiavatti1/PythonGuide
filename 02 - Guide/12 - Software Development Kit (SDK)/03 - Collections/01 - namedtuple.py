@@ -1,70 +1,134 @@
 """
 Named Tuple
 
-* Returns a new tuple subclass named typename
-* The function use type() function to create a class at runtime
-* Used to define a specified object to be create as a tuple with attributes
+* A Named Tuple is a tuple subclass available in the collections module, and
+  can be used to create tuple-like objects with named fields.
+* The `namedtuple()` function from the `collections` module is used to create
+  named tuples. It returns a new tuple subclass with named fields.
+* After creating a tuple subclass, this subclass can be used to create tuple
+  objects with named fields, like a class with attributes.
+* The `namedtuple()` function has some parameters. Take a look below to see
+  them.
+* Syntax: namedtuple(typename, field_names, *, rename=False, defaults=None,
+  module=None)
 
-* Parameters
-  * typename: This is the name of the namedtuple object
-  * field_names: This is the second argument to define the field names in the
-    namedtuple. We can define them using following formats – 'name age role',
-    'name,age,role', or ['name', 'age', 'role'].
-  * rename: We can specify rename to True so that invalid fields are renamed to
-    their index names. For example, 'name def class' will be renamed to
-    'name', '_1', '_2'.
-  * defaults: It's used to define default values to the optional parameters.
-    Since fields with a default value must come after any fields without a
-    default, the defaults are applied to the rightmost parameters. For example,
-    if the fieldnames are ['a', 'b', 'c'] and the defaults are (1, 2), then 'a'
-    will be a required argument, ‘b' will default to 1, and ‘c' will default to
-    2.
-  * module: If module is defined, the __module__ attribute of the named tuple
-    is set to that value. This parameter was introduced in Python 3.6 release
-
-* Syntax
-  * namedtuple(typename, field_names, *, rename, defaults, module)
+###############################################################################
+Parameter      Description
+###############################################################################
+typename       The name of the new tuple subclass
+field_names    A sequence of field names (can be a string or a list)
+rename         If True, invalid field names are replaced with positional names
+defaults       A sequence of default values for the fields
+module         The module name to use in the __module__ attribute of the named
+###############################################################################
 """
-import collections
 
 
-# Create with str (Access by index)
-Person = collections.namedtuple('Person', 'name, age')
-person = Person(name='Vini', age=16)
-print(person[0], person[1], sep=', ')
-# Vini, 16
+###############################################################################
+# Importing Resource
+###############################################################################
 
 
-# Create with list (Access by name)
-Point = collections.namedtuple('Point', ['x', 'y'])
-point = Point(x=8, y=14)
-print(point.x, point.y, sep=', ')
-# 8, 14
+# Importing the resource
+# * We can import the resource using the import statement below
+from collections import namedtuple
 
 
-# Make
-Point = collections.namedtuple('Point', ['x', 'y'])
-attributes = [10, 20]
-point = Point._make(attributes)
-print(point.x, point.y, sep=', ')
+###############################################################################
+# Creating Named Tuples
+###############################################################################
+
+
+# Creating a Named Tuple (with list)
+# * We can create a named tuple using a list of field names
+Point = namedtuple('Point', ['x', 'y'])
+x = Point(10, 20)
+print(x)
+# Point(x=10, y=20)
+
+
+# Creating a Named Tuple (with string)
+# * We can create a named tuple using a string of field names. The string
+#   should be separated by commas
+# * This will result in the same named tuple as the previous example
+Point = namedtuple('Point', 'x, y')
+x = Point(10, 20)
+print(x)
+# Point(x=10, y=20)
+
+
+# Creating a Named Tuple (with rename)
+# * The rename parameter is used to replace invalid field names with positional
+#   names
+# * Note that we used keywords that are reserved in Python, so the field names
+#   were replaced with positional names. If the rename parameter is set to
+#   False, an error will be raised
+Point = namedtuple('Point', ['class', 'def'], rename=True)
+x = Point(10, 20)
+print(x)
+# Point(_0=10, _1=20)
+
+
+# Creating a Named Tuple (with defaults)
+# * The defaults parameter is used to set default values for the fields
+Point = namedtuple('Point', ['x', 'y'], defaults=[10, 20])
+x = Point()
+print(x)
+# Point(x=10, y=20)
+
+
+# Creating a Named Tuple (with module)
+# * The module parameter is used to set the module name in the __module__ field
+# * This is useful when we want to know where the named tuple was created
+# * When not defined, the __module__ field will be set to the current module
+#   name. In this case, it will be set to '__main__'
+Point = namedtuple('Point', ['x', 'y'], module='my_module')
+x = Point(10, 20)
+print(x.__module__)
+# my_module
+
+
+###############################################################################
+# Named Tuple Attributes Access
+###############################################################################
+
+
+# Accessing Named Tuple Attributes (by index)
+# * We can access the named tuple attributes by index
+Point = namedtuple('Point', ['x', 'y'])
+x = Point(10, 20)
+print(x[0], x[1], sep=', ')
 # 10, 20
 
 
-# As dict
-Point = collections.namedtuple('Point', ['x', 'y'])
-point = Point(x=8, y=14)
-print(point._asdict())
-# {'x': 8, 'y': 14}
+# Accessing Named Tuple Attributes (by name)
+# * We can access the named tuple attributes by name
+Point = namedtuple('Point', ['x', 'y'])
+x = Point(10, 20)
+print(x.x, x.y, sep=', ')
+# 10, 20
 
 
-# Rename
-Point = collections.namedtuple('Point', ['class', 'def'], rename=True)
-print(Point._fields)
-# ('_0', '_1')
+###############################################################################
+# Named Tuple Methods
+###############################################################################
 
 
-# Defaults
-Point = collections.namedtuple('Point', ['x', 'y'], defaults=[1, 1])
-point = Point()
-print(point)
-# Point(x=1, y=1)
+# Make
+# * The `_make()` method is used to create a new instance of the named tuple
+#   from an iterable
+# * The iterable should have the same number of elements as the named tuple
+#   fields, otherwise an error will be raised
+Point = namedtuple('Point', ['x', 'y'])
+attributes = [10, 20]
+x = Point._make(attributes)
+print(x)
+# Point(x=10, y=20)
+
+
+# As Dict
+# * The `_asdict()` method is used to return the named tuple as a dictionary
+Point = namedtuple('Point', ['x', 'y'])
+x = Point(10, 20)
+print(x._asdict())
+# {'x': 10, 'y': 20}
