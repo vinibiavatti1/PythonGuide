@@ -311,3 +311,37 @@ match point:
     case None:
         print('none')
 # none
+
+
+###############################################################################
+# Match Implementation
+###############################################################################
+
+
+# Implementing the Match protocol
+# * To enable match-by-position concept to a class, we have to implement the
+#   "__match_args__" method
+# * This method will return a tuple with the arguments that will be used to
+#   match the object
+# * In the example below, the class "Point" was implemented with the
+#   "__match_args__" method to allow the match instruction to work with it
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __match_args__(self):
+        return (self.x, self.y)
+
+
+# Using the implemented class with the match instruction
+# * Now, the Point class can be used
+point = Point(2, 3)
+match point:
+    case Point(1, 3):
+        print('one')
+    case Point(2, 3):
+        print('two')
+    case other:
+        print('three')
+# two

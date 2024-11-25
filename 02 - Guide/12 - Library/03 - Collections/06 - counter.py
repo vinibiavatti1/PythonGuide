@@ -61,6 +61,14 @@ print(x)
 ###############################################################################
 
 
+# Elements
+# * The `elements()` method is used to get an iterator with the elements
+x = Counter('aaabbc')
+y = x.elements()
+print(list(y))
+# ['a', 'a', 'a', 'b', 'b', 'c']
+
+
 # Most Common
 # * The `most_common()` method is used to get the most common elements
 # * It returns a list of tuples with the elements and their counts
@@ -76,3 +84,37 @@ print(x.most_common())
 x = Counter('aaabbc')
 print(x.most_common(2))
 # [('a', 3), ('b', 2)]
+
+
+# Subtract
+# * The `subtract()` method is used to subtract elements from another iterable
+# * It accepts any iterable as a parameter
+x = Counter('aaabbc')
+x.subtract('abc')
+print(x)
+# Counter({'a': 2, 'b': 1, 'c': 0})
+
+
+# Total
+# * The `total()` method is used to get the total of all counts
+x = Counter('aaabbc')
+y = x.total()
+print(y)
+# 6
+
+
+# From Keys
+# * The `fromkeys()` method is used to create a new Counter from the keys of a
+#   dictionary
+x = Counter()
+y = x.fromkeys({'a': 1, 'b': 2})
+print(y)
+# Counter({'a': 0, 'b': 0})
+
+
+# Update
+# * The `update()` method is used to update the counter with another iterable
+x = Counter('aaabbc')
+x.update('abc')
+print(x)
+# Counter({'a': 4, 'b': 3, 'c': 2})

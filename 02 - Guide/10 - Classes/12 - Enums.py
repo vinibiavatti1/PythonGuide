@@ -1,12 +1,12 @@
 """
-Enum module
+Enum module TODO
 
 * An enumeration is a set of symbolic names (members) bound to unique, constant
   values. Within an enumeration, the members can be compared by identity, and
   the enumeration itself can be iterated over
 * The enum module provides an way to create classes as enums
 """
-from enum import Enum, unique
+from enum import Enum, unique, auto
 
 
 ###############################################################################

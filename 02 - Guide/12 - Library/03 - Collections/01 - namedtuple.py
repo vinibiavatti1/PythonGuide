@@ -110,6 +110,28 @@ print(x.x, x.y, sep=', ')
 
 
 ###############################################################################
+# Named Tuple Properties
+###############################################################################
+
+
+# Fields
+# * The `fields` property returns a list of all field names in the named tuple
+Point = namedtuple('Point', ['x', 'y'])
+x = Point._fields
+print(x)
+# ('x', 'y')
+
+
+# Field Defaults
+# * The `field_defaults` property returns a dictionary with the default values
+#   for each field
+Point = namedtuple('Point', ['x', 'y'], defaults=[10, 20])
+x = Point._field_defaults
+print(x)
+# {'x': 10, 'y': 20}
+
+
+###############################################################################
 # Named Tuple Methods
 ###############################################################################
 
@@ -132,3 +154,13 @@ Point = namedtuple('Point', ['x', 'y'])
 x = Point(10, 20)
 print(x._asdict())
 # {'x': 10, 'y': 20}
+
+
+# Replace
+# * The `replace()` method is used to create a new instance of the named tuple
+#   with the specified fields replaced
+Point = namedtuple('Point', ['x', 'y'])
+x = Point(10, 20)
+y = x._replace(x=30)
+print(x, y)
+# Point(x=10, y=20) Point(x=30, y=20)
