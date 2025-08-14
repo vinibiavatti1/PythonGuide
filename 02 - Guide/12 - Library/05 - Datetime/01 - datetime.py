@@ -1,422 +1,212 @@
 """
-Datetime module
+Datetime
 
-* Python has a module named datetime to work with dates and times
-* Commonly used classes in the datetime module are:
-  * date class
-  * time class
-  * datetime class
-  * timedelta class
-
-Strftime Formats
+* The datetime module provides date and time operations
+* It includes classes for manipulating dates and times in both simple and
+  complex ways
+* The module has two main functions to parse and format dates:
+  * datetime.strptime(date_str, format) = Parse string to datetime
+  * date.strftime(format) = Format datetime to string
+* The parse and format functions have directives to specify the datetime format
+  These directives are listed below:
 ###############################################################################
-Code        Meaning                                                 Example
+Code  Meaning                                Example
 ###############################################################################
-# Common
-%m	        Month as a zero-padded decimal number.	                09
-%d	        Day of the month as a zero-padded decimal number.	    30
-%Y	        Year with century as a decimal number.	                2013
-%H	        Hour (24-hour clock) as a zero-padded decimal number.	07
-%M	        Minute as a zero-padded decimal number.	                06
-%S	        Second as a zero-padded decimal number.	                05
-
-# Not common
-%a	        Weekday as locale's abbreviated name.	                Mon
-%A	        Weekday as locale's full name.	                        Monday
-%w	        Weekday as a decimal number, where 0 is Sunday and 6
-            is Saturday.	                                        1
-%-d	        Day of the month as a decimal number. (Platform
-            specific)	                                            30
-%b	        Month as locale's abbreviated name.	                    Sep
-%B	        Month as locale's full name.	                        September
-%-m	        Month as a decimal number. (Platform specific)	        9
-%y	        Year without century as a zero-padded decimal number.	13
-%-H	        Hour (24-hour clock) as a decimal number. (Platform     7
-            specific)
-%I	        Hour (12-hour clock) as a zero-padded decimal number.	07
-%-I	        Hour (12-hour clock) as a decimal number. (Platform     7
-            specific)
-%p	        Locale's equivalent of either AM or PM.	                AM
-%-M	        Minute as a decimal number. (Platform specific)	        6
-%-S	        Second as a decimal number. (Platform specific)	        5
-%f	        Microsecond as a decimal number, zero-padded on the     000000
-            left.
-%z	        UTC offset in the form +HHMM or -HHMM (empty string
-            if the the object is naive).
-%Z	        Time zone name (empty string if the object is naive).
-%j	        Day of the year as a zero-padded decimal number.	    273
-%-j	        Day of the year as a decimal number. (Platform          273
-            specific)
-%U	        Week number of the year (Sunday as the first day of     39
-            the week) as a zero padded decimal number. All days
-            in a new year preceding the first Sunday are
-            considered to be in week 0.
-%W	        Week number of the year (Monday as the first day of     39
-            the week) as a decimal number. All days in a new year
-            preceding the first Monday are considered to be in
-            week 0.
-%c	        Locale's appropriate date and time representation.	    Mon Sep 30
-                                                                    07:06:05
-                                                                    2013
-%x	        Locale's appropriate date representation.	            09/30/13
-%X	        Locale's appropriate time representation.	            07:06:05
-%%	        A literal '%' character.	                            %
+Standard
+%a    Weekday abbreviated name               Sun, Mon, Sat
+%A    Weekday full name                      Sunday, Monday, Saturday
+%w    Weekday number                         0, 1, 6
+%d    Day of the month                       01, 02, 31
+%b    Month abbreviated name                 Jan, Feb, Dec
+%B    Month full name                        January, February, December
+%m    Month                                  01, 02, 12
+%y    Year without century                   00, 01, 99
+%Y    Year with century                      0001, 2025, 9999
+%H    Hour (24)                              00, 01, 23
+%I    Hour (12)                              01, 02, 12
+%p    AM or PM                               AM, PM
+%M    Minute                                 00, 01, 59
+%S    Second                                 00, 01, 59
+%f    Microsecond                            000000, 000001, 999999
+%z    UTC offset                             (empty), +0000, -0400
+%Z    Time zone name                         (empty), UTC, GMT
+%j    Day of the year                        001, 002, 366
+%U    Week number of the year (Sun first)    00, 01, 53
+%W    Week number of the year (Mon first)    00, 01, 53
+%c    Date and time repr                     Tue Aug 16 21:30:00 1988
+%x    Date repr                              08/16/1988
+%X    Time representation                    21:30:00
+%%    Literal '%' character                  %
 ###############################################################################
-* Reference: https://strftime.org/
 """
-from datetime import (
-    date,
-    datetime,
-    timedelta,
-    MAXYEAR,
-    MINYEAR,
-    time,
-    timezone
-)
-import time as t
 
 
 ###############################################################################
-# Constants
+# Module Import
 ###############################################################################
 
 
-# Min Year
-# * Contains the min year allowed to work with datetime module
-print(MINYEAR)
-# 1
-
-
-# Max year
-# * Contains the max year allowed to work with datetime module
-print(MAXYEAR)
-# 9999
+# Importing the module
+# * We can import this module using the `import` statement as follows
+from datetime import datetime, timedelta, timezone
 
 
 ###############################################################################
-# Date
+# Parse & Format
 ###############################################################################
 
 
-# Current date
-# * Create a date using the current date
-current = date.today()
-print(current)
-# 2021-03-03
-
-
-# Create date
-# * Create a date specifing the values for the date attributes
-# * Syntax
-#   date(year, month, day)
-my_date = date(2020, 3, 5)
-print(my_date)
-# 2020-03-05
-
-
-# Get date attributes
-# * Get the attributes from a date (year, month, day)
-my_date = date(2020, 3, 5)
-print(my_date.year)   # 2020
-print(my_date.month)  # 3
-print(my_date.day)    # 5
-
-
-# Week day
-# * Get the week day from a date
-# * weekday:    Monday is 0 and Sunday is 6
-# * isoweekday: Monday is 1 and Sunday is 7
-my_date = date(2020, 3, 5)
-week_day = my_date.weekday()
-iso_week_day = my_date.isoweekday()
-print(week_day, iso_week_day)
-# 3, 4
-
-
-# Calendar
-# * Return a IsoCalendarDate obj with three components: year, week and weekday
-my_date = date(2020, 3, 5)
-calendar = my_date.isocalendar()
-print(calendar)
-# datetime.IsoCalendarDate(year=2020, week=10, weekday=4)
-
-
-# Replace date attributes
-# * Replace the attributes for some date
-my_date = date(2020, 3, 5)
-my_date = my_date.replace(year=1994, month=9, day=15)
-print(my_date)
-# 1994-09-15
-
-
-###############################################################################
-# Datetime
-###############################################################################
-
-
-# Current datetime (with timezone)
-# * Create a datetime using the current date and time
-# * NOTE: The now() method provides an way to set the timezone
-# * Check the Timezone section to see about timezones
-current = datetime.now(tz=None)
-print(current)
-# 2021-03-03 17:05:28.886813
-
-
-# Current datetime
-# * Create a datetime using the current date and time
-# * NOTE: The today() method not provides an way to set the timezone
-current = datetime.today()
-print(current)
-# 2021-03-03 17:05:28.886813
-
-
-# Create datetime
-# * Create a datetime specifing the values for the date and time attributes
-# * Syntax
-#   datetime(year, month, day[, hour[, minute[, second[, microsecond]]]])
-my_datetime = datetime(2020, 3, 5, 17, 30, 20)
-print(my_datetime)
-# 2020-03-05 17:30:20
-
-
-# Get datetime attributes
-# * Get the attributes from a datetime
-#   (year, month, day, hour, minute, second, microsecond)
-my_datetime = datetime(2020, 3, 5, 17, 30, 20, 500)
-print(my_datetime.year)         # 2020
-print(my_datetime.month)        # 3
-print(my_datetime.day)          # 5
-print(my_datetime.hour)         # 17
-print(my_datetime.minute)       # 30
-print(my_datetime.second)       # 20
-print(my_datetime.microsecond)  # 500
-
-
-# Week day
-# * Get the week day from a datetime
-# * weekday:    Monday is 0 and Sunday is 6
-# * isoweekday: Monday is 1 and Sunday is 7
-my_datetime = datetime(2020, 3, 5, 10, 30)
-week_day = my_datetime.weekday()
-iso_week_day = my_datetime.isoweekday()
-print(week_day, iso_week_day)
-# 3, 4
-
-
-# Calendar
-# * Return a IsoCalendarDate obj with three components: year, week and weekday
-my_datetime = datetime(2020, 3, 5, 10, 30)
-calendar = my_datetime.isocalendar()
-print(calendar)
-# datetime.IsoCalendarDate(year=2020, week=10, weekday=4)
-
-
-# Replace datetime attributes
-# * Replace the attributes for some datetime
-my_datetime = datetime(2020, 9, 15, 10, 30, 00)
-my_datetime = my_datetime.replace(year=1994, hour=17, minute=30)
-print(my_datetime)
-# 1994-09-15 17:30:00
-
-
-# Combining a datetime with time
-# * You can combine a datetime with a time to generate a new datetime
-my_datetime = datetime(1994, 9, 15, 17, 30, 15)
-my_time = time(22, 30, 0)
-my_datetime = datetime.combine(my_datetime, my_time)
-print(my_datetime)
-# 1994-09-15 22:30:00
-
-
-###############################################################################
-# Time
-###############################################################################
-
-
-# Create time
-# * Create a time specifing the values for the time attributes
-# * Syntax
-#   time([hour[, minute[, second[, microsecond]]]])
-my_time = time(22, 30, 10)
-print(my_time)
-# 22:30:10
-
-
-# Get time attributes
-# * Get the attributes from a time
-#   (hour, minute, second, microsecond)
-my_time = time(22, 30, 10, 500)
-print(my_time.hour)         # 22
-print(my_time.minute)       # 30
-print(my_time.second)       # 10
-print(my_time.microsecond)  # 500
-
-
-# Replace time attributes
-# * Replace the attributes for some time
-my_time = time(22, 30, 10, 500)
-my_time = my_time.replace(hour=12, minute=0)
-print(my_time)
-# 12:00:10.000500
-
-
-###############################################################################
-# Timestemp
-###############################################################################
-
-
-# Current timestemp
-# * Return the current timestemp as float
-current_ts = t.time()
-print(current_ts)
-# 1614791610.5159419
-
-
-# Create date from timestamp
-# * Create a date from timestemp (float)
-current_ts = t.time()
-my_date = date.fromtimestamp(current_ts)
-print(my_date)
-# 2021-03-03
-
-
-# Get timestemp from datetime
-# * Get the timestemp (float) from datetime object
-my_datetime = datetime(2020, 3, 5, 17, 30, 20, 500)
-ts = my_datetime.timestamp()
-print(ts)
-# 1583429420.0005
-
-
-###############################################################################
-# Timedelta
-###############################################################################
-
-
-# Difference between two dates
-# * A timedelta object represents the difference between two dates or times
-# * The Python aritmetic operators can be used to generate a timedelta
-d1 = date(2020, 9, 15)
-d2 = date(1994, 9, 15)
-delta = d1 - d2
-print(delta)        # 9497 days, 0:00:00
-print(type(delta))  # <class 'datetime.timedelta'>
-print(delta.days)   # 9497
-
-
-# Difference between two timedeltas
-# * Get the difference between two timedeltas using '-' operator
-t1 = timedelta(weeks=10, days=50, hours=18)
-t2 = timedelta(days=5, hours=39)
-delta = t1 - t2
-print(delta)        # 114 days, 3:00:00
-print(type(delta))  # <class 'datetime.timedelta'>
-print(delta.days)   # 114
-
-
-# Negative timedelta
-# * The timedelta can return negative values if the second date is far the the
-#   first date
-# * To get the absolute value, the abs() function can be used
-t1 = timedelta(days=5)
-t2 = timedelta(days=10)
-delta = t1 - t2
-print(delta)            # -5 days, 0:00:00
-print(type(delta))      # <class 'datetime.timedelta'>
-print(abs(delta.days))  # 5  NOTE: Used abs() to get absolute
-
-
-# Time duration in seconds
-# * Get the time duration in seconds (float) from a timedelta
-t1 = timedelta(days=50)
-print(t1.total_seconds())
-# 4320000.0
-
-
-# Incrementing the date
-# * To add days, hours or any value for the date, the timedelta can be used
-# * The operator '+' was used to add
-my_date = date(2020, 1, 1)
-add = timedelta(days=14)
-my_date = my_date + add
-print(my_date)
-# 2020-01-15
-
-
-# Decrementing the date
-# * To subtract days, hours or any value for the date, the timedelta can be
-#   used
-# * The operator '-' was used to subtract
-my_date = date(2020, 1, 1)
-add = timedelta(days=14)
-my_date = my_date - add
-print(my_date)
-# 2019-12-18
-
-
-###############################################################################
-# Format (strftime)
-###############################################################################
-
-
-# Format datetime
-# * Create a string version of the datetime by a format
-# * NOTE: The formats on the top of this file can be used
-# * Syntax: datetime_obj.strptime(format)
-my_datetime = datetime(2020, 3, 15, 17, 30, 45)
-formated = my_datetime.strftime('%d/%m/%Y %H:%M:%S')
-print(formated)
-# 15/03/2020 17:30:45
-
-
-# Format date
-# * Create a string version of the date by a format
-# * NOTE: The formats on the top of this file can be used
-# * Syntax: date_obj.strptime(format)
-my_date = date(2020, 3, 15)
-formated = my_date.strftime('%d/%m/%Y')
-print(formated)
-# 15/03/2020
-
-
-###############################################################################
-# Parse string (strptime)
-# * Syntax: strptime(string, format)
-###############################################################################
-
-
-# Parse datetime
-# * Create a datetime version of the string by a format
-# * NOTE: The formats on the top of this file can be used
-# * Syntax: date.strftime(format)
-date_str = '15/09/1994 17:30:25'
-my_datetime = datetime.strptime(date_str, '%d/%m/%Y %H:%M:%S')
-print(my_datetime)
+# Parsing a datetime (string to datetime)
+# * To parse a string to a datetime object, we can use the `strptime()`
+#   function
+# * The first argument is the string to parse and the second argument is the
+#   format to use
+# * It also works with only dates or times
+# * The directives on the top of this file can be used to specify the format
+x = '15/09/1994 17:30:25'
+y = datetime.strptime(x, '%d/%m/%Y %H:%M:%S')
+print(y)
 # 1994-09-15 17:30:25
 
 
-# Parse date
-# * NOTE: There is no way to parse only a date using strptime(). For this, we
-#   must create the datetime object and then, convert to date
-date_str = '15/09/1994'
-my_datetime = datetime.strptime(date_str, '%d/%m/%Y')
-my_date = my_datetime.date()
-print(my_date)
-# 1994-09-15
+# Formatting a datetime (datetime to string)
+# * To format a datetime object to a string, we can use the `strftime()`
+#   function
+# * The argument is the format to use
+# * The directives on the top of this file can be used to specify the format
+x = datetime(1994, 9, 15, 17, 30, 25)
+y = x.strftime('%d/%m/%Y %H:%M:%S')
+print(y)
+# 15/09/1994 17:30:25
 
 
 ###############################################################################
-# Timezone
+# Datetime Object
 ###############################################################################
 
 
-# Current datetime with timezone
-# * To create a timezone object, the timezone class can be used
+# Creating a datetime object
+# * We can create a datetime object using the `datetime()` constructor
+# * The arguments are the values for the date and time attributes
+x = datetime(2020, 3, 5, 17, 30, 20)
+print(x)
+# 2020-03-05 17:30:20
+
+
+# Creating a datetime object (with current date and time)
+# * We can use the `today()` method to create a datetime object with the
+#   current date and time
+# * The `now()` method can also be used to create a datetime object with the
+#   current date and time, but it allows setting a timezone
+x1 = datetime.today()
+x2 = datetime.now(tz=timezone.utc)
+print(x1, x2)
+# 2021-03-03 17:05:28.886813
+# 2021-03-03 17:05:28.886813+00:00
+
+
+# Attributes
+# * The datetime object has attributes to access the date and time values
+x = datetime(2020, 3, 5, 17, 30, 20, 500)
+print(x.year)         # 2020
+print(x.month)        # 3
+print(x.day)          # 5
+print(x.hour)         # 17
+print(x.minute)       # 30
+print(x.second)       # 20
+print(x.microsecond)  # 500
+
+
+# Week day
+# * To retrieve the week day from a datetime object, we can use the
+#   `weekday()` or `isoweekday()` methods
+# * weekday:    Monday is 0 and Sunday is 6
+# * isoweekday: Monday is 1 and Sunday is 7
+x = datetime(2020, 3, 5, 10, 30)
+y1 = x.weekday()
+y2 = x.isoweekday()
+print(y1, y2)
+# 3, 4
+
+
+# Updating a datetime object
+# * We can update the attributes of a datetime object using the `replace()`
+#   method
+# * The method returns a new datetime object with the updated attributes
+x = datetime(2020, 3, 5, 17, 30, 20)
+y = x.replace(year=1994, hour=12, minute=0)
+print(y)
+# 1994-03-05 12:30:20
+
+
+###############################################################################
+# Timedelta Object
+###############################################################################
+
+
+# Difference between two datetimes
+# * A timedelta object represents the difference between two datetimes
+# * The Python arithmetic operators can be used to generate a timedelta
+# * NOTE: The timedelta can return negative values if the second datetime is
+#   far from the first datetime
+x1 = datetime(2020, 9, 15, 10, 30, 25)
+x2 = datetime(1994, 5, 12, 12, 2, 50)
+delta = x1 - x2
+print(delta)
+# 9497 days, 22:27:35
+
+
+# Incrementing a datetime
+# * To add days, hours or any value for the datetime, the timedelta can be
+#   used
+# * We have to use the operator '+' to add the timedelta to the datetime
+x = datetime(2024, 1, 1, 2, 30, 15)
+y = timedelta(years=1, months=8, days=14, hours=5, minutes=15, seconds=30)
+z = x + y
+print(z)
+# 2025-09-15 07:45:45
+
+
+# Decrementing a datetime
+# * To subtract days, hours or any value for the datetime, the timedelta can
+#   be used
+# * We have to use the operator '-' to subtract the timedelta from the datetime
+x = datetime(2024, 1, 1, 2, 30, 15)
+y = timedelta(years=1, months=8, days=14, hours=5, minutes=15, seconds=30)
+z = x - y
+print(z)
+# 2022-04-17 21:14:45
+
+
+###############################################################################
+# Timezone Object
+###############################################################################
+
+
+# Creating a timezone object
+# * A timezone object represents a fixed offset from UTC
+# * The timezone can be created using the `timezone()` class
 # * The argument for timezone must be a timedelta object
-timezone_offset = -8.0  # Pacific Standard Time (UTC−08:00)
-delta = timedelta(hours=timezone_offset)
-tz = timezone(delta)
-my_datetime = datetime.now(tz=tz)
-print(my_datetime)
-# 2021-04-22 06:34:38.290535-08:00
+x = timezone(timedelta(hours=-5))
+print(x)
+# UTC-05:00
+
+
+# Setting a timezone to a datetime object
+# * To set a timezone to a datetime object, we can use the `astimezone()`
+#   method
+# * The argument for the method must be a timezone object
+x = timezone(timedelta(hours=-5))
+y = datetime(2021, 4, 22, 14, 34, 38)
+z = y.astimezone(x)
+print(z)
+# 2021-04-22 09:34:38-05:00
+
+
+# Getting the current datetime with timezone
+# * To get the current datetime with a specific timezone, we can use the
+#   `now()` method with the `tz` argument set to the timezone object
+x = timezone(timedelta(hours=-5))
+y = datetime.now(tz=x)
+print(y)
+# 2021-04-22 09:34:38.290535-05:00
