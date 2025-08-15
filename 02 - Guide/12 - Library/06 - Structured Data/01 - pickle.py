@@ -1,66 +1,63 @@
 """
-Pickle module
+Pickle
 
-* Pickle is used to persist python data into files (Serialization) as binary
-  data, and used to read the binary data back to a python
-* Can be used to store some object states, python data, etc.
-* The name of this process is Serialization
-* NOTE: 's' functions like (loads and dumps) work with in memory data
-* NOTE: 'not s' functions like (load and dump) work with stored data (files)
+* The pickle module is used to serialize and deserialize Python objects.
+* It can be used to store Python objects in files or to send them over a
+  network.
+* The pickle module provides the main functions below:
+  * "dump" and "load": Write and read Python objects to/from files.
+  * "dumps" and "loads": Write and read Python objects to/from in-memory.
 """
-import os
-import sys
+
+
+###############################################################################
+# Module Import
+###############################################################################
+
+
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import pickle
 
 
 ###############################################################################
-# File Paths
-###############################################################################
-DAT_FILE = os.path.join(sys.path[0], '../../resources/python_data.dat')
-
-
-###############################################################################
-# Write
+# Dump Objects
 ###############################################################################
 
 
-# Define a class to persist
-# * Any Python data can be stored by pickle
-# * A collection with objects can be persisted, but for this example, just
-#   one object will be persisted
-# * This example uses objects created from a class to be stored
-# * NOTE: The open() functions needs to be set to write as binary because
-#   pickle stores data as binary
-class Person:
-    def __init__(self, name, age):
+# Defining an Object to Persist
+# * We will define an object to be persisted using the pickle module
+class ObjectToPersist:
+    def __init__(self, name, value):
         self.name = name
-        self.age = age
+        self.value = value
 
-    def say(self):
-        print(f'{self.name}: hi!')
+    def __repr__(self):
+        return f'ObjectToPersist(name={self.name}, value={self.value})'
 
 
-# Persist the object (Serialization)
-# * The object will be persisted as binary data into the file
-# * The file will contains binary data that cannot be read easily
-person = Person('Vini', 28)
-with open(DAT_FILE, 'wb') as f:
-    pickle.dump(person, f)
-# File content:
-# <binary_content>
+# Persisting the Object
+# * We can persist the object using the "dump" or "dumps" functions
+# * The "dump" function writes the object to a file, while the "dumps" function
+#   writes the object to a bytes object
+# * For this example, we will use the "dumps" function to write the object
+#   to a bytes object
+x = ObjectToPersist('example', 42)
+y = pickle.dumps(x)
+print(y)
+# b'\x80\x04\x95\x1c\x00\x00\x00\x...
 
 
 ###############################################################################
-# Read
+# Load Objects
 ###############################################################################
 
 
-# Read the object
-# * The object will be read from the binary data of the file
-person = None
-with open(DAT_FILE, 'rb') as f:
-    person = pickle.load(f)
-    person.say()
-    print(person.name, person.age, sep=', ')
-# Vini: hi!
-# Vini, 28
+# Loading the Object
+# * We can load the object using the "load" or "loads" functions
+# * The "load" function reads the object from a file, while the "loads"
+#   function reads the object from a bytes object.
+# * The "loads" function will be used to read the object from the bytes object
+x = pickle.loads(y)
+print(x)
+# ObjectToPersist(name=example, value=42)
