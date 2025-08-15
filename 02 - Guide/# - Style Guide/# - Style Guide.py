@@ -41,7 +41,7 @@ PI = 3.14
 # * Do not use special symbols
 # * Do not use capital letters
 def sum(x, y):
-    return x + y
+    ...
 
 
 # Classes
@@ -55,7 +55,7 @@ class HTTPServer:
     ...
 
 
-# Methods
+# Class Functions
 # * Use a good representation name
 # * Use underscore to separate
 # * Do not use camel case
@@ -65,16 +65,15 @@ class HTTPServer:
 # * Static methods doesn't need to have a default first parameter
 # * Do not use capital letters
 class Car:
-
-    def start_acceleration(self):
+    def method(self):
         ...
 
     @classmethod
-    def create(cls):
+    def class_function(cls):
         ...
 
     @staticmethod
-    def version():
+    def static_function():
         ...
 
 
@@ -88,7 +87,7 @@ class Car:
 # * Do not use capital letters
 class ListTest(unittest.TestCase):
     def test_append(self):
-        pass
+        ...
 
 
 # Project (Root folder)
@@ -115,7 +114,7 @@ class ListTest(unittest.TestCase):
 # * Do not use camel case
 # * Do not use special symbols
 # * Do not use capital letters
-import collections.abc
+"""my_module.py"""
 
 
 # Main module
@@ -134,24 +133,23 @@ import collections.abc
 # * Use the 'Error' suffix in the exception class name
 # * Extends an Exception subclass
 class ValidationError(Exception):
-    pass
+    ...
 
 
 # Exception alias
-# * Use the 'err' name
+# * Use the 'err' identifier to reference the exception
 try:
-    pass
-except ValueError as err:  # "err" word to reference the error
-    pass
+    ...
+except ValueError as err:
+    ...
 
 
 # Strings
-# * Always use ' char to strings
+# * Use single quotes (') for strings
 text = 'Hello'
 
 
 # Class access modifiers
-# * Use nothing as prefix to public resources
 # * Use underline "_" to protected resources
 # * Use dunder "__" to private resources
 class Forest:
@@ -172,8 +170,8 @@ class Forest:
 
 
 # Reserved words/Builtin words
-# * Never use a python reserved word or builtin word as name for any artifact
-# * Use underline "_" as suffix
+# * Never use a python reserved word or builtin word as name for any identifier
+# * Use underscore "_" as suffix when you need to use a reserved word
 from_ = 'Hello'
 input_ = 'World'
 
@@ -183,19 +181,17 @@ input_ = 'World'
 ###############################################################################
 
 
-# Multiple module imports
-# * Do not use different imports at same line like import sys, abc
-# * Always put the imports at the top of the file after the module docstring
+# Importing modules
+# * Always use the import statement on the top of the file
 import sys
-import abc as my_abc
 
 
-# Multiple module resources imports
-# * Use multi line to import the resources from a specific module
-from abc import (
-    ABC,
-    ABCMeta as MyABCMeta
-)
+# Import Alias
+# * Use underscore to separate
+# * Do not use camel case
+# * Do not use special symbols
+# * Do not use capital letters
+import statistics as st
 
 
 ###############################################################################
@@ -209,14 +205,13 @@ x = 10  # My variable
 
 
 # Multiline comments
-# * Use double quotes (""") for multiline comments
+# * Use double quotes ("") for multiline comments
 """
 Lorem ipsum
 """
 
 
 # Section comments
-# * NOTE: Not real PEP recommendation
 # * To separate code sections, use the section comment with "#" char
 # * NOTE: The example below is inside a multi-line comment just to differs from
 #   the other section comments in this file
@@ -228,7 +223,6 @@ Lorem ipsum
 
 
 # Sub section comments
-# * NOTE: Not real PEP recommendation
 # * For sub sections, use the indentation in the section comment
 """
     ###########################################################################
@@ -238,18 +232,17 @@ Lorem ipsum
 
 
 # Documentation strings
-# * NOTE: Not real PEP recommendation
 # * Use a multiline comment with double quotes
-# * Don't use the quotes and the documentation in a single line
+# * Do not start the docstring at the first line (quotes line)
 def function():
     """
-    This function returns True
+    This function returns something...
     """
     ...
 
 
 ###############################################################################
-# Function and Type hints
+# Function and Type Hints
 ###############################################################################
 
 
@@ -301,7 +294,6 @@ def typed_function(number: int, name: str, lst: list[str], other: tuple[int]
 # Type hints in classes
 # * The self and cls parameters does not need a type hint
 class TypedClass:
-
     def method(self, name: str) -> str:
         ...
 
@@ -311,31 +303,32 @@ class TypedClass:
 
 
 ###############################################################################
-# Code recommendations
+# Code Recommendations
 ###############################################################################
 
 
-# Spacing and line breaks
-# * Use two line breaks before and after functions, classes and multi-line
-#   comments
-def action():
+# Module line breaks
+# * Use two line breaks to separete definitions
+def function_1():
     ...
 
 
-class Person():
+def function_2():
     ...
 
 
-x = 1
+# Class line breaks
+# * Use one line break before and after definitions inside classes
+class Class:
+    def method_1(self):
+        ...
 
-
-"""
-Comment
-"""
+    def method_2(self):
+        ...
 
 
 # Line length
-# * Respect the line length limit (79 chars)
+# * Try always to respect the line length limit (79 chars)
 x = 'This is a big text that respects the line length limit (79 chars) and ' \
     'breaks the line to fit the limit'
 
@@ -349,41 +342,33 @@ if 1 == 1:
 
 # Do not use un-necessary spaces
 # * Do not put more spaces in lists, parameters, function names, etc
-# * Do not try to inline vertically some text with spaces
-lst = [1, 2, 3, 4, 5]
-x = 1
-long_variable = 5
-
-
-# Backslash
-# * For long python lines, it is recommended to use backlash (\) to wrap
-txt = 'This is a big text that respects the line length limit (79 chars) ' \
-      'breaks the line to fit the limit'
+# * Do not try to inline vertically contents (only comments are allowed)
+lst = [1, 2, 3, 4, 5]  # Comment 1
+x = 1                  # Comment 2
+long_variable = 5      # Comment 3
 
 
 # Long if
 # * To make a if with more lines, use parenthesis
 # * From second condition onwards, the conditions must be indented
 # * Always put the logical operator as the front of the condition
-if (
-    1 == 1
-    and 2 == 2
-    or 3 == 3
-):
+if ('This is a big text to the if' == 'This is a big text to the if'
+    and 'This is a big text to the if' == 'This is a big text to the if'
+    or 'This is a big text to the if' == 'This is a big text to the if'):
     ...
 
 
 # Unused resource
-# * To mark some resource as unused intentionally, use the "_" char as the name
-#   of the resource
-for _ in range(10):
-    ...
+# * To mark some resource as unused intentionally, use the "_" wildcard as the
+#   identifier
+_ = 'This is an unused variable'
 
 
-# Multiple unused resources in the same context
-# * Concat more "_" to unused resources at same context
+# Multiple unused resources
+# * Whe can re-use the "_" wildcard to multiple unused resources in the same
+#   context
 for _ in range(10):
-    for __ in range(10):
+    for _ in range(10):
         ...
 
 
