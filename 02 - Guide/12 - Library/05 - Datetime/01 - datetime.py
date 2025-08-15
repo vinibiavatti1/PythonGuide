@@ -5,8 +5,8 @@ Datetime
 * It includes classes for manipulating dates and times in both simple and
   complex ways
 * The module has two main functions to parse and format dates:
-  * datetime.strptime(date_str, format) = Parse string to datetime
-  * date.strftime(format) = Format datetime to string
+  * datetime.strptime(x, format) = Parse string to datetime
+  * x.strftime(format) = Format datetime to string
 * The parse and format functions have directives to specify the datetime format
   These directives are listed below:
 ###############################################################################

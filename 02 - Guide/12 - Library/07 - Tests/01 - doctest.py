@@ -1,74 +1,84 @@
 """
-Doctest module
+Doctest
 
-* The doctest module searches for pieces of text that look like interactive
-  Python sessions, and then executes those sessions to verify that they work
-  exactly as shown. There are several common ways to use doctest:
-  * To check that a module's docstrings are up-to-date by verifying that all
-    interactive examples still work as documente
-  * To perform regression testing by verifying that interactive examples from a
-    test file or a test object work as expected
-  * To write tutorial documentation for a package, liberally illustrated with
-    input-output examples. Depending on whether the examples or the expository
-    text are emphasized, this has the flavor of "literate testing" or
-    "executable documentation"
-* NOTE: Run the file with the -v switch, to check details of tests
-* NOTE: Check the _doctest.py file in general
-
-This is an example of a doctest with error:
->>> 5 + 5
-0
+* The doctest module provides a way to test that doctests in docstrings.
+* The doctests in docstrings are written in a way that they can be
+  executed as if they were in an interactive Python session.
+* We can also use doctests in docstrings to demonstrate examples of how to use
+  a function or a class.
+* To run the doctests, we can use the command below in the command line:
+  `python -m doctest module.py`
+* The doctests below will be used to demonstrate the doctest module. Note that
+  there are some tests that will fail.
+>>> 1 + 1
+2
+>>> 2 + 2
+5
 """
+
+
+###############################################################################
+# Module Import
+###############################################################################
+
+
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import doctest
-import os
-import sys
-current_path = sys.path[0]
 
 
 ###############################################################################
-# Testing doctests
+# Testing a Module
 ###############################################################################
 
 
-# testfile(filename)
-# * Execute a file containing a doctest
-file_path = os.path.join(current_path, '../../resources/doctest.txt')
-doctest.testfile(file_path)
+# Testing a module
+# * We can test a module using the `doctest.testmod()` function
+# * If no module is specified, the `__main__` module will be used to test
+# * The function will return a `TestResults` object with the number of tests
+#   run, the number of failures, and the number of errors
+# * We can also execute the module test using the command line with the
+#   command `python -m doctest module.py`
+x = doctest.testmod()
+print(x)
+# TestResults(failed=1, attempted=2)
 # Failed example:
-#     3 + 3
+#     2 + 2
 # Expected:
 #     5
 # Got:
-#     6
+#     4
 
 
-# testmod(m=None)
-# * Test a python module
-# * If m is None, the __main__ module will be used to test
-doctest.testmod()
-# Failed example:
-#     5 + 5
-# Expected:
-#     0
-# Got:
-#     10
+###############################################################################
+# Testing an Object
+###############################################################################
 
 
-# run_docstring_examples(f, globs)
-# * Test examples associated with object f; for example, f may be a string, a
-#   module, a function, or a class object
-def func():
+# Defining an Object with Doctests
+# * We will define an object with some doctests in its docstring to be used for
+#   testing
+def function():
     """
     >>> 1 + 1
-    10
+    2
+    >>> 2 + 2
+    5
     """
-    pass
+    ...
 
 
-doctest.run_docstring_examples(func, globals())
+# Running Doctests on an Object
+# * We can test examples associated with an object using the
+#   `doctest.run_docstring_examples()` function
+# * The first argument is the object to test, and the second argument is the
+#   global variables to use for the test
+x = doctest.run_docstring_examples(function, globals())
+print(x)
+# TestResults(failed=1, attempted=2)
 # Failed example:
-#     1 + 1
+#     2 + 2
 # Expected:
-#     10
+#     5
 # Got:
-#     2
+#     4
