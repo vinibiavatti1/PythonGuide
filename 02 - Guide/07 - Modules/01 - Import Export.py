@@ -50,6 +50,11 @@ import typing
 import typing as tp
 
 
+# Multiple Import
+# * We can import multiple modules in the same statement
+import sys, os
+
+
 ###############################################################################
 # import <package>.<module>
 ###############################################################################

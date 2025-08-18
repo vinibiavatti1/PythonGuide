@@ -1,31 +1,50 @@
 """
-Prototype design pattern
+Prototype
 
-* Book: GOF
-* Prototype is a creational design pattern that lets you copy existing objects
-  without making your code dependent on their classes
-* The Prototype pattern delegates the cloning process to the actual objects
-  that are being cloned. The pattern declares a common interface for all
-  objects that support cloning. This interface lets you clone an object without
-  coupling your code to the class of that object. Usually, such an interface
-  contains just a single clone method.
+* The Prototype pattern is a creational design pattern that allows you to
+  create new objects by copying an existing object, known as the prototype.
+* This pattern is useful when the cost of creating a new object is more
+  expensive than copying an existing one.
+* Usually, to implement the Prototype pattern, we need to implement a clone
+  method. In Python, we can use the `copy` module to create shallow copies
+  of objects.
 """
+
+
+###############################################################################
+# Prototype
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
+from typing import Self
 from copy import copy
 
 
-# Rectangle class
-class Rectangle:
+# Button
+# * The model below is a class that represents a Button.
+# * It will override the `__copy__` method to create a copy of the button.
+# * Note that the `__copy__` method is called when the `copy` function is used.
+#   It belongs to the copy protocol.
+# * Since the copy already knows how to copy a simple object, the
+#   implementation below is not necessary. We will implement it anyway for
+#   demonstration purposes.
+class Button:
+    def __init__(self, label: str) -> None:
+        self.label = label
 
-    def __init__(self, size, color):
-        self.size = size
-        self.color = color
-
-    def __copy__(self):
-        return Rectangle(self.size, self.color)
+    def __copy__(self) -> Self:
+        return Button(self.label)
 
 
-# Algorithm
-rect = Rectangle(10, 'red')
-clone = copy(rect)
-print(rect.size, clone.color, sep=', ')  # red, red
-print(id(rect), id(clone), sep=', ')      # 1931064524752, 1931064522832 (diff)
+# Testing
+# * Now, we will create a clone of the button, using the button itself as a
+#   prototype.
+x = Button("First Name")
+y = copy(x)
+y.label = "Last Name"
+print(x.label)
+print(y.label)
+# First Name
+# Last Name

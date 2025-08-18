@@ -1,67 +1,72 @@
 """
-Factory Method design pattern
+Factory Method
 
-* Book: GOF
-* Factory Method is a creational design pattern that provides an interface for
-  creating objects in a superclass, but allows subclasses to alter the type of
-  objects that will be created
-* he Factory Method pattern suggests that you replace direct object
-  construction calls (using the new operator) with calls to a special factory
-  method. Don't worry: the objects are still created via the new operator, but
-  it's being called from within the factory method. Objects returned by a
-  factory method are often referred to as products
+* The Factory Method pattern defines an interface for creating an object, but
+  lets subclasses alter the type of objects that will be created.
+* A class will delegate the responsibility of instantiating objects to the
+  subclasses.
 """
+
+
+###############################################################################
+# Factory Method
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
 from abc import ABC, abstractmethod
 
 
-# Click interface
-class Clickable(ABC):
+# Button
+# * The model below is a class that represents a Button.
+# * It contains a Markup field that represents the button's markup.
+# * This button can have different styles, such as flat or rounded.
+class Button:
+    def __init__(self, markup: str) -> None:
+        self.markup = markup
+
+
+# Frame
+# * The abstract class below defines what consists of a form.
+# * It looks similar to the abstract factory, but it is a component itself,
+#   not a factory.
+# * The `create_button` method is called "Factory Method".
+class Frame(ABC):
     @abstractmethod
-    def click(self):
+    def create_button(self) -> Button:
         pass
 
-
-# Windows Button
-class WinButton(Clickable):
-    def click(self):
-        print('Win Button')
+    def render(self) -> None:
+        button_element = self.create_button()
+        print(f"Button: {button_element.markup}")
 
 
-# Mac button
-class MacButton(Clickable):
-    def click(self):
-        print('Mac button')
+# Flat Frame
+# * The class below is a concrete form that implements the Frame interface.
+# * Note that the factory method is implemented with different logic for each
+#   form.
+class FlatFrame(Frame):
+    def create_button(self) -> Button:
+        return Button('[Button]' )
 
 
-# Dialog interface with factory method
-class Dialog(ABC):
-
-    @abstractmethod
-    def create_button(self):
-        pass
-
-
-# Windows dialog
-class WinDialog(Dialog):
-
-    def create_button(self):
-        return WinButton()
+# Rounded Frame
+# * The class below is another concrete form that implements the Frame
+#   interface.
+# * Note that the factory method is implemented with different logic for each
+#   form.
+class RoundedFrame(Frame):
+    def create_button(self) -> Button:
+        return Button('(Button)')
 
 
-# Mac dialog
-class MacDialog(Dialog):
-
-    def create_button(self):
-        return MacButton()
-
-
-# Algorithm
-os = 'Windows'
-dialog = None
-if os == 'Windows':
-    dialog = WinDialog()
-else:
-    dialog = MacDialog()
-btn = dialog.create_button()
-btn.click()
-# Windows btn
+# Testing
+# * Now, we will test the forms. Note that the output will vary depending on
+#   the form used.
+x = FlatFrame()
+y = RoundedFrame()
+x.render()
+y.render()
+# Button: [Button]
+# Button: (Button)

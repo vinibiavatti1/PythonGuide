@@ -1,74 +1,83 @@
 """
-Singleton design pattern
+Singleton
 
-* Book: GOF
-* Singleton is a creational design pattern that lets you ensure that a class
-  has only one instance, while providing a global access point to this instance
-* Just like a global variable, the Singleton pattern lets you access some
-  object from anywhere in the program
-* Nowadays, the Singleton pattern has become so popular that people may call
-  something a singleton even if it solves just one of the listed problems
+* The Singleton pattern ensures that a class has only one instance and provides
+  a global point of access to it.
+* This is useful when exactly one object is needed to coordinate actions across
+  the system.
+* In Python, we can implement it using metaclasses or decorators.
 """
 
 
 ###############################################################################
-# Using Meta class
+# Singleton (Metaclass)
 ###############################################################################
 
 
-# Singleton meta class
+# Importing modules
+# * We will import some resources to be used in the example below.
+from typing import Any
+from functools import wraps
+
+
+# Singleton Metaclass
+# * We will create a metaclass that overrides the `__call__` method to manage
+#   instance creation and ensure only one instance exists.
 class SingletonMeta(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls in cls._instances:
-            return cls._instances[cls]
-        else:
-            instance = super().__call__(*args, **kwargs)
-            cls._instances[cls] = instance
-            return instance
+    instances: dict[type, Any] = {}
+    def __call__(cls, *args, **kwargs) -> Any:
+        if cls not in cls.instances:
+            cls.instances[cls] = super().__call__(*args, **kwargs)
+        return cls.instances[cls]
 
 
-# Singleton class
-class Singleton(metaclass=SingletonMeta):
-    pass
+# Service Manager
+# * Now, we will create a class that must be singleton.
+# * To enable this behavior, we will set the metaclass to `SingletonMeta`.
+class ServiceManager(metaclass=SingletonMeta):
+    ...
 
 
-# Db Connection extending Singleton
-class DBConnection(Singleton):
-    pass
-
-
-# Algorithm
-db1 = DBConnection()
-db2 = DBConnection()
-print(id(db1))  # 2325435530880
-print(id(db2))  # 2325435530880 (same id)
+# Testing
+# * Since the ServiceManager is a singleton, all calls to it will return the
+#   same instance.
+x = ServiceManager()
+y = ServiceManager()
+print(id(x) == id(y))
+# True
 
 
 ###############################################################################
-# Using Decorator
+# Singleton (Decorator)
 ###############################################################################
 
 
-# Singleton decorator
+# Singleton Decorator
+# * We can also use a decorator to handle singleton classes.
+# * The decorator will set the instance to the target class if it doesn't
+#   exist.
 def singleton(cls):
-    def wrapper():
-        if hasattr(cls, '_instance'):
-            return cls._instance
-        else:
-            cls._instance = cls()
-            return cls._instance
+    @wraps(cls)
+    def wrapper(*args, **kwargs):
+        if not hasattr(cls, '__instance__'):
+            setattr(cls, '__instance__', cls(*args, **kwargs))
+        return getattr(cls, '__instance__')
     return wrapper
 
 
-# Singleton class
+# Service Manager
+# * Now, we will create a class that must be singleton.
+# * To enable this behavior, we will decorate this class with the singleton
+#   decorator.
 @singleton
-class DbConnection():
-    pass
+class ServiceManager:
+    ...
 
 
-db1 = DbConnection()
-db2 = DbConnection()
-print(id(db1))  # 2325435530880
-print(id(db2))  # 2325435530880 (same id)
+# Testing
+# * Since the ServiceManager is a singleton, all calls to it will return the
+#   same instance.
+x = ServiceManager()
+y = ServiceManager()
+print(id(x) == id(y))
+# True

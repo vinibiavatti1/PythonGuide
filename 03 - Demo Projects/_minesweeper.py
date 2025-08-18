@@ -17,7 +17,7 @@ from typing import Final
 
 WIDTH: Final[int] = 30
 HEIGHT: Final[int] = 16
-MINES_AMOUNT: Final[int] = 99
+MINES_AMOUNT: Final[int] = 40
 
 
 ###############################################################################
