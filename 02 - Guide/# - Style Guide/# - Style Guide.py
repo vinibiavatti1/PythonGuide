@@ -233,10 +233,17 @@ Lorem ipsum
 
 # Documentation strings
 # * Use a multiline comment with double quotes
-# * Do not start the docstring at the first line (quotes line)
+def function():
+    """This function returns something..."""
+    ...
+
+
+# Documentation strings (multi-line)
+# * When the docstring is too long, use a break-line
 def function():
     """
-    This function returns something...
+    This function returns something very long that exceeds the line length
+    limit, so we will break-line it to fit the limit.
     """
     ...
 
