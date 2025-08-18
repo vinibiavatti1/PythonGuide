@@ -23,7 +23,7 @@ Magic Methods                       Trigger(s)
 ###############################################################################
 NOTE: The "x" variable is considered the object that implements the protocol
 
-Arithmetic Operations Protocol
+Arithmetic Operations
 __add__(self, other)                x + y
 __sub__(self, other)                x - y
 __mul__(self, other)                x * y
@@ -39,7 +39,7 @@ __xor__(self, other)                x ^ y
 __or__(self, other)                 x | y
 __divmod__(self, other)             divmod(x, y)
 
-Arithmetic Operations Protocol (Reflected)
+Arithmetic Operations (Reflected)
 __radd__(self, other)               y + x
 __rsub__(self, other)               y - x
 __rmul__(self, other)               y * x
@@ -55,7 +55,7 @@ __rxor__(self, other)               y ^ x
 __ror__(self, other)                y | x
 __rdivmod__(self, other)            divmod(y, x)
 
-Arithmetic Operations Protocol (Assignments)
+Arithmetic Operations (Assignments)
 __iadd__(self, other)               x += y
 __isub__(self, other)               x -= y
 __imul__(self, other)               x *= y
@@ -70,50 +70,46 @@ __iand__(self, other)               x &= y
 __ixor__(self, other)               x ^= y
 __ior__(self, other)                x |= y
 
-Arithmetic Operations Protocol (Unary)
+Arithmetic Operations (Unary)
 __neg__(self)                       -x
 __pos__(self)                       +x
 __invert__(self)                    ~x
 __abs__(self)                       abs(x)
 
-Arithmetic Operations Protocol (Casting)
+Arithmetic Operations (Casting)
 __complex__(self)                   complex(x)
 __int__(self)                       int(x)
 __float__(self)                     float(x)
 __index__(self)                     y[x], bin(x), hex(x), oct(x)
 
-Arithmetic Operations Protocol (Truncating)
+Arithmetic Operations (Truncating)
 __round__(self[, ndigits])          round(x, y)
 __trunc__(self)                     math.trunc(x)
 __floor__(self)                     math.floor(x)
 __ceil__(self)                      math.ceil(x)
 
-Attribute Access Protocol
+Attribute Access
 __getattr__(self, name)             x.attr (Called when attr not found)
 __getattribute__(self, name)        x.attr
 __setattr__(self, name, value)      x.attr = y
 __delattr__(self, name)             del x.attr
 
-Awaitable Protocol
+Awaitable
 __await__(self)                     await MyClass()
 
-Boolean Protocol
+Boolean
 __bool__(self)                      bool(x)
 
-Bytes Protocol
+Bytes
 __bytes__(self)                     bytes(x)
 
-Callable Protocol
+Callable
 __call__(self, ...)                 x(), x(args)
 
-Class Creation Protocol (Used for Meta Programming)
-__init_subclass__(cls)              class MyClass(Subclass):
-__prepare__(name, bases, **kwds)    class MyClass(metaclass=Metaclass):
-
-Class Pattern Matching Protocol
+Class Pattern Matching
 __match_args__                      match x: case MyClass(args):
 
-Container Protocol
+Container
 __len__(self)                       len(x)
 __length_hint__(self)               len(x) (Estimated length)
 __getitem__(self, key)              x[key]
@@ -123,50 +119,56 @@ __missing__(self, key)              x[key] (When key not found)
 __reversed__(self)                  reversed(x)
 __contains__(self, item)            y in x
 
-Copy Protocol
+Copy
 __copy__(self)                      copy.copy(x)
 __deepcopy__(self, memodict={})     copy.deepcopy(x)
 
-Context Manager Protocol
+Context Manager
 __enter__(self)                     with x:
 __exit__(self, et, ev, traceback)   end of with block
 
-Descriptor Protocol
+Descriptor
+__set_name__(self, owner, name)     x.attr = Descriptor()
 __get__(self, instance, owner=None) x.attr
 __set__(self, instance, value)      x.attr = y
 __delete__(self, instance)          del x.attr
-__set_name__(self, owner, name)     class MyClass: x = Descriptor()
 
-Directory Protocol
+Directory
 __dir__(self)                       dir(x)
 
-Format Protocol
+Format
 __format__(self, format_spec)       format(x, y), x.format(y)
 
-Generic Types Protocol (Used for Type hints)
+Generic Types (Used for Type hints)
 __class_getitem__(cls, key)         x: MyClass[key] = ...
 
-Hashable Protocol
+Hashable
 __hash__(self)                      hash(x)
 
-Instance Check Protocol
+Instance Check
 __instancecheck__(self, instance)   isinstance(x, y)
 __subclasscheck__(self, subclass)   issubclass(x, y)
 
-Instance Creation Protocol
+Instance Creation
 __new__(cls, ...)                   x = MyClass()  # Before Creation
 __init__(self, ...)                 x = MyClass()  # After Creation
 __del__(self)                       Called by GC (Garbage Collector)
 
-Iterator Protocol
+Iterator
 __iter__(self)                      iter(x), for y in x:
 __next__(self)                      next(x), for y in x: (Cycle)
 
-Iterator Protocol (Asynchronous)
+Iterator (Asynchronous)
 __aiter__(self)                     async iter(x), async for y in x:
 __anext__(self)                     async next(x), async for y in x: (cycle)
 
-Pickle Protocol
+Metaclass
+__prepare__(metacls, ...)           class MyClass(metaclass=MyMeta):
+__new__(cls, ...)                   class MyClass(metaclass=MyMeta):
+__init__(cls, ...)                  class MyClass(metaclass=MyMeta):
+__call__(cls, ...)                  x = MyClass()
+
+Pickle
 __getnewargs_ex__(self)             pickle.dump(pkl_file, x, protocol=2)
 __getnewargs__(self)                pickle.dump(pkl_file, x, protocol=2)
 __getstate__(self)                  pickle.dump(pkl_file, x)
@@ -174,10 +176,10 @@ __setstate__(self, state)           data = pickle.load(pkl_file)
 __reduce__(self)                    pickle.dumps(x)
 __reduce_ex__(self, protocol)       pickle.dumps(x)
 
-Representation Protocol
+Representation
 __repr__(self)                      repr(x)
 
-Rich Comparison Protocol
+Rich Comparison
 __lt__(self, other)                 x < y
 __le__(self, other)                 x <= y
 __eq__(self, other)                 x == y
@@ -187,6 +189,9 @@ __ge__(self, other)                 x > y
 
 String Protocol
 __str__(self)                       str(x), print(x), format(x, y)
+
+Subclass Handling
+__init_subclass__(cls, ...)         class MyClass():
 ###############################################################################
 """
 
