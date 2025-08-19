@@ -64,9 +64,9 @@ class RoundedFrame(Frame):
 # Testing
 # * Now, we will test the forms. Note that the output will vary depending on
 #   the form used.
-x = FlatFrame()
-y = RoundedFrame()
-x.render()
-y.render()
+frame_1 = FlatFrame()
+frame_2 = RoundedFrame()
+frame_1.render()
+frame_2.render()
 # Button: [Button]
 # Button: (Button)

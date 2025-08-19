@@ -42,7 +42,7 @@ class ComponentFactory(ABC):
 # * It creates a flat components.
 class FlatComponentFactory(ComponentFactory):
     def create_button(self) -> Button:
-        return Button("(Button)")
+        return Button("[Button]")
 
 
 # Rounded Component Factory
@@ -84,9 +84,9 @@ class RoundedFrame(Frame):
 # Testing
 # * Now, we will test the frames. Note that the output will vary depending on
 #   the factory used.
-x = FlatFrame()
-y = RoundedFrame()
-x.render()
-y.render()
-# Button: (Button)
+frame_1 = FlatFrame()
+frame_2 = RoundedFrame()
+frame_1.render()
+frame_2.render()
+# Button: [Button]
 # Button: (Button)

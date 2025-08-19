@@ -1,73 +1,67 @@
 """
-Composite design pattern
+Composite
 
-* Book: GOF
 * Composite is a structural design pattern that lets you compose objects into
-  tree structures and then work with these structures as if they were
-  individual objects
-* Using the Composite pattern makes sense only when the core model of your app
-  can be represented as a tree
-* Can be used to draw GUI interfaces
+  tree structures to represent part-whole hierarchies.
+* Composite lets clients treat individual objects and compositions of objects
+  uniformly.
+* In other words, it allows you to create a tree structure where each node can
+  be either a leaf or a composite.
 """
+
+
+###############################################################################
+# Composite
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
 from abc import ABC, abstractmethod
 
 
-# Graphic ABC
+# Graphic
+# * This interface defines the common operations for both leaf and composite
+#   objects.
 class Graphic(ABC):
     @abstractmethod
-    def render(self):
+    def draw(self) -> None:
         pass
 
 
-# Circle graphic
+# Circle
+# * This is a leaf node representing a circle.
 class Circle(Graphic):
-    def render(self):
-        print('Circle')
+    def draw(self) -> None:
+        print('()')
 
 
-# Square graphic
+# Square
+# * This is a leaf node representing a square.
 class Square(Graphic):
-    def render(self):
-        print('Square')
+    def draw(self) -> None:
+        print('[]')
 
 
-# Composite
-# NOTE: This is a Graphic too
-class CompositeGraphic(Graphic):
-    def __init__(self):
-        self._graphics = []
+# Canvas
+# * This is a composite node representing a drawing canvas.
+# * Note that different from leafs, this class has a collection of child
+#   components.
+class Canvas(Graphic):
+    def __init__(self) -> None:
+        self.graphics: list[Graphic] = []
 
-    def add(self, graphic):
-        self._graphics.append(graphic)
-
-    def remove(self, graphic):
-        self._graphics.remove(graphic)
-
-    def render(self):
-        for g in self._graphics:
-            g.render()
+    def draw(self) -> None:
+        for graphic in self.graphics:
+            graphic.draw()
 
 
-# Algorithm
-c1 = Circle()
-c2 = Circle()
-s1 = Square()
-s2 = Square()
-
-group1 = CompositeGraphic()
-group1.add(c1)
-group1.add(s1)
-
-group2 = CompositeGraphic()
-group2.add(c2)
-group2.add(s2)
-
-root = CompositeGraphic()
-root.add(group1)
-root.add(group2)
-
-root.render()
-# Circle
-# Square
-# Circle
-# Square
+# Testing
+# * Now, we will create a canvas and add some shapes to it.
+# * Note that each leaf knows how to be drawn, and the composite knows how to
+#   draw its children and itself.
+canvas = Canvas()
+canvas.graphics.append(Circle())
+canvas.graphics.append(Square())
+canvas.draw()
+# ()[]

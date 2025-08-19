@@ -41,9 +41,9 @@ class ServiceManager(metaclass=SingletonMeta):
 # Testing
 # * Since the ServiceManager is a singleton, all calls to it will return the
 #   same instance.
-x = ServiceManager()
-y = ServiceManager()
-print(id(x) == id(y))
+service_1 = ServiceManager()
+service_2 = ServiceManager()
+print(id(service_1) == id(service_2))
 # True
 
 
@@ -77,7 +77,7 @@ class ServiceManager:
 # Testing
 # * Since the ServiceManager is a singleton, all calls to it will return the
 #   same instance.
-x = ServiceManager()
-y = ServiceManager()
-print(id(x) == id(y))
+service_1 = ServiceManager()
+service_2 = ServiceManager()
+print(id(service_1) == id(service_2))
 # True

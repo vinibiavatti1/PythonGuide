@@ -1,40 +1,64 @@
 """
-Flyweight design pattern
+Flyweight
 
-* Book: GOF
-* Flyweight is a structural design pattern that lets you fit more objects into
-  the available amount of RAM by sharing common parts of state between multiple
-  objects instead of keeping all of the data in each object
-* For more convenient access to various flyweights, you can create a factory
-  method that manages a pool of existing flyweight objects
+* Flyweight is a structural design pattern that allows you to share objects to
+  support a large number of similar objects efficiently.
+* It is used to minimize memory usage by sharing common parts of state between
+  multiple objects.
 """
-from abc import ABC, abstractmethod
 
 
-# Sprite class
-class Sprite():
-    def __init__(self, name, data):
-        self.name = name
+###############################################################################
+# Flyweight
+###############################################################################
+
+
+# Texture
+# * The texture class below represents the shared state of the sprites.
+# * Since the same texture can be used by multiple sprites, it helps to save
+#   memory.
+class Texture:
+    def __init__(self, data: bytes) -> None:
         self.data = data
 
 
-# Flyweight factory
-class SpriteFactory():
-    cache = []
+# Sprite
+# * The sprite class represents the unique state of each sprite.
+# * It contains the position and the texture reference.
+class Sprite:
+    def __init__(self, x: int, y: int, texture: Texture) -> None:
+        self.x = x
+        self.y = y
+        self.texture = texture
+
+
+# Texture Factory
+# * The texture factory is responsible for managing texture instances.
+# * Note that we don't need to create a new texture instance if it already
+#   exists. The pre-existing instance will be reused.
+class TextureFactory:
+    textures: dict[str, Texture] = {
+        "tree": Texture(b"tree_texture_data"),
+        "stone": Texture(b"stone_texture_data"),
+    }
 
     @classmethod
-    def get_sprite(cls, name, data):
-        for cached in cls.cache:
-            if cached.name == name:
-                print(f'[From cache] {cached.name}', end=' ')
-                return cached
-        print(f'[Stored] {name}')
-        sprite = Sprite(name, data)
-        cls.cache.append(sprite)
-        return sprite
+    def get_texture(cls, key: str) -> Texture:
+        return cls.textures[key]
 
 
-# Algorithm
-tree = SpriteFactory.get_sprite('tree', '892732713')   # [Stored] tree
-car = SpriteFactory.get_sprite('car', '593895832')     # [Stored] car
-tree2 = SpriteFactory.get_sprite('tree', '892732713')  # [From cache] tree
+# Testing
+# * In the test below, note that the same texture instance is reused for
+#   different sprite objects.
+# * The print statements will show that the same texture instances are used,
+#   comparing their IDs.
+tree_texture = TextureFactory.get_texture("tree")
+stone_texture = TextureFactory.get_texture("stone")
+tree_sprite_1 = Sprite(0, 0, tree_texture)
+tree_sprite_2 = Sprite(0, 1, tree_texture)
+stone_sprite_1 = Sprite(1, 0, stone_texture)
+stone_sprite_2 = Sprite(1, 1, stone_texture)
+print(id(tree_sprite_1.texture) == id(tree_sprite_2.texture))
+print(id(stone_sprite_1.texture) == id(stone_sprite_2.texture))
+# True
+# True

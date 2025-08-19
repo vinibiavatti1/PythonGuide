@@ -1,44 +1,56 @@
 """
-Facade design pattern
+Facade
 
-* Book: GOF
-* Facade is a structural design pattern that provides a simplified interface to
-  a library, a framework, or any other complex set of classes
-* A facade is a class that provides a simple interface to a complex subsystem
-  which contains lots of moving parts
+* The Facade pattern provides a simplified interface to a complex subsystem.
+* It defines a higher-level interface that makes the subsystem easier to use.
 """
 
 
-# Some operation 1
-class Mp4Converter():
-    def convert(self, data):
-        return data
+###############################################################################
+# Facade
+###############################################################################
 
 
-# Some operation 2
-class OggConverter():
-    def convert(self, data):
-        return data
+# MP4 Converter
+# * This class represents a subsystem that converts video files to MP4 format.
+class MP4Converter:
+    def convert(self, data: str) -> None:
+        return data + '.mp4'
 
 
-# Some operation 3
-class VideoCompression():
-    def compress(self, data):
-        return data
+# OGG Converter
+# * This class represents a subsystem that converts video files to OGG format.
+class OGGConverter:
+    def convert(self, data: str) -> None:
+        return data + '.ogg'
 
 
-# Facade class
-class VideoConverterFacade():
-    def convert(self, data, format):
-        if format == 'mp4':
-            data = Mp4Converter().convert(data)
-        else:
-            data = OggConverter().convert(data)
+# Video Compression
+# * This class represents a subsystem that compresses video files.
+class VideoCompression:
+    def compress(self, data: str) -> None:
+        return data.strip('__')
+
+
+# Video Converter Facade
+# * This class is a facade for the video conversion process. It simplifies the
+#   interface for clients.
+# * In other words, it provides a higher-level interface that makes the
+#   subsystem easier to use, without needing to perform each step manually.
+class VideoConverterFacade:
+    def convert(self, data: str, format: str) -> str:
         data = VideoCompression().compress(data)
+        if format == 'mp4':
+            data = MP4Converter().convert(data)
+        else:
+            data = OGGConverter().convert(data)
         return data
 
 
-# Algorithm
-data = '...'
-converter = VideoConverterFacade()  # Easy to call
-data = converter.convert(data, 'mp4')
+# Testing
+# * Now, look that to perform a video conversion, the client only needs to call
+#   a single method on the facade.
+converter = VideoConverterFacade()
+data = converter.convert('__video__', 'mp4')
+print(data)
+# video.mp4

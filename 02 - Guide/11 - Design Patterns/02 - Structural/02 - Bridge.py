@@ -1,67 +1,80 @@
 """
-Bridge design pattern
+Bridge
 
-* Book: GOF
-* Bridge is a structural design pattern that lets you split a large class or a
-  set of closely related classes into two separate hierarchies—abstraction and
-  implementation—which can be developed independently of each other.
-
-           bridge
-[Remote]<>--------->[Device]
- |                   |    |
-[AdvanceRemote]  [Radio] [Tv]
+* The Bridge pattern is a structural design pattern that decouples an
+  abstraction from its implementation, allowing the two to vary independently.
+* It is useful when you want to avoid a permanent binding between an
+  abstraction and its implementation.
 """
+
+
+###############################################################################
+# Bridge
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
 from abc import ABC, abstractmethod
 
 
-# Device ABC
-class Device(ABC):
-    def __init__(self, name):
-        self.name = name
-        self.volume = 0
+# Content Writer
+# * This is an abstract class that defines the interface for content writers.
+class ContentWriter(ABC):
+    @abstractmethod
+    def write_title(self, content: str) -> None:
+        pass
 
 
-# Radio class
-class Radio(Device):
-    def __init__(self, name):
-        super().__init__(name)
+# HTML Writer
+# * This class will act as a bridge between the File class and the HTML
+#   content.
+# * Here will be the implementation of the bridge.
+class HTMLWriter(ContentWriter):
+    def __init__(self) -> None:
+        self.content = ""
+
+    def write_title(self, content: str) -> None:
+        self.content += f"<h1>{content}</h1>"
 
 
-# TV class
-class Tv(Device):
-    def __init__(self, name):
-        super().__init__(name)
+# Markdown Writer
+# * This class will act as a bridge between the File class and the Markdown
+#   content.
+# * Here will be the implementation of the bridge.
+class MarkdownWriter(ContentWriter):
+    def __init__(self) -> None:
+        self.content = ""
+
+    def write_title(self, content: str) -> None:
+        self.content += f"# {content}\n"
 
 
-# Remote class
-class Remote:
-    def __init__(self, device):
-        self.device = device  # <-- Bridge
+# File
+# * This class represents a file with some content.
+# * It uses a ContentWriter to write its content.
+# * Since the ContentWriter can vary, we can easily switch between different
+#   implementations.
+class File:
+    def __init__(self, writer: ContentWriter) -> None:
+        self.writer = writer
 
-    def volume_up(self):
-        self.device.volume += 1
+    def write_title(self, content: str) -> None:
+        self.writer.write_title(content)
 
-    def volume_down(self):
-        self.device.volume -= 1
-
-
-# Advance remote
-class AdvanceRemote(Remote):
-    def mute(self):
-        self.device.volume = 0
+    @property
+    def content(self) -> str:
+        return self.writer.content
 
 
-# Algorithm
-radio = Radio('Radio')
-remote = Remote(radio)
-remote.volume_up()
-remote.volume_up()
-print(remote.device.volume)
-# 2
-
-tv = Tv('Tv')
-remote = AdvanceRemote(tv)
-remote.volume_up()
-remote.mute()
-print(remote.device.volume)
-# 0
+# Testing
+html_writer = HTMLWriter()
+markdown_writer = MarkdownWriter()
+file_1 = File(html_writer)
+file_2 = File(markdown_writer)
+file_1.write_title("Hello, World!")
+file_2.write_title("Hello, World!")
+print(file_1.content)
+print(file_2.content)
+# <h1>Hello, World!</h1>
+# # Hello, World!

@@ -41,10 +41,10 @@ class Button:
 # Testing
 # * Now, we will create a clone of the button, using the button itself as a
 #   prototype.
-x = Button("First Name")
-y = copy(x)
-y.label = "Last Name"
-print(x.label)
-print(y.label)
+button_1 = Button("First Name")
+button_2 = copy(button_1)
+button_2.label = "Last Name"
+print(button_1.label)
+print(button_2.label)
 # First Name
 # Last Name
