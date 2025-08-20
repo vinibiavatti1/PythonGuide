@@ -1,75 +1,87 @@
 """
-Chain of Responsibility design pattern
+Chain of Responsibility
 
-* Book: GOF
-* Chain of Responsibility is a behavioral design pattern that lets you pass
-  requests along a chain of handlers. Upon receiving a request, each handler
-  decides either to process the request or to pass it to the next handler in
-  the chain
-* Like many other behavioral design patterns, the Chain of Responsibility
-  relies on transforming particular behaviors into stand-alone objects called
-  handlers. In our case, each check should be extracted to its own class with a
-  single method that performs the check. The request, along with its data, is
-  passed to this method as an argument
+* The Chain of Responsibility pattern is a behavioral design pattern that
+  allows an object to pass a request along a chain of potential handlers until
+  one of them handles the request.
+* This pattern decouples the sender and receiver of a request, allowing
+  multiple objects to handle the request without the sender needing to know
+  which object will handle it.
 """
+
+
+###############################################################################
+# Chain of Responsibility
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
 from abc import ABC, abstractmethod
 
 
-# Processor ABC
-class Processor(ABC):
+# Base Order Handler
+# * Abstract class for handling order statuses
+class BaseOrderHandler(ABC):
     @abstractmethod
-    def process(self, data):
+    def handle(self, status: str) -> None:
         pass
 
 
-# Root processor
-class NumberProcessor:
-    def __init__(self):
-        self.next_processor = NegativeProcessor()
+# Order Handler
+# * Concrete handler for processing orders.
+# * This handler serves as the initial point of contact for order processing.
+class OrderHandler(BaseOrderHandler):
+    def __init__(self) -> None:
+        self.next = CompleteOrderHandler()
 
-    def process(self, data):
-        if self.next_processor is not None:
-            self.next_processor.process(data)
-
-
-# Negative number processor
-class NegativeProcessor(NumberProcessor):
-    def __init__(self):
-        self.next_processor = ZeroProcessor()
-
-    def process(self, data):
-        if data < 0:
-            print('[NegativeProcessor] Number processed!')
-        elif self.next_processor is not None:
-            self.next_processor.process(data)
+    def handle(self, status: str) -> None:
+        self.next.handle(status)
 
 
-# Zero number processor
-class ZeroProcessor(NumberProcessor):
-    def __init__(self):
-        self.next_processor = PositiveProcessor()
+# Complete Order Handler
+# * Concrete handler to process complete orders.
+# * If the order is not complete, it passes the request to the next handler.
+class CompleteOrderHandler(BaseOrderHandler):
+    def __init__(self) -> None:
+        self.next = WaitingOrderHandler()
 
-    def process(self, data):
-        if data == 0:
-            print('[ZeroProcessor] Number processed!')
-        elif self.next_processor is not None:
-            self.next_processor.process(data)
-
-
-# Positive number processor
-class PositiveProcessor(NumberProcessor):
-    def __init__(self):
-        self.next_processor = None
-
-    def process(self, data):
-        if data > 0:
-            print('[PositiveProcessor] Number processed!')
-        elif self.next_processor is not None:
-            self.next_processor.process(data)
+    def handle(self, status: str) -> None:
+        if status == 'complete':
+            print(f"Processing {status} order...")
+        else:
+            self.next.handle(status)
 
 
-# Algorithm
-processor = NumberProcessor()
-processor.process(-1)  # [NegativeProcessor] Number processed!
-processor.process(0)   # [ZeroProcessor] Number processed!
-processor.process(1)   # [PositiveProcessor] Number processed!
+# Waiting Order Handler
+# * Concrete handler to process waiting orders.
+# * If the order is not waiting, it passes the request to the next handler.
+class WaitingOrderHandler(BaseOrderHandler):
+    def __init__(self) -> None:
+        self.next = FailedOrderHandler()
+
+    def handle(self, status: str) -> None:
+        if status == 'waiting':
+            print(f"Processing {status} order...")
+        else:
+            self.next.handle(status)
+
+
+# Failed Order Handler
+# * Concrete handler to process failed orders.
+# * If the order is not failed, it stops the processing.
+class FailedOrderHandler(BaseOrderHandler):
+    def handle(self, status: str) -> None:
+        if status == 'failed':
+            print(f"Processing {status} order...")
+        else:
+            print(f"Unknown order status: {status}")
+
+
+# Testing
+# * Now, we will process an order using the chain of responsibility.
+# * Note that we call the entry point of the chain with the order status, and
+#   the request is passed along the chain until it is handled.
+order_handler = OrderHandler()
+order_handler.handle('waiting')
+# Processing waiting order...

@@ -1,81 +1,102 @@
 """
-Command design pattern
+Command
 
-* Book: GOF
-* Command is a behavioral design pattern that turns a request into a
-  stand-alone object that contains all information about the request. This
-  transformation lets you parameterize methods with different requests, delay
-  or queue a request's execution, and support undoable operations
-* Good software design is often based on the principle of separation of
-  concerns, which usually results in breaking an app into layers
+* The Command pattern is a behavioral design pattern that turns a request into
+  a stand-alone object.
+* The pattern encapsulates a request as an object, thereby allowing for
+  parameterization of clients with queues, requests, and operations.
+* It also provides support for undoable operations.
 """
+
+
+###############################################################################
+# Command
+###############################################################################
+
+
+# Importing modules
+# * We will import some resources to be used in the example below.
 from abc import ABC, abstractmethod
 
 
-# Command ABC
+# Command
+# * Abstract base class for all commands
 class Command(ABC):
     @abstractmethod
     def execute(self):
         pass
 
 
-# Swith to process commands
-class Switch:
-    def __init__(self):
-        self.history = []
+# Text Editor
+# * Receiver class that performs the actual operations.
+# * The receiver is the class that contains the business logic.
+class TextEditor:
+    def open_file(self) -> None:
+        print(f"File opened")
 
-    def store_and_execute(self, command):
-        self.history.append(command)
-        command.execute()
+    def save_file(self) -> None:
+        print(f"File saved")
 
-
-# Turn on command
-class TurnOnCommand(Command):
-    def __init__(self, light):
-        self.name = 'Turn ON'
-        self.light = light
-
-    def execute(self):
-        self.light.turn_on()
+    def close_file(self) -> None:
+        print("File closed")
 
 
-# Turn off command
-class TurnOffCommand(Command):
-    def __init__(self, light):
-        self.name = 'Turn OFF'
-        self.light = light
+# Open Command
+# * Command to open a file.
+class OpenCommand(Command):
+    def __init__(self, editor: TextEditor) -> None:
+        self.editor = editor
 
-    def execute(self):
-        self.light.turn_off()
-
-
-# Light
-class Light:
-    def __init__(self):
-        self.turn_off()
-
-    def turn_on(self):
-        self.state = 'ON'
-
-    def turn_off(self):
-        self.state = 'OFF'
+    def execute(self) -> None:
+        self.editor.open_file()
 
 
-# Algorithm
-lamp = Light()
-turn_on_cmd = TurnOnCommand(lamp)
-turn_off_cmd = TurnOffCommand(lamp)
+# Save Command
+# * Command to save a file.
+class SaveCommand(Command):
+    def __init__(self, editor: TextEditor) -> None:
+        self.editor = editor
 
-switch = Switch()
+    def execute(self) -> None:
+        self.editor.save_file()
 
-switch.store_and_execute(turn_on_cmd)
-print(lamp.state)  # ON
 
-switch.store_and_execute(turn_off_cmd)
-print(lamp.state)  # OFF
+# Close Command
+# * Command to close a file.
+class CloseCommand(Command):
+    def __init__(self, editor: TextEditor) -> None:
+        self.editor = editor
 
-# Hisotry
-for cmd in switch.history:
-    print(cmd.name)
-# Turn ON
-# Turn OFF
+    def execute(self) -> None:
+        self.editor.close_file()
+
+
+# Toolbar
+# * Invoker class that triggers the commands.
+# * The invoker holds the command objects and invokes them.
+class Toolbar:
+    def __init__(self, editor: TextEditor) -> None:
+        self.open = OpenCommand(editor)
+        self.save = SaveCommand(editor)
+        self.close = CloseCommand(editor)
+
+    def open_file(self) -> None:
+        self.open.execute()
+
+    def save_file(self) -> None:
+        self.save.execute()
+
+    def close_file(self) -> None:
+        self.close.execute()
+
+
+# Testing
+# * Now, note that the commands are decoupled from the invoker.
+editor = TextEditor()
+toolbar = Toolbar(editor)
+toolbar.open_file()
+toolbar.save_file()
+toolbar.close_file()
+# File opened
+# File saved
+# File closed
