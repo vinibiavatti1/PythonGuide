@@ -1,5 +1,5 @@
 """
-Doctest
+Doc Tests
 
 * The doctest module provides a way to test that doctests in docstrings.
 * The doctests in docstrings are written in a way that they can be

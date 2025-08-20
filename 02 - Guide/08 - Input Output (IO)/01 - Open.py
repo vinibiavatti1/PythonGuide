@@ -41,6 +41,8 @@ Types
 * The default mode is 'r' (open for reading text, synonym of 'rt'). Modes 'w+'
   and 'w+b' open and truncate the file. Modes 'r+' and 'r+b' open the file with
   no truncation
+* The `Path.open()` method from "pathlib" is a wrapper around the built-in
+  `open()` function and provides the same functionality.
 """
 
 
@@ -50,20 +52,18 @@ Types
 
 
 # Importing os and sys modules
-# * We will define some file paths using the `os` and `sys` modules to be used
-#   by the examples below
-import os
-import sys
+# * We will use the pathlib to determine the file paths that will be used on
+#   the examples below.
+from pathlib import Path
 
 
 # Defining file paths for the examples below
 # * The files paths below will be used in the examples below to show how to
 #   handle file operations
-CURRENT_PATH = sys.path[0]
-FILE_CREATE = os.path.join(CURRENT_PATH, '__resources', 'file_create.txt')
-FILE_READ = os.path.join(CURRENT_PATH, '__resources', 'file_read.txt')
-FILE_WRITE = os.path.join(CURRENT_PATH, '__resources', 'file_write.txt')
-FILE_IMAGE = os.path.join(CURRENT_PATH, '__resources', 'file_image.png')
+FILE_CREATE = Path('__resources', 'file_create.txt')
+FILE_READ = Path('__resources', 'file_read.txt')
+FILE_WRITE = Path('__resources', 'file_write.txt')
+FILE_IMAGE = Path('__resources', 'file_image.png')
 
 
 ###############################################################################
@@ -71,37 +71,27 @@ FILE_IMAGE = os.path.join(CURRENT_PATH, '__resources', 'file_image.png')
 ###############################################################################
 
 
-# Opennig a file
+# Open a file
 # * To open a file, we can use the `open` function passing the file path as the
-#   first argument
+#   first argument.
 # * Since the mode is not specified, the file will be opened in read mode ('r')
-#   as default
-file = open(FILE_READ)
-
-
-# Closing a file
-# * After using the file, it must be closed to free the resources
-# * We can use the `close` method to close the file
-file.close()
-
-
-# Oppening a file (with 'with' instruction)
-# * When using the `with` statement, the file will be closed automatically
-#   at the end of the block (after all operations)
-# * NOTE: This is the recommended way to open a file
+#   as default.
+# * Since the 'with' statement is used, the file will be closed automatically
+#   at the end of the block.
 with open(FILE_READ) as file:
     pass
 
 
-###############################################################################
-# Creating and Removing a file
-###############################################################################
+# Open a file (using Path)
+# * The `Path.open()` method can also be used to open a file.
+# * There is no difference in functionality between `open()` and `Path.open()`.
+with FILE_READ.open() as file:
+    pass
 
 
-# Removing a file
-# * To remove a file, we can use the `os.remove` function passing the file path
-#   as the first argument
-os.remove(FILE_CREATE)
+###############################################################################
+# Creating a file
+###############################################################################
 
 
 # Creating a file

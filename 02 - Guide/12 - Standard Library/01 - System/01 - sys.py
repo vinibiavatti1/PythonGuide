@@ -51,14 +51,6 @@ print(sys.version)
 # [MSC v.1928 64 bit (AMD64)]
 
 
-# getrefcount()
-# * The the reference count to some object
-# * This is used by Garbage Collector to clean heap memory
-a = []
-print(sys.getrefcount(a))
-# 2
-
-
 # exit(arg)
 # * This causes the script to exit back to either the Python console or the
 #   command prompt

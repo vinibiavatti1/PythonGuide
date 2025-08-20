@@ -1,11 +1,13 @@
 """
-Timeit
+Benchmark Tests
 
-* This module provides a simple way to measure the execution time of small code
-  snippets.
-* It can be used to measure the execution time of a statement or a function.
-* The timeit module avoids a number of common traps for measuring execution
-  times.
+* Benchmark tests are used to measure the performance of a piece of code.
+* They help identify bottlenecks and ensure that code changes do not negatively
+  impact performance.
+* The "timeit" module is commonly used for creating benchmark tests in Python.
+* Benchmark tests can be written as unit tests by using the unittest framework.
+* It is important to run benchmark tests in a controlled environment to obtain
+  reliable results.
 * The command "python -m timeit module.py" can be used to run the timeit
   module on a specific Python file.
 """
