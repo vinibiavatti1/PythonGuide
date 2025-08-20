@@ -17,7 +17,7 @@ PyInstaller
 
 
 ###############################################################################
-# Installing
+# PyInstaller
 ###############################################################################
 
 
@@ -26,23 +26,11 @@ PyInstaller
 """ $ pip install pyinstaller """
 
 
-###############################################################################
-# Executing
-###############################################################################
-
-
-# Generate executable
-# * Normally, PyInstaller creates a bundle with the executable and the python
-#   dependencies outside the executable
-""" $ pyinstaller <file>.py """
-
-
-# Generate one file executable
-# * With this option, the PyInstaller will put everything inside the executable
-""" $ pyinstaller --onefile <file>.py """
-
-
-# Generate from spec file
-# * The spec file contains the arguments used in the last generation to create
-#   the executable
-""" $ pyinstaller <file>.spec """
+# Generate Executable
+# * To generate a standalone executable, we can use the command below.
+# * Usually, PyInstaller creates a bundle with the executable and the python
+#   dependencies outside the executable. To include everything inside the
+#   executable, we can use the --onefile option.
+# * Also, the --noconsole option is useful for GUI applications to prevent
+#   a console window from appearing.
+""" $ pyinstaller --noconsole --onefile <main>.py """
