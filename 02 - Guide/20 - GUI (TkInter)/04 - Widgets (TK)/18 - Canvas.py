@@ -1,27 +1,59 @@
 """
-Canvas widget
+Canvas
 
-* A canvas is a rectangular area intended for drawing pictures or other complex
-* Syntax:
-  * tk.Canvas(parent, option=value, ...)
-* Reference:
-  * https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
+* The canvas widget is a standard Tkinter widget used to create a rectangular
+  area for drawing pictures or other complex layouts.
+* It can be used to display graphics, images, and other custom widgets.
+* The canvas widget provides a variety of methods for drawing shapes, lines,
+  and text.
+* The canvas can be scrolled and zoomed, making it suitable for displaying
+  large or detailed graphics.
+* In other libraries, it is often referred to as a drawing area or graphics
+  context.
 """
+
+
+###############################################################################
+# Import
+###############################################################################
+
+
+# Import
+# * We will import tkinter to be used on the examples below.
 import tkinter as tk
 
 
 ###############################################################################
-# Parameters
+# Example
 ###############################################################################
 
 
-# keys()
-# * The keys method shows all parameters for the widget creation
-window = tk.Tk()
-window.withdraw()
-keys = tk.Canvas(master=window).keys()
-[print(k) for k in keys]
-window.destroy()
+# Example
+# * The example below creates a simple GUI application with the widget.
+root = tk.Tk()
+canvas = tk.Canvas(
+    master=root,
+    width=400,
+    height=250,
+    bg='black'
+)
+canvas.pack(padx=5, pady=5)
+canvas.create_oval(100, 100, 200, 200, fill='red')
+canvas.create_rectangle(200, 50, 300, 150, fill='blue')
+canvas.create_line(0, 0, 400, 250, fill='white', dash=(4, 2))
+canvas.create_text(150, 20, text='Canvas Widget', fill='yellow')
+root.mainloop()
+
+
+###############################################################################
+# Parameters & Methods
+###############################################################################
+
+
+# Keys
+# * The `keys` method shows all parameters for the widget creation.
+canvas = tk.Canvas()
+[print(k) for k in canvas.keys()]
 """
 background
 bd
@@ -53,11 +85,6 @@ xscrollincrement
 yscrollcommand
 yscrollincrement
 """
-
-
-###############################################################################
-# Methods
-###############################################################################
 
 
 # Methods
@@ -124,33 +151,3 @@ yview(tk.SCROLL, n, what)
 yview_moveto(fraction)
 yview_scroll(n, what)
 """
-
-
-###############################################################################
-# Example
-###############################################################################
-
-
-# Create the window
-# * The window will be created to put the button inside
-window = tk.Tk()
-
-
-# Create the widget
-# * The widget will be created and put inside the window
-widget = tk.Canvas(
-    master=window,
-    width=400,
-    height=300,
-    bg='black'
-)
-
-
-# Set the position of the widget
-# * The widget will be automatically adjusted
-widget.pack()
-
-
-# Main loop
-# * Start the application
-window.mainloop()

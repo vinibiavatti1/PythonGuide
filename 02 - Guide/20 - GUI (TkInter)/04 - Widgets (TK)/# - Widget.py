@@ -1,10 +1,13 @@
 """
 Widget
 
-* Tkinter provides various controls, such as buttons, labels and text boxes
-  used in a GUI application. These controls are commonly called widgets
-* Reference:
-  * https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
+* TkInter Widgets are the building blocks of a GUI application.
+* They provide a way to create user interface elements such as buttons, labels,
+  and text boxes.
+* In other languages, these elements may be referred to as controls or
+  components.
+* NOTE: It is always recommended to use the TTK (Themed Tkinter) widgets
+  for a more modern look and feel.
 """
 
 
@@ -13,7 +16,7 @@ Widget
 ###############################################################################
 
 
-# Univerval methods
+# Universal methods
 # * All of the widgets have the methods in the list
 """
 after(delay_ms, callback=None, *args)
