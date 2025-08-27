@@ -1,0 +1,80 @@
+"""
+Scale (TTK)
+
+* This is the TTK (Themed Tkinter) version of the Scale widget.
+* It provides a more modern look and feel compared to the classic Tkinter
+  version.
+* The Scale widget is used to select a value from a range of values.
+* It displays a slider that can be moved to select the desired value.
+* The state of the Scale widget can be controlled using a variable.
+* Users can also enter values directly into the Scale.
+* It is commonly used for numeric input, such as selecting a volume level or a
+  brightness level.
+* In other libraries, it may be referred to as a slider or trackbar.
+"""
+
+
+###############################################################################
+# Import
+###############################################################################
+
+
+# Import
+# * We will import tkinter to be used on the examples below.
+import tkinter as tk
+import tkinter.ttk as ttk
+
+
+###############################################################################
+# Example
+###############################################################################
+
+
+# Example
+# * The example below creates a simple GUI application with the widget.
+root = tk.Tk()
+var = tk.IntVar(value=5)
+scale = ttk.Scale(
+    master=root,
+    variable=var,
+    from_=0,
+    to=10,
+    orient=tk.HORIZONTAL
+)
+scale.pack(padx=20, pady=20)
+root.mainloop()
+
+
+###############################################################################
+# Parameters & Methods
+###############################################################################
+
+
+# Keys
+# * The `keys` method shows all parameters for the widget creation.
+scale = ttk.Scale()
+[print(k) for k in scale.keys()]
+"""
+command
+variable
+orient
+from
+to
+value
+length
+state
+takefocus
+cursor
+style
+class
+"""
+
+
+# Methods
+# * The common methods for the widget are:
+"""
+coords(value=None)
+get()
+identify(x, y)
+set(value)
+"""
