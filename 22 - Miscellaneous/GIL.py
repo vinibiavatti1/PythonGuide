@@ -19,15 +19,18 @@ GIL (Global Interpreter Lock)
 * NOTE: Check the _gc.py for Garbage Collector details
 * Reference: https://realpython.com/python-gil/
 """
-import sys
-import threading
-import multiprocessing
-import time
 
 
 ###############################################################################
 # Operation
 ###############################################################################
+
+
+# Imports
+# * We will import the libraries below to be used on this document.
+import threading
+import multiprocessing
+import time
 
 
 # Operation

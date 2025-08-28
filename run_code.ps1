@@ -1,1 +1,0 @@
-Invoke-Expression "code ."

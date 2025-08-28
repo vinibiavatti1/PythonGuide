@@ -1,5 +1,5 @@
 """
-Python Style Guide
+Style Guide
 
 * This file represents some concepts of:
   * PEP008: Style Guide for Python Code

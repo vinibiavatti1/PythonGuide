@@ -12,12 +12,16 @@ Multi-processing
 * In Python, the multiprocessing module includes a very simple and intuitive
   API for dividing work between multiple processes
 """
-import multiprocessing
 
 
 ###############################################################################
 # Worker
 ###############################################################################
+
+
+# Imports
+# * We will import the libraries below to be used on this document.
+import multiprocessing
 
 
 # Worker

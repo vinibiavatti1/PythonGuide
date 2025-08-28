@@ -10,13 +10,18 @@ Threading module
   Python, even if you create a Thread, the program will be executed as single
   thread. The multiprocessing can be used to run async operations in Python
 """
-import threading
-import time
 
 
 ###############################################################################
 # Defining thread
 ###############################################################################
+
+
+# Imports
+# * We will import the libraries below to be used on this document.
+import threading
+import time
+
 
 
 # Define the worker as a function

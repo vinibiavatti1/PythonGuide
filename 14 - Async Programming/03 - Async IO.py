@@ -26,12 +26,16 @@ await shield()              Shield from cancellation.
 await wait()                Monitor for completion.
 ###############################################################################
 """
-import asyncio
 
 
 ###############################################################################
 # Async Function
 ###############################################################################
+
+
+# Imports
+# * We will import the libraries below to be used on this document.
+import asyncio
 
 
 # Defining async function
