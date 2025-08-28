@@ -1,54 +1,145 @@
 """
-Multi-processing
+Multi Processing
 
-* Multiprocessing refers to the ability of a system to support more than one
-  processor at the same time. Applications in a multiprocessing system are
-  broken to smaller routines that run independently. The operating system
-  allocates these threads to the processors improving performance of the system
-* A multiprocessing system can have:
-  * multiprocessor: a computer with more than one central processor.
-  * multi-core processor: a single computing component with two or more
-    independent actual processing units (called "cores")
-* In Python, the multiprocessing module includes a very simple and intuitive
-  API for dividing work between multiple processes
+* The "multiprocessing" module allows you to create multiple processes, each
+  with its own Python interpreter and memory space.
+* This can be useful for CPU-bound tasks that need to take advantage of
+  multiple cores.
+* Different from threading, each process has its own memory space and runs
+  truly in parallel.
+* Since it creates a new process, it can be more resource-intensive than
+  threading.
+
+Important Note
+* Note that all running examples below this point will use the
+  `if __name__ == '__main__':` guard to ensure proper behavior on Windows. This
+  is necessary because, on Windows, the fork system call is not supported,
+  and the multiprocessing module needs to import the main module in a new
+  process, and the `if __name__ == '__main__':` guard prevents the code from
+  being run again and creating an infinite loop.
+* In other platforms that support the fork system call (like Linux and macOS),
+  this guard is not strictly necessary, but it's still a good practice to
+  include it to avoid potential issues.
 """
 
 
 ###############################################################################
-# Worker
+# Module Import
 ###############################################################################
 
 
-# Imports
-# * We will import the libraries below to be used on this document.
+# Importing the module
+# * We can import this module using the `import` statement as follows
 import multiprocessing
 
 
-# Worker
-# * This is an operation that will be used in the examples to be executed by
-#   the process
-def worker(n):
-    print('Cubic is:', n ** 3)
-
-
 ###############################################################################
-# Process
+# Function Process
 ###############################################################################
 
 
-# Create a process to execute the operation
-# * The Process class from multiprocessing can be used to create a new process
-#   to execute some function
-# * The function will be executed by other Python Interpreter
-# * NOTE: Windows doesn't have fork, so there's no way to make a new process
-#   just like the existing one. So the child process has to run your code
-#   again, but now you need a way to distinguish between the parent process and
-#   the child process, and __main__ is it
+# Defining a function
+# * We can start processes based on functions.
+# * Below, we will define a function that will be run in a separate process.
+def fn():
+    print("Process is running")
+
+
+# Using the function in a process
+# * We can create a process by instantiating the Process class and passing the
+#   function as the target.
+# * When the process is created, it can be started using the `start()` method.
 if __name__ == '__main__':
-    process = multiprocessing.Process(target=worker, args=(5,))
+    process = multiprocessing.Process(target=fn)
     process.start()
-    process.join()
-    # Cubic is: 125
+# Process is running
+
+
+# Defining a function (with parameters)
+# * We can also start processes using function with parameters.
+# * Below, we will define a function that takes parameters.
+def fn(param1, param2):
+    print(f"Process is running with parameters: {param1}, {param2}")
+
+
+# Using the function in a process (with parameters)
+# * When setting the process' target to a function with parameters, we can use
+#   the `args` argument to pass the parameters as a tuple.
+if __name__ == '__main__':
+    process = multiprocessing.Process(target=fn, args=("value1", "value2"))
+    process.start()
+# Process is running with parameters: value1, value2
+
+
+###############################################################################
+# Process Subclass
+###############################################################################
+
+
+# Defining a process subclass
+# * We can define a subclass of the Process class and override the run()
+#   method.
+# * This is useful when we want to encapsulate process behavior within a class.
+class MyProcess(multiprocessing.Process):
+    def run(self):
+        print("Process is running")
+
+
+# Running the process class
+# * To start the process, we need to create an instance of the MyProcess class
+#   and call the start() method.
+if __name__ == '__main__':
+    process = MyProcess()
+    process.start()
+# Process is running
+
+
+###############################################################################
+# Daemon Processes
+###############################################################################
+
+
+# Defining a function
+# * We will define a function that will be run in the process below.
+def fn():
+    print("Daemon process is running")
+
+
+# Defining a Daemon Process
+# * A daemon process is a process that runs in the background and is
+#   terminated when the main program exits.
+# * Daemon processes are useful for tasks that should not block the
+#   program from exiting, such as background tasks or services.
+# * To define a daemon process, we can set the `daemon` attribute to `True`
+if __name__ == '__main__':
+    process = multiprocessing.Process(target=fn)
+    process.daemon = True
+    process.start()
+# Daemon process is running
+
+
+###############################################################################
+# Joining Processes
+###############################################################################
+
+
+# Defining a function
+# * We will define a function that will be run in the process below.
+def fn():
+    print("Process is running")
+
+
+# Joining Processes
+# * We can use the `join()` method to wait for a process to finish.
+# * This is useful when we want to ensure that a process has completed its work
+#   before proceeding.
+if __name__ == '__main__':
+    process = multiprocessing.Process(target=fn)
+    process.start()
+    process.join()  # Wait for the process to finish
+    print('Finished')
+# Process is running
+# Finished
 
 
 ###############################################################################
@@ -56,152 +147,73 @@ if __name__ == '__main__':
 ###############################################################################
 
 
-# Create a pool of process to execute the operation
-# * The Pool class represents a pool of worker processes. It has methods which
-#   allows tasks to be offloaded to the worker processes in a few different
-#   ways
+# Defining a function
+# * We will define a function that will be run in the process below.
+def cubic(n):
+    print("Cubic is:", n ** 3)
+
+
+# Defining a Pool
+# * The Pool is a class that allows you to create a pool of worker processes.
+# * It provides a convenient way to parallelize the execution of a function
+#   across multiple input values.
+# * The Pool class can be used to manage a pool of worker processes and
+#   distribute tasks to them.
+# * The "processes" argument specifies the number of worker processes to
+#   create.
+# * NOTE: When the pool is created, the processes are started and ready to
+#   accept tasks.
+# * We can use the `apply_async()` method to submit tasks to the pool.
+# * This will allow the tasks to be executed asynchronously.
+# * If more functions are submitted than there are worker processes, the
+#   tasks will be queued until a worker process is available.
+# * The `close()` method is used to prevent any more tasks from being submitted
+#   to the pool.
+# * This ensures that no new tasks can be added, but already submitted tasks
+#   will continue to run.
+# * The `join()` method is used to wait for the worker processes to finish.
+# * This will synchronize the main process with the worker processes.
 if __name__ == '__main__':
     pool = multiprocessing.Pool(processes=2)
-    pool.apply_async(func=worker, args=(6,))
-    pool.apply_async(func=worker, args=(3,))
+    pool.apply_async(func=cubic, args=(128,))
+    pool.apply_async(func=cubic, args=(256,))
     pool.close()
     pool.join()
-    # Cubic is: 216
-    # Cubic is: 27
+# Cubic is: 2097152
+# Cubic is: 16777216
 
 
 ###############################################################################
-# Process as base class
+# Lock
 ###############################################################################
 
 
-# Define a process as a class
-# * The Process class can be used as base class to define a Process
-# * The run() method can be overrided to define the execution
-class Worker(multiprocessing.Process):
-    def run(self):
-        print('Hello World!')
+# Defining a Lock
+# * A Lock is a synchronization primitive that is used to protect shared
+#   resources from being accessed by multiple processes simultaneously.
+# * It allows only one process to access the resource at a time, preventing race
+#   conditions and ensuring process safety.
+# * If another process tries to enter a with locker: block (with the same
+#   locker object), it's delayed until the first process exits the block.
+# * To create a Lock, we can use the multiprocessing.Lock() constructor.
+# * NOTE: Different from `threading.Lock()`, this Lock uses Operating System
+#   primitives to ensure mutual exclusion.
+lock = multiprocessing.Lock()
 
 
-# Execute the process
-# * An object must be created from the class and the start() method will be
-#   execute to start the new process
-if __name__ == '__main__':
-    process = Worker()
-    process.start()
-    process.join()
-    # Hello World!
+# Acquiring and releasing a Lock
+# * To use a Lock, we need to acquire it before accessing the shared resource
+#   and release it when we're done.
+# * This guarantees that only one process can access the resource at a time.
+lock.acquire()
+print('Critical section (synchronized)')
+lock.release()
+# Critical section (synchronized)
 
 
-###############################################################################
-# Process methods
-###############################################################################
-
-
-# start()
-# * Start the process's activity
-if __name__ == '__main__':
-    process = multiprocessing.Process(target=worker, args=(8,))
-    process.start()
-    # Cubic is: 512
-
-
-# is_alive()
-# * Return whether the process is alive
-if __name__ == '__main__':
-    print(process.is_alive())
-    # True
-
-
-# join([timeout])
-# * If the optional argument timeout is None (the default), the method blocks
-#   until the process whose join() method is called terminates
-# * A process can be joined many times
-# * A process cannot join itself because this would cause a deadlock
-if __name__ == '__main__':
-    process.join()
-
-
-# terminate()
-# * Terminate the process
-if __name__ == '__main__':
-    process.terminate()
-
-
-# close()
-# * Close the Process object, releasing all resources associated with it
-if __name__ == '__main__':
-    process.close()
-
-
-###############################################################################
-# Pool methods
-###############################################################################
-
-
-# apply(func[, args[, kwds]])
-# * Call func with arguments args and keyword arguments kwds. It blocks until
-#   the result is ready. Given this blocks, apply_async() is better suited for
-#   performing work in parallel
-if __name__ == '__main__':
-    pool = multiprocessing.Pool(processes=2)
-    pool.apply(func=worker, args=(9,))
-
-
-# apply_async(func[, args[, kwds[, callback[, error_callback]]]])
-# * A variant of the apply() method which returns a AsyncResult object
-if __name__ == '__main__':
-    pool.apply_async(func=worker, args=(9,))
-
-
-# map(func, iterable[, chunksize])
-# * A parallel equivalent of the map() built-in function
-# * This method chops the iterable into a number of chunks which it submits to
-#   the process pool as separate tasks
-# * for multiple iterables see starmap()
-if __name__ == '__main__':
-    args = [1, 2, 3]
-    pool.map(worker, args)  # It will create 3 workers with range as param
-
-
-# map_async(func, iterable[, chunksize[, callback[, error_callback]]])
-# * A variant of the map() method which returns a AsyncResult object
-if __name__ == '__main__':
-    args = [1, 2, 3]
-    pool.map_async(worker, args)
-
-
-# starmap(func, iterable[, chunksize])
-# * Like map() except that the elements of the iterable are expected to be
-#   iterables that are unpacked as arguments
-if __name__ == '__main__':
-    args = [(1,), (2,), (3,)]
-    pool.starmap(worker, args)
-
-
-# starmap_async(func, iterable[, chunksize[, callback[, error_callback]]])
-# * A combination of starmap() and map_async() that iterates over iterable of
-#   iterables and calls func with the iterables unpacked. Returns a result
-#   object
-if __name__ == '__main__':
-    args = [(1, 2), (2, 3), (3, 4)]
-    pool.starmap_async(worker, args)
-
-
-# terminate()
-# * Stops the worker processes immediately without completing outstanding work
-if __name__ == '__main__':
-    pool.terminate()
-
-
-# close()
-# * Prevents any more tasks from being submitted to the pool
-if __name__ == '__main__':
-    pool.close()
-
-
-# join()
-# * Wait for the worker processes to exit. One must call close() or terminate()
-#   before using join()
-if __name__ == '__main__':
-    pool.join()
+# Acquiring and releasing a Lock (with statement)
+# * We can also use the "with" statement to automatically acquire and release
+#   the lock.
+with lock:
+    print('Critical section (synchronized)')
+# Critical section (synchronized)
