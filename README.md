@@ -46,7 +46,7 @@ The project is organized by topics to make navigation easier:
 - **`/19 - Distribution`** → Packaging and distributing Python projects.
 - **`/20 - Tests`** → Writing and running tests.
 - **`/21 - Demo Projects`** → Example projects to practice concepts.
-- **`/22 - Miscellaneous`** → Extra topics and assorted examples.
+- **`/99 - Miscellaneous`** → Extra topics and assorted examples.
 
 ## 🛠️ Getting Started
 
