@@ -26,7 +26,7 @@ PyInstaller
 """ $ pip install pyinstaller """
 
 
-# Generate Executable
+# Generate Executable (.exe)
 # * To generate a standalone executable, we can use the command below.
 # * Usually, PyInstaller creates a bundle with the executable and the python
 #   dependencies outside the executable. To include everything inside the
