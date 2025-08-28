@@ -13,23 +13,6 @@ Async IO
   activated and can be used to define and work with coroutines.
 * It is a lightweight and efficient way to handle asynchronous programming in
   Python compared to traditional threading or multiprocessing approaches.
-
-* The main features of the `asyncio` library include:
-###############################################################################
-Resource                  Description
-###############################################################################
-async                     (new keyword) Define a coroutine.
-await                     (new keyword) Pause and resume execution.
-asyncio.run()             Create event loop, run a coroutine, close the loop.
-
-asyncio.create_task()     Start an asyncio Task.
-asyncio.to_thread()       Asynchronously run a function in a separate OS thread
-await asyncio.sleep()     Sleep for a number of seconds.
-await asyncio.gather()    Schedule and wait for things concurrently.
-await asyncio.wait_for()  Run with a timeout.
-await asyncio.shield()    Shield from cancellation.
-await asyncio.wait()      Monitor for completion.
-###############################################################################
 """
 
 
