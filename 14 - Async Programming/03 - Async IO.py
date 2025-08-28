@@ -1,32 +1,48 @@
 """
-TODO
-AsyncIO
+Async IO
 
-* Async IO is a concurrent programming design that has received dedicated
-  support in Python
-* Asynchronous IO (async IO): a language-agnostic paradigm (model) that has
-  implementations across a host of programming languages
-* async/await: two new Python keywords that are used to define coroutines
-* asyncio: the Python package that provides a foundation and API for running
-  and managing coroutines
-* References:
-  * https://docs.python.org/3/library/asyncio.html
+* The async IO model allows for concurrent execution of code, making it easier
+  to write programs that perform I/O-bound tasks without blocking the main
+  thread.
+* The model is based on the concept of coroutines, which are special functions
+  that can be paused and resumed, allowing for more efficient use of resources.
+* The `asyncio` library is a core part of the async IO model in Python,
+  providing the necessary tools and infrastructure to work with asynchronous
+  code, such as event loops, coroutines, and tasks.
+* When importing the `asyncio` library, the `async` and `await` keywords are
+  activated and can be used to define and work with coroutines.
+* It is a lightweight and efficient way to handle asynchronous programming in
+  Python compared to traditional threading or multiprocessing approaches.
 
-* Some features of asyncio are:
+* The main features of the `asyncio` library include:
 ###############################################################################
-Resource                    Description
+Resource                  Description
 ###############################################################################
-run()                       Create event loop, run a coroutine, close the loop.
-create_task()               Start an asyncio Task.
-to_thread()                 Asynchronously run a function in a separate OS
-                            thread.
-await sleep()               Sleep for a number of seconds.
-await gather()              Schedule and wait for things concurrently.
-await wait_for()            Run with a timeout.
-await shield()              Shield from cancellation.
-await wait()                Monitor for completion.
+async                     (new keyword) Define a coroutine.
+await                     (new keyword) Pause and resume execution.
+asyncio.run()             Create event loop, run a coroutine, close the loop.
+
+asyncio.create_task()     Start an asyncio Task.
+asyncio.to_thread()       Asynchronously run a function in a separate OS thread
+await asyncio.sleep()     Sleep for a number of seconds.
+await asyncio.gather()    Schedule and wait for things concurrently.
+await asyncio.wait_for()  Run with a timeout.
+await asyncio.shield()    Shield from cancellation.
+await asyncio.wait()      Monitor for completion.
 ###############################################################################
 """
+
+
+###############################################################################
+# Enabling Async IO
+###############################################################################
+
+
+# Enabling Async IO
+# * To enable the `async` and `await` keywords, and the coroutine support in
+#   Python, you need to import the `asyncio` library at the beginning of your
+#   script.
+import asyncio
 
 
 ###############################################################################
@@ -34,157 +50,52 @@ await wait()                Monitor for completion.
 ###############################################################################
 
 
-# Imports
-# * We will import the libraries below to be used on this document.
-import asyncio
+# Defining an async function
+# * The async keyword is used in functions to define that the function is a
+#   coroutine.
+async def my_coroutine():
+    print('Hello World')
 
 
-# Defining async function
-# * To define a asynchronous function, just use the async keyword
-async def async_function():
-    print('Hello')
-    await asyncio.sleep(1)
-    print('World')
-    return 'Finished!'
-
-
-###############################################################################
-# Running
-###############################################################################
-
-
-# Calling async function (normal way)
-# * Using normal calling for async function will not work
-# * The function will return a coroutine object, not the execution result
-# * An error will be raised if async function is called without await keyword
-print(async_function())
-"""
-<coroutine object async_function at 0x0000023E64261840>
-RuntimeWarning: coroutine 'async_function' was never awaited
-    print(async_function())
-"""
-
-
-# Calling async function
-# * Using asyncio.run() function
-asyncio.run(async_function())
-# Hello
-# World (after 1 second)
+# Calling an async function
+# * When an async function is called, it will not execute immediately. Instead,
+#   it returns a coroutine object that can be awaited.
+# * Note that the interpreter will issue a warning if the coroutine is not
+#   awaited.
+x = my_coroutine()
+print(x)
+# <coroutine object my_coroutine at 0x0000023E64261840>
+# <sys>:0: RuntimeWarning: coroutine 'my_coroutine' was never awaited
 
 
 ###############################################################################
-# Tasks
+# Await
 ###############################################################################
 
 
-# Creating task
-# * To create tasks, the asyncio.create_task() function can be used
-async def task_example():
-    task = asyncio.create_task(async_function(), name="My Task")
-    await task
-
-
-# Executing task
-asyncio.run(task_example())
-# Hello
-# World
-
-
-# Cancelling task
-# * A task can be cancelled with task.cancel() method
-# * The asyncio.CancelledError exception will be reaised if the task was
-#   canceled and awaited
-async def task_cancel_example():
-    task = asyncio.create_task(async_function(), name="My Task")
-    await asyncio.sleep(.5)
-    task.cancel()
-    try:
-        await task
-    except asyncio.CancelledError:
-        print('Cancelled!')
-
-
-# Executing task
-asyncio.run(task_cancel_example())
-# Cancelled!
+# Await
+# * The await keyword is used to pause the execution of a coroutine until the
+#   awaited task is complete.
+# * It can only be used inside an async function.
+# * When the awaited task is complete, the coroutine resumes execution.
+# * NOTE: The await keyword can only be used inside async functions. If a
+#   non-async function tries to use await, it will raise a SyntaxError.
+async def other_coroutine():
+    await my_coroutine()  # Runs and waits for my_coroutine to finish
+    print('Finished!')
 
 
 ###############################################################################
-# Running Concurrently
+# Running Coroutines
 ###############################################################################
 
 
-# Multiple Tasks (Gather)
-# * The asyncio.gather() function can be used to run concurrently
-async def multiple_tasks_gather():
-    await asyncio.gather(
-        async_function(),
-        async_function(),
-        async_function()
-    )
-
-
-# Executing task
-asyncio.run(multiple_tasks_gather())
-# Hello
-# Hello
-# Hello
-# World
-# World
-# World
-
-
-# Multiple Tasks (Wait)
-# * The asyncio.wait() function can be used to run concurrently, but is more
-#   low level then asyncio.gather() and allows to configure if it has to wait
-#   for all futures to finish or just the first one.
-# * NOTE: It is necessary to use tasks, cause passing coroutine objects to
-#   wait() directly is deprecated.
-async def multiple_tasks_wait():
-    t1 = asyncio.create_task(async_function())
-    t2 = asyncio.create_task(async_function())
-    done, pending = await asyncio.wait(
-        [t1, t2],
-        return_when=asyncio.ALL_COMPLETED
-    )
-    print('Tasks in done?', t1 in done, t2 in done)
-
-
-# Executing task
-asyncio.run(multiple_tasks_wait())
-# Hello
-# Hello
-# World
-# World
-# Tasks in done? True True
-
-
-###############################################################################
-# Shield
-###############################################################################
-
-
-# Create task with shield to prevent cancellation
-# * The asyncio.shield() function can be used to block the task for
-#   cancellation
-# * When the cancelation is executed, the shield will be canceled, but the
-#   default task will continues to run
-async def task_shield_example():
-    task = asyncio.create_task(async_function(), name="My Task")
-    safe_task = asyncio.shield(task)
-    await asyncio.sleep(.5)
-    safe_task.cancel()
-    try:
-        await safe_task
-    except asyncio.CancelledError:
-        print('Shield Cancelled.')
-        print(f'{task.cancelled() = }')
-
-
-# Executing task
-asyncio.run(task_shield_example())
-# Shield Cancelled!
-# task.cancelled() = False
+# Running the main coroutine
+# * When developing an async modules, we must use `asyncio.run()` to run the
+#   main coroutine, since we cannot use await at the top level.
+# * This function creates a new event loop, runs the coroutine, and closes the
+#   loop when the coroutine is done.
+asyncio.run(my_coroutine())
 
 
 ###############################################################################
@@ -192,34 +103,134 @@ asyncio.run(task_shield_example())
 ###############################################################################
 
 
-# Defining async function with timeout
-# * To execute some async task with timeout, we can use the asyncio.wait_for()
-#   function, and set the timeout parameter.
-# * The asyncio.TimeoutError will be raised if the timeout get reached
-async def timeout_function():
+# Defining a coroutine
+# * For the example below, we will need to define a coroutine.
+# * This coroutine will accept arguments and return a value.
+# * The `asyncio.sleep()` function is used to simulate a long-running
+#   operation.
+async def long_task():
+    await asyncio.sleep(10)
+
+
+# Defining timeouts
+# * To execute some async task with timeout, we can use the
+#   `asyncio.wait_for()` function, and set the timeout parameter.
+# * The asyncio.TimeoutError will be raised if the timeout get reached.
+async def my_coroutine():
     try:
-        await asyncio.wait_for(async_function(), timeout=.5)
+        await asyncio.wait_for(long_task(), timeout=.5)
     except asyncio.TimeoutError:
         print('Timeout!')
 
 
-# Executing task
-asyncio.run(timeout_function())
+# Running example
+# * We will run the example above to see the results.
+asyncio.run(my_coroutine())
 # Timeout!
 
 
 ###############################################################################
-# Threads
+# Tasks
 ###############################################################################
 
 
-# Defining async function with thread
-# * We can use the asyncio.to_thread() function to asynchronously run function
-#   func in a separate thread.
-async def thread_function():
-    await asyncio.to_thread(print, 'Thread!')
+# Defining a coroutine
+# * For the example below, we will need to define a coroutine.
+# * This coroutine will accept arguments and return a value.
+# * The `asyncio.sleep()` function is used to simulate a long-running
+#   operation.
+async def long_task():
+    await asyncio.sleep(10)
+    return 'Long task result'
 
 
-# Executing task
-asyncio.run(thread_function())
-# Thread!
+# Creating a Task
+# * A task is a coroutine that has been wrapped in a Task object.
+# * Tasks are used to have more control over the execution of coroutines.
+# * A task is performed in the exact moment it is defined, and the await only
+#   waits for this task if it is not already finished. This enables more
+#   control over the execution flow.
+# * Note that if the coroutine returns a value, it can be retrieved with the
+#   await, even if the task is already done.
+async def my_coroutine():
+    task = asyncio.create_task(long_task(), name='My Task')
+    await asyncio.sleep(.5)
+    if not task.done():
+        task.cancel()
+        print('Task cancelled!')
+    else:
+        result = await task
+        print(f'Task done! Result: {result}')
+
+
+# Running example
+# * We will run the example above to see the results.
+asyncio.run(my_coroutine())
+# Task cancelled!
+
+
+###############################################################################
+# Running Multiple Coroutines
+###############################################################################
+
+
+# Defining a coroutine
+# * For the example below, we will need to define a coroutine.
+# * This coroutine will accept arguments and return a value.
+async def coro_1(arg):
+    return arg + 1
+
+
+# Defining other coroutine
+# * We will define another coroutine that performs a different operation.
+async def coro_2(arg):
+    return arg * 2
+
+
+# Running multiple coroutines concurrently (gather)
+# * To run multiple coroutines concurrently, we can use `asyncio.gather()`
+# * This method takes multiple awaitable objects and runs them concurrently.
+# * It will wait for all of the coroutines to finish and return their results.
+# * To get the results, we can unpack the returned values from
+#   `asyncio.gather()`.
+async def run_coroutines():
+    results = await asyncio.gather(
+        coro_1(1),
+        coro_2(2)
+    )
+    print(results)
+
+
+# Running example
+# * We will run the example above to see the results.
+asyncio.run(run_coroutines())
+# [2, 4]
+
+
+# Running multiple coroutines concurrently (wait)
+# * The `asyncio.wait` allows you to run multiple coroutines (or tasks)
+#   concurrently.
+# * The main difference between `asyncio.gather` and `asyncio.wait`:
+#   * `gather` returns the results of all coroutines in order.
+#   * `wait` returns two sets: the tasks that are done and those still pending.
+# * The `wait` is useful when you want to monitor or manage tasks individually,
+#   for example, to cancel some or handle them as they complete.
+# * The `return_when` parameter allows you to specify when the wait should
+#   stop: (asyncio.FIRST_COMPLETED or asyncio.ALL_COMPLETED)
+async def run_coroutines():
+    tasks = [
+        asyncio.create_task(coro_1(1)),
+        asyncio.create_task(coro_2(2))
+    ]
+    done, pending = await asyncio.wait(
+        tasks,
+        return_when=asyncio.ALL_COMPLETED
+    )
+    results = [task.result() for task in done]
+    print(results)
+
+
+# Running example
+# * We will run the example above to see the results.
+asyncio.run(run_coroutines())
+# [2, 4]
