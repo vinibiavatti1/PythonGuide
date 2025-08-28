@@ -4,8 +4,6 @@
     <p align="center">A complete repository for anyone who wants to learn Python from scratch!</p>
 </p>
 
----
-
 ## 📌 About
 
 Welcome to the **Python Guide**!
@@ -23,14 +21,12 @@ The main goal of this project is to help you **learn, practice, and enjoy progra
 
 Each Python example can be executed to check the output.
 
----
-
 ## 📂 Repository Structure
 
 The project is organized by topics to make navigation easier:
 
-- **`/01 - Getting Started`** → Basic setup and first steps with Python.  
-- **`/02 - Syntax`** → Core language syntax and structure.  
+- **`/01 - Getting Started`** → Basic setup and first steps with Python.
+- **`/02 - Syntax`** → Core language syntax and structure.
 - **`/03 - Datatypes`** → Primitive data types and their usage.  
 - **`/04 - Collections`** → Lists, tuples, sets, and dictionaries.  
 - **`/05 - Builtins`** → Essential built-in functions.  
@@ -42,8 +38,8 @@ The project is organized by topics to make navigation easier:
 - **`/11 - Design Patterns`** → Common software design patterns in Python.
 - **`/12 - Standard Library`** → Exploring the Python standard library.
 - **`/13 - User Interfaces (TkInter)`** → GUI development with TkInter.
-- **`/14 - Async Programming`** → Asynchronous tasks with `async` and `await`.
-- **`/15 - Meta Programming`** → Advanced features: decorators, introspection, metaclasses.
+- **`/14 - Async Programming`** → Threading, multi-processing and asynchronous tasks.
+- **`/15 - Meta Programming`** → Advanced features: metaclasses and descriptors.
 - **`/16 - Code Evaluation`** → Evaluating and executing Python code dynamically.
 - **`/17 - Memory Management`** → Understanding Python’s memory handling.
 - **`/18 - Debugging`** → Debugging techniques and tools.
@@ -51,8 +47,6 @@ The project is organized by topics to make navigation easier:
 - **`/20 - Tests`** → Writing and running tests.
 - **`/21 - Demo Projects`** → Example projects to practice concepts.
 - **`/22 - Miscellaneous`** → Extra topics and assorted examples.
-
----
 
 ## 🛠️ Getting Started
 
