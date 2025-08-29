@@ -1,5 +1,5 @@
 """
-Decorator (@)
+Decorators (@)
 
 * A decorator, is a callable that is used to extend the functionality of other
   callables. In simple words, It allows us to decorate a function with

@@ -39,7 +39,7 @@ The project is organized by topics to make navigation easier:
 - **`/12 - Standard Library`** → Exploring the Python standard library.
 - **`/13 - User Interfaces (TkInter)`** → GUI development with TkInter.
 - **`/14 - Async Programming`** → Threading, multi-processing and asynchronous tasks.
-- **`/15 - Meta Programming`** → Advanced features: metaclasses and descriptors.
+- **`/15 - Meta Programming`** → Advanced features: decorators, metaclasses and descriptors.
 - **`/16 - Code Evaluation`** → Evaluating and executing Python code dynamically.
 - **`/17 - Memory Management`** → Understanding Python’s memory handling.
 - **`/18 - Debugging`** → Debugging techniques and tools.
